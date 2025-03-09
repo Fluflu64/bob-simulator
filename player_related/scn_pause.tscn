@@ -1,0 +1,105 @@
+[gd_scene load_steps=4 format=3 uid="uid://ckweq2i3b5lg8"]
+
+[ext_resource type="Texture2D" uid="uid://mibs4jii822c" path="res://player_related/tex_text_box.png" id="1_4ltce"]
+[ext_resource type="Script" path="res://player_related/script_pause.gd" id="1_8x212"]
+[ext_resource type="LabelSettings" uid="uid://bdxtw162r24p7" path="res://base_font.tres" id="2_o6td7"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_8x212")
+
+[node name="stats_border" type="NinePatchRect" parent="."]
+offset_top = 216.0
+offset_right = 168.0
+offset_bottom = 256.0
+texture = ExtResource("1_4ltce")
+region_rect = Rect2(0, 0, 48, 48)
+patch_margin_left = 16
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="stats_label" type="Label" parent="stats_border"]
+layout_mode = 2
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 160.0
+offset_bottom = 32.0
+size_flags_vertical = 0
+text = "Bob lvl 50  9999G
+pv  : 1490/1490
+atk : 2432 def : 29"
+label_settings = ExtResource("2_o6td7")
+vertical_alignment = 3
+
+[node name="option_border" type="NinePatchRect" parent="."]
+offset_right = 96.0
+offset_bottom = 40.0
+texture = ExtResource("1_4ltce")
+region_rect = Rect2(0, 0, 48, 48)
+patch_margin_left = 16
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="option_label" type="Label" parent="option_border"]
+layout_mode = 2
+offset_left = 8.0
+offset_top = 4.0
+offset_right = 112.0
+offset_bottom = 44.0
+size_flags_vertical = 0
+text = "item
+option
+close
+quit game<"
+label_settings = ExtResource("2_o6td7")
+
+[node name="menu_border" type="NinePatchRect" parent="."]
+clip_contents = true
+offset_left = 96.0
+offset_right = 256.0
+offset_bottom = 64.0
+texture = ExtResource("1_4ltce")
+region_rect = Rect2(0, 0, 48, 48)
+patch_margin_left = 16
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="menu_label" type="Label" parent="menu_border"]
+layout_mode = 2
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 152.0
+offset_bottom = 72.0
+size_flags_vertical = 0
+text = "item 0
+item 1
+item 2
+item 3
+item 4
+item 5"
+label_settings = ExtResource("2_o6td7")
+clip_text = true
+
+[node name="infos_border" type="NinePatchRect" parent="."]
+offset_top = 40.0
+offset_right = 96.0
+offset_bottom = 64.0
+texture = ExtResource("1_4ltce")
+region_rect = Rect2(0, 0, 48, 48)
+patch_margin_left = 16
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="infos_label" type="Label" parent="infos_border"]
+layout_mode = 2
+offset_left = 8.0
+offset_top = 4.0
+offset_right = 112.0
+offset_bottom = 12.0
+size_flags_vertical = 0
+text = "page 20/20
+99 item(s)"
+label_settings = ExtResource("2_o6td7")

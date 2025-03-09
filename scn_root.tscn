@@ -1,0 +1,49 @@
+[gd_scene load_steps=9 format=3 uid="uid://d2ll0d0bfu26b"]
+
+[ext_resource type="PackedScene" uid="uid://buaexi66xho3d" path="res://player_related/scn_chara_bob.tscn" id="1_5cqsu"]
+[ext_resource type="Script" path="res://script_root.gd" id="1_qn4hg"]
+[ext_resource type="PackedScene" uid="uid://bot88khm6rv7m" path="res://levels/scn_room_0001.tscn" id="2_pea1k"]
+[ext_resource type="PackedScene" uid="uid://bpslrq66ysgyk" path="res://battle/scn_battle_menu.tscn" id="4_vw2ms"]
+[ext_resource type="PackedScene" uid="uid://bny4xe33nufrg" path="res://title/scn_main_menu.tscn" id="5_r5bqn"]
+[ext_resource type="PackedScene" uid="uid://ckweq2i3b5lg8" path="res://player_related/scn_pause.tscn" id="6_s86r4"]
+[ext_resource type="PackedScene" uid="uid://bs5w4fneac8j4" path="res://player_related/scn_text_box.tscn" id="9_nfc0l"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_q8dtc"]
+viewport_path = NodePath("viewport/game_sub_viewport")
+
+[node name="root" type="Node"]
+script = ExtResource("1_qn4hg")
+level_scene = ExtResource("2_pea1k")
+player_scene = ExtResource("1_5cqsu")
+battle_scene = ExtResource("4_vw2ms")
+text_box = ExtResource("9_nfc0l")
+menu_scene = ExtResource("6_s86r4")
+
+[node name="game_view" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_q8dtc")
+
+[node name="viewport" type="SubViewportContainer" parent="."]
+offset_right = 256.0
+offset_bottom = 256.0
+
+[node name="main_menu" parent="viewport" instance=ExtResource("5_r5bqn")]
+
+[node name="game_sub_viewport" type="SubViewport" parent="viewport"]
+handle_input_locally = false
+snap_2d_transforms_to_pixel = true
+snap_2d_vertices_to_pixel = true
+size = Vector2i(256, 256)
+render_target_update_mode = 4
+
+[node name="game" type="Node" parent="viewport/game_sub_viewport"]
+
+[node name="battle" type="Node" parent="viewport"]
+
+[node name="text_box" type="Node" parent="viewport"]
+
+[node name="menu" type="Node" parent="viewport"]

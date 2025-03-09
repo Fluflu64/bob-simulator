@@ -1,0 +1,276 @@
+[gd_scene load_steps=21 format=3 uid="uid://bpslrq66ysgyk"]
+
+[ext_resource type="Texture2D" uid="uid://c62gtc6sfp2ht" path="res://assets/tex_battle_bg_0.png" id="1_hs3wj"]
+[ext_resource type="Script" path="res://script_battle_menu.gd" id="2_4suhd"]
+[ext_resource type="Shader" path="res://shader_background.gdshader" id="3_t14wm"]
+[ext_resource type="Texture2D" uid="uid://iqjl7xvjjvp0" path="res://assets/tex_bob_battle.png" id="3_tinb4"]
+[ext_resource type="Texture2D" uid="uid://01blp28ufy0q" path="res://assets/tex_battle_gradient.png" id="4_mkurc"]
+[ext_resource type="Shader" path="res://shade_circle_transition.gdshader" id="5_ggrxs"]
+[ext_resource type="Texture2D" uid="uid://ctla0pk1phugl" path="res://assets/tex_bg_1.png" id="5_ipyf3"]
+[ext_resource type="LabelSettings" uid="uid://bdxtw162r24p7" path="res://base_font.tres" id="6_m6oif"]
+[ext_resource type="Texture2D" uid="uid://oyimf7on5jhf" path="res://assets/tex_cardman.png" id="8_cxv3o"]
+[ext_resource type="Texture2D" uid="uid://mibs4jii822c" path="res://assets/tex_text_box.png" id="9_fmql0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_huvy6"]
+shader = ExtResource("3_t14wm")
+shader_parameter/snes_transparency = true
+shader_parameter/gba_transparency = false
+shader_parameter/horizontal_scan_line = false
+shader_parameter/vertical_scan_line = false
+shader_parameter/enable_palette_cycling = true
+shader_parameter/sprite_scroll_direction = Vector2(0, 0)
+shader_parameter/sprite_scroll_speed = 1.0
+shader_parameter/gba_transparency_scroll_direction = Vector2(0, 0)
+shader_parameter/gba_transparency_scroll_speed = 0.01
+shader_parameter/gba_transparency_value = 0.5
+shader_parameter/horizontal_wave_amplitude = 1.0
+shader_parameter/horizontal_wave_frequency = -1.0
+shader_parameter/horizontal_wave_speed = 0.1
+shader_parameter/vertical_wave_amplitude = 0.0
+shader_parameter/vertical_wave_frequency = 1.0
+shader_parameter/vertical_wave_speed = 0.01
+shader_parameter/horizontal_deform_amplitude = 0.0
+shader_parameter/horizontal_deform_frequency = 0.0
+shader_parameter/horizontal_deform_speed = 1.0
+shader_parameter/vertical_deform_amplitude = 0.0
+shader_parameter/vertical_deform_frequency = 0.0
+shader_parameter/vertical_deform_speed = 1.0
+shader_parameter/width = 64.0
+shader_parameter/height = 64.0
+shader_parameter/palette_cycling_speed = 0.1
+shader_parameter/palette = ExtResource("4_mkurc")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ony88"]
+shader = ExtResource("5_ggrxs")
+shader_parameter/circle_size = 0.0
+
+[sub_resource type="Animation" id="Animation_83884"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/circle_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("background:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_3hdgm"]
+resource_name = "battle end"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/circle_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 0.0, 0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("background:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_41hr2"]
+resource_name = "battle start"
+length = 2.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/circle_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 0.0, 0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("background:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e7p6k"]
+_data = {
+"RESET": SubResource("Animation_83884"),
+"battle end": SubResource("Animation_3hdgm"),
+"battle start": SubResource("Animation_41hr2")
+}
+
+[sub_resource type="Animation" id="Animation_x82dr"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_i75en"]
+resource_name = "ennemi_hit"
+length = 0.2
+step = 0.01
+
+[sub_resource type="Animation" id="Animation_axl21"]
+resource_name = "player_hit"
+length = 0.2
+step = 0.01
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f6lb5"]
+_data = {
+"RESET": SubResource("Animation_x82dr"),
+"ennemi_hit": SubResource("Animation_i75en"),
+"player_hit": SubResource("Animation_axl21")
+}
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(128, 128)
+script = ExtResource("2_4suhd")
+
+[node name="background" type="Sprite2D" parent="."]
+texture = ExtResource("1_hs3wj")
+
+[node name="TextureRect" type="TextureRect" parent="background"]
+visible = false
+material = SubResource("ShaderMaterial_huvy6")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -128.0
+offset_right = -128.0
+offset_bottom = -128.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_ipyf3")
+
+[node name="pv_en" type="Label" parent="background"]
+offset_left = -20.0
+offset_top = -25.0
+offset_right = 20.0
+offset_bottom = 15.0
+text = "100"
+label_settings = ExtResource("6_m6oif")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="pv_player" type="Label" parent="background"]
+offset_left = -20.0
+offset_top = 48.0
+offset_right = 20.0
+offset_bottom = 88.0
+text = "100"
+label_settings = ExtResource("6_m6oif")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="player_sprite" type="Sprite2D" parent="background"]
+position = Vector2(0, 96)
+texture = ExtResource("3_tinb4")
+
+[node name="enemie_sprite" type="Sprite2D" parent="background"]
+position = Vector2(0, 30)
+texture = ExtResource("8_cxv3o")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="background"]
+offset_left = -120.0
+offset_top = 24.0
+offset_right = -32.0
+offset_bottom = 72.0
+texture = ExtResource("9_fmql0")
+region_rect = Rect2(0, 0, 48, 48)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="Label" type="Label" parent="background/NinePatchRect"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 72.0
+offset_bottom = 40.0
+text = "attaque<
+defense
+item
+flee"
+label_settings = ExtResource("6_m6oif")
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="background"]
+offset_left = -120.0
+offset_top = 72.0
+offset_right = 64.0
+offset_bottom = 120.0
+texture = ExtResource("9_fmql0")
+region_rect = Rect2(0, 0, 48, 48)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="Label" type="Label" parent="background/NinePatchRect2"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 72.0
+offset_bottom = 40.0
+text = "bob : pv 100/100
+
+cartacro : pv 100/100"
+label_settings = ExtResource("6_m6oif")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_ony88")
+offset_left = -128.0
+offset_top = -128.0
+offset_right = 128.0
+offset_bottom = 128.0
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_e7p6k")
+}
+
+[node name="animation_battle" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_f6lb5")
+}
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="AudioStreamPlayer2D"]
+autoplay = true

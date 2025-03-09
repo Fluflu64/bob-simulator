@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=3 uid="uid://bs5w4fneac8j4"]
+
+[ext_resource type="Texture2D" uid="uid://mibs4jii822c" path="res://player_related/tex_text_box.png" id="1_x10g5"]
+[ext_resource type="LabelSettings" uid="uid://bdxtw162r24p7" path="res://base_font.tres" id="2_x2klj"]
+[ext_resource type="Script" path="res://player_related/script_text_box.gd" id="2_yg700"]
+[ext_resource type="AudioStream" uid="uid://dcykfep8vpb4o" path="res://sound_effect/snd_textbox.wav" id="4_07fun"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+follow_viewport_enabled = true
+script = ExtResource("2_yg700")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+offset_top = 200.0
+offset_right = 256.0
+offset_bottom = 256.0
+texture = ExtResource("1_x10g5")
+region_rect = Rect2(0, 0, 48, 48)
+patch_margin_left = 16
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "\"Momentum, a function of mass and velocity, is conserved between portals. In layman's terms, speedy thing goes in, speedy thing comes out.\"
+"
+label_settings = ExtResource("2_x2klj")
+vertical_alignment = 3
+autowrap_mode = 2
+
+[node name="letter_timer" type="Timer" parent="."]
+wait_time = 0.03
+one_shot = true
+
+[node name="audio_player" type="AudioStreamPlayer2D" parent="."]
+
+[node name="bip" type="AudioStreamPlayer" parent="audio_player"]
+stream = ExtResource("4_07fun")
+
+[connection signal="timeout" from="letter_timer" to="." method="_letter_write"]

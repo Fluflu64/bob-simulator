@@ -24,6 +24,7 @@ var def = 2
 @onready var sprite_preview = $sprite_bob_preview
 @onready var animation =$animation_bob
 @onready var camera = $camera_bob
+@onready var interact = $area_interact
 
 @export var game_root = null
 
@@ -43,6 +44,11 @@ func _physics_process(_delta):
 func _input(event):
 	if event.is_action_pressed("menu"):
 		game_root.menu()
+	
+	if event.is_action_pressed("interact"):
+		for area2d in interact.get_overlapping_areas() :
+			if area2d is Interactable :
+				game_root.start_text(area2d.lines)
 
 func _process(_delta):
 	update_camera()
@@ -70,6 +76,9 @@ func move():
 			animation.play("run")
 	else :
 		animation.play("idle")
+	
+	if velocity != Vector2.ZERO :
+		interact.position = sign(velocity)*8
 	
 	#calcule direction
 	if Vector2(sign(direction.x),sign(direction.y)) == Vector2(0,1) :

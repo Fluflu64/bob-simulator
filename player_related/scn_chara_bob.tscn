@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://buaexi66xho3d"]
+[gd_scene load_steps=11 format=3 uid="uid://buaexi66xho3d"]
 
 [ext_resource type="Script" path="res://player_related/script_chara_bob.gd" id="1_g2n5w"]
 [ext_resource type="Texture2D" uid="uid://cm0y67224xlny" path="res://player_related/tex_bob.png" id="2_qnqj6"]
@@ -101,6 +101,9 @@ _data = {
 "walk": SubResource("Animation_vmjh8")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ubcv"]
+size = Vector2(2, 2)
+
 [node name="chara_bob" type="CharacterBody2D"]
 script = ExtResource("1_g2n5w")
 
@@ -128,3 +131,9 @@ shape = SubResource("RectangleShape2D_6o5yt")
 libraries = {
 "": SubResource("AnimationLibrary_m3q14")
 }
+
+[node name="area_interact" type="Area2D" parent="."]
+position = Vector2(0, 8)
+
+[node name="collision_interact" type="CollisionShape2D" parent="area_interact"]
+shape = SubResource("RectangleShape2D_8ubcv")

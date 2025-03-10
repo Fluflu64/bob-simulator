@@ -9,6 +9,7 @@ tile_set = ExtResource("1_v7asg")
 
 [node name="interact" parent="." instance=ExtResource("2_kbolg")]
 position = Vector2(24, 72)
+lines = ["Bouh !", "Tu as peur ?", "N’aie pas peur !", "Je suis un ami !", "Je ne te ferai pas de mal !", "Viens ici, viens ici, assieds-toi à côté de moi.", "Regarde-moi dans les yeux.", "Tu me vois ?", "Je te vois aussi !", "Regardons-nous jusqu’à ce que nos yeux soient fatigués.", "Tu ne veux pas ?", "Pourquoi ?", "Y a-t-il un problème ?"]
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 

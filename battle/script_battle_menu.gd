@@ -21,7 +21,7 @@ var player_atk = 2.0
 var player_dfs = 2.0
 
 #stats ennemi
-var ennemi_name = "carte man"
+var ennemi_name = "radouteu"
 var ennemei_pv = 10
 var max_ennemie_pv = 10
 var ennemi_atk = 2.0

@@ -51,7 +51,7 @@ func _input(event: InputEvent) -> void:
 		index_menu = 0
 	if index_menu > len(label_menu)-1 :
 		index_menu = len(label_menu)-1
-	if event.is_action_pressed("ui_accept") :
+	if event.is_action_pressed("interact") :
 		bip.play()
 		func_menu(index_menu)
 	update_menu()

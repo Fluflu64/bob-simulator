@@ -26,10 +26,12 @@ func start_game():
 	game.add_child(level_instance)
 	game.add_child(player_instance)
 
-func start_text(lines):
+func start_text(lines,area):
 	player.set_process_mode(PROCESS_MODE_DISABLED)
 	var text_instance = text_box.instantiate()
 	text_instance.tree_exited.connect(end_text)
+	area.animation.play("talk")
+	text_instance.tree_exited.connect(area.end_talk)
 	text_instance.lines_text_box = lines
 	textbox.add_child(text_instance)
 

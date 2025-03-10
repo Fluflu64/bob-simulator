@@ -48,13 +48,10 @@ func _input(event):
 	if event.is_action_pressed("interact"):
 		for area2d in interact.get_overlapping_areas() :
 			if area2d is Interactable :
-				game_root.start_text(area2d.lines)
+				game_root.start_text(area2d.lines,area2d)
 
 func _process(_delta):
 	update_camera()
-	var lines = [str(proba_battle)]
-	if Input.is_action_just_pressed("debug test dialogue"):
-		game_root.start_text(lines)
 
 func update_camera():
 	camera.global_position = round(position)

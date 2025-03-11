@@ -12,19 +12,31 @@ extends Node
 @export var text_box: PackedScene
 @export var menu_scene: PackedScene
 @onready var player = null
+@onready var actual_level = null
 
 func _ready():
 	title.game_root = self
 
+func load_level(path:String,spawn_index:int):
+	if actual_level != null :
+		actual_level.queue_free()
+	var level_load = load(path)
+	var level_instance = level_load.instantiate()
+	actual_level = level_instance
+	game.add_child(level_instance)
+	var spawn_position = actual_level.get_spawn_by_id(spawn_index)
+	player.position = spawn_position
+	player.proba_battle = actual_level.encounter_rate
+	
+
 func start_game():
 	title.set_process_mode(PROCESS_MODE_DISABLED)
 	title.hide()
-	var level_instance = level_scene.instantiate()
 	var player_instance = player_scene.instantiate()
 	player_instance.game_root = self
 	player = player_instance
-	game.add_child(level_instance)
 	game.add_child(player_instance)
+	load_level("res://levels/scn_bobcity_ext_overworld.tscn",1)
 
 func start_text(lines,area):
 	player.set_process_mode(PROCESS_MODE_DISABLED)

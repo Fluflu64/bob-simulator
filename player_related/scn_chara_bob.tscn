@@ -109,6 +109,7 @@ script = ExtResource("1_g2n5w")
 
 [node name="sprite_bob" type="Sprite2D" parent="."]
 visible = false
+z_index = 1
 texture = ExtResource("2_qnqj6")
 offset = Vector2(0, -8)
 hframes = 16

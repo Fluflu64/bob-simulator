@@ -10,8 +10,8 @@ var speed = 50
 var frame_direction = 0
 
 #variable combat
-var proba_battle_max = 5000000
-var proba_battle = proba_battle_max
+var proba_battle_max = 100
+var proba_battle = 100
 var proba_scale_down = 0.95
 
 var pv_max = 20
@@ -35,11 +35,8 @@ func _ready():
 func _physics_process(_delta):
 	move()
 	if velocity != Vector2.ZERO :
-		if randi_range(0,proba_battle) == 1 :
-			proba_battle = proba_battle_max
+		if randi_range(0,100) < proba_battle :
 			game_root.start_battle()
-		else :
-			proba_battle = proba_battle * proba_scale_down
 
 func _input(event):
 	if event.is_action_pressed("menu"):

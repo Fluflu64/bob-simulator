@@ -13,6 +13,7 @@ config_version=5
 config/name="bob simulator"
 run/main_scene="res://scn_root.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
+boot_splash/show_image=false
 config/icon="res://tex_bob_ico.png"
 
 [display]
@@ -71,6 +72,6 @@ menu={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-textures/canvas_textures/default_texture_repeat=2
+textures/canvas_textures/default_texture_repeat=1
 renderer/rendering_method="mobile"
 2d/snap/snap_2d_transforms_to_pixel=true

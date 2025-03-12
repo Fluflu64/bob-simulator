@@ -1,7 +1,23 @@
-[gd_scene load_steps=11 format=3 uid="uid://buaexi66xho3d"]
+[gd_scene load_steps=13 format=3 uid="uid://buaexi66xho3d"]
 
 [ext_resource type="Script" path="res://player_related/script_chara_bob.gd" id="1_g2n5w"]
 [ext_resource type="Texture2D" uid="uid://cm0y67224xlny" path="res://player_related/tex_bob.png" id="2_qnqj6"]
+[ext_resource type="Shader" path="res://player_related/shader_reflect.gdshader" id="3_stmxl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7ehji"]
+shader = ExtResource("3_stmxl")
+shader_parameter/waveAmplitude = 0.01
+shader_parameter/correctVertex = true
+shader_parameter/waveFrequency = 100.0
+shader_parameter/verticalWave = false
+shader_parameter/keepTransparency = true
+shader_parameter/useTime = true
+shader_parameter/waveSpeed = 10.0
+shader_parameter/progress = 0.0
+shader_parameter/firstHalf = 1.0
+shader_parameter/secondHalf = 1.0
+shader_parameter/freezeFirstHalf = false
+shader_parameter/freezeSecondHalf = false
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6o5yt"]
 size = Vector2(8, 8)
@@ -102,7 +118,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8ubcv"]
-size = Vector2(2, 2)
+size = Vector2(8, 8)
 
 [node name="chara_bob" type="CharacterBody2D"]
 script = ExtResource("1_g2n5w")
@@ -115,6 +131,16 @@ offset = Vector2(0, -8)
 hframes = 16
 vframes = 8
 
+[node name="sprite_bob_reflect" type="Sprite2D" parent="."]
+z_index = -1
+material = SubResource("ShaderMaterial_7ehji")
+position = Vector2(0, 32)
+texture = ExtResource("2_qnqj6")
+offset = Vector2(0, -8)
+flip_v = true
+hframes = 16
+vframes = 8
+
 [node name="sprite_bob_preview" type="Sprite2D" parent="."]
 texture = ExtResource("2_qnqj6")
 offset = Vector2(0, -8)
@@ -122,7 +148,6 @@ hframes = 16
 vframes = 8
 
 [node name="collision_bob" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_6o5yt")
 
@@ -135,6 +160,18 @@ libraries = {
 
 [node name="area_interact" type="Area2D" parent="."]
 position = Vector2(0, 8)
+collision_layer = 2
+collision_mask = 2
 
 [node name="collision_interact" type="CollisionShape2D" parent="area_interact"]
 shape = SubResource("RectangleShape2D_8ubcv")
+debug_color = Color(1, 0.6, 0.701961, 0.419608)
+
+[node name="area_teleportation" type="Area2D" parent="."]
+position = Vector2(0, 4)
+collision_layer = 4
+collision_mask = 4
+
+[node name="collision_interact" type="CollisionShape2D" parent="area_teleportation"]
+shape = SubResource("RectangleShape2D_8ubcv")
+debug_color = Color(0, 1, 0.701961, 0.419608)

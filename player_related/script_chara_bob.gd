@@ -22,9 +22,11 @@ var def = 2
 #Node
 @onready var sprite = $sprite_bob
 @onready var sprite_preview = $sprite_bob_preview
+@onready var reflect = $sprite_bob_reflect
 @onready var animation =$animation_bob
 @onready var camera = $camera_bob
 @onready var interact = $area_interact
+@onready var area_teleporation = $area_teleportation
 
 @export var game_root = null
 
@@ -37,6 +39,9 @@ func _physics_process(_delta):
 	if velocity != Vector2.ZERO :
 		if randi_range(0,100) < proba_battle :
 			game_root.start_battle()
+	for area2d in area_teleporation.get_overlapping_areas() :
+		if area2d is Teleportation :
+			game_root.load_level(area2d.next_level,area2d.spawn_index)
 
 func _input(event):
 	if event.is_action_pressed("menu"):
@@ -95,6 +100,7 @@ func move():
 	#actualise la direction
 	sprite.frame_coords = Vector2(sprite_preview.frame_coords.x,frame_direction)
 	sprite.offset = sprite_preview.offset
+	reflect.frame_coords = sprite.frame_coords
 	
 	#applique les movements
 	move_and_slide()

@@ -4,6 +4,7 @@ extends Node
 @onready var battle = $viewport/battle
 @onready var title = $viewport/main_menu
 @onready var textbox = $viewport/text_box
+@onready var animation = $animation_game
 
 
 @export var level_scene: PackedScene
@@ -18,6 +19,9 @@ func _ready():
 	title.game_root = self
 
 func load_level(path:String,spawn_index:int):
+	player.set_process_mode(PROCESS_MODE_DISABLED)
+	animation.play("transition_on")
+	await animation.animation_finished
 	if actual_level != null :
 		actual_level.queue_free()
 	var level_load = load(path)
@@ -27,6 +31,11 @@ func load_level(path:String,spawn_index:int):
 	var spawn_position = actual_level.get_spawn_by_id(spawn_index)
 	player.position = spawn_position
 	player.proba_battle = actual_level.encounter_rate
+	actual_level.player = player
+	player.update_camera()
+	animation.play("transition_off")
+	await animation.animation_finished
+	player.set_process_mode(0)
 	
 
 func start_game():

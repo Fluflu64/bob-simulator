@@ -7,3 +7,5 @@ script = ExtResource("1_i2fyg")
 spawn = [NodePath("spawn_base")]
 
 [node name="spawn_base" type="Node2D" parent="."]
+
+[node name="level_audio" type="AudioStreamPlayer2D" parent="."]

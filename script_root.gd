@@ -14,28 +14,34 @@ extends Node
 @export var menu_scene: PackedScene
 @onready var player = null
 @onready var actual_level = null
+var actual_level_path = ""
+
+var config = ConfigFile.new()
 
 func _ready():
 	title.game_root = self
 
 func load_level(path:String,spawn_index:int):
-	player.set_process_mode(PROCESS_MODE_DISABLED)
-	animation.play("transition_on")
-	await animation.animation_finished
+	if spawn_index != -1 :
+		player.set_process_mode(PROCESS_MODE_DISABLED)
+		animation.play("transition_on")
+		await animation.animation_finished
 	if actual_level != null :
 		actual_level.queue_free()
 	var level_load = load(path)
 	var level_instance = level_load.instantiate()
+	actual_level_path = path
 	actual_level = level_instance
 	game.add_child(level_instance)
 	var spawn_position = actual_level.get_spawn_by_id(spawn_index)
-	player.position = spawn_position
 	player.proba_battle = actual_level.encounter_rate
 	actual_level.player = player
-	player.update_camera()
-	animation.play("transition_off")
-	await animation.animation_finished
-	player.set_process_mode(0)
+	if spawn_index != -1 :
+		player.position = spawn_position
+		player.update_camera()
+		animation.play("transition_off")
+		await animation.animation_finished
+		player.set_process_mode(0)
 	
 
 func start_game():
@@ -60,6 +66,7 @@ func menu():
 	player.set_process_mode(PROCESS_MODE_DISABLED)
 	var menu_instance = menu_scene.instantiate()
 	menu_instance.tree_exited.connect(end_text)
+	menu_instance.game_root = self
 	menu_instance.player_pv = player.pv
 	menu_instance.max_player_pv = player.pv_max
 	menu_instance.player_atk = player.atk
@@ -84,3 +91,31 @@ func start_battle():
 	
 func end_battle():
 	game.set_process_mode(PROCESS_MODE_INHERIT)
+	
+func save_game():
+	print("save test")
+	config.set_value("player","position",player.position)
+	config.set_value("player","map",actual_level_path)
+	config.save("res://bob_simulator.cfg")
+
+func load_game():
+	var save_load = config.load("res://bob_simulator.cfg")
+	if save_load == OK :
+		if player == null :
+			title.set_process_mode(PROCESS_MODE_DISABLED)
+			title.hide()
+			var player_instance = player_scene.instantiate()
+			player_instance.game_root = self
+			player = player_instance
+			game.add_child(player_instance)
+		player.set_process_mode(PROCESS_MODE_DISABLED)
+		animation.play("transition_on")
+		await animation.animation_finished
+		actual_level_path = config.get_value("player","map")
+		load_level(actual_level_path,-1)	
+		player.position = config.get_value("player","position")
+		player.update_camera()
+		animation.play("transition_off")
+		await animation.animation_finished
+		player.set_process_mode(0)
+		

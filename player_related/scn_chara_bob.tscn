@@ -121,6 +121,7 @@ _data = {
 size = Vector2(8, 8)
 
 [node name="chara_bob" type="CharacterBody2D"]
+floor_snap_length = 0.0
 script = ExtResource("1_g2n5w")
 
 [node name="sprite_bob" type="Sprite2D" parent="."]

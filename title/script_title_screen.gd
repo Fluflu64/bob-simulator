@@ -5,17 +5,17 @@ extends CanvasLayer
 @onready var bip = $audio/bip
 @onready var animation = $AnimationPlayer
 
-var label_menu = ["play","option","infos","quit"]
+var label_menu = ["new game","load game","option","infos","quit"]
 
 
 func func_menu(index):
 	if index == 0 :
 		game_root.start_game()
 	if index == 1 :
-		pass
+		game_root.load_game()
 	if index == 2 :
 		pass
-	if index == 3 :
+	if index == 4 :
 		get_tree().quit()
 
 

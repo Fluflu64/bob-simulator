@@ -14,7 +14,7 @@ var max_player_pv = 20
 var player_atk = 2.0
 var player_dfs = 2.0
 
-var label_menu = ["item","option","save","load"]
+var label_menu = ["item","option","save game","load game"]
 var text_select = "<"
 var index_menu = 0
 
@@ -26,10 +26,12 @@ func func_menu(index):
 		pass
 	
 	if index == 2 :
-		pass
+		game_root.save_game()
+		queue_free()
 	
 	if index == 3 :
-		pass
+		game_root.load_game()
+		queue_free()
 
 func _ready() -> void:
 	index_menu = 0
@@ -66,4 +68,6 @@ func _input(event: InputEvent) -> void:
 		index_menu = len(label_menu)-1
 	if event.is_action_pressed("left") :
 		pass
+	if event.is_action_pressed("interact"):
+		func_menu(index_menu)
 	update_menu()

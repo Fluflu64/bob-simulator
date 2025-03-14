@@ -29,6 +29,8 @@ var lvl = 1
 @onready var interact = $area_interact
 @onready var area_teleporation = $area_teleportation
 
+@onready var follow_point = $Node2D
+
 @export var game_root = null
 
 func _ready():
@@ -79,6 +81,7 @@ func move():
 	
 	if velocity != Vector2.ZERO :
 		interact.position = sign(velocity)*8
+		follow_point.position = sign(velocity)*-8
 	
 	#calcule direction
 	if Vector2(sign(direction.x),sign(direction.y)) == Vector2(0,1) :

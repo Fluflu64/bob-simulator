@@ -103,6 +103,8 @@ func save_game():
 	config.set_value("player","map",actual_level_path)
 	config.set_value("player","level",player.lvl)
 	config.save("res://bob_simulator.cfg")
+	map_name_label.text = "partie sauvegarder"
+	animation.play("welcome")
 
 func load_game():
 	var save_load = config.load("res://bob_simulator.cfg")
@@ -125,4 +127,6 @@ func load_game():
 		animation.play("transition_off")
 		await animation.animation_finished
 		player.set_process_mode(0)
+		map_name_label.text = "partie chargé"
+		animation.play("welcome")
 		

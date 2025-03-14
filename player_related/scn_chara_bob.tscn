@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://buaexi66xho3d"]
+[gd_scene load_steps=14 format=3 uid="uid://buaexi66xho3d"]
 
 [ext_resource type="Script" path="res://player_related/script_chara_bob.gd" id="1_g2n5w"]
 [ext_resource type="Texture2D" uid="uid://cm0y67224xlny" path="res://player_related/tex_bob.png" id="2_qnqj6"]
 [ext_resource type="Shader" path="res://player_related/shader_reflect.gdshader" id="3_stmxl"]
+[ext_resource type="PackedScene" uid="uid://dpmfje32qwcdv" path="res://player_related/player_follower.tscn" id="4_otp13"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7ehji"]
 shader = ExtResource("3_stmxl")
@@ -176,3 +177,10 @@ collision_mask = 4
 [node name="collision_interact" type="CollisionShape2D" parent="area_teleportation"]
 shape = SubResource("RectangleShape2D_8ubcv")
 debug_color = Color(0, 1, 0.701961, 0.419608)
+
+[node name="CharacterBody2D" parent="." node_paths=PackedStringArray("follow") instance=ExtResource("4_otp13")]
+position = Vector2(0, -16)
+follow = NodePath("../Node2D")
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(-8, 0)

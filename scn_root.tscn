@@ -114,6 +114,7 @@ texture = SubResource("ViewportTexture_q8dtc")
 
 [node name="Label" type="Label" parent="game_view"]
 z_index = 3
+layout_mode = 0
 offset_top = -8.0
 offset_right = 232.0
 offset_bottom = 15.0

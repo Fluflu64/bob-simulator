@@ -16,9 +16,9 @@ shader_parameter/uv_scale = 5.0
 shader_parameter/color_alpha = 0.5
 
 [node name="level" instance=ExtResource("1_okgwe")]
-map_name = "bob ville"
+map_name = "bob ville (exterieur)"
 encounter_rate = 0
-spawn = [NodePath("spawn_base"), NodePath("spawn_test"), NodePath("spawn_exit_bob_house")]
+spawn = [NodePath("spawn_base"), NodePath("spawn_test"), NodePath("spawn_exit_bob_house"), NodePath("spawn_exit_B"), NodePath("spawn_exit_pharmacie")]
 
 [node name="parallax_background" type="ParallaxBackground" parent="." index="0"]
 
@@ -90,7 +90,13 @@ position = Vector2(176, 144)
 [node name="spawn_exit_bob_house" type="Node2D" parent="." index="12"]
 position = Vector2(208, 88)
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="." index="13"]
+[node name="spawn_exit_B" type="Node2D" parent="." index="13"]
+position = Vector2(168, 216)
+
+[node name="spawn_exit_pharmacie" type="Node2D" parent="." index="14"]
+position = Vector2(104, 104)
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." index="15"]
 layer = 2
 
 [node name="pbg_godray" type="ParallaxLayer" parent="ParallaxBackground" index="0"]
@@ -103,8 +109,8 @@ offset = Vector2(128, 0)
 
 [node name="Area2D" parent="ParallaxBackground" index="1" instance=ExtResource("7_uctxd")]
 position = Vector2(104, 88)
-next_level = "res://levels/scn_bobcity_ext_overworld.tscn"
-spawn_index = 1
+next_level = "res://levels/scn_bobcity_ext_subarea.tscn"
+spawn_index = 2
 
 [node name="Area2D3" parent="ParallaxBackground" index="2" instance=ExtResource("7_uctxd")]
 position = Vector2(40, 104)
@@ -118,7 +124,7 @@ spawn_index = 1
 
 [node name="Area2D5" parent="ParallaxBackground" index="4" instance=ExtResource("7_uctxd")]
 position = Vector2(168, 200)
-next_level = "res://levels/scn_bobcity_ext_overworld.tscn"
+next_level = "res://levels/scn_bobcity_int.tscn"
 spawn_index = 1
 
 [node name="Area2D6" parent="ParallaxBackground" index="5" instance=ExtResource("7_uctxd")]
@@ -131,66 +137,66 @@ position = Vector2(192, 80)
 next_level = "res://levels/scn_bobcity_ext_subarea.tscn"
 spawn_index = 1
 
-[node name="interact" parent="." index="15" instance=ExtResource("3_lqc5e")]
+[node name="interact" parent="." index="17" instance=ExtResource("3_lqc5e")]
 position = Vector2(216, 136)
 lines = ["ceci est une feuille de papier", "oui , les bobs ne sont pas écolo"]
 
-[node name="interact6" parent="." index="16" instance=ExtResource("3_lqc5e")]
+[node name="interact6" parent="." index="18" instance=ExtResource("3_lqc5e")]
 position = Vector2(8, 40)
 lines = ["ceci est une feuille de papier...", "cependant...", "Outre le fait que cette feuille de soit par terre...", "Rendant les bobs peu écolo...", "Il y a un probleme...", "comment peut tu lire cette feuille...", "quelque chose ne va pas...", "J'y voit tout de même 3 solutions...", "1er soluce", "Cette feuille est totalment accessible...", "my bad...", "2nd soluce", "T'as trouver ou exploiter un bug...", "bravo !!! mais bon...", "Il reste une solution et elle ne me va pas...", "Cette solution c'est  que tu as modifier ta save !!!", "Et ce n'est pas gentil du tout!!!", "Je sais pas si c'esst facile ou non !!! ", "Du coup pour te punir je vais te garder ici", "Cependant je ne sais pas quoi dire..", "Ah !!! si je vais te réciter le wiki des pâtes !!!", "On vas commencé avec les penne, classic et efficace . Spaghetti , les meilleurs. Farfalle c'est des papillons. Linguine c'est de gros spaghetti. Fusilli ça fait le taf...", "vous connaissez les \"canadian bee\" ?", "il y a aussi les \"US bee\" !!!", "Vous avez deja vu un combat de sous-marin ?", "...", "OH !!! on m'informe que mr propre a disparu !!!", "Mais il n'y a pas de traces...", "vous saviez que logista HomeTech a copié alpha dream", "Faut savoir que ce dialogue est écrit en cours d'espagnol", null, null]
 
-[node name="interact2" parent="." index="17" instance=ExtResource("3_lqc5e")]
+[node name="interact2" parent="." index="19" instance=ExtResource("3_lqc5e")]
 position = Vector2(168, 152)
 lines = ["ceci est une feuille de papier", "oui , les bobs ne sont pas écolo"]
 
-[node name="interact3" parent="." index="18" instance=ExtResource("3_lqc5e")]
+[node name="interact3" parent="." index="20" instance=ExtResource("3_lqc5e")]
 position = Vector2(56, 120)
 lines = ["ceci est une feuille de papier", "oui , les bobs ne sont pas écolo"]
 
-[node name="interact7" parent="." index="19" instance=ExtResource("3_lqc5e")]
+[node name="interact7" parent="." index="21" instance=ExtResource("3_lqc5e")]
 position = Vector2(200, 120)
 lines = ["ceci est une flac d'eau", "oui , les bobs ne sont pas propre"]
 
-[node name="interact8" parent="." index="20" instance=ExtResource("3_lqc5e")]
+[node name="interact8" parent="." index="22" instance=ExtResource("3_lqc5e")]
 position = Vector2(24, 296)
 lines = ["ceci est une flac d'eau", "oui , les bobs ne sont pas propre"]
 
-[node name="interact17" parent="." index="21" instance=ExtResource("3_lqc5e")]
+[node name="interact17" parent="." index="23" instance=ExtResource("3_lqc5e")]
 position = Vector2(120, 232)
 lines = ["ceci est une flac d'eau", "oui , les bobs ne sont pas propre"]
 
-[node name="interact9" parent="." index="22" instance=ExtResource("3_lqc5e")]
+[node name="interact9" parent="." index="24" instance=ExtResource("3_lqc5e")]
 position = Vector2(88, 344)
 lines = ["ceci est une flac d'eau", "oui , les bobs ne sont pas propre"]
 
-[node name="interact10" parent="." index="23" instance=ExtResource("3_lqc5e")]
+[node name="interact10" parent="." index="25" instance=ExtResource("3_lqc5e")]
 position = Vector2(88, 312)
 lines = ["ceci est une feuille de papier", "oui ,elle est collé au mur"]
 
-[node name="interact11" parent="." index="24" instance=ExtResource("3_lqc5e")]
+[node name="interact11" parent="." index="26" instance=ExtResource("3_lqc5e")]
 position = Vector2(216, 312)
 lines = ["ceci est une feuille de papier", "oui ,elle est collé au mur"]
 
-[node name="interact12" parent="." index="25" instance=ExtResource("3_lqc5e")]
+[node name="interact12" parent="." index="27" instance=ExtResource("3_lqc5e")]
 position = Vector2(248, 312)
 lines = ["ceci est une feuille de papier", "oui ,elle est collé au mur"]
 
-[node name="interact13" parent="." index="26" instance=ExtResource("3_lqc5e")]
+[node name="interact13" parent="." index="28" instance=ExtResource("3_lqc5e")]
 position = Vector2(24, 360)
 lines = ["ceci est une feuille de papier", "oui ,elle est collé au mur"]
 
-[node name="interact14" parent="." index="27" instance=ExtResource("3_lqc5e")]
+[node name="interact14" parent="." index="29" instance=ExtResource("3_lqc5e")]
 position = Vector2(88, 200)
 lines = ["ceci est une feuille de papier", "oui ,elle est collé au mur"]
 
-[node name="interact15" parent="." index="28" instance=ExtResource("3_lqc5e")]
+[node name="interact15" parent="." index="30" instance=ExtResource("3_lqc5e")]
 position = Vector2(120, 200)
 lines = ["ceci est une feuille de papier", "oui ,elle est collé au mur"]
 
-[node name="interact16" parent="." index="29" instance=ExtResource("3_lqc5e")]
+[node name="interact16" parent="." index="31" instance=ExtResource("3_lqc5e")]
 position = Vector2(200, 200)
 lines = ["ceci est une feuille de papier", "oui ,elle est collé au mur"]
 
-[node name="interact5" parent="." index="30" instance=ExtResource("3_lqc5e")]
+[node name="interact5" parent="." index="32" instance=ExtResource("3_lqc5e")]
 position = Vector2(248, 200)
 lines = ["ceci est une feuille de papier", "oui , les bobs ne sont pas écolo"]

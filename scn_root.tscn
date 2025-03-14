@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://d2ll0d0bfu26b"]
+[gd_scene load_steps=15 format=3 uid="uid://d2ll0d0bfu26b"]
 
 [ext_resource type="PackedScene" uid="uid://buaexi66xho3d" path="res://player_related/scn_chara_bob.tscn" id="1_5cqsu"]
 [ext_resource type="Script" path="res://script_root.gd" id="1_qn4hg"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bpslrq66ysgyk" path="res://battle/scn_battle_menu.tscn" id="4_vw2ms"]
 [ext_resource type="PackedScene" uid="uid://bny4xe33nufrg" path="res://title/scn_main_menu.tscn" id="5_r5bqn"]
 [ext_resource type="PackedScene" uid="uid://ckweq2i3b5lg8" path="res://player_related/scn_pause.tscn" id="6_s86r4"]
+[ext_resource type="LabelSettings" uid="uid://bdxtw162r24p7" path="res://base_font.tres" id="7_thepe"]
 [ext_resource type="PackedScene" uid="uid://bs5w4fneac8j4" path="res://player_related/scn_text_box.tscn" id="9_nfc0l"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_q8dtc"]
@@ -24,6 +25,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(0, 0, 0, 0.501961)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("game_view/Label:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -8)]
 }
 
 [sub_resource type="Animation" id="Animation_6cv3b"]
@@ -58,11 +71,29 @@ tracks/0/keys = {
 "values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_fhqfa"]
+resource_name = "welcome"
+length = 5.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("game_view/Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 4.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -8), Vector2(0, 8), Vector2(0, 8), Vector2(0, -8)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vmys2"]
 _data = {
 "RESET": SubResource("Animation_qra0a"),
 "transition_off": SubResource("Animation_6cv3b"),
-"transition_on": SubResource("Animation_p2l5j")
+"transition_on": SubResource("Animation_p2l5j"),
+"welcome": SubResource("Animation_fhqfa")
 }
 
 [node name="root" type="Node"]
@@ -80,6 +111,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("ViewportTexture_q8dtc")
+
+[node name="Label" type="Label" parent="game_view"]
+z_index = 3
+offset_top = -8.0
+offset_right = 232.0
+offset_bottom = 15.0
+text = "bien ou bien gator l'aligator"
+label_settings = ExtResource("7_thepe")
 
 [node name="ColorRect" type="ColorRect" parent="game_view"]
 z_index = 1

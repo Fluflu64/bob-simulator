@@ -106,7 +106,27 @@ position = Vector2(104, 88)
 next_level = "res://levels/scn_bobcity_ext_overworld.tscn"
 spawn_index = 1
 
-[node name="Area2D2" parent="ParallaxBackground" index="2" instance=ExtResource("7_uctxd")]
+[node name="Area2D3" parent="ParallaxBackground" index="2" instance=ExtResource("7_uctxd")]
+position = Vector2(40, 104)
+next_level = "res://levels/scn_bobcity_ext_overworld.tscn"
+spawn_index = 1
+
+[node name="Area2D4" parent="ParallaxBackground" index="3" instance=ExtResource("7_uctxd")]
+position = Vector2(64, 208)
+next_level = "res://levels/scn_bobcity_ext_overworld.tscn"
+spawn_index = 1
+
+[node name="Area2D5" parent="ParallaxBackground" index="4" instance=ExtResource("7_uctxd")]
+position = Vector2(168, 200)
+next_level = "res://levels/scn_bobcity_ext_overworld.tscn"
+spawn_index = 1
+
+[node name="Area2D6" parent="ParallaxBackground" index="5" instance=ExtResource("7_uctxd")]
+position = Vector2(152, 360)
+next_level = "res://levels/scn_bobcity_ext_overworld.tscn"
+spawn_index = 1
+
+[node name="Area2D2" parent="ParallaxBackground" index="6" instance=ExtResource("7_uctxd")]
 position = Vector2(192, 80)
 next_level = "res://levels/scn_bobcity_ext_subarea.tscn"
 spawn_index = 1
@@ -117,7 +137,7 @@ lines = ["ceci est une feuille de papier", "oui , les bobs ne sont pas écolo"]
 
 [node name="interact6" parent="." index="16" instance=ExtResource("3_lqc5e")]
 position = Vector2(8, 40)
-lines = ["ceci est une feuille de papier", "tricheur !!!"]
+lines = ["ceci est une feuille de papier...", "cependant...", "Outre le fait que cette feuille de soit par terre...", "Rendant les bobs peu écolo...", "Il y a un probleme...", "comment peut tu lire cette feuille...", "quelque chose ne va pas...", "J'y voit tout de même 3 solutions...", "1er soluce", "Cette feuille est totalment accessible...", "my bad...", "2nd soluce", "T'as trouver ou exploiter un bug...", "bravo !!! mais bon...", "Il reste une solution et elle ne me va pas...", "Cette solution c'est  que tu as modifier ta save !!!", "Et ce n'est pas gentil du tout!!!", "Je sais pas si c'esst facile ou non !!! ", "Du coup pour te punir je vais te garder ici", "Cependant je ne sais pas quoi dire..", "Ah !!! si je vais te réciter le wiki des pâtes !!!", "On vas commencé avec les penne, classic et efficace . Spaghetti , les meilleurs. Farfalle c'est des papillons. Linguine c'est de gros spaghetti. Fusilli ça fait le taf...", "vous connaissez les \"canadian bee\" ?", "il y a aussi les \"US bee\" !!!", "Vous avez deja vu un combat de sous-marin ?", "...", "OH !!! on m'informe que mr propre a disparu !!!", "Mais il n'y a pas de traces...", "vous saviez que logista HomeTech a copié alpha dream", "Faut savoir que ce dialogue est écrit en cours d'espagnol", null, null]
 
 [node name="interact2" parent="." index="17" instance=ExtResource("3_lqc5e")]
 position = Vector2(168, 152)

@@ -18,6 +18,7 @@ var pv_max = 20
 var pv = 20
 var atk = 2
 var def = 2
+var lvl = 1
 
 #Node
 @onready var sprite = $sprite_bob

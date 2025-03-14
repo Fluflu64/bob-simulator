@@ -28,6 +28,6 @@ hframes = 2
 shape = SubResource("CircleShape2D_l5unx")
 
 [node name="interact" parent="." instance=ExtResource("3_nw1qr")]
-lines = ["cuit cuit", "dit le zozio"]
+lines = ["cuit cuit", "dit le zozio", "qui s'appel bob", "tous s'appel bob ... meme lui"]
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

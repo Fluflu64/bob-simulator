@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://der68e0ivc1st" path="res://music/friend inside me.ogg" id="4_wfvsw"]
 
 [node name="level" instance=ExtResource("1_06qc7")]
-map_name = ""
+map_name = "cuillère"
 encounter_rate = 0
 spawn = [NodePath("spawn_base"), NodePath("spawn_bob_house")]
 

@@ -15,6 +15,7 @@ extends Node
 @onready var player = null
 @onready var actual_level = null
 var actual_level_path = ""
+@onready var map_name_label = $game_view/Label
 
 var config = ConfigFile.new()
 
@@ -22,6 +23,7 @@ func _ready():
 	title.game_root = self
 
 func load_level(path:String,spawn_index:int):
+	map_name_label.position = Vector2(0,-8)
 	if spawn_index != -1 :
 		player.set_process_mode(PROCESS_MODE_DISABLED)
 		animation.play("transition_on")
@@ -42,6 +44,8 @@ func load_level(path:String,spawn_index:int):
 		animation.play("transition_off")
 		await animation.animation_finished
 		player.set_process_mode(0)
+	map_name_label.text = actual_level.map_name
+	animation.play("welcome")
 	
 
 func start_game():
@@ -71,6 +75,7 @@ func menu():
 	menu_instance.max_player_pv = player.pv_max
 	menu_instance.player_atk = player.atk
 	menu_instance.player_dfs = player.def
+	menu_instance.player_lvl = player.lvl
 	textbox.add_child(menu_instance)
 	menu_instance.update_stats()
 	
@@ -96,6 +101,7 @@ func save_game():
 	print("save test")
 	config.set_value("player","position",player.position)
 	config.set_value("player","map",actual_level_path)
+	config.set_value("player","level",player.lvl)
 	config.save("res://bob_simulator.cfg")
 
 func load_game():
@@ -115,6 +121,7 @@ func load_game():
 		load_level(actual_level_path,-1)	
 		player.position = config.get_value("player","position")
 		player.update_camera()
+		player.lvl = config.get_value("player","level")
 		animation.play("transition_off")
 		await animation.animation_finished
 		player.set_process_mode(0)

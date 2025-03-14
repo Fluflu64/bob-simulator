@@ -13,7 +13,7 @@ var player_pv = 20
 var max_player_pv = 20
 var player_atk = 2.0
 var player_dfs = 2.0
-
+var player_lvl = 1
 var label_menu = ["item","option","save game","load game"]
 var text_select = "<"
 var index_menu = 0
@@ -47,7 +47,7 @@ func is_select(button_index) :
 
 func update_stats():
 	stats_label.text = \
-	"Bob lvl 50 9999G \npv : "+ str(player_pv) +"/"+ str(max_player_pv) +"\natk : "+ str(player_atk) +" def : "+ str(player_dfs) 
+	"Bob's lop "+str(player_lvl)+" 9999BG \npv : "+ str(player_pv) +"/"+ str(max_player_pv) +"\natk : "+ str(player_atk) +" def : "+ str(player_dfs) 
 
 func update_menu():
 	var text = ""

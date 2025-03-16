@@ -29,7 +29,7 @@ var lvl = 1
 @onready var interact = $area_interact
 @onready var area_teleporation = $area_teleportation
 
-@onready var follow_point = $Node2D
+
 
 @export var game_root = null
 
@@ -40,8 +40,9 @@ func _ready():
 func _physics_process(_delta):
 	move()
 	if velocity != Vector2.ZERO :
-		if randi_range(0,100) < proba_battle :
+		if randi_range(0,5000) < proba_battle :
 			game_root.start_battle()
+	
 	for area2d in area_teleporation.get_overlapping_areas() :
 		if area2d is Teleportation :
 			game_root.load_level(area2d.next_level,area2d.spawn_index)
@@ -81,7 +82,6 @@ func move():
 	
 	if velocity != Vector2.ZERO :
 		interact.position = sign(velocity)*8
-		follow_point.position = sign(velocity)*-8
 	
 	#calcule direction
 	if Vector2(sign(direction.x),sign(direction.y)) == Vector2(0,1) :

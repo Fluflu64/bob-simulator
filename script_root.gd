@@ -23,29 +23,40 @@ func _ready():
 	title.game_root = self
 
 func load_level(path:String,spawn_index:int):
+	var show_msg = true
+	
 	map_name_label.position = Vector2(0,-8)
 	if spawn_index != -1 :
 		player.set_process_mode(PROCESS_MODE_DISABLED)
 		animation.play("transition_on")
 		await animation.animation_finished
-	if actual_level != null :
-		actual_level.queue_free()
-	var level_load = load(path)
-	var level_instance = level_load.instantiate()
-	actual_level_path = path
-	actual_level = level_instance
-	game.add_child(level_instance)
+	if spawn_index > -2 :
+		if actual_level != null :
+			actual_level.queue_free()
+		var level_load = load(path)
+		var level_instance = level_load.instantiate()
+		actual_level_path = path
+		actual_level = level_instance
+		game.add_child(level_instance)
+	
+	if spawn_index < -1:
+		spawn_index = abs(spawn_index+2)
+		show_msg = false
+	
 	var spawn_position = actual_level.get_spawn_by_id(spawn_index)
 	player.proba_battle = actual_level.encounter_rate
 	actual_level.player = player
+	
 	if spawn_index != -1 :
 		player.position = spawn_position
 		player.update_camera()
 		animation.play("transition_off")
 		await animation.animation_finished
 		player.set_process_mode(0)
-	map_name_label.text = actual_level.map_name
-	animation.play("welcome")
+	
+	if show_msg :
+		map_name_label.text = actual_level.map_name
+		animation.play("welcome")
 	
 
 func start_game():

@@ -5,7 +5,10 @@ extends CharacterBody2D
 
 const walk_speed = 50
 const run_speed = 100
+const bad_speed = 1
 var speed = 50
+
+var is_climb = false
 
 var frame_direction = 0
 
@@ -61,21 +64,29 @@ func update_camera():
 
 func move():
 	#movement basique marcher courir
-	if Input.is_action_pressed("run") :
-		speed = run_speed
-	else : 
-		speed = walk_speed
+	if pv > 0 :
+		if Input.is_action_pressed("run") :
+			speed = run_speed
+		else : 
+			speed = walk_speed
+	else :
+		speed = bad_speed
+	
 	var direction = Input.get_vector("left","right","up","down")
 	velocity = direction*speed
 	
 	#animation de deplacement basique
-	if velocity != Vector2.ZERO :
-		if speed == walk_speed :
-			animation.play("walk")
+	if not is_climb :
+		if velocity != Vector2.ZERO :
+			if pv > 0 :
+				if speed == walk_speed :
+					animation.play("walk")
+				else :
+					animation.play("run")
+			else :
+				animation.play("bad_walk")
 		else :
-			animation.play("run")
-	else :
-		animation.play("idle")
+			animation.play("idle")
 	
 	if velocity != Vector2.ZERO :
 		interact.position = sign(velocity)*8
@@ -99,7 +110,10 @@ func move():
 		frame_direction = 7
 	
 	#actualise la direction
-	sprite.frame_coords = Vector2(sprite_preview.frame_coords.x,frame_direction)
+	if not is_climb :
+		sprite.frame_coords = Vector2(sprite_preview.frame_coords.x,frame_direction)
+	else :
+		sprite.frame_coords = sprite_preview.frame_coords
 	sprite.offset = sprite_preview.offset
 	reflect.frame_coords = sprite.frame_coords
 	

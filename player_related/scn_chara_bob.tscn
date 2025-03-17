@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://buaexi66xho3d"]
+[gd_scene load_steps=16 format=3 uid="uid://buaexi66xho3d"]
 
 [ext_resource type="Script" path="res://player_related/script_chara_bob.gd" id="1_g2n5w"]
 [ext_resource type="Texture2D" uid="uid://cm0y67224xlny" path="res://player_related/tex_bob.png" id="2_qnqj6"]
@@ -35,6 +35,24 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [Vector2i(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_xtcb4"]
+resource_name = "climb rope"
+length = 0.8
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite_bob_preview:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(7, 0), Vector2i(8, 0), Vector2i(9, 0), Vector2i(10, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_23jtj"]
@@ -139,9 +157,9 @@ tracks/1/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_xtcb4"]
-resource_name = "climb rope"
-length = 0.8
+[sub_resource type="Animation" id="Animation_fumo4"]
+resource_name = "bad_walk"
+length = 1.6
 loop_mode = 1
 step = 0.1
 tracks/0/type = "value"
@@ -151,18 +169,38 @@ tracks/0/path = NodePath("sprite_bob_preview:frame_coords")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [Vector2i(7, 0), Vector2i(8, 0), Vector2i(9, 0), Vector2i(10, 0)]
+"values": [Vector2i(14, 0), Vector2i(13, 0), Vector2i(15, 0), Vector2i(13, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_bur3c"]
+resource_name = "idle rope"
+length = 0.1
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite_bob_preview:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(7, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m3q14"]
 _data = {
 "RESET": SubResource("Animation_3kv6y"),
+"bad_walk": SubResource("Animation_fumo4"),
 "climb rope": SubResource("Animation_xtcb4"),
 "danse": SubResource("Animation_23jtj"),
 "idle": SubResource("Animation_sr8i6"),
+"idle rope": SubResource("Animation_bur3c"),
 "run": SubResource("Animation_0tlxl"),
 "walk": SubResource("Animation_vmjh8")
 }

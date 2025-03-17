@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://d2qxq1unq3gn7"]
+[gd_scene load_steps=12 format=4 uid="uid://d2qxq1unq3gn7"]
 
 [ext_resource type="PackedScene" uid="uid://cspbme0evtjet" path="res://levels/scn_level_base.tscn" id="1_okgwe"]
 [ext_resource type="TileSet" uid="uid://buirtyrql2dqy" path="res://levels/maine_tileset.tres" id="2_bod1u"]
@@ -9,6 +9,7 @@
 [ext_resource type="Shader" path="res://levels/shader_water.gdshader" id="4_4qt8p"]
 [ext_resource type="Texture2D" uid="uid://djq8saba371jq" path="res://levels/background/tex_bg_godray.png" id="4_p1o0q"]
 [ext_resource type="PackedScene" uid="uid://b72hnw6scal35" path="res://levels/scn_teleportation.tscn" id="7_uctxd"]
+[ext_resource type="PackedScene" uid="uid://cknfg8cqko1vn" path="res://actor/scn_rope.tscn" id="10_i8rod"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yh8ja"]
 shader = ExtResource("4_4qt8p")
@@ -61,7 +62,7 @@ lines = ["entré C"]
 
 [node name="int_shop1" parent="." index="5" instance=ExtResource("3_lqc5e")]
 position = Vector2(136, 88)
-lines = ["pharmacie", null]
+lines = ["pharmacie"]
 
 [node name="int_door_b" parent="." index="6" instance=ExtResource("3_lqc5e")]
 position = Vector2(152, 216)
@@ -200,3 +201,7 @@ lines = ["ceci est une feuille de papier", "oui ,elle est collé au mur"]
 [node name="interact5" parent="." index="32" instance=ExtResource("3_lqc5e")]
 position = Vector2(248, 200)
 lines = ["ceci est une feuille de papier", "oui , les bobs ne sont pas écolo"]
+
+[node name="Node2D" parent="." index="33" instance=ExtResource("10_i8rod")]
+position = Vector2(280, 72)
+scale = Vector2(1, 5)

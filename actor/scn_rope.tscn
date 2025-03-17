@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cknfg8cqko1vn"]
+
+[ext_resource type="Script" path="res://script_rope.gd" id="1_y6ew7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fir6n"]
+size = Vector2(16, 16)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("1_y6ew7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_fir6n")
+
+[connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]

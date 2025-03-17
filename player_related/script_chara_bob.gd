@@ -16,7 +16,7 @@ var proba_scale_down = 0.95
 
 var pv_max = 20
 var pv = 20
-var atk = 2
+var atk = 999
 var def = 2
 var lvl = 1
 
@@ -39,9 +39,6 @@ func _ready():
 
 func _physics_process(_delta):
 	move()
-	if velocity != Vector2.ZERO :
-		if randi_range(0,5000) < proba_battle :
-			game_root.start_battle()
 	
 	for area2d in area_teleporation.get_overlapping_areas() :
 		if area2d is Teleportation :
@@ -110,3 +107,7 @@ func move():
 	move_and_slide()
 	
 	update_camera()
+	
+func start_battle():
+	if randi_range(0,100) < proba_battle :
+			game_root.start_battle()

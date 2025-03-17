@@ -19,7 +19,7 @@ var proba_scale_down = 0.95
 
 var pv_max = 20
 var pv = 20
-var atk = 999
+var atk = 2
 var def = 2
 var lvl = 1
 

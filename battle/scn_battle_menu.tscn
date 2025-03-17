@@ -604,6 +604,26 @@ item
 flee"
 label_settings = ExtResource("6_m6oif")
 
+[node name="attack_border" type="NinePatchRect" parent="background"]
+offset_left = -128.0
+offset_top = -56.0
+offset_right = -48.0
+offset_bottom = 24.0
+texture = ExtResource("9_fmql0")
+region_rect = Rect2(0, 0, 48, 48)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="Node2D" type="Node2D" parent="background/attack_border"]
+
+[node name="ColorRect" type="ColorRect" parent="background/attack_border/Node2D"]
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+
 [node name="health_border" type="NinePatchRect" parent="background"]
 offset_left = -128.0
 offset_top = 96.0

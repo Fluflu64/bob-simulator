@@ -203,5 +203,5 @@ position = Vector2(248, 200)
 lines = ["ceci est une feuille de papier", "oui , les bobs ne sont pas écolo"]
 
 [node name="Node2D" parent="." index="33" instance=ExtResource("10_i8rod")]
-position = Vector2(280, 72)
-scale = Vector2(1, 5)
+position = Vector2(136, 192)
+scale = Vector2(1, 2.1)

@@ -118,7 +118,10 @@ func move():
 	reflect.frame_coords = sprite.frame_coords
 	
 	#applique les movements
-	move_and_slide()
+	if is_climb :
+		velocity =Vector2.ZERO
+	if not is_climb :
+		move_and_slide()
 	
 	update_camera()
 	

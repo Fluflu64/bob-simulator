@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bpslrq66ysgyk"]
+[gd_scene load_steps=32 format=3 uid="uid://bpslrq66ysgyk"]
 
 [ext_resource type="Texture2D" uid="uid://c62gtc6sfp2ht" path="res://battle/tex_battle_bg_0.png" id="1_hs3wj"]
 [ext_resource type="Script" path="res://battle/script_battle_menu.gd" id="2_4suhd"]
@@ -536,6 +536,23 @@ tracks/4/keys = {
 "values": [0.0, 3.14159]
 }
 
+[sub_resource type="Animation" id="Animation_ofsv2"]
+resource_name = "player_think"
+length = 3.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("background/player_sprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(3, 2), Vector2i(4, 2), Vector2i(5, 2), Vector2i(3, 3)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_f6lb5"]
 _data = {
 "RESET": SubResource("Animation_x82dr"),
@@ -546,6 +563,7 @@ _data = {
 "player_flee_lose": SubResource("Animation_u8332"),
 "player_flee_win": SubResource("Animation_e62rd"),
 "player_hit": SubResource("Animation_axl21"),
+"player_think": SubResource("Animation_ofsv2"),
 "player_win": SubResource("Animation_ch1yl")
 }
 
@@ -607,14 +625,21 @@ label_settings = ExtResource("6_m6oif")
 [node name="attack_border" type="NinePatchRect" parent="background"]
 offset_left = -128.0
 offset_top = -56.0
-offset_right = -48.0
-offset_bottom = 24.0
+offset_right = -40.0
+offset_bottom = 32.0
 texture = ExtResource("9_fmql0")
 region_rect = Rect2(0, 0, 48, 48)
 patch_margin_left = 8
 patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
+
+[node name="ColorRect2" type="ColorRect" parent="background/attack_border"]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 32.0
+offset_bottom = 32.0
+color = Color(0, 1, 1, 1)
 
 [node name="Node2D" type="Node2D" parent="background/attack_border"]
 
@@ -623,6 +648,7 @@ offset_left = -4.0
 offset_top = -4.0
 offset_right = 4.0
 offset_bottom = 4.0
+metadata/_edit_use_anchors_ = true
 
 [node name="health_border" type="NinePatchRect" parent="background"]
 offset_left = -128.0

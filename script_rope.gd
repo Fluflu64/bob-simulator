@@ -2,7 +2,7 @@ extends Area2D
 
 @onready var area = $"."
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	for body in area.get_overlapping_bodies() :
 		if body is Player :
 			if body.frame_direction == 0 or body.frame_direction == 4 :

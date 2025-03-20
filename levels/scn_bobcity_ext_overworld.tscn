@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://d2qxq1unq3gn7"]
+[gd_scene load_steps=13 format=4 uid="uid://d2qxq1unq3gn7"]
 
 [ext_resource type="PackedScene" uid="uid://cspbme0evtjet" path="res://levels/scn_level_base.tscn" id="1_okgwe"]
 [ext_resource type="TileSet" uid="uid://buirtyrql2dqy" path="res://levels/maine_tileset.tres" id="2_bod1u"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://djq8saba371jq" path="res://levels/background/tex_bg_godray.png" id="4_p1o0q"]
 [ext_resource type="PackedScene" uid="uid://b72hnw6scal35" path="res://levels/scn_teleportation.tscn" id="7_uctxd"]
 [ext_resource type="PackedScene" uid="uid://cknfg8cqko1vn" path="res://actor/scn_rope.tscn" id="10_i8rod"]
+[ext_resource type="PackedScene" uid="uid://4tmo0h3ehmq7" path="res://levels/scn_shop.tscn" id="10_mudwd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yh8ja"]
 shader = ExtResource("4_4qt8p")
@@ -109,7 +110,7 @@ texture = ExtResource("4_p1o0q")
 offset = Vector2(128, 0)
 
 [node name="Area2D" parent="ParallaxBackground" index="1" instance=ExtResource("7_uctxd")]
-position = Vector2(104, 88)
+position = Vector2(104, 56)
 next_level = "res://levels/scn_bobcity_ext_subarea.tscn"
 spawn_index = 2
 
@@ -137,6 +138,10 @@ spawn_index = 1
 position = Vector2(192, 80)
 next_level = "res://levels/scn_bobcity_ext_subarea.tscn"
 spawn_index = 1
+
+[node name="Area2D7" parent="ParallaxBackground" index="7" instance=ExtResource("10_mudwd")]
+position = Vector2(104, 80)
+spawn = 4
 
 [node name="interact" parent="." index="17" instance=ExtResource("3_lqc5e")]
 position = Vector2(216, 136)

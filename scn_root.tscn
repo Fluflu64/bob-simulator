@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://d2ll0d0bfu26b"]
+[gd_scene load_steps=20 format=3 uid="uid://d2ll0d0bfu26b"]
 
 [ext_resource type="Texture2D" uid="uid://c4mcge4dptu2q" path="res://cocolint.png" id="1_0bif8"]
 [ext_resource type="PackedScene" uid="uid://buaexi66xho3d" path="res://player_related/scn_chara_bob.tscn" id="1_5cqsu"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bpslrq66ysgyk" path="res://battle/scn_battle_menu.tscn" id="4_vw2ms"]
 [ext_resource type="PackedScene" uid="uid://bny4xe33nufrg" path="res://title/scn_main_menu.tscn" id="5_r5bqn"]
 [ext_resource type="PackedScene" uid="uid://ckweq2i3b5lg8" path="res://player_related/scn_pause.tscn" id="6_s86r4"]
+[ext_resource type="PackedScene" uid="uid://bmlic16qbhvv0" path="res://actor/scn_shop_menu.tscn" id="7_apsxi"]
 [ext_resource type="LabelSettings" uid="uid://bdxtw162r24p7" path="res://base_font.tres" id="7_thepe"]
 [ext_resource type="Shader" path="res://shader_pixel.gdshader" id="8_1fy66"]
 [ext_resource type="PackedScene" uid="uid://bs5w4fneac8j4" path="res://player_related/scn_text_box.tscn" id="9_nfc0l"]
@@ -167,6 +168,7 @@ script = ExtResource("1_qn4hg")
 level_scene = ExtResource("2_pea1k")
 player_scene = ExtResource("1_5cqsu")
 battle_scene = ExtResource("4_vw2ms")
+shop_scene = ExtResource("7_apsxi")
 text_box = ExtResource("9_nfc0l")
 menu_scene = ExtResource("6_s86r4")
 

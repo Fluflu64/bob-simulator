@@ -1,27 +1,27 @@
-[gd_scene load_steps=32 format=3 uid="uid://bpslrq66ysgyk"]
+[gd_scene load_steps=32 format=3 uid="uid://bmlic16qbhvv0"]
 
-[ext_resource type="Texture2D" uid="uid://c62gtc6sfp2ht" path="res://battle/tex_battle_bg_0.png" id="1_hs3wj"]
-[ext_resource type="Script" path="res://battle/script_battle_menu.gd" id="2_4suhd"]
-[ext_resource type="Shader" path="res://battle/shader_battle_menu_001.gdshader" id="3_303d0"]
-[ext_resource type="Shader" path="res://battle/shade_circle_transition.gdshader" id="5_ggrxs"]
-[ext_resource type="Texture2D" uid="uid://ctla0pk1phugl" path="res://battle/tex_bg_1.png" id="5_ipyf3"]
-[ext_resource type="Texture2D" uid="uid://djgy6r2sxh2i5" path="res://battle/tex_radouteu.png" id="6_1lqjl"]
-[ext_resource type="LabelSettings" uid="uid://bdxtw162r24p7" path="res://base_font.tres" id="6_m6oif"]
-[ext_resource type="Texture2D" uid="uid://buseck213vate" path="res://player_related/tex_battle_bob.png" id="7_yu6d5"]
-[ext_resource type="Texture2D" uid="uid://mibs4jii822c" path="res://player_related/tex_text_box.png" id="9_fmql0"]
-[ext_resource type="AudioStream" uid="uid://b40vkk5xfr4ni" path="res://music/mus_battle_test.ogg" id="10_ow1mv"]
-[ext_resource type="AudioStream" uid="uid://b7jvyjmvsljmw" path="res://music/mus_version final.wav" id="11_861nj"]
-[ext_resource type="AudioStream" uid="uid://bumvvm8fd01v6" path="res://sound_effect/hit.wav" id="12_vkokc"]
-[ext_resource type="AudioStream" uid="uid://qtdy3rir27ih" path="res://sound_effect/hurt.wav" id="13_134ph"]
+[ext_resource type="Script" path="res://actor/script_shop_menu.gd" id="1_cqacu"]
+[ext_resource type="AudioStream" uid="uid://b40vkk5xfr4ni" path="res://music/mus_battle_test.ogg" id="2_ybm1x"]
+[ext_resource type="Texture2D" uid="uid://c62gtc6sfp2ht" path="res://battle/tex_battle_bg_0.png" id="3_y823o"]
+[ext_resource type="Shader" path="res://battle/shader_battle_menu_001.gdshader" id="4_p64k0"]
+[ext_resource type="Texture2D" uid="uid://ctla0pk1phugl" path="res://battle/tex_bg_1.png" id="5_kajex"]
+[ext_resource type="Texture2D" uid="uid://djgy6r2sxh2i5" path="res://battle/tex_radouteu.png" id="6_lrpq4"]
+[ext_resource type="Texture2D" uid="uid://buseck213vate" path="res://player_related/tex_battle_bob.png" id="7_f0fl3"]
+[ext_resource type="Texture2D" uid="uid://mibs4jii822c" path="res://player_related/tex_text_box.png" id="8_wymnh"]
+[ext_resource type="LabelSettings" uid="uid://bdxtw162r24p7" path="res://base_font.tres" id="9_rnu6e"]
+[ext_resource type="Shader" path="res://battle/shade_circle_transition.gdshader" id="10_h2h4t"]
+[ext_resource type="AudioStream" uid="uid://b7jvyjmvsljmw" path="res://music/mus_version final.wav" id="11_p8xj2"]
+[ext_resource type="AudioStream" uid="uid://bumvvm8fd01v6" path="res://sound_effect/hit.wav" id="12_y5h8p"]
+[ext_resource type="AudioStream" uid="uid://qtdy3rir27ih" path="res://sound_effect/hurt.wav" id="13_m0glh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_huvy6"]
-shader = ExtResource("3_303d0")
+shader = ExtResource("4_p64k0")
 shader_parameter/mouse_position = Vector2(0.5, 0.5)
 shader_parameter/wave_color = Color(0.027451, 0.0705882, 0.0509804, 1)
 shader_parameter/wave_transparency = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ony88"]
-shader = ExtResource("5_ggrxs")
+shader = ExtResource("10_h2h4t")
 shader_parameter/circle_size = 0.0
 
 [sub_resource type="Animation" id="Animation_83884"]
@@ -241,7 +241,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("10_ow1mv")]
+"values": [ExtResource("2_ybm1x")]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -526,7 +526,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("11_861nj")]
+"values": [ExtResource("11_p8xj2")]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -569,11 +569,10 @@ _data = {
 
 [node name="base_battle" type="Node2D"]
 position = Vector2(128, 128)
-script = ExtResource("2_4suhd")
-music_battle = ExtResource("10_ow1mv")
+script = ExtResource("1_cqacu")
 
 [node name="background" type="Sprite2D" parent="."]
-texture = ExtResource("1_hs3wj")
+texture = ExtResource("3_y823o")
 
 [node name="earthbound_bg" type="TextureRect" parent="background"]
 material = SubResource("ShaderMaterial_huvy6")
@@ -586,15 +585,15 @@ offset_right = -128.0
 offset_bottom = -128.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("5_ipyf3")
+texture = ExtResource("5_kajex")
 
 [node name="enemie_sprite" type="Sprite2D" parent="background"]
 position = Vector2(0, 30)
-texture = ExtResource("6_1lqjl")
+texture = ExtResource("6_lrpq4")
 
 [node name="player_sprite" type="Sprite2D" parent="background"]
 position = Vector2(0, 80)
-texture = ExtResource("7_yu6d5")
+texture = ExtResource("7_f0fl3")
 hframes = 8
 vframes = 4
 
@@ -603,7 +602,7 @@ offset_left = -128.0
 offset_top = -128.0
 offset_right = -48.0
 offset_bottom = -72.0
-texture = ExtResource("9_fmql0")
+texture = ExtResource("8_wymnh")
 region_rect = Rect2(0, 0, 48, 48)
 patch_margin_left = 8
 patch_margin_top = 8
@@ -620,14 +619,14 @@ text = "attaque<
 defense
 item
 flee"
-label_settings = ExtResource("6_m6oif")
+label_settings = ExtResource("9_rnu6e")
 
 [node name="attack_border" type="NinePatchRect" parent="background"]
 offset_left = -128.0
 offset_top = -56.0
 offset_right = -40.0
 offset_bottom = 32.0
-texture = ExtResource("9_fmql0")
+texture = ExtResource("8_wymnh")
 region_rect = Rect2(0, 0, 48, 48)
 patch_margin_left = 8
 patch_margin_top = 8
@@ -656,7 +655,7 @@ offset_left = -128.0
 offset_top = 96.0
 offset_right = 128.0
 offset_bottom = 128.0
-texture = ExtResource("9_fmql0")
+texture = ExtResource("8_wymnh")
 region_rect = Rect2(0, 0, 48, 48)
 patch_margin_left = 8
 patch_margin_top = 8
@@ -671,7 +670,7 @@ offset_right = 72.0
 offset_bottom = 40.0
 text = "bob : pv 100/100
 cartacro : pv 100/100"
-label_settings = ExtResource("6_m6oif")
+label_settings = ExtResource("9_rnu6e")
 
 [node name="historic_border" type="NinePatchRect" parent="background"]
 clip_contents = true
@@ -679,7 +678,7 @@ offset_left = -48.0
 offset_top = -128.0
 offset_right = 128.0
 offset_bottom = -72.0
-texture = ExtResource("9_fmql0")
+texture = ExtResource("8_wymnh")
 region_rect = Rect2(0, 0, 48, 48)
 patch_margin_left = 8
 patch_margin_top = 8
@@ -697,7 +696,7 @@ ligne 2
 ligne 3
 ligne 4
 ligne 5"
-label_settings = ExtResource("6_m6oif")
+label_settings = ExtResource("9_rnu6e")
 
 [node name="shader_circle" type="ColorRect" parent="."]
 visible = false
@@ -722,11 +721,11 @@ libraries = {
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="AudioStreamPlayer2D"]
-stream = ExtResource("10_ow1mv")
+stream = ExtResource("2_ybm1x")
 autoplay = true
 
 [node name="Hit" type="AudioStreamPlayer" parent="AudioStreamPlayer2D"]
-stream = ExtResource("12_vkokc")
+stream = ExtResource("12_y5h8p")
 
 [node name="Hurt" type="AudioStreamPlayer" parent="AudioStreamPlayer2D"]
-stream = ExtResource("13_134ph")
+stream = ExtResource("13_m0glh")

@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://buaexi66xho3d"]
+[gd_scene load_steps=17 format=3 uid="uid://buaexi66xho3d"]
 
 [ext_resource type="Script" path="res://player_related/script_chara_bob.gd" id="1_g2n5w"]
 [ext_resource type="Texture2D" uid="uid://cm0y67224xlny" path="res://player_related/tex_bob.png" id="2_qnqj6"]
 [ext_resource type="Shader" path="res://player_related/shader_reflect.gdshader" id="3_stmxl"]
+[ext_resource type="AudioStream" uid="uid://b3v38xi3socwa" path="res://player_related/footstep.wav" id="4_kb321"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7ehji"]
 shader = ExtResource("3_stmxl")
@@ -36,6 +37,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [Vector2i(0, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("audio/footstep:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_fumo4"]
 resource_name = "bad_walk"
@@ -53,6 +66,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [Vector2i(14, 0), Vector2i(13, 0), Vector2i(15, 0), Vector2i(13, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("audio/footstep:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
 }
 
 [sub_resource type="Animation" id="Animation_xtcb4"]
@@ -157,6 +182,18 @@ tracks/1/keys = {
 "method": &"start_battle"
 }]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("audio/footstep:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
 
 [sub_resource type="Animation" id="Animation_vmjh8"]
 resource_name = "walk"
@@ -191,6 +228,18 @@ tracks/1/keys = {
 "args": [],
 "method": &"start_battle"
 }]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("audio/footstep:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m3q14"]
@@ -265,3 +314,8 @@ collision_mask = 4
 [node name="collision_interact" type="CollisionShape2D" parent="area_teleportation"]
 shape = SubResource("RectangleShape2D_8ubcv")
 debug_color = Color(0, 1, 0.701961, 0.419608)
+
+[node name="audio" type="AudioStreamPlayer2D" parent="."]
+
+[node name="footstep" type="AudioStreamPlayer" parent="audio"]
+stream = ExtResource("4_kb321")

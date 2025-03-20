@@ -5,7 +5,7 @@ extends CharacterBody2D
 
 const walk_speed = 50
 const run_speed = 100
-const bad_speed = 1
+const bad_speed = 30
 var speed = 50
 
 var is_climb = false

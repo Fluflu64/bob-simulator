@@ -1,19 +1,12 @@
 extends Node2D
 
 @onready var animation = $shader_circle/animation_interface
-@onready var battle_anime = $animation_battle
 @onready var stats_label = $background/health_border/health_label
 @onready var battle_menu = $background/action_border/action_label
 @onready var circle = $shader_circle
 @onready var label_histo = $background/historic_border/historic_label
 @onready var music = $AudioStreamPlayer2D/AudioStreamPlayer
 
-@onready var marker = $background/attack_border/Node2D
-@onready var debug_square = $background/attack_border/ColorRect2
-var marker_position = Vector2(0,0)
-var marker_speed = 0.1
-var marker_radius = 32
-var player_has_atk = false
 
 @onready var en_sprite = $background/enemie_sprite
 @export var game_root = null
@@ -27,16 +20,9 @@ var max_player_pv = 20
 var player_atk = 2.0
 var player_dfs = 2.0
 
-#stats ennemi
-var ennemi_name = "radouteu"
-var ennemei_pv = 10
-var max_ennemie_pv = 10
-var ennemi_atk = 2.0
-var ennemi_dfs = 1.0
-
 var histo = [\
-"test",
-"kayou",
+"bienvenu",
+"",
 "",
 "",
 "",
@@ -45,7 +31,10 @@ var histo = [\
 var tour = 0
 var battle_lock = false
 
-var label_menu = ["buy","talk","item","flee"]
+var label_menu = ["buy","talk","item","heal","flee"]
+var shop_item = ["item_0","item_1","item_2","item_3","item_4","item_5"]
+var text_to_show = [label_menu,shop_item]
+var label_index = 1
 var text_select = "<"
 var index_menu = 0
 
@@ -58,35 +47,48 @@ func update_player():
 func func_menu(index):
 	if index == 0 :
 		battle_lock = true
-		marker_radius = 32
-		marker_position = Vector2.ZERO
 		animation.play("menu_show")
 		await animation.animation_finished
-		index_menu = 9
-		player_has_atk = true
-		
-		
-		
-		
+		histo.append("j'ai pas de stock")
+		histo.append("reviens demain")
+		update_histo()
+		animation.play_backwards("menu_show")
+		await animation.animation_finished
+		battle_lock = false
+
 	if index == 1 :
+		battle_lock = true
+		histo.append("tu es dans une")
+		histo.append("pharmacie, tu peut")
+		histo.append("acheter des soins")
+		histo.append("des boosts et ")
+		histo.append("d'autre truc !!")
+		update_histo()
+		battle_lock = false
+		
+	
+	if index == 2 :
 		battle_lock = true
 		animation.play("menu_show")
 		await animation.animation_finished
-		battle_anime.play("player_think")
-		histo.append("radouteux")
-		histo.append("son points faible")
-		histo.append(" est son join")
-		histo.append("")
-		histo.append(">>ok ?")
-		index_menu = 10
-		update_histo()
-		await battle_anime.animation_finished
-	
-	if index == 2 :
 		histo.append("tu n'as pas d'objet")
 		update_histo()
-	
+		animation.play_backwards("menu_show")
+		await animation.animation_finished
+		battle_lock = false
+		
 	if index == 3 :
+		battle_lock = true
+		animation.play("menu_show")
+		await animation.animation_finished
+		histo.append("tu es heal")
+		update_histo()
+		player_pv = max_player_pv
+		animation.play_backwards("menu_show")
+		await animation.animation_finished
+		battle_lock = false
+	
+	if index == 4 :
 		battle_lock = true
 		histo.append("au revoir")
 		update_histo()
@@ -94,6 +96,8 @@ func func_menu(index):
 		animation.play("menu_show")
 		await animation.animation_finished
 		
+		animation.play("battle end")
+		await animation.animation_finished
 		update_player()
 		game_root.end_battle()
 		queue_free()
@@ -103,7 +107,7 @@ func _ready() -> void:
 	circle.show()
 	animation.play("battle start")
 	index_menu = 0
-	
+	update_histo()
 	update_menu()
 	
 
@@ -121,8 +125,12 @@ func update_histo():
 
 func update_menu():
 	var text = ""
-	for i in range(len(label_menu)) :
-		text += label_menu[i] + is_select(i) + "\n"
+	
+	var j = index_menu-4
+	if j < 0 :
+		j = 0
+	for i in range(5) :
+		text += text_to_show[label_index][i+j] + is_select(i+j) + "\n"
 	battle_menu.text = text
 
 func _input(event: InputEvent) -> void:
@@ -133,8 +141,8 @@ func _input(event: InputEvent) -> void:
 			index_menu -= 1
 		if index_menu < 0 :
 			index_menu = 0
-		if index_menu > len(label_menu)-1 :
-			index_menu = len(label_menu)-1
+		if index_menu > len(text_to_show[label_index])-1 :
+			index_menu = len(text_to_show[label_index])-1
 		if event.is_action_pressed("left") :
 			pass
 		update_menu()
@@ -142,96 +150,15 @@ func _input(event: InputEvent) -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	if player_has_atk :
-		marker_position += Vector2(marker_speed,marker_speed)
-		marker.position = Vector2(cos(marker_position.x)*marker_radius+44,sin(marker_position.y)*marker_radius+44)
-		debug_square.position = round((marker.position)/24)*24 - Vector2(16,16)
-		marker_radius -= marker_speed
-		if marker_radius < 0 :
-			marker_radius = 0
-	stats_label.text = "bob : pv "+str(player_pv)+"/"+ str(max_player_pv) +" \ncarte man : pv " + str(ennemei_pv)+"/"+ str(max_ennemie_pv)
-	if index_menu == 9 :
-		if marker_radius == 0 :
-			player_has_atk = false
-			index_menu = 0
-			
-			histo.append("bob est inactif...")
-			update_histo()
-			
-			battle_lock = false
-			tour = 1
-	if index_menu == 9 :
-		if marker_radius == 0 :
-			player_has_atk = false
-			index_menu = 0
-			
-			histo.append("bob est inactif...")
-			update_histo()
-			
-			battle_lock = false
-			tour = 1
-		
-		if Input.is_action_just_pressed("interact") :
-			player_has_atk = false
-			index_menu = 0
-		
-			battle_anime.play("player_atk")
-			await battle_anime.animation_finished
-			
-			var attack = ceil(player_atk / ennemi_dfs)
-			ennemei_pv -= attack
-			histo.append("bob atk " + str(attack))
-			update_histo()
-			
-			battle_anime.play("ennemi_hit")
-			await battle_anime.animation_finished
-			
-			battle_lock = false
-			tour = 1
-	if index_menu == 10 :
-		if Input.is_action_just_pressed("interact") :
-			histo.pop_back()
-			histo.append(">>ok !")
-			tour = 1
-			index_menu = 1
-			battle_lock = false
-	
-	if not battle_lock :
-		if ennemei_pv <= 0 or player_pv <= 0:
-				battle_lock = true
-				
-				if player_pv <= 0 :
-					battle_anime.play("player_down")
-					await battle_anime.animation_finished
-				else :
-					battle_anime.play("player_win")
-					await battle_anime.animation_finished
-				
-				animation.play("battle end")
-				await animation.animation_finished
-				
-				update_player()
-				
-				game_root.end_battle()
-				queue_free()
-				
-		elif tour == 0:
+	stats_label.text = "bob : pv "+str(player_pv)+"/"+ str(max_player_pv)
+
+	if not battle_lock :	
+		if tour == 0:
 			if Input.is_action_just_pressed("interact") :
 				func_menu(index_menu)
 				
 		elif tour == 1:
 			battle_lock = true
-			
-			battle_anime.play("ennemi_atk")
-			await battle_anime.animation_finished
-			
-			var attack = ceil(ennemi_atk / player_dfs)
-			player_pv -= attack
-			histo.append(str(ennemi_name) + " atk " + str(attack))
-			update_histo()
-			
-			battle_anime.play("player_hit")
-			await battle_anime.animation_finished
 			
 			animation.play_backwards("menu_show")
 			await animation.animation_finished

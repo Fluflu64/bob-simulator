@@ -60,14 +60,7 @@ func load_level(path:String,spawn_index:int):
 		animation.play("welcome")
 	
 
-func tp_level(spawn_index:int):
-	map_name_label.position = Vector2(0,-8)
-	animation.play("transition_on")
-	await animation.animation_finished
-	var spawn_position = actual_level.get_spawn_by_id(spawn_index)
-	player.position = spawn_position
-	animation.play("transition_off")
-	await animation.animation_finished
+
 
 func start_game():
 	title.set_process_mode(PROCESS_MODE_DISABLED)
@@ -115,16 +108,32 @@ func start_battle():
 	game.set_process_mode(PROCESS_MODE_DISABLED)
 	player.sprite.frame_coords = Vector2(6,0)
 	
-func start_shop():
+func start_shop(spawn_index:int):
+	map_name_label.position = Vector2(0,-8)
+	animation.play("transition_on")
+	await animation.animation_finished
+	
+	
+	
+	
+	
 	var shop_instance = shop_scene.instantiate()
 	battle.add_child(shop_instance)
+	var spawn_position = actual_level.get_spawn_by_id(spawn_index)
+	player.position = spawn_position
 	shop_instance.game_root = self
 	shop_instance.player = player
 	shop_instance.player_pv = player.pv
 	shop_instance.max_player_pv = player.pv_max
 	shop_instance.player_atk = player.atk
 	shop_instance.player_dfs = player.def
+	
+	animation.play("transition_off")
+	await animation.animation_finished
+	
 	game.set_process_mode(PROCESS_MODE_DISABLED)
+	
+	
 	
 func end_battle():
 	game.set_process_mode(PROCESS_MODE_INHERIT)

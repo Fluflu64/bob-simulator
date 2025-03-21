@@ -96,7 +96,7 @@ position = Vector2(208, 88)
 position = Vector2(40, 120)
 
 [node name="spawn_exit_pharmacie" type="Node2D" parent="." index="14"]
-position = Vector2(104, 104)
+position = Vector2(104, 96)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." index="15"]
 layer = 2

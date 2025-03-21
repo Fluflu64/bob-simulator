@@ -1,24 +1,15 @@
-[gd_scene load_steps=32 format=3 uid="uid://bmlic16qbhvv0"]
+[gd_scene load_steps=17 format=3 uid="uid://bmlic16qbhvv0"]
 
 [ext_resource type="Script" path="res://actor/script_shop_menu.gd" id="1_cqacu"]
+[ext_resource type="Texture2D" uid="uid://d0ivgcbakw2ym" path="res://sprite/tex_shop_heal_bg.png" id="2_dlt82"]
 [ext_resource type="AudioStream" uid="uid://b40vkk5xfr4ni" path="res://music/mus_battle_test.ogg" id="2_ybm1x"]
-[ext_resource type="Texture2D" uid="uid://c62gtc6sfp2ht" path="res://battle/tex_battle_bg_0.png" id="3_y823o"]
-[ext_resource type="Shader" path="res://battle/shader_battle_menu_001.gdshader" id="4_p64k0"]
-[ext_resource type="Texture2D" uid="uid://ctla0pk1phugl" path="res://battle/tex_bg_1.png" id="5_kajex"]
-[ext_resource type="Texture2D" uid="uid://djgy6r2sxh2i5" path="res://battle/tex_radouteu.png" id="6_lrpq4"]
+[ext_resource type="Texture2D" uid="uid://mruwe6cm0ddi" path="res://sprite/tex_shop_heal_guy.png" id="5_6d1wh"]
 [ext_resource type="Texture2D" uid="uid://buseck213vate" path="res://player_related/tex_battle_bob.png" id="7_f0fl3"]
 [ext_resource type="Texture2D" uid="uid://mibs4jii822c" path="res://player_related/tex_text_box.png" id="8_wymnh"]
 [ext_resource type="LabelSettings" uid="uid://bdxtw162r24p7" path="res://base_font.tres" id="9_rnu6e"]
 [ext_resource type="Shader" path="res://battle/shade_circle_transition.gdshader" id="10_h2h4t"]
-[ext_resource type="AudioStream" uid="uid://b7jvyjmvsljmw" path="res://music/mus_version final.wav" id="11_p8xj2"]
 [ext_resource type="AudioStream" uid="uid://bumvvm8fd01v6" path="res://sound_effect/hit.wav" id="12_y5h8p"]
 [ext_resource type="AudioStream" uid="uid://qtdy3rir27ih" path="res://sound_effect/hurt.wav" id="13_m0glh"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_huvy6"]
-shader = ExtResource("4_p64k0")
-shader_parameter/mouse_position = Vector2(0.5, 0.5)
-shader_parameter/wave_color = Color(0.027451, 0.0705882, 0.0509804, 1)
-shader_parameter/wave_transparency = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ony88"]
 shader = ExtResource("10_h2h4t")
@@ -60,7 +51,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-128, -128)]
+"values": [Vector2(-128, 40)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -84,7 +75,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-48, -128)]
+"values": [Vector2(-48, 40)]
 }
 
 [sub_resource type="Animation" id="Animation_3hdgm"]
@@ -126,10 +117,10 @@ tracks/0/path = NodePath("shader_circle:material:shader_parameter/circle_size")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 0.6, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [1.0, 0.0, 0.0, 1.0]
+"values": [0.0, 0.0, 1.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -138,15 +129,15 @@ tracks/1/path = NodePath("background:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false, true]
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_coe3o"]
 resource_name = "menu_show"
-length = 0.1
+length = 0.5
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -155,8 +146,8 @@ tracks/0/path = NodePath("background/historic_border:size")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 2),
 "update": 0,
 "values": [Vector2(176, 56), Vector2(256, 56)]
 }
@@ -167,10 +158,10 @@ tracks/1/path = NodePath("background/action_border:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 2),
 "update": 0,
-"values": [Vector2(-128, -128), Vector2(-208, -128)]
+"values": [Vector2(-128, 40), Vector2(-128, 96)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -179,10 +170,10 @@ tracks/2/path = NodePath("background/historic_border:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 2),
 "update": 0,
-"values": [Vector2(-48, -128), Vector2(-128, -128)]
+"values": [Vector2(-48, 40), Vector2(-128, 40)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_e7p6k"]
@@ -193,403 +184,16 @@ _data = {
 "menu_show": SubResource("Animation_coe3o")
 }
 
-[sub_resource type="Animation" id="Animation_x82dr"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("background/player_sprite:frame_coords")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Vector2i(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("background/enemie_sprite:offset")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("AudioStreamPlayer2D/AudioStreamPlayer:playing")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("AudioStreamPlayer2D/AudioStreamPlayer:stream")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("2_ybm1x")]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("AudioStreamPlayer2D/AudioStreamPlayer:pitch_scale")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.0]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("AudioStreamPlayer2D/Hit:playing")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("AudioStreamPlayer2D/Hurt:playing")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("background/enemie_sprite:rotation")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
-[sub_resource type="Animation" id="Animation_1meeg"]
-resource_name = "ennemi_atk"
-length = 0.8
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("background/enemie_sprite:offset")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [Vector2(0, 32), Vector2(0, 0), Vector2(0, 64), Vector2(0, 8), Vector2(0, 4), Vector2(0, 2), Vector2(0, 1), Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AudioStreamPlayer2D/Hit:playing")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, true]
-}
-
-[sub_resource type="Animation" id="Animation_i75en"]
-resource_name = "ennemi_hit"
-length = 0.8
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("background/enemie_sprite:offset")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [Vector2(-32, 0), Vector2(32, 0), Vector2(-16, 0), Vector2(8, 0), Vector2(-4, 0), Vector2(2, 0), Vector2(-1, 0), Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AudioStreamPlayer2D/Hurt:playing")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_wi22h"]
-resource_name = "player_atk"
-length = 0.8
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("background/player_sprite:frame_coords")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0), Vector2i(4, 0), Vector2i(1, 0), Vector2i(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AudioStreamPlayer2D/Hit:playing")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.4),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_ynsyi"]
-resource_name = "player_down"
-length = 4.0
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("background/player_sprite:frame_coords")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [Vector2i(0, 0), Vector2i(7, 2), Vector2i(0, 3), Vector2i(1, 3), Vector2i(2, 3)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AudioStreamPlayer2D/AudioStreamPlayer:pitch_scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [1.0, 0.1]
-}
-
-[sub_resource type="Animation" id="Animation_u8332"]
-resource_name = "player_flee_lose"
-length = 0.8
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("background/player_sprite:frame_coords")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.35, 0.4, 0.45, 0.5, 0.65, 0.7, 0.75),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1), Vector2i(3, 1), Vector2i(4, 1), Vector2i(5, 1), Vector2i(5, 0), Vector2i(6, 0), Vector2i(2, 0), Vector2i(1, 0), Vector2i(0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_e62rd"]
-resource_name = "player_flee_win"
-length = 0.8
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("background/player_sprite:frame_coords")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1), Vector2i(3, 1), Vector2i(4, 1), Vector2i(5, 1), Vector2i(6, 1), Vector2i(7, 1), Vector2i(7, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_axl21"]
-resource_name = "player_hit"
-length = 0.8
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("background/player_sprite:frame_coords")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [Vector2i(0, 2), Vector2i(1, 2), Vector2i(0, 2), Vector2i(2, 2), Vector2i(0, 2), Vector2i(1, 0), Vector2i(2, 0), Vector2i(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AudioStreamPlayer2D/Hurt:playing")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.05, 0.15),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, true]
-}
-
-[sub_resource type="Animation" id="Animation_ofsv2"]
-resource_name = "player_think"
-length = 3.0
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("background/player_sprite:frame_coords")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [Vector2i(3, 2), Vector2i(4, 2), Vector2i(5, 2), Vector2i(3, 3)]
-}
-
-[sub_resource type="Animation" id="Animation_ch1yl"]
-resource_name = "player_win"
-length = 4.0
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("background/player_sprite:frame_coords")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [Vector2i(3, 2), Vector2i(4, 2), Vector2i(5, 2), Vector2i(6, 2)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AudioStreamPlayer2D/AudioStreamPlayer:playing")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.1),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("AudioStreamPlayer2D/AudioStreamPlayer:stream")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("11_p8xj2")]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("background/enemie_sprite:offset")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, -32), Vector2(0, 0)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("background/enemie_sprite:rotation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [0.0, 3.14159]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_f6lb5"]
-_data = {
-"RESET": SubResource("Animation_x82dr"),
-"ennemi_atk": SubResource("Animation_1meeg"),
-"ennemi_hit": SubResource("Animation_i75en"),
-"player_atk": SubResource("Animation_wi22h"),
-"player_down": SubResource("Animation_ynsyi"),
-"player_flee_lose": SubResource("Animation_u8332"),
-"player_flee_win": SubResource("Animation_e62rd"),
-"player_hit": SubResource("Animation_axl21"),
-"player_think": SubResource("Animation_ofsv2"),
-"player_win": SubResource("Animation_ch1yl")
-}
-
 [node name="base_battle" type="Node2D"]
 position = Vector2(128, 128)
 script = ExtResource("1_cqacu")
 
 [node name="background" type="Sprite2D" parent="."]
-texture = ExtResource("3_y823o")
-
-[node name="earthbound_bg" type="TextureRect" parent="background"]
-material = SubResource("ShaderMaterial_huvy6")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -128.0
-offset_top = -128.0
-offset_right = -128.0
-offset_bottom = -128.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("5_kajex")
+texture = ExtResource("2_dlt82")
 
 [node name="enemie_sprite" type="Sprite2D" parent="background"]
-position = Vector2(0, 30)
-texture = ExtResource("6_lrpq4")
+position = Vector2(0, -88)
+texture = ExtResource("5_6d1wh")
 
 [node name="player_sprite" type="Sprite2D" parent="background"]
 position = Vector2(0, 80)
@@ -599,9 +203,9 @@ vframes = 4
 
 [node name="action_border" type="NinePatchRect" parent="background"]
 offset_left = -128.0
-offset_top = -128.0
+offset_top = 40.0
 offset_right = -48.0
-offset_bottom = -72.0
+offset_bottom = 96.0
 texture = ExtResource("8_wymnh")
 region_rect = Rect2(0, 0, 48, 48)
 patch_margin_left = 8
@@ -620,35 +224,6 @@ defense
 item
 flee"
 label_settings = ExtResource("9_rnu6e")
-
-[node name="attack_border" type="NinePatchRect" parent="background"]
-offset_left = -128.0
-offset_top = -56.0
-offset_right = -40.0
-offset_bottom = 32.0
-texture = ExtResource("8_wymnh")
-region_rect = Rect2(0, 0, 48, 48)
-patch_margin_left = 8
-patch_margin_top = 8
-patch_margin_right = 8
-patch_margin_bottom = 8
-
-[node name="ColorRect2" type="ColorRect" parent="background/attack_border"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 32.0
-offset_bottom = 32.0
-color = Color(0, 1, 1, 1)
-
-[node name="Node2D" type="Node2D" parent="background/attack_border"]
-
-[node name="ColorRect" type="ColorRect" parent="background/attack_border/Node2D"]
-offset_left = -4.0
-offset_top = -4.0
-offset_right = 4.0
-offset_bottom = 4.0
-metadata/_edit_use_anchors_ = true
 
 [node name="health_border" type="NinePatchRect" parent="background"]
 offset_left = -128.0
@@ -675,9 +250,9 @@ label_settings = ExtResource("9_rnu6e")
 [node name="historic_border" type="NinePatchRect" parent="background"]
 clip_contents = true
 offset_left = -48.0
-offset_top = -128.0
+offset_top = 40.0
 offset_right = 128.0
-offset_bottom = -72.0
+offset_bottom = 96.0
 texture = ExtResource("8_wymnh")
 region_rect = Rect2(0, 0, 48, 48)
 patch_margin_left = 8
@@ -711,11 +286,6 @@ color = Color(0, 0, 0, 1)
 root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_e7p6k")
-}
-
-[node name="animation_battle" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_f6lb5")
 }
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

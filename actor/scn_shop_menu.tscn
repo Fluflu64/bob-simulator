@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://actor/script_shop_menu.gd" id="1_cqacu"]
 [ext_resource type="Texture2D" uid="uid://d0ivgcbakw2ym" path="res://sprite/tex_shop_heal_bg.png" id="2_dlt82"]
-[ext_resource type="AudioStream" uid="uid://b40vkk5xfr4ni" path="res://music/mus_battle_test.ogg" id="2_ybm1x"]
 [ext_resource type="Texture2D" uid="uid://mruwe6cm0ddi" path="res://sprite/tex_shop_heal_guy.png" id="5_6d1wh"]
 [ext_resource type="Texture2D" uid="uid://buseck213vate" path="res://player_related/tex_battle_bob.png" id="7_f0fl3"]
+[ext_resource type="AudioStream" uid="uid://dbfcxmp730cyw" path="res://music/mus_shop.ogg" id="8_qejme"]
 [ext_resource type="Texture2D" uid="uid://mibs4jii822c" path="res://player_related/tex_text_box.png" id="8_wymnh"]
 [ext_resource type="LabelSettings" uid="uid://bdxtw162r24p7" path="res://base_font.tres" id="9_rnu6e"]
 [ext_resource type="Shader" path="res://battle/shade_circle_transition.gdshader" id="10_h2h4t"]
@@ -291,7 +291,7 @@ libraries = {
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="AudioStreamPlayer2D"]
-stream = ExtResource("2_ybm1x")
+stream = ExtResource("8_qejme")
 autoplay = true
 
 [node name="Hit" type="AudioStreamPlayer" parent="AudioStreamPlayer2D"]

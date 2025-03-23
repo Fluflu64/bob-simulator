@@ -11,7 +11,7 @@ extends Node2D
 @onready var marker = $background/attack_border/Node2D
 @onready var debug_square = $background/attack_border/ColorRect2
 var marker_position = Vector2(0,0)
-var marker_speed = 0.1
+var marker_speed = 0.05
 var marker_radius = 32
 var player_has_atk = false
 

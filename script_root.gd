@@ -23,44 +23,38 @@ var config = ConfigFile.new()
 func _ready():
 	title.game_root = self
 
-func load_level(path:String,spawn_index:int):
+func load_level(path:String,spawn_name:String):
 	var show_msg = true
-	
 	map_name_label.position = Vector2(0,-8)
-	if spawn_index != -1 :
+	
+	if spawn_name != "-1" :
 		player.set_process_mode(PROCESS_MODE_DISABLED)
 		animation.play("transition_on")
 		await animation.animation_finished
-	if spawn_index > -2 :
+	
+	if path != "-1":
 		if actual_level != null :
 			actual_level.queue_free()
+		
 		var level_load = load(path)
 		var level_instance = level_load.instantiate()
 		actual_level_path = path
 		actual_level = level_instance
 		game.add_child(level_instance)
 	
-	if spawn_index < -1:
-		spawn_index = abs(spawn_index+2)
-		show_msg = false
-	
-	var spawn_position = actual_level.get_spawn_by_id(spawn_index)
-	player.proba_battle = actual_level.encounter_rate
-	actual_level.player = player
-	
-	if spawn_index != -1 :
+	if spawn_name != "-1" :
+		var spawn_position = actual_level.get_spawn_by_id(spawn_name)
+		player.proba_battle = actual_level.encounter_rate
+		actual_level.player = player
 		player.position = spawn_position
 		player.update_camera()
+		map_name_label.text = actual_level.map_name
 		animation.play("transition_off")
 		await animation.animation_finished
 		player.set_process_mode(0)
 	
 	if show_msg :
-		map_name_label.text = actual_level.map_name
 		animation.play("welcome")
-	
-
-
 
 func start_game():
 	title.set_process_mode(PROCESS_MODE_DISABLED)
@@ -69,7 +63,7 @@ func start_game():
 	player_instance.game_root = self
 	player = player_instance
 	game.add_child(player_instance)
-	load_level("res://levels/scn_bobcity_ext_overworld.tscn",1)
+	load_level("res://levels/scn_bobcity_ext_overworld.tscn","spawn_test")
 
 func start_text(lines,area):
 	player.set_process_mode(PROCESS_MODE_DISABLED)
@@ -92,7 +86,7 @@ func menu():
 	menu_instance.player_lvl = player.lvl
 	textbox.add_child(menu_instance)
 	menu_instance.update_stats()
-	
+
 func end_text():
 	player.set_process_mode(0)
 
@@ -107,8 +101,8 @@ func start_battle():
 	battle_instance.player_dfs = player.def
 	game.set_process_mode(PROCESS_MODE_DISABLED)
 	player.sprite.frame_coords = Vector2(6,0)
-	
-func start_shop(spawn_index:int):
+
+func start_shop(spawn_name:String):
 	map_name_label.position = Vector2(0,-8)
 	animation.play("transition_on")
 	await animation.animation_finished
@@ -119,7 +113,7 @@ func start_shop(spawn_index:int):
 	
 	var shop_instance = shop_scene.instantiate()
 	battle.add_child(shop_instance)
-	var spawn_position = actual_level.get_spawn_by_id(spawn_index)
+	var spawn_position = actual_level.get_spawn_by_id(spawn_name)
 	player.position = spawn_position
 	shop_instance.game_root = self
 	shop_instance.player = player
@@ -132,12 +126,10 @@ func start_shop(spawn_index:int):
 	await animation.animation_finished
 	
 	game.set_process_mode(PROCESS_MODE_DISABLED)
-	
-	
-	
+
 func end_battle():
 	game.set_process_mode(PROCESS_MODE_INHERIT)
-	
+
 func save_game():
 	print("save test")
 	config.set_value("player","position",player.position)
@@ -161,7 +153,7 @@ func load_game():
 		animation.play("transition_on")
 		await animation.animation_finished
 		actual_level_path = config.get_value("player","map")
-		load_level(actual_level_path,-1)	
+		load_level(actual_level_path,"-1")
 		player.position = config.get_value("player","position")
 		player.update_camera()
 		player.lvl = config.get_value("player","level")
@@ -170,4 +162,3 @@ func load_game():
 		player.set_process_mode(0)
 		map_name_label.text = "partie chargé"
 		animation.play("welcome")
-		

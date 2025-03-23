@@ -4,9 +4,13 @@ extends Node2D
 @export var map_name = "gobzob"
 @export var encounter_rate = 100 #%
 @export var encounter = [0]
-@export var spawn = []
+@onready var node_spawn_list = $spawn
+var spawn = []
 
 @onready var player = null
 
-func get_spawn_by_id(index:int):
-	return get_node(spawn[index]).position
+func get_spawn_by_id(spawn_name:String):
+	for node in node_spawn_list.get_children():
+		if node.name == spawn_name :
+			return node.position
+	

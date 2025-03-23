@@ -31,10 +31,10 @@ var histo = [\
 var tour = 0
 var battle_lock = false
 
-var label_menu = ["buy","talk","item","heal","flee"]
+var label_menu = ["buy","talk","item","heal","quit"]
 var shop_item = ["item_0","item_1","item_2","item_3","item_4","item_5"]
 var text_to_show = [label_menu,shop_item]
-var label_index = 1
+var label_index = 0
 var text_select = "<"
 var index_menu = 0
 

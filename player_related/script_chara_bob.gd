@@ -32,13 +32,26 @@ var lvl = 1
 @onready var interact = $area_interact
 @onready var area_teleporation = $area_teleportation
 
-
+@onready var follower = preload("res://player_related/scn_follower.tscn")
 
 @export var game_root = null
+
+var player_pos_array:Array
+var max_record:int = 256
+var follower_liste = []
+
 
 func _ready():
 	sprite.show()
 	sprite_preview.hide()
+	for i in range(max_record):
+		player_pos_array.append(position)
+	for p in range(0):
+		var inst_follower = follower.instantiate()
+		inst_follower.to_follow = self
+		inst_follower.dist = 16*(p+1)
+		game_root.game.add_child(inst_follower)
+		follower_liste.append(inst_follower)
 
 func _physics_process(_delta):
 	move()
@@ -58,6 +71,7 @@ func _input(event):
 
 func _process(_delta):
 	update_camera()
+	
 
 func update_camera():
 	camera.global_position = round(position)
@@ -116,7 +130,6 @@ func move():
 		sprite.frame_coords = sprite_preview.frame_coords
 	sprite.offset = sprite_preview.offset
 	reflect.frame_coords = sprite.frame_coords
-	
 	#applique les movements
 	if is_climb :
 		velocity =Vector2.ZERO
@@ -124,6 +137,14 @@ func move():
 		move_and_slide()
 	
 	update_camera()
+	if velocity != Vector2.ZERO :
+		player_pos_array.pop_at(0)
+		
+		
+		for i in follower_liste :
+			i.update_pos()
+		player_pos_array.append(position)
+	
 	
 func start_battle():
 	if randi_range(0,100) < proba_battle :

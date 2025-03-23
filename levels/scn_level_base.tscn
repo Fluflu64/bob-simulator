@@ -4,8 +4,13 @@
 
 [node name="level" type="Node2D"]
 script = ExtResource("1_i2fyg")
-spawn = [NodePath("spawn_base")]
 
-[node name="spawn_base" type="Node2D" parent="."]
+[node name="spawn" type="Node2D" parent="."]
+
+[node name="spawn_base" type="Node2D" parent="spawn"]
 
 [node name="level_audio" type="AudioStreamPlayer2D" parent="."]
+
+[node name="teleporter" type="Node2D" parent="."]
+
+[node name="node_interact" type="Node2D" parent="."]

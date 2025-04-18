@@ -10,9 +10,11 @@ extends CanvasLayer
 @onready var title = $TexCompleteTitle
 @onready var label = $Label3
 @onready var bg = $background
+@onready var bg2 = $background2
 @onready var bg_color = $ColorRect
 @onready var instru_text = $ColorRect/Label
 
+@onready var rng = $Label4
 
 var instru_read = false
 var menu_lock = false
@@ -63,6 +65,7 @@ func setup() -> void:
 	title.scale = Vector2.ZERO
 	label.text = ""
 	bg.position = Vector2(128,384)
+	bg2.position = Vector2(128,256)
 	menu_lock = false
 	instru_read = false
 	music.playing = false

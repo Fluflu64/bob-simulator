@@ -11,10 +11,14 @@ size = Vector2(48, 48)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_gplbs")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_urwe7")
-
 [node name="interact" parent="." instance=ExtResource("2_wyswd")]
-visible = false
 scale = Vector2(3, 3)
 lines = ["Déso la démo que tu as ne te permet pas d'aller plus loins...", "Je suis navré...", "attention je ne suis pas un navir !!!", "...", "bref..."]
+sprite_hide = false
+
+[node name="Sprite2D" parent="interact" index="1"]
+position = Vector2(0, -0.398333)
+scale = Vector2(0.333, 0.333)
+texture = ExtResource("1_urwe7")
+
+[editable path="interact"]

@@ -23,9 +23,17 @@ var actual_level_path = ""
 
 var config = ConfigFile.new()
 
+var why = 0
+
 func _ready():
-	TranslationServer.set_locale("fr")
 	title.game_root = self
+	load_why()
+	var rng_to_show = str(why)
+	if why < 100 :
+		rng_to_show = "0" + rng_to_show
+		if why < 10 :
+			rng_to_show = "0" + rng_to_show
+	title.rng.text = rng_to_show
 
 func load_level(path:String,spawn_name:String,transition:int = 0):
 	var show_msg = false
@@ -224,3 +232,17 @@ func load_game():
 		player.set_process_mode(0)
 		map_name_label.text = "partie chargé"
 		animation.play("welcome")
+
+func load_why():
+	var why_load = config.load("res://bob_simulator.cfg")
+	if why_load == OK :
+		if config.get_value("why","why") :
+			why = config.get_value("why","why")
+		else :
+			why = randi_range(0,100)
+			config.set_value("why","why",why)
+			config.save("res://bob_simulator.cfg")
+	else :
+		why = randi_range(0,100)
+		config.set_value("why","why",why)
+		config.save("res://bob_simulator.cfg")

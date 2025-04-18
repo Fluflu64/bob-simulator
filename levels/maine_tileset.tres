@@ -1,10 +1,12 @@
-[gd_resource type="TileSet" load_steps=15 format=3 uid="uid://buirtyrql2dqy"]
+[gd_resource type="TileSet" load_steps=17 format=3 uid="uid://buirtyrql2dqy"]
 
 [ext_resource type="Texture2D" uid="uid://c3gy7y0teqgb4" path="res://levels/tile_city.png" id="1_vdwct"]
 [ext_resource type="Texture2D" uid="uid://cva2t6gu144y2" path="res://levels/tex_exterior_bobcity.png" id="2_fifvk"]
 [ext_resource type="Texture2D" uid="uid://btok7f6m6mo2x" path="res://levels/tex_interior.png" id="3_b606s"]
 [ext_resource type="PackedScene" uid="uid://cx3x1g27hcog5" path="res://actor/scn_bird.tscn" id="4_l4eac"]
+[ext_resource type="PackedScene" uid="uid://ccm6f7k8c5jtq" path="res://actor/scn_tv.tscn" id="5_1udke"]
 [ext_resource type="Texture2D" uid="uid://bhi1n8m35yufa" path="res://levels/tex_maxi_tile.png" id="5_ys050"]
+[ext_resource type="PackedScene" uid="uid://yqqjkwk46ym2" path="res://actor/scn_water_light.tscn" id="6_5cde7"]
 [ext_resource type="Texture2D" uid="uid://d2akdtk2dycr3" path="res://levels/tex_beta_tiles.png" id="6_xts4l"]
 [ext_resource type="Texture2D" uid="uid://dfy0wvaaw3h18" path="res://levels/tex_beta_tiles2.png" id="7_2omhf"]
 
@@ -236,6 +238,8 @@ texture = ExtResource("3_b606s")
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_v5s7p"]
 scenes/1/scene = ExtResource("4_l4eac")
+scenes/2/scene = ExtResource("5_1udke")
+scenes/3/scene = ExtResource("6_5cde7")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t3dbs"]
 texture = ExtResource("5_ys050")
@@ -1314,6 +1318,10 @@ texture = ExtResource("5_ys050")
 24:8/0 = 0
 24:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 28:2/0 = 0
+9:6/0 = 0
+9:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+23:11/0 = 0
+23:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7x7bc"]
 texture = ExtResource("6_xts4l")

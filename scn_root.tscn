@@ -62,7 +62,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_6cv3b"]
 resource_name = "transition_off"
-length = 0.5
+length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -70,7 +70,7 @@ tracks/0/path = NodePath("game_view/ColorRect:material:shader_parameter/cell_siz
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [16, 1]
@@ -78,7 +78,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_p2l5j"]
 resource_name = "transition_on"
-length = 0.8
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -86,7 +86,7 @@ tracks/0/path = NodePath("game_view/ColorRect:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
@@ -98,7 +98,7 @@ tracks/1/path = NodePath("game_view/ColorRect:material:shader_parameter/cell_siz
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [1, 16]

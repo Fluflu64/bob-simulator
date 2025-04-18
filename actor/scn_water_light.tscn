@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://yqqjkwk46ym2"]
+
+[ext_resource type="Texture2D" uid="uid://g5bjsnfcjbds" path="res://sprite/tex_light.png" id="1_47xhm"]
+
+[node name="PointLight2D" type="PointLight2D"]
+color = Color(0, 1, 0, 1)
+energy = 0.5
+texture = ExtResource("1_47xhm")
+texture_scale = 3.0

@@ -32,7 +32,7 @@ var tour = 0
 var battle_lock = false
 
 var label_menu = ["buy","talk","item","heal","quit"]
-var shop_item = ["item_0","item_1","item_2","item_3","item_4","item_5"]
+var shop_item = ["item_1","item_2","item_3","item_4","item_5","back"]
 var text_to_show = [label_menu,shop_item]
 var label_index = 0
 var text_select = "<"
@@ -45,63 +45,71 @@ func update_player():
 	player.def = player_dfs
 
 func func_menu(index):
-	if index == 0 :
-		battle_lock = true
-		animation.play("menu_show")
-		await animation.animation_finished
-		histo.append("j'ai pas de stock")
-		histo.append("reviens demain")
-		update_histo()
-		animation.play_backwards("menu_show")
-		await animation.animation_finished
-		battle_lock = false
+	if label_index == 0 :
+		if index == 0 :
+			battle_lock = true
+			animation.play("menu_show")
+			await animation.animation_finished
+			label_index = 1
+			update_menu()
+			histo.append("tu veut quoi")
+			update_histo()
+			animation.play_backwards("menu_show")
+			await animation.animation_finished
+			battle_lock = false
+			
 
-	if index == 1 :
-		battle_lock = true
-		histo.append("tu es dans une")
-		histo.append("pharmacie, tu peut")
-		histo.append("acheter des soins")
-		histo.append("des boosts et ")
-		histo.append("d'autre truc !!")
-		update_histo()
-		battle_lock = false
+		if index == 1 :
+			battle_lock = true
+			histo.append("tu es dans une")
+			histo.append("pharmacie, tu peut")
+			histo.append("acheter des soins")
+			histo.append("des boosts et ")
+			histo.append("d'autre truc !!")
+			update_histo()
+			battle_lock = false
+			
 		
-	
-	if index == 2 :
-		battle_lock = true
-		animation.play("menu_show")
-		await animation.animation_finished
-		histo.append("tu n'as pas d'objet")
-		update_histo()
-		animation.play_backwards("menu_show")
-		await animation.animation_finished
-		battle_lock = false
+		if index == 2 :
+			battle_lock = true
+			animation.play("menu_show")
+			await animation.animation_finished
+			histo.append("tu n'as pas d'objet")
+			update_histo()
+			animation.play_backwards("menu_show")
+			await animation.animation_finished
+			battle_lock = false
+			
+		if index == 3 :
+			battle_lock = true
+			animation.play("menu_show")
+			await animation.animation_finished
+			histo.append("tu es heal")
+			update_histo()
+			player_pv = max_player_pv
+			animation.play_backwards("menu_show")
+			await animation.animation_finished
+			battle_lock = false
 		
-	if index == 3 :
-		battle_lock = true
-		animation.play("menu_show")
-		await animation.animation_finished
-		histo.append("tu es heal")
-		update_histo()
-		player_pv = max_player_pv
-		animation.play_backwards("menu_show")
-		await animation.animation_finished
-		battle_lock = false
-	
-	if index == 4 :
-		battle_lock = true
-		histo.append("au revoir")
-		update_histo()
-		
-		animation.play("menu_show")
-		await animation.animation_finished
-		
-		animation.play("battle end")
-		await animation.animation_finished
-		update_player()
-		game_root.end_battle()
-		queue_free()
-		update_histo()
+		if index == 4 :
+			battle_lock = true
+			histo.append("au revoir")
+			update_histo()
+			
+			animation.play("menu_show")
+			await animation.animation_finished
+			
+			animation.play("battle end")
+			await animation.animation_finished
+			update_player()
+			game_root.end_battle()
+			queue_free()
+			update_histo()
+	if label_index == 1 :
+		if index == len(text_to_show[label_index])-1 :
+			label_index = 0
+			index = 0
+
 
 func _ready() -> void:
 	circle.show()
@@ -151,7 +159,7 @@ func _input(event: InputEvent) -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	stats_label.text = "bob : pv "+str(player_pv)+"/"+ str(max_player_pv)
-
+	
 	if not battle_lock :	
 		if tour == 0:
 			if Input.is_action_just_pressed("interact") :

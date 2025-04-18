@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://d2qxq1unq3gn7"]
+[gd_scene load_steps=14 format=4 uid="uid://d2qxq1unq3gn7"]
 
 [ext_resource type="PackedScene" uid="uid://cspbme0evtjet" path="res://levels/scn_level_base.tscn" id="1_okgwe"]
 [ext_resource type="TileSet" uid="uid://buirtyrql2dqy" path="res://levels/maine_tileset.tres" id="2_bod1u"]
@@ -9,6 +9,7 @@
 [ext_resource type="Shader" path="res://levels/shader_water.gdshader" id="4_4qt8p"]
 [ext_resource type="Texture2D" uid="uid://djq8saba371jq" path="res://levels/background/tex_bg_godray.png" id="4_p1o0q"]
 [ext_resource type="PackedScene" uid="uid://b72hnw6scal35" path="res://levels/scn_teleportation.tscn" id="7_uctxd"]
+[ext_resource type="AudioStream" uid="uid://dyf14mn1p7p05" path="res://music/mus_city.ogg" id="8_d1dtc"]
 [ext_resource type="PackedScene" uid="uid://cknfg8cqko1vn" path="res://actor/scn_rope.tscn" id="10_i8rod"]
 [ext_resource type="PackedScene" uid="uid://4tmo0h3ehmq7" path="res://levels/scn_shop.tscn" id="10_mudwd"]
 
@@ -80,13 +81,24 @@ position = Vector2(40, 120)
 [node name="spawn_exit_pharmacie" type="Node2D" parent="spawn" index="4"]
 position = Vector2(104, 96)
 
+[node name="spawn_exit_C" type="Node2D" parent="spawn" index="5"]
+position = Vector2(168, 216)
+
+[node name="spawn_exit_A" type="Node2D" parent="spawn" index="6"]
+position = Vector2(152, 376)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="level_audio" index="0"]
+stream = ExtResource("8_d1dtc")
+autoplay = true
+
 [node name="Area2D" parent="teleporter" index="0" instance=ExtResource("7_uctxd")]
 position = Vector2(104, 56)
 next_level = "res://levels/scn_bobcity_ext_subarea.tscn"
 
 [node name="Area2D3" parent="teleporter" index="1" instance=ExtResource("7_uctxd")]
 position = Vector2(168, 200)
-next_level = "res://levels/scn_bobcity_ext_overworld.tscn"
+next_level = "res://levels/scn_bobcity_int.tscn"
+spawn_index = "spawn_enter_C"
 
 [node name="Area2D4" parent="teleporter" index="2" instance=ExtResource("7_uctxd")]
 position = Vector2(64, 208)
@@ -99,7 +111,8 @@ spawn_index = "spawn_enter_B"
 
 [node name="Area2D6" parent="teleporter" index="4" instance=ExtResource("7_uctxd")]
 position = Vector2(152, 360)
-next_level = "res://levels/scn_bobcity_ext_overworld.tscn"
+next_level = "res://levels/scn_bobcity_int.tscn"
+spawn_index = "sortie A"
 
 [node name="Area2D2" parent="teleporter" index="5" instance=ExtResource("7_uctxd")]
 position = Vector2(192, 80)

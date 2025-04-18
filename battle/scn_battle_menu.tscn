@@ -1,6 +1,5 @@
-[gd_scene load_steps=32 format=3 uid="uid://bpslrq66ysgyk"]
+[gd_scene load_steps=31 format=3 uid="uid://bpslrq66ysgyk"]
 
-[ext_resource type="Texture2D" uid="uid://c62gtc6sfp2ht" path="res://battle/tex_battle_bg_0.png" id="1_hs3wj"]
 [ext_resource type="Script" path="res://battle/script_battle_menu.gd" id="2_4suhd"]
 [ext_resource type="Shader" path="res://battle/shader_battle_menu_001.gdshader" id="3_303d0"]
 [ext_resource type="Shader" path="res://battle/shade_circle_transition.gdshader" id="5_ggrxs"]
@@ -573,9 +572,9 @@ script = ExtResource("2_4suhd")
 music_battle = ExtResource("10_ow1mv")
 
 [node name="background" type="Sprite2D" parent="."]
-texture = ExtResource("1_hs3wj")
 
 [node name="earthbound_bg" type="TextureRect" parent="background"]
+visible = false
 material = SubResource("ShaderMaterial_huvy6")
 anchors_preset = 15
 anchor_right = 1.0
@@ -624,9 +623,9 @@ label_settings = ExtResource("6_m6oif")
 
 [node name="attack_border" type="NinePatchRect" parent="background"]
 offset_left = -128.0
-offset_top = -56.0
-offset_right = -40.0
-offset_bottom = 32.0
+offset_top = -72.0
+offset_right = 128.0
+offset_bottom = -40.0
 texture = ExtResource("9_fmql0")
 region_rect = Rect2(0, 0, 48, 48)
 patch_margin_left = 8

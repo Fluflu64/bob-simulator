@@ -3,6 +3,8 @@ extends CharacterBody2D
 
 #variable
 
+var story = 0
+
 const walk_speed = 50
 const run_speed = 100
 const bad_speed = 30
@@ -19,9 +21,12 @@ var proba_scale_down = 0.95
 
 var pv_max = 20
 var pv = 20
-var atk = 2
+var atk = 9999#2
 var def = 2
 var lvl = 1
+
+var can_run = true
+var infos_mode = false
 
 #Node
 @onready var sprite = $sprite_bob
@@ -62,7 +67,10 @@ func _physics_process(_delta):
 
 func _input(event):
 	if event.is_action_pressed("menu"):
-		game_root.menu()
+		if not infos_mode :
+			game_root.menu()
+		else :
+			game_root.menu_infos()
 	
 	if event.is_action_pressed("interact"):
 		for area2d in interact.get_overlapping_areas() :
@@ -79,7 +87,7 @@ func update_camera():
 func move():
 	#movement basique marcher courir
 	if pv > 0 :
-		if Input.is_action_pressed("run") :
+		if Input.is_action_pressed("run") and can_run:
 			speed = run_speed
 		else : 
 			speed = walk_speed

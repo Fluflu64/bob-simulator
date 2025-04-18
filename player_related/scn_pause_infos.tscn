@@ -1,0 +1,147 @@
+[gd_scene load_steps=10 format=3 uid="uid://bjjuvlj80sqpx"]
+
+[ext_resource type="Script" path="res://player_related/script_pause_infos.gd" id="1_82hhi"]
+[ext_resource type="Texture2D" uid="uid://mibs4jii822c" path="res://player_related/tex_text_box.png" id="2_ey5rs"]
+[ext_resource type="LabelSettings" uid="uid://bdxtw162r24p7" path="res://base_font.tres" id="3_u8bg0"]
+[ext_resource type="AudioStream" uid="uid://dcykfep8vpb4o" path="res://sound_effect/snd_textbox.wav" id="4_5lax6"]
+
+[sub_resource type="Animation" id="Animation_vuf47"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_uw4xh"]
+resource_name = "bye bye"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("option_border:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_1yu1i"]
+resource_name = "close"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("option_border:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_t5yfm"]
+resource_name = "open"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("option_border:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w54is"]
+_data = {
+"RESET": SubResource("Animation_vuf47"),
+"bye bye": SubResource("Animation_uw4xh"),
+"close": SubResource("Animation_1yu1i"),
+"open": SubResource("Animation_t5yfm")
+}
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_82hhi")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 256.0
+offset_bottom = 256.0
+color = Color(0, 0, 0, 0)
+
+[node name="option_border" type="NinePatchRect" parent="."]
+offset_left = 64.0
+offset_top = 128.0
+offset_right = 192.0
+offset_bottom = 192.0
+texture = ExtResource("2_ey5rs")
+region_rect = Rect2(0, 0, 48, 48)
+patch_margin_left = 16
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="Label" type="Label" parent="option_border"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "have fun"
+label_settings = ExtResource("3_u8bg0")
+horizontal_alignment = 1
+
+[node name="option_label" type="Label" parent="option_border"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 0
+text = "menu<
+quit<"
+label_settings = ExtResource("3_u8bg0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_w54is")
+}
+
+[node name="audio" type="AudioStreamPlayer2D" parent="."]
+
+[node name="bip" type="AudioStreamPlayer" parent="audio"]
+stream = ExtResource("4_5lax6")

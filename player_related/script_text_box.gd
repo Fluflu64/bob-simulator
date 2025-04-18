@@ -1,8 +1,9 @@
 extends CanvasLayer
 
-@onready var label = $NinePatchRect/MarginContainer/Label
+@onready var label = $NinePatchRect/MarginContainer/RichTextLabel
 @onready var timer = $letter_timer
 @onready var bip = $audio_player/bip
+@onready var animation = $AnimationPlayer
 
 var lines_text_box = [\
 "Hello again. To reiterate [slows down] our previous [speeds up] warning: This test [garbled speech] -ward momentum.",
@@ -28,7 +29,9 @@ func _input(event: InputEvent) -> void:
 	
 
 func write():
-	label.text = ""
+	animation.play("RESET")
+	label.visible_characters = 0
+	label.text = lines_text_box[line_index]
 	box_text = ""
 	letter_index = 0
 	timer.start()
@@ -36,8 +39,11 @@ func write():
 
 func _letter_write() -> void:
 	bip.play()
-	box_text += lines_text_box[line_index][letter_index]
-	label.text = box_text
+	
 	letter_index += 1
-	if letter_index < len(lines_text_box[line_index]) :
+	
+	label.visible_characters = letter_index
+	if letter_index < label.get_total_character_count() :
 		timer.start()
+	else :
+		animation.play("cursor")

@@ -1,10 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://d2ll0d0bfu26b"]
+[gd_scene load_steps=21 format=3 uid="uid://d2ll0d0bfu26b"]
 
-[ext_resource type="Texture2D" uid="uid://c4mcge4dptu2q" path="res://cocolint.png" id="1_0bif8"]
 [ext_resource type="PackedScene" uid="uid://buaexi66xho3d" path="res://player_related/scn_chara_bob.tscn" id="1_5cqsu"]
 [ext_resource type="Script" path="res://script_gamve_veiw.gd" id="1_q61lg"]
 [ext_resource type="Script" path="res://script_root.gd" id="1_qn4hg"]
 [ext_resource type="PackedScene" uid="uid://bot88khm6rv7m" path="res://levels/scn_room_0001.tscn" id="2_pea1k"]
+[ext_resource type="Texture2D" uid="uid://cnw4ugbrd752q" path="res://map.png" id="2_urvi6"]
 [ext_resource type="PackedScene" uid="uid://bpslrq66ysgyk" path="res://battle/scn_battle_menu.tscn" id="4_vw2ms"]
 [ext_resource type="PackedScene" uid="uid://bny4xe33nufrg" path="res://title/scn_main_menu.tscn" id="5_r5bqn"]
 [ext_resource type="PackedScene" uid="uid://ckweq2i3b5lg8" path="res://player_related/scn_pause.tscn" id="6_s86r4"]
@@ -12,6 +12,7 @@
 [ext_resource type="LabelSettings" uid="uid://bdxtw162r24p7" path="res://base_font.tres" id="7_thepe"]
 [ext_resource type="Shader" path="res://shader_pixel.gdshader" id="8_1fy66"]
 [ext_resource type="PackedScene" uid="uid://bs5w4fneac8j4" path="res://player_related/scn_text_box.tscn" id="9_nfc0l"]
+[ext_resource type="PackedScene" uid="uid://bjjuvlj80sqpx" path="res://player_related/scn_pause_infos.tscn" id="10_b5o7b"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_q8dtc"]
 viewport_path = NodePath("background_canvas/gameview_canvas/gameview/root/viewport/game_sub_viewport")
@@ -105,7 +106,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_fhqfa"]
 resource_name = "welcome"
-length = 5.0
+length = 2.0
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -114,7 +115,7 @@ tracks/0/path = NodePath("game_view/Label:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 4.5, 5),
+"times": PackedFloat32Array(0, 0.5, 1.5, 2),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(0, -8), Vector2(0, 8), Vector2(0, 8), Vector2(0, -8)]
@@ -143,7 +144,7 @@ offset_right = 1280.0
 offset_bottom = 720.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_0bif8")
+texture = ExtResource("2_urvi6")
 
 [node name="gameview_canvas" type="SubViewportContainer" parent="background_canvas"]
 layout_mode = 1
@@ -171,6 +172,7 @@ battle_scene = ExtResource("4_vw2ms")
 shop_scene = ExtResource("7_apsxi")
 text_box = ExtResource("9_nfc0l")
 menu_scene = ExtResource("6_s86r4")
+menu_infos_scene = ExtResource("10_b5o7b")
 
 [node name="game_view" type="TextureRect" parent="background_canvas/gameview_canvas/gameview/root"]
 anchors_preset = 15

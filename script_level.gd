@@ -7,7 +7,16 @@ extends Node2D
 @onready var node_spawn_list = $spawn
 var spawn = []
 
+var lines =[\
+"je suis une ligne de texte",
+"je suis a but de test"
+]
+
 @onready var player = null
+@onready var root = null
+
+func test():
+	pass
 
 func get_spawn_by_id(spawn_name:String):
 	for node in node_spawn_list.get_children():

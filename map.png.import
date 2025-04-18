@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4mcge4dptu2q"
-path="res://.godot/imported/cocolint.png-136ead139c3ab4618418a8d5ed5395f1.ctex"
+uid="uid://cnw4ugbrd752q"
+path="res://.godot/imported/map.png-9eea34967fae34f4388f4a32a16da936.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://cocolint.png"
-dest_files=["res://.godot/imported/cocolint.png-136ead139c3ab4618418a8d5ed5395f1.ctex"]
+source_file="res://map.png"
+dest_files=["res://.godot/imported/map.png-9eea34967fae34f4388f4a32a16da936.ctex"]
 
 [params]
 

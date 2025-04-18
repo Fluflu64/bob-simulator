@@ -510,6 +510,7 @@ texture = ExtResource("5_ys050")
 28:3/0/terrains_peering_bit/top_right_corner = 0
 30:3/0 = 0
 31:3/0 = 0
+31:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 0:4/0 = 0
 0:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:4/0 = 0
@@ -1312,6 +1313,7 @@ texture = ExtResource("5_ys050")
 24:8/animation_frame_2/duration = 0.2
 24:8/0 = 0
 24:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+28:2/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7x7bc"]
 texture = ExtResource("6_xts4l")

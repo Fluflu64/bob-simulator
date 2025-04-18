@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1qpgn2vl2o80"]
+
+[ext_resource type="Texture2D" uid="uid://cakgm66qau8l5" path="res://sprite/tex_demo_end.png" id="1_urwe7"]
+[ext_resource type="PackedScene" uid="uid://dpep2xkq2a4gr" path="res://player_related/scn_interact.tscn" id="2_wyswd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gplbs"]
+size = Vector2(48, 48)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_gplbs")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_urwe7")
+
+[node name="interact" parent="." instance=ExtResource("2_wyswd")]
+visible = false
+scale = Vector2(3, 3)
+lines = ["Déso la démo que tu as ne te permet pas d'aller plus loins...", "Je suis navré...", "attention je ne suis pas un navir !!!", "...", "bref..."]

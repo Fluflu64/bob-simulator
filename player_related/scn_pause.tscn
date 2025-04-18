@@ -1,15 +1,215 @@
-[gd_scene load_steps=4 format=3 uid="uid://ckweq2i3b5lg8"]
+[gd_scene load_steps=10 format=3 uid="uid://ckweq2i3b5lg8"]
 
 [ext_resource type="Texture2D" uid="uid://mibs4jii822c" path="res://player_related/tex_text_box.png" id="1_4ltce"]
 [ext_resource type="Script" path="res://player_related/script_pause.gd" id="1_8x212"]
 [ext_resource type="LabelSettings" uid="uid://bdxtw162r24p7" path="res://base_font.tres" id="2_o6td7"]
+[ext_resource type="AudioStream" uid="uid://dcykfep8vpb4o" path="res://sound_effect/snd_textbox.wav" id="4_t4hj1"]
+
+[sub_resource type="Animation" id="Animation_vuf47"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_uw4xh"]
+resource_name = "bye bye"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("stats_border:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("option_border:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("menu_border:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("infos_border:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ColorRect:color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_1yu1i"]
+resource_name = "close"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("stats_border:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("option_border:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("menu_border:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("infos_border:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_t5yfm"]
+resource_name = "open"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("stats_border:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("option_border:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("menu_border:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("infos_border:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w54is"]
+_data = {
+"RESET": SubResource("Animation_vuf47"),
+"bye bye": SubResource("Animation_uw4xh"),
+"close": SubResource("Animation_1yu1i"),
+"open": SubResource("Animation_t5yfm")
+}
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_8x212")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 256.0
+offset_bottom = 256.0
+color = Color(0, 0, 0, 0)
+
 [node name="stats_border" type="NinePatchRect" parent="."]
+offset_left = 72.0
 offset_top = 216.0
-offset_right = 168.0
+offset_right = 256.0
 offset_bottom = 256.0
 texture = ExtResource("1_4ltce")
 region_rect = Rect2(0, 0, 48, 48)
@@ -25,15 +225,15 @@ offset_top = 8.0
 offset_right = 160.0
 offset_bottom = 32.0
 size_flags_vertical = 0
-text = "Bob lvl 50  9999G
+text = "Bob's lop 50  0 BG
 pv  : 1490/1490
 atk : 2432 def : 29"
 label_settings = ExtResource("2_o6td7")
 vertical_alignment = 3
 
 [node name="option_border" type="NinePatchRect" parent="."]
-offset_right = 96.0
-offset_bottom = 40.0
+offset_right = 72.0
+offset_bottom = 256.0
 texture = ExtResource("1_4ltce")
 region_rect = Rect2(0, 0, 48, 48)
 patch_margin_left = 16
@@ -44,21 +244,23 @@ patch_margin_bottom = 8
 [node name="option_label" type="Label" parent="option_border"]
 layout_mode = 2
 offset_left = 8.0
-offset_top = 4.0
-offset_right = 112.0
-offset_bottom = 44.0
+offset_top = 8.0
+offset_right = 64.0
+offset_bottom = 248.0
 size_flags_vertical = 0
-text = "item
-option
-close
-quit game<"
+text = "item<
+option<
+save<
+load<
+quit<"
 label_settings = ExtResource("2_o6td7")
 
 [node name="menu_border" type="NinePatchRect" parent="."]
 clip_contents = true
-offset_left = 96.0
+offset_left = 72.0
+offset_top = 24.0
 offset_right = 256.0
-offset_bottom = 64.0
+offset_bottom = 216.0
 texture = ExtResource("1_4ltce")
 region_rect = Rect2(0, 0, 48, 48)
 patch_margin_left = 16
@@ -70,22 +272,18 @@ patch_margin_bottom = 8
 layout_mode = 2
 offset_left = 8.0
 offset_top = 8.0
-offset_right = 152.0
-offset_bottom = 72.0
+offset_right = 176.0
+offset_bottom = 56.0
 size_flags_vertical = 0
-text = "item 0
-item 1
-item 2
-item 3
-item 4
-item 5"
+text = "vous n'avez 
+aucuns objet"
 label_settings = ExtResource("2_o6td7")
 clip_text = true
 
 [node name="infos_border" type="NinePatchRect" parent="."]
-offset_top = 40.0
-offset_right = 96.0
-offset_bottom = 64.0
+offset_left = 72.0
+offset_right = 256.0
+offset_bottom = 24.0
 texture = ExtResource("1_4ltce")
 region_rect = Rect2(0, 0, 48, 48)
 patch_margin_left = 16
@@ -96,10 +294,19 @@ patch_margin_bottom = 8
 [node name="infos_label" type="Label" parent="infos_border"]
 layout_mode = 2
 offset_left = 8.0
-offset_top = 4.0
-offset_right = 112.0
-offset_bottom = 12.0
+offset_top = 8.0
+offset_right = 176.0
+offset_bottom = 16.0
 size_flags_vertical = 0
-text = "page 20/20
-99 item(s)"
+text = "0 item(s)"
 label_settings = ExtResource("2_o6td7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_w54is")
+}
+
+[node name="audio" type="AudioStreamPlayer2D" parent="."]
+
+[node name="bip" type="AudioStreamPlayer" parent="audio"]
+stream = ExtResource("4_t4hj1")

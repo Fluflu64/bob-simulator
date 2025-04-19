@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dpep2xkq2a4gr" path="res://player_related/scn_interact.tscn" id="5_x16qu"]
 [ext_resource type="AudioStream" uid="uid://bdfbkaqan2au1" path="res://sound_effect/metal_1.wav" id="5_xg4ak"]
 [ext_resource type="AudioStream" uid="uid://b68a1o3d0qcvw" path="res://sound_effect/metal_2.wav" id="6_5pmsu"]
-[ext_resource type="AudioStream" uid="uid://der68e0ivc1st" path="res://music/friend inside me.ogg" id="6_gfhj5"]
+[ext_resource type="AudioStream" uid="uid://der68e0ivc1st" path="res://music/mus_house.ogg" id="6_gfhj5"]
 [ext_resource type="AudioStream" uid="uid://cxhb0o6h3awmn" path="res://sound_effect/paper_1.wav" id="7_jaiq7"]
 [ext_resource type="Shader" path="res://levels/shad_fog.gdshader" id="7_sj5cr"]
 [ext_resource type="AudioStream" uid="uid://th8bxxvdjt1c" path="res://music/mus_sad_song.ogg" id="7_xn5lp"]

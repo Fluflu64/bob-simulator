@@ -25,6 +25,16 @@ var config = ConfigFile.new()
 
 var why = 0
 
+func main_menu_pause(pause):
+	if pause :
+		title.set_process_mode(PROCESS_MODE_DISABLED)
+	else :
+		title.set_process_mode(PROCESS_MODE_INHERIT)
+
+func open_submenu(submenu):
+	var submenu_inst = submenu.instantiate()
+	textbox.add_child(submenu_inst)
+
 func _ready():
 	title.game_root = self
 	load_why()

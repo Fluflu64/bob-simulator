@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cspbme0evtjet" path="res://levels/scn_level_base.tscn" id="1_06qc7"]
 [ext_resource type="TileSet" uid="uid://buirtyrql2dqy" path="res://levels/maine_tileset.tres" id="2_yy615"]
 [ext_resource type="PackedScene" uid="uid://b72hnw6scal35" path="res://levels/scn_teleportation.tscn" id="3_otnrm"]
-[ext_resource type="AudioStream" uid="uid://der68e0ivc1st" path="res://music/friend inside me.ogg" id="4_wfvsw"]
+[ext_resource type="AudioStream" uid="uid://der68e0ivc1st" path="res://music/mus_house.ogg" id="4_wfvsw"]
 
 [node name="level" instance=ExtResource("1_06qc7")]
 map_name = ""

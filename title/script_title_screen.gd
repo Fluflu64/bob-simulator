@@ -16,6 +16,8 @@ extends CanvasLayer
 
 @onready var rng = $Label4
 
+@onready var optionmenu = preload("res://title/scn_option_menu.tscn")
+
 var instru_read = false
 var menu_lock = false
 
@@ -34,7 +36,9 @@ func func_menu(index):
 		bip.playing = false
 		game_root.load_game()
 	if index == 2 :
-		pass
+		hide()
+		game_root.open_submenu(optionmenu)
+		game_root.main_menu_pause(true)
 	if index == 3 :
 		music.playing = false
 		bip.playing = false

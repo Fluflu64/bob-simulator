@@ -445,7 +445,7 @@ offset_top = 232.0
 offset_right = 248.0
 offset_bottom = 240.0
 text = "bob simulator : Fluflu 64 202X
-DEMO beta 0.10.1"
+DEMO beta 0.10.2"
 label_settings = ExtResource("3_ssomm")
 
 [node name="Label4" type="Label" parent="."]

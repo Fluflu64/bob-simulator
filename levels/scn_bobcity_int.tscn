@@ -1783,7 +1783,7 @@ position = Vector2(840, 604)
 shape = SubResource("RectangleShape2D_2yx4e")
 
 [node name="StaticBody2D2" parent="." index="16" instance=ExtResource("29_qgolp")]
-position = Vector2(-88, 456)
+position = Vector2(-56, 456)
 
 [node name="StaticBody2D9" parent="." index="17" instance=ExtResource("29_qgolp")]
 position = Vector2(376, -528)

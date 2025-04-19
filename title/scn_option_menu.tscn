@@ -1,26 +1,103 @@
-[gd_scene load_steps=15 format=3 uid="uid://d3u5mdb0d3110"]
+[gd_scene load_steps=27 format=3 uid="uid://d3u5mdb0d3110"]
 
 [ext_resource type="Texture2D" uid="uid://mibs4jii822c" path="res://player_related/tex_text_box.png" id="1_domdl"]
 [ext_resource type="Script" path="res://title/script_option_menu.gd" id="1_ia65k"]
 [ext_resource type="LabelSettings" uid="uid://bdxtw162r24p7" path="res://base_font.tres" id="2_8p8qi"]
 [ext_resource type="FontFile" uid="uid://b6nqix3g6iv3i" path="res://pixelfont.ttf" id="2_cqyl1"]
+[ext_resource type="Texture2D" uid="uid://q8mfkcin251l" path="res://music/icone/tex_music_underworld.png" id="5_221c8"]
 [ext_resource type="AudioStream" uid="uid://bnmsn5u64bnb3" path="res://music/castle.ogg" id="5_iw3db"]
+[ext_resource type="Texture2D" uid="uid://djye8dft81dkt" path="res://music/icone/tex_music_battle.png" id="6_elfd7"]
 [ext_resource type="AudioStream" uid="uid://der68e0ivc1st" path="res://music/mus_house.ogg" id="6_wxai3"]
 [ext_resource type="AudioStream" uid="uid://b40vkk5xfr4ni" path="res://music/mus_battle_test.ogg" id="7_1bxhh"]
+[ext_resource type="Texture2D" uid="uid://0ngl0rswt6m6" path="res://music/icone/tex_music_castle.png" id="7_2d06i"]
+[ext_resource type="Texture2D" uid="uid://cem5xq5rsvxtu" path="res://music/icone/tex_music_city.png" id="8_h840s"]
 [ext_resource type="AudioStream" uid="uid://bxpxnkx687gim" path="res://music/mus_castle.ogg" id="8_ionq7"]
+[ext_resource type="Texture2D" uid="uid://m3hm30tji2uj" path="res://music/icone/tex_music_house.png" id="9_2qtp1"]
 [ext_resource type="AudioStream" uid="uid://dyf14mn1p7p05" path="res://music/mus_city.ogg" id="9_80npn"]
 [ext_resource type="AudioStream" uid="uid://th8bxxvdjt1c" path="res://music/mus_sad_song.ogg" id="10_7nklj"]
+[ext_resource type="Texture2D" uid="uid://vxdgeg5rnibn" path="res://music/icone/tex_music_sad.png" id="10_ci3cf"]
 [ext_resource type="AudioStream" uid="uid://dbfcxmp730cyw" path="res://music/mus_shop.ogg" id="11_osa6g"]
+[ext_resource type="Texture2D" uid="uid://4ga303x05epx" path="res://music/icone/tex_music_shop.png" id="11_qsl83"]
+[ext_resource type="Texture2D" uid="uid://ba1mrftiy1uvp" path="res://music/icone/tex_music_title.png" id="12_fsmbq"]
 [ext_resource type="AudioStream" uid="uid://cnsw4ybybgh1w" path="res://music/mus_title.ogg" id="12_vef4p"]
 [ext_resource type="AudioStream" uid="uid://b7jvyjmvsljmw" path="res://music/mus_version final.wav" id="13_r1svm"]
+[ext_resource type="Texture2D" uid="uid://dw5fpxwas10es" path="res://tex_bob_ico.png" id="13_ses5l"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3uauj"]
 line_spacing = 8.0
 font = ExtResource("2_cqyl1")
 font_size = 8
 
+[sub_resource type="Animation" id="Animation_uig1m"]
+resource_name = "close"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_1pyju"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b2jr3"]
+_data = {
+"RESET": SubResource("Animation_1pyju"),
+"close": SubResource("Animation_uig1m")
+}
+
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_ia65k")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+z_index = 1
+offset_right = 256.0
+offset_bottom = 256.0
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 offset_right = 96.0
@@ -107,6 +184,55 @@ patch_margin_top = 16
 patch_margin_right = 16
 patch_margin_bottom = 16
 
+[node name="reset" type="Sprite2D" parent="NinePatchRect4"]
+visible = false
+position = Vector2(48, 48)
+
+[node name="castle" type="Sprite2D" parent="NinePatchRect4"]
+visible = false
+position = Vector2(48, 48)
+texture = ExtResource("5_221c8")
+
+[node name="battle" type="Sprite2D" parent="NinePatchRect4"]
+visible = false
+position = Vector2(48, 48)
+texture = ExtResource("6_elfd7")
+
+[node name="castle2" type="Sprite2D" parent="NinePatchRect4"]
+visible = false
+position = Vector2(48, 48)
+texture = ExtResource("7_2d06i")
+
+[node name="city" type="Sprite2D" parent="NinePatchRect4"]
+visible = false
+position = Vector2(48, 48)
+texture = ExtResource("8_h840s")
+
+[node name="house" type="Sprite2D" parent="NinePatchRect4"]
+visible = false
+position = Vector2(48, 48)
+texture = ExtResource("9_2qtp1")
+
+[node name="sad" type="Sprite2D" parent="NinePatchRect4"]
+visible = false
+position = Vector2(48, 48)
+texture = ExtResource("10_ci3cf")
+
+[node name="shop" type="Sprite2D" parent="NinePatchRect4"]
+visible = false
+position = Vector2(48, 48)
+texture = ExtResource("11_qsl83")
+
+[node name="title" type="Sprite2D" parent="NinePatchRect4"]
+visible = false
+position = Vector2(48, 48)
+texture = ExtResource("12_fsmbq")
+
+[node name="win" type="Sprite2D" parent="NinePatchRect4"]
+visible = false
+position = Vector2(48, 48)
+texture = ExtResource("13_ses5l")
+
 [node name="soundtest_music" type="AudioStreamPlayer2D" parent="."]
 
 [node name="reset" type="AudioStreamPlayer" parent="soundtest_music"]
@@ -137,3 +263,8 @@ stream = ExtResource("12_vef4p")
 
 [node name="mus_version final" type="AudioStreamPlayer" parent="soundtest_music"]
 stream = ExtResource("13_r1svm")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_b2jr3")
+}

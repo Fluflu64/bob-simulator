@@ -36,9 +36,9 @@ func func_menu(index):
 		bip.playing = false
 		game_root.load_game()
 	if index == 2 :
-		hide()
 		game_root.open_submenu(optionmenu)
 		game_root.main_menu_pause(true)
+		print("oui")
 	if index == 3 :
 		music.playing = false
 		bip.playing = false
@@ -102,7 +102,7 @@ func _input(event: InputEvent) -> void:
 			index_menu = 0
 		if index_menu > len(label_menu)-1 :
 			index_menu = len(label_menu)-1
-		if event.is_action_pressed("interact") :
+		if Input.is_action_just_pressed("interact") :
 			bip.play()
 			func_menu(index_menu)
 	else :

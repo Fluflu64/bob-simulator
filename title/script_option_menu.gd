@@ -8,8 +8,12 @@ var index_submenu = -1
 @onready var detail_label = $NinePatchRect3/Label2
 
 @onready var ost = $soundtest_music
+@onready var ost_ico = $NinePatchRect4
+@onready var animation = $AnimationPlayer
 
 var in_submenu = false
+
+var game_root = null
 
 var menu_name = ["rapide","jeu","vidéo","audio","soundtest","retour"]
 
@@ -77,7 +81,7 @@ func _input(event: InputEvent) -> void:
 			if index_submenu < 0 :
 				index_submenu = 0
 	
-	if event.is_action_pressed("interact"):
+	if Input.is_action_just_pressed("interact"):
 		if in_submenu == false and len(submenu_name[index_menu]) != 0:
 			in_submenu = true
 			index_submenu = 0
@@ -85,8 +89,17 @@ func _input(event: InputEvent) -> void:
 		if index_menu == 4 and in_submenu:
 			for music in ost.get_children() :
 				music.playing = false
+			for ico in ost_ico.get_children() :
+				ico.hide()
 			ost.get_child(index_submenu).playing = true
-			print(ost.get_child(index_submenu).playing)
+			ost_ico.get_child(index_submenu).show()
+			
+		
+		if index_menu == 5 and not in_submenu:
+			animation.play("close")
+			await animation.animation_finished
+			game_root.main_menu_pause(false)
+			queue_free()
 		
 	if event.is_action_pressed("run"):
 		if in_submenu == true :
@@ -94,11 +107,15 @@ func _input(event: InputEvent) -> void:
 			index_submenu = -1
 			for music in ost.get_children() :
 				music.playing = false
+			for ico in ost_ico.get_children() :
+				ico.hide()
 	
 	if in_submenu == false :
 		detail_label.text = info_name[index_menu][0]
 	else :
 		if index_menu != 4 :
 			detail_label.text = info_name[index_menu][1][index_submenu]
+		else :
+			detail_label.text = "les images on été prise en beta 0.10.3"
 	update_menu()
 	

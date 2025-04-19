@@ -27,12 +27,15 @@ var why = 0
 
 func main_menu_pause(pause):
 	if pause :
+		title.hide()
 		title.set_process_mode(PROCESS_MODE_DISABLED)
 	else :
+		title.show()
 		title.set_process_mode(PROCESS_MODE_INHERIT)
 
 func open_submenu(submenu):
 	var submenu_inst = submenu.instantiate()
+	submenu_inst.game_root = self
 	textbox.add_child(submenu_inst)
 
 func _ready():

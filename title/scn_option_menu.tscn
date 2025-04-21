@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://d3u5mdb0d3110"]
+[gd_scene load_steps=37 format=3 uid="uid://d3u5mdb0d3110"]
 
 [ext_resource type="Texture2D" uid="uid://mibs4jii822c" path="res://player_related/tex_text_box.png" id="1_domdl"]
 [ext_resource type="Script" path="res://title/script_option_menu.gd" id="1_ia65k"]
@@ -22,11 +22,48 @@
 [ext_resource type="AudioStream" uid="uid://cnsw4ybybgh1w" path="res://music/mus_title.ogg" id="12_vef4p"]
 [ext_resource type="AudioStream" uid="uid://b7jvyjmvsljmw" path="res://music/mus_version final.wav" id="13_r1svm"]
 [ext_resource type="Texture2D" uid="uid://dw5fpxwas10es" path="res://tex_bob_ico.png" id="13_ses5l"]
+[ext_resource type="Texture2D" uid="uid://uhuvwxkb231h" path="res://music/icone/tex_battle_2.png" id="14_663my"]
+[ext_resource type="Texture2D" uid="uid://dqltkxdorodr8" path="res://music/icone/tex_dark_city.png" id="14_wvjky"]
+[ext_resource type="Texture2D" uid="uid://c70uuqw7t3p1p" path="res://music/icone/tex_fly.png" id="15_goi1m"]
+[ext_resource type="Texture2D" uid="uid://bqvbabkbgm81a" path="res://music/icone/tex_music_overworld.png" id="17_bbyci"]
+[ext_resource type="AudioStream" uid="uid://co4xqo40u0dax" path="res://music/battle_theme.ogg" id="23_4l62r"]
+[ext_resource type="AudioStream" uid="uid://dt1hw2ea6tml1" path="res://music/fly or cry.ogg" id="24_lu1cm"]
+[ext_resource type="AudioStream" uid="uid://ckw5lae87e2if" path="res://music/mus_dark_city.wav" id="25_g8ap3"]
+[ext_resource type="AudioStream" uid="uid://dhbbonkvexhek" path="res://music/overworld.wav" id="30_c7mbx"]
+[ext_resource type="AudioStream" uid="uid://ba22mko7h3oxe" path="res://music/pololompololom pompompololommm.wav" id="31_vdfqy"]
+[ext_resource type="AudioStream" uid="uid://be1sxgjgalasj" path="res://music/bobaround.wav" id="32_8mvgg"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3uauj"]
 line_spacing = 8.0
 font = ExtResource("2_cqyl1")
 font_size = 8
+
+[sub_resource type="Animation" id="Animation_1pyju"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_uig1m"]
 resource_name = "close"
@@ -55,33 +92,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 0, 0, 0), Color(0, 0, 0, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_1pyju"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("ColorRect:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b2jr3"]
@@ -233,6 +243,35 @@ visible = false
 position = Vector2(48, 48)
 texture = ExtResource("13_ses5l")
 
+[node name="battle_2" type="Sprite2D" parent="NinePatchRect4"]
+visible = false
+position = Vector2(48, 48)
+texture = ExtResource("14_663my")
+
+[node name="fly" type="Sprite2D" parent="NinePatchRect4"]
+visible = false
+position = Vector2(48, 48)
+texture = ExtResource("15_goi1m")
+
+[node name="dark" type="Sprite2D" parent="NinePatchRect4"]
+visible = false
+position = Vector2(48, 48)
+texture = ExtResource("14_wvjky")
+
+[node name="over" type="Sprite2D" parent="NinePatchRect4"]
+visible = false
+position = Vector2(48, 48)
+texture = ExtResource("17_bbyci")
+
+[node name="pom" type="Sprite2D" parent="NinePatchRect4"]
+visible = false
+position = Vector2(48, 48)
+texture = ExtResource("14_wvjky")
+
+[node name="bobaround" type="Sprite2D" parent="NinePatchRect4"]
+position = Vector2(48, 48)
+texture = ExtResource("17_bbyci")
+
 [node name="soundtest_music" type="AudioStreamPlayer2D" parent="."]
 
 [node name="reset" type="AudioStreamPlayer" parent="soundtest_music"]
@@ -263,6 +302,24 @@ stream = ExtResource("12_vef4p")
 
 [node name="mus_version final" type="AudioStreamPlayer" parent="soundtest_music"]
 stream = ExtResource("13_r1svm")
+
+[node name="battle_theme" type="AudioStreamPlayer" parent="soundtest_music"]
+stream = ExtResource("23_4l62r")
+
+[node name="fly or cry" type="AudioStreamPlayer" parent="soundtest_music"]
+stream = ExtResource("24_lu1cm")
+
+[node name="mus_dark_city" type="AudioStreamPlayer" parent="soundtest_music"]
+stream = ExtResource("25_g8ap3")
+
+[node name="overworld" type="AudioStreamPlayer" parent="soundtest_music"]
+stream = ExtResource("30_c7mbx")
+
+[node name="pololompololom pompompololommm" type="AudioStreamPlayer" parent="soundtest_music"]
+stream = ExtResource("31_vdfqy")
+
+[node name="bobaround" type="AudioStreamPlayer" parent="soundtest_music"]
+stream = ExtResource("32_8mvgg")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

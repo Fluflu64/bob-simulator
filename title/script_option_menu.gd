@@ -98,6 +98,7 @@ func _input(event: InputEvent) -> void:
 		if index_menu == 5 and not in_submenu:
 			animation.play("close")
 			await animation.animation_finished
+			game_root.title.setup()
 			game_root.main_menu_pause(false)
 			queue_free()
 		

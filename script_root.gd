@@ -1,5 +1,15 @@
 extends Node
 
+var save_name = "bob.save"
+var save_path = "res://" + save_name
+
+var alter_loading_og = preload("res://tex_load_ico_alter000.png")
+var alter_loading = preload("res://tex_load_ico_alter001.png")
+var alter_loading_pet = preload("res://tex_load_ico_alter002.png")
+var alter_loading_b3313 = preload("res://tex_load_ico_alter003.png")
+var alter_loading_chara = preload("res://tex_load_ico_alter004.png")
+@onready var sprite_loading_screen = $game_view/ColorRect/Sprite2D
+
 @onready var game = $viewport/game_sub_viewport/game
 @onready var battle = $viewport/battle
 @onready var title = $viewport/main_menu
@@ -47,6 +57,25 @@ func _ready():
 		if why < 10 :
 			rng_to_show = "0" + rng_to_show
 	title.rng.text = rng_to_show
+	if why == 1 :
+		sprite_loading_screen.texture = alter_loading_og
+		title.sprite_loading_screen.texture = alter_loading_og
+	
+	if why == 99 :
+		sprite_loading_screen.texture = alter_loading_chara
+		title.sprite_loading_screen.texture = alter_loading_chara
+	
+	if why == 08 or why == 80 or why == 88 :
+		sprite_loading_screen.texture = alter_loading
+		title.sprite_loading_screen.texture = alter_loading
+	
+	if why == 33 or why == 13 :
+		sprite_loading_screen.texture = alter_loading_b3313
+		title.sprite_loading_screen.texture = alter_loading_b3313
+	
+	if why == 17 :
+		sprite_loading_screen.texture = alter_loading_pet
+		title.sprite_loading_screen.texture = alter_loading_pet
 
 func load_level(path:String,spawn_name:String,transition:int = 0):
 	var show_msg = false
@@ -100,6 +129,10 @@ func start_game():
 	load_level("res://levels/scn_bobcity_int.tscn","game start",3)
 
 func start_infos():
+	title.animation.play("load")
+	await title.animation.animation_finished
+	animation.play("transition_on")
+	await animation.animation_finished
 	title.setup()
 	title.set_process_mode(PROCESS_MODE_DISABLED)
 	title.hide()
@@ -109,16 +142,18 @@ func start_infos():
 	player.infos_mode = true
 	game.add_child(player_instance)
 	load_level("res://levels/scn_infos_map.tscn","spawn_base",3)
+	animation.play("transition_off")
+	await animation.animation_finished
 
 func end_game():
 	title.set_process_mode(PROCESS_MODE_INHERIT)
 	title.setup()
 	title.show()
-	
-	for elem in textbox.get_children():
-		elem.queue_free()
 	for elem in game.get_children():
 		elem.queue_free()
+	for elem in textbox.get_children():
+		elem.queue_free()
+	
 	for elem in battle.get_children():
 		elem.queue_free()
 	
@@ -213,32 +248,37 @@ func save_game():
 	config.set_value("player","map",actual_level_path)
 	config.set_value("player","level",player.lvl)
 	config.set_value("player","story",player.story)
-	config.save("res://bob_simulator.cfg")
+	config.save(save_path)
 	map_name_label.text = "partie sauvegarder"
 	animation.play("welcome")
 
 func load_game():
-	var save_load = config.load("res://bob_simulator.cfg")
+	var save_load = config.load(save_path)
+	title.menu_lock = true
 	if save_load == OK :
 		if player == null :
-			title.setup()
-			title.set_process_mode(PROCESS_MODE_DISABLED)
-			title.hide()
 			var player_instance = player_scene.instantiate()
 			player_instance.game_root = self
 			player = player_instance
 			game.add_child(player_instance)
 		player.set_process_mode(PROCESS_MODE_DISABLED)
-		#animation.play("transition_on")
-		#await animation.animation_finished
+		if title.visible :
+			title.animation.play("load")
+			await title.animation.animation_finished
+		animation.play("transition_on")
+		await animation.animation_finished
+		
+		title.setup()
+		title.set_process_mode(PROCESS_MODE_DISABLED)
+		title.hide()
 		actual_level_path = config.get_value("player","map")
 		player.position = config.get_value("player","position")
 		player.update_camera()
 		player.lvl = config.get_value("player","level")
 		player.story = config.get_value("player","story")
 		load_level(actual_level_path,"-1",3)
-		#animation.play("transition_off")
-		#await animation.animation_finished
+		animation.play("transition_off")
+		await animation.animation_finished
 		player.frame_direction = 0
 		player.animation.play("idle")
 		player.sprite.frame_coords = Vector2(0,0)
@@ -247,15 +287,16 @@ func load_game():
 		animation.play("welcome")
 
 func load_why():
-	var why_load = config.load("res://bob_simulator.cfg")
-	if why_load == OK :
+	
+	var why_load = config.load(save_path)
+	if why_load != null :
 		if config.get_value("why","why") :
 			why = config.get_value("why","why")
 		else :
-			why = randi_range(0,100)
+			why = randi_range(1,100)
 			config.set_value("why","why",why)
-			config.save("res://bob_simulator.cfg")
+			config.save(save_path)
 	else :
-		why = randi_range(0,100)
+		why = randi_range(1,100)
 		config.set_value("why","why",why)
-		config.save("res://bob_simulator.cfg")
+		config.save(save_path)

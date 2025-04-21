@@ -16,7 +16,7 @@ var max_player_pv = 20
 var player_atk = 2.0
 var player_dfs = 2.0
 var player_lvl = 1
-var label_menu = ["item","option","save","load","menu","quit"]
+var label_menu = ["item","save","load","menu","quit"]
 var text_select = "<"
 var index_menu = 0
 
@@ -25,27 +25,23 @@ func func_menu(index):
 		pass
 	
 	if index == 1 :
-		pass
-	
-	if index == 2 :
 		animation.play("close")
 		await animation.animation_finished
 		game_root.save_game()
 		queue_free()
 	
-	if index == 3 :
+	if index == 2 :
 		animation.play("close")
 		await animation.animation_finished
 		game_root.load_game()
 		queue_free()
 	
-	if index == 4 :
+	if index == 3 :
 		animation.play("bye bye")
 		await animation.animation_finished
-		print("quit")
 		game_root.end_game()
 	
-	if index == 5 :
+	if index == 4 :
 		get_tree().quit()
 
 func _ready() -> void:

@@ -77,22 +77,27 @@ position = Vector2(0, -24)
 lines = ["c'est le premier sprite de bob", "c'est un template donc pas bob detective", "9 avril 2024"]
 sprite_hide = false
 
-[node name="interact2" parent="node_interact" index="1" instance=ExtResource("9_ayrjm")]
+[node name="interact6" parent="node_interact" index="1" instance=ExtResource("9_ayrjm")]
+position = Vector2(-40, -24)
+lines = ["Dans un monde ou tous le monde s'appelle [color=ff0000]Bob[/color], tous les livres son renomée depuis des millénaire .", "[color=ff0000]Bob[/color] découvre un livre dans lequel le un prénom n'a pas été modifié .", "[color=ff0000]Bob[/color] decide de voyager dans le temps avec la bobloreane du docteur [color=00ff00]Bob[/color].", "Ils seront accompagner de [color=000000]Bob[/color]et de [color=0000ff]Bob[/color] .", "Ils partent de 3808 pour arrivée en 2404 .", "En plus d'avoir provoqué un paradoxe temporelle , ils rencontre de multitude de gens qui ne s'appelle pas Bob !!", "Ils font la rencontre de Robert , alcolique drogué haïssant l'idée de sont frère Bob.", "Ils retourne en l'an 3808 pour renverser le gouvernement :", " Le Bobisme .", "De nombreurx Bobs participent à la guerre de 200 Bobs .", "TEM , l'unique devient 5,6 ème ministre et [color=ff0000]Bob[/color] devient the fourth Bob après the theird Bob.", "To be continued"]
+sprite_hide = false
+
+[node name="interact2" parent="node_interact" index="2" instance=ExtResource("9_ayrjm")]
 position = Vector2(96, -24)
 lines = ["ce sprite est dans le style des jeux paper mario", "c'est à un moment ou j'ai decider d'avoir un jeu en 3D", "6 mai 2024"]
 sprite_hide = false
 
-[node name="interact3" parent="node_interact" index="2" instance=ExtResource("9_ayrjm")]
+[node name="interact3" parent="node_interact" index="3" instance=ExtResource("9_ayrjm")]
 position = Vector2(192, -24)
 lines = ["c'est une autre itération du style paper mario", "il avait un cigar...", "25 avril 2024"]
 sprite_hide = false
 
-[node name="interact4" parent="node_interact" index="3" instance=ExtResource("9_ayrjm")]
+[node name="interact4" parent="node_interact" index="4" instance=ExtResource("9_ayrjm")]
 position = Vector2(288, -24)
 lines = ["c'est un retour à la 2D et aux pixel art", "je crois que cette version n'as jamais vraimant commencé", "j'ai donc pas grand chose à rajouter...", "21 octorbre 2024"]
 sprite_hide = false
 
-[node name="interact5" parent="node_interact" index="4" instance=ExtResource("9_ayrjm")]
+[node name="interact5" parent="node_interact" index="5" instance=ExtResource("9_ayrjm")]
 position = Vector2(384, -24)
 lines = ["cette version viens du proto juste avant ce jeu", "il etait en vu de coté!!!", "22 décembre 2024"]
 sprite_hide = false

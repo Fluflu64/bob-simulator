@@ -6,6 +6,8 @@ extends CanvasLayer
 @onready var music = $audio/music
 @onready var animation = $AnimationPlayer
 @onready var instruction = $ColorRect
+@onready var sprite_loading_screen = $Sprite2D
+
 
 @onready var title = $TexCompleteTitle
 @onready var label = $Label3

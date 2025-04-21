@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dt1hw2ea6tml1"
+path="res://.godot/imported/fly or cry.ogg-8274ddd14cda99a0d920fed5a49852ed.oggvorbisstr"
+
+[deps]
+
+source_file="res://music/fly or cry.ogg"
+dest_files=["res://.godot/imported/fly or cry.ogg-8274ddd14cda99a0d920fed5a49852ed.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

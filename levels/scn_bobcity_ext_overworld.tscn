@@ -129,93 +129,93 @@ scale = Vector2(1, 2.1)
 
 [node name="feuille_1" parent="node_interact" index="1" instance=ExtResource("3_lqc5e")]
 position = Vector2(216, 136)
-lines = ["ceci est une feuille de papier", "oui , les bobs ne sont pas écolo"]
+lines = Array[String](["ceci est une feuille de papier", "oui , les bobs ne sont pas écolo"])
 
 [node name="feuille_2" parent="node_interact" index="2" instance=ExtResource("3_lqc5e")]
 position = Vector2(200, 200)
-lines = ["ceci est une feuille de papier", "oui ,elle est collé au mur"]
+lines = Array[String](["ceci est une feuille de papier", "oui ,elle est collé au mur"])
 
 [node name="feuille_3" parent="node_interact" index="3" instance=ExtResource("3_lqc5e")]
 position = Vector2(120, 200)
-lines = ["ceci est une feuille de papier", "oui ,elle est collé au mur"]
+lines = Array[String](["ceci est une feuille de papier", "oui ,elle est collé au mur"])
 
 [node name="feuille_4" parent="node_interact" index="4" instance=ExtResource("3_lqc5e")]
 position = Vector2(248, 200)
-lines = ["ceci est une feuille de papier", "oui , les bobs ne sont pas écolo"]
+lines = Array[String](["ceci est une feuille de papier", "oui , les bobs ne sont pas écolo"])
 
 [node name="feuille_5" parent="node_interact" index="5" instance=ExtResource("3_lqc5e")]
 position = Vector2(168, 152)
-lines = ["ceci est une feuille de papier", "oui , les bobs ne sont pas écolo"]
+lines = Array[String](["ceci est une feuille de papier", "oui , les bobs ne sont pas écolo"])
 
 [node name="feuille_6" parent="node_interact" index="6" instance=ExtResource("3_lqc5e")]
 position = Vector2(56, 120)
-lines = ["ceci est une feuille de papier", "oui , les bobs ne sont pas écolo"]
+lines = Array[String](["ceci est une feuille de papier", "oui , les bobs ne sont pas écolo"])
 
 [node name="interact#interact7" parent="node_interact" index="7" instance=ExtResource("3_lqc5e")]
 position = Vector2(200, 120)
-lines = ["ceci est une flac d'eau", "oui , les bobs ne sont pas propre"]
+lines = Array[String](["ceci est une flac d'eau", "oui , les bobs ne sont pas propre"])
 
 [node name="interact#interact8" parent="node_interact" index="8" instance=ExtResource("3_lqc5e")]
 position = Vector2(24, 296)
-lines = ["ceci est une flac d'eau", "oui , les bobs ne sont pas propre"]
+lines = Array[String](["ceci est une flac d'eau", "oui , les bobs ne sont pas propre"])
 
 [node name="interact#interact17" parent="node_interact" index="9" instance=ExtResource("3_lqc5e")]
 position = Vector2(120, 232)
-lines = ["ceci est une flac d'eau", "oui , les bobs ne sont pas propre"]
+lines = Array[String](["ceci est une flac d'eau", "oui , les bobs ne sont pas propre"])
 
 [node name="interact#interact9" parent="node_interact" index="10" instance=ExtResource("3_lqc5e")]
 position = Vector2(88, 344)
-lines = ["ceci est une flac d'eau", "oui , les bobs ne sont pas propre"]
+lines = Array[String](["ceci est une flac d'eau", "oui , les bobs ne sont pas propre"])
 
 [node name="interact#interact10" parent="node_interact" index="11" instance=ExtResource("3_lqc5e")]
 position = Vector2(88, 312)
-lines = ["ceci est une feuille de papier", "oui ,elle est collé au mur"]
+lines = Array[String](["ceci est une feuille de papier", "oui ,elle est collé au mur"])
 
 [node name="interact#interact11" parent="node_interact" index="12" instance=ExtResource("3_lqc5e")]
 position = Vector2(216, 312)
-lines = ["ceci est une feuille de papier", "oui ,elle est collé au mur"]
+lines = Array[String](["ceci est une feuille de papier", "oui ,elle est collé au mur"])
 
 [node name="interact#interact12" parent="node_interact" index="13" instance=ExtResource("3_lqc5e")]
 position = Vector2(248, 312)
-lines = ["ceci est une feuille de papier", "oui ,elle est collé au mur"]
+lines = Array[String](["ceci est une feuille de papier", "oui ,elle est collé au mur"])
 
 [node name="interact#interact13" parent="node_interact" index="14" instance=ExtResource("3_lqc5e")]
 position = Vector2(24, 360)
-lines = ["ceci est une feuille de papier", "oui ,elle est collé au mur"]
+lines = Array[String](["ceci est une feuille de papier", "oui ,elle est collé au mur"])
 
 [node name="interact#interact14" parent="node_interact" index="15" instance=ExtResource("3_lqc5e")]
 position = Vector2(88, 200)
-lines = ["ceci est une feuille de papier", "oui ,elle est collé au mur"]
+lines = Array[String](["ceci est une feuille de papier", "oui ,elle est collé au mur"])
 
 [node name="cheat_sheet" parent="node_interact" index="16" instance=ExtResource("3_lqc5e")]
 position = Vector2(8, 40)
-lines = ["ceci est une feuille de papier...", "cependant...", "Outre le fait que cette feuille de soit par terre...", "Rendant les bobs peu écolo...", "Il y a un probleme...", "comment peut tu lire cette feuille...", "quelque chose ne va pas...", "J'y voit tout de même 3 solutions...", "1er soluce", "Cette feuille est totalment accessible...", "my bad...", "2nd soluce", "T'as trouver ou exploiter un bug...", "bravo !!! mais bon...", "Il reste une solution et elle ne me va pas...", "Cette solution c'est  que tu as modifier ta save !!!", "Et ce n'est pas gentil du tout!!!", "Je sais pas si c'esst facile ou non !!! ", "Du coup pour te punir je vais te garder ici", "Cependant je ne sais pas quoi dire..", "Ah !!! si je vais te réciter le wiki des pâtes !!!", "On vas commencé avec les penne, classic et efficace . Spaghetti , les meilleurs. Farfalle c'est des papillons. Linguine c'est de gros spaghetti. Fusilli ça fait le taf...", "vous connaissez les \"canadian bee\" ?", "il y a aussi les \"US bee\" !!!", "Vous avez deja vu un combat de sous-marin ?", "...", "OH !!! on m'informe que mr propre a disparu !!!", "Mais il n'y a pas de traces...", "vous saviez que logista HomeTech a copié alpha dream", "Faut savoir que ce dialogue est écrit en cours d'espagnol", null, null]
+lines = Array[String]([])
 
 [node name="int_door_c" parent="node_interact" index="17" instance=ExtResource("3_lqc5e")]
 position = Vector2(24, 120)
-lines = ["entré C"]
+lines = Array[String](["entré C"])
 
 [node name="int_shop1" parent="node_interact" index="18" instance=ExtResource("3_lqc5e")]
 position = Vector2(136, 88)
-lines = ["pharmacie"]
+lines = Array[String](["pharmacie"])
 
 [node name="int_door_b" parent="node_interact" index="19" instance=ExtResource("3_lqc5e")]
 position = Vector2(152, 216)
-lines = ["entré B"]
+lines = Array[String](["entré B"])
 
 [node name="int_board" parent="node_interact" index="20" instance=ExtResource("3_lqc5e")]
 position = Vector2(120, 152)
 scale = Vector2(3, 1)
-lines = ["bob cambriolleur a cambriolé la bijouterie", "insolite un bob trouve un autre pas bob"]
+lines = Array[String](["bob cambriolleur a cambriolé la bijouterie", "insolite un bob trouve un autre pas bob"])
 
 [node name="interact#int_city_hotel" parent="node_interact" index="21" instance=ExtResource("3_lqc5e")]
 position = Vector2(40, 248)
-lines = ["mairie"]
+lines = Array[String](["mairie"])
 
 [node name="interact#int_bob_house" parent="node_interact" index="22" instance=ExtResource("3_lqc5e")]
 position = Vector2(216, 72)
-lines = ["chez bob"]
+lines = Array[String](["chez bob"])
 
 [node name="interact#int_door_a" parent="node_interact" index="23" instance=ExtResource("3_lqc5e")]
 position = Vector2(120, 360)
-lines = ["entré A"]
+lines = Array[String](["entré A"])

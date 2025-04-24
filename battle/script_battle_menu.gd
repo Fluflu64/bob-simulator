@@ -8,14 +8,6 @@ extends Node2D
 @onready var label_histo = $background/historic_border/historic_label
 @onready var music = $AudioStreamPlayer2D/AudioStreamPlayer
 
-@onready var marker = $background/attack_border/Node2D
-@onready var debug_square = $background/attack_border/ColorRect2
-var marker_position = Vector2(0,0)
-var marker_speed = 0.05
-var marker_radius = 32
-var player_has_atk = false
-
-@onready var en_sprite = $background/enemie_sprite
 @export var game_root = null
 @export var player = null
 
@@ -35,8 +27,8 @@ var ennemi_atk = 2.0
 var ennemi_dfs = 1.0
 
 var histo = [\
-"test",
-"kayou",
+"",
+"",
 "",
 "",
 "",
@@ -58,12 +50,9 @@ func update_player():
 func func_menu(index):
 	if index == 0 :
 		battle_lock = true
-		marker_radius = 32
-		marker_position = Vector2.ZERO
 		animation.play("menu_show")
 		await animation.animation_finished
 		index_menu = 9
-		player_has_atk = true
 		
 		
 		
@@ -116,6 +105,8 @@ func func_menu(index):
 		update_histo()
 
 func _ready() -> void:
+	update_histo()
+	update_menu()
 	circle.show()
 	animation.play("battle start")
 	index_menu = 0
@@ -158,52 +149,26 @@ func _input(event: InputEvent) -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	if player_has_atk :
-		marker_position += Vector2(marker_speed,marker_speed)
-		marker.position = Vector2(cos(marker_position.x)*marker_radius+44,sin(marker_position.y)*marker_radius+44)
-		debug_square.position = round((marker.position)/24)*24 - Vector2(16,16)
-		marker_radius -= marker_speed
-		if marker_radius < 0 :
-			marker_radius = 0
-	stats_label.text = "bob : pv "+str(player_pv)+"/"+ str(max_player_pv) +" \ncarte man : pv " + str(ennemei_pv)+"/"+ str(max_ennemie_pv)
-	if index_menu == 9 :
-		if marker_radius == 0 :
-			player_has_atk = false
-			index_menu = 0
-			
-			histo.append("bob est inactif...")
-			update_histo()
-			
-			battle_lock = false
-			tour = 1
-	if index_menu == 9 :
-		if marker_radius == 0 :
-			player_has_atk = false
-			index_menu = 0
-			
-			histo.append("bob est inactif...")
-			update_histo()
-			
-			battle_lock = false
-			tour = 1
+	stats_label.text = "bob : pv "+str(player_pv)+"/"+ str(max_player_pv) +" \n" + ennemi_name + " : pv " + str(ennemei_pv)+"/"+ str(max_ennemie_pv)
 		
-		if Input.is_action_just_pressed("interact") :
-			player_has_atk = false
-			index_menu = 0
+	if index_menu == 9 :
 		
-			battle_anime.play("player_atk")
-			await battle_anime.animation_finished
-			
-			var attack = ceil(player_atk / ennemi_dfs)
-			ennemei_pv -= attack
-			histo.append("bob atk " + str(attack))
-			update_histo()
-			
-			battle_anime.play("ennemi_hit")
-			await battle_anime.animation_finished
-			
-			battle_lock = false
-			tour = 1
+		index_menu = 0
+		
+		battle_anime.play("player_atk")
+		await battle_anime.animation_finished
+		
+		var attack = ceil(player_atk / ennemi_dfs)
+		ennemei_pv -= attack
+		histo.append("bob atk " + str(attack))
+		update_histo()
+		
+		battle_anime.play("ennemi_hit")
+		await battle_anime.animation_finished
+		
+		battle_lock = false
+		tour = 1
+	
 	if index_menu == 10 :
 		if Input.is_action_just_pressed("interact") :
 			histo.pop_back()

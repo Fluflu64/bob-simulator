@@ -1,10 +1,12 @@
-[gd_scene load_steps=29 format=3 uid="uid://bpslrq66ysgyk"]
+[gd_scene load_steps=31 format=3 uid="uid://bpslrq66ysgyk"]
 
 [ext_resource type="Script" path="res://battle/script_battle_menu.gd" id="2_4suhd"]
 [ext_resource type="Shader" path="res://battle/shader_battle_menu_001.gdshader" id="3_303d0"]
 [ext_resource type="Shader" path="res://battle/shade_circle_transition.gdshader" id="5_ggrxs"]
 [ext_resource type="Texture2D" uid="uid://ctla0pk1phugl" path="res://battle/tex_bg_1.png" id="5_ipyf3"]
 [ext_resource type="LabelSettings" uid="uid://bdxtw162r24p7" path="res://base_font.tres" id="6_m6oif"]
+[ext_resource type="Texture2D" uid="uid://bdul3irogubp7" path="res://battle/tex_battle_arena.png" id="7_dwlo5"]
+[ext_resource type="PackedScene" uid="uid://84d2clfdjgrn" path="res://battle/scn_battle_bob.tscn" id="8_uoed5"]
 [ext_resource type="Texture2D" uid="uid://mibs4jii822c" path="res://player_related/tex_text_box.png" id="9_fmql0"]
 [ext_resource type="AudioStream" uid="uid://b40vkk5xfr4ni" path="res://music/mus_battle_test.ogg" id="10_ow1mv"]
 [ext_resource type="AudioStream" uid="uid://b7jvyjmvsljmw" path="res://music/mus_version final.wav" id="11_861nj"]
@@ -83,6 +85,18 @@ tracks/4/keys = {
 "update": 0,
 "values": [Vector2(-48, -128)]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TexBattleArena:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_3hdgm"]
 resource_name = "battle end"
@@ -110,6 +124,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TexBattleArena:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 256)]
 }
 
 [sub_resource type="Animation" id="Animation_41hr2"]
@@ -139,6 +165,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TexBattleArena:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.6, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 256), Vector2(0, -16), Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_coe3o"]
@@ -401,6 +439,20 @@ position = Vector2(128, 128)
 script = ExtResource("2_4suhd")
 music_battle = ExtResource("10_ow1mv")
 
+[node name="TexBattleArena" type="Sprite2D" parent="."]
+texture = ExtResource("7_dwlo5")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="TexBattleArena"]
+collision_layer = 65536
+collision_mask = 65536
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TexBattleArena/StaticBody2D"]
+build_mode = 1
+polygon = PackedVector2Array(-80, 16, 80, 16, 112, 80, -112, 80)
+
+[node name="CharacterBody2D" parent="TexBattleArena" instance=ExtResource("8_uoed5")]
+position = Vector2(-72, 48)
+
 [node name="background" type="Sprite2D" parent="."]
 
 [node name="earthbound_bg" type="TextureRect" parent="background"]
@@ -436,9 +488,33 @@ offset_top = 8.0
 offset_right = 72.0
 offset_bottom = 40.0
 text = "attaque<
-defense
+action
 item
 flee"
+label_settings = ExtResource("6_m6oif")
+
+[node name="action_border2" type="NinePatchRect" parent="background"]
+offset_left = -128.0
+offset_top = -72.0
+offset_right = -48.0
+texture = ExtResource("9_fmql0")
+region_rect = Rect2(0, 0, 48, 48)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="action_label" type="Label" parent="background/action_border2"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 72.0
+offset_bottom = 40.0
+text = "haut<
+bas<
+gauche<
+droite<
+defense<"
 label_settings = ExtResource("6_m6oif")
 
 [node name="health_border" type="NinePatchRect" parent="background"]

@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://84d2clfdjgrn"]
+
+[ext_resource type="Texture2D" uid="uid://cm0y67224xlny" path="res://player_related/tex_bob.png" id="1_ji2yn"]
+[ext_resource type="Script" path="res://battle/script_battle_bob.gd" id="1_jmpj3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wx76n"]
+size = Vector2(8, 8)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+collision_layer = 65536
+collision_mask = 65536
+script = ExtResource("1_jmpj3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_wx76n")
+
+[node name="TexBob" type="Sprite2D" parent="."]
+position = Vector2(0, -16)
+texture = ExtResource("1_ji2yn")
+offset = Vector2(0, 4)
+hframes = 16
+vframes = 8

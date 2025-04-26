@@ -1,18 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://84d2clfdjgrn"]
+[gd_scene load_steps=5 format=3 uid="uid://84d2clfdjgrn"]
 
 [ext_resource type="Texture2D" uid="uid://cm0y67224xlny" path="res://player_related/tex_bob.png" id="1_ji2yn"]
 [ext_resource type="Script" path="res://battle/script_battle_bob.gd" id="1_jmpj3"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wx76n"]
-size = Vector2(8, 8)
+[sub_resource type="CircleShape2D" id="CircleShape2D_njod3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fj7gf"]
+radius = 4.0
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 collision_layer = 65536
 collision_mask = 65536
 script = ExtResource("1_jmpj3")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_wx76n")
 
 [node name="TexBob" type="Sprite2D" parent="."]
 position = Vector2(0, -16)
@@ -20,3 +19,18 @@ texture = ExtResource("1_ji2yn")
 offset = Vector2(0, 4)
 hframes = 16
 vframes = 8
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_njod3")
+debug_color = Color(1, 0.6, 0.701961, 0.419608)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_fj7gf")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="Area2D" to="." method="hit"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

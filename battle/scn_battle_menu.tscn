@@ -453,6 +453,9 @@ polygon = PackedVector2Array(-80, 16, 80, 16, 112, 80, -112, 80)
 [node name="CharacterBody2D" parent="TexBattleArena" instance=ExtResource("8_uoed5")]
 position = Vector2(-72, 48)
 
+[node name="CharacterBody2D2" parent="TexBattleArena" instance=ExtResource("8_uoed5")]
+position = Vector2(72, 48)
+
 [node name="background" type="Sprite2D" parent="."]
 
 [node name="earthbound_bg" type="TextureRect" parent="background"]

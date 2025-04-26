@@ -24,7 +24,8 @@ var player_atk = 2.0
 var player_dfs = 2.0
 
 #stats ennemi
-var ennemi_name = "radouteu"
+@onready var ennemi_battle = $TexBattleArena/CharacterBody2D2
+var ennemi_name = "flic"
 var ennemei_pv = 10
 var max_ennemie_pv = 10
 var ennemi_atk = 2.0
@@ -188,7 +189,8 @@ func _process(_delta: float) -> void:
 		if Input.is_action_just_pressed("interact") :
 			index_menu = 0
 			submenu.hide()
-			player_battle.dash(Vector2(2,0))
+			var direction_attack = (ennemi_battle.position - player_battle.position).normalized()
+			player_battle.dash(direction_attack*2)
 			battle_anime.play("player_atk")
 			await battle_anime.animation_finished
 			
@@ -215,6 +217,9 @@ func _process(_delta: float) -> void:
 				player_battle.dash(Vector2(0,1))
 			if index_actions_menu == 3 :
 				player_battle.dash(Vector2(1,0))
+			if index_actions_menu == 4 :
+				var direction_attack = (player_battle.position - ennemi_battle.position).normalized()
+				player_battle.dash(direction_attack*2)
 			action_menu_check = false
 			battle_lock = false
 			tour = 1
@@ -257,7 +262,8 @@ func _process(_delta: float) -> void:
 				
 		elif tour == 1:
 			battle_lock = true
-			
+			var direction_attack = (player_battle.position - ennemi_battle.position).normalized()
+			ennemi_battle.dash(direction_attack)
 			battle_anime.play("ennemi_atk")
 			await battle_anime.animation_finished
 			

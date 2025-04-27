@@ -3,8 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://mibs4jii822c" path="res://player_related/tex_text_box.png" id="1_x10g5"]
 [ext_resource type="LabelSettings" uid="uid://bdxtw162r24p7" path="res://base_font.tres" id="2_x2klj"]
 [ext_resource type="Script" path="res://player_related/script_text_box.gd" id="2_yg700"]
-[ext_resource type="AudioStream" uid="uid://dcykfep8vpb4o" path="res://sound_effect/snd_textbox.wav" id="4_07fun"]
 [ext_resource type="FontFile" uid="uid://b6nqix3g6iv3i" path="res://pixelfont.ttf" id="4_lpj5a"]
+[ext_resource type="AudioStream" uid="uid://cvayis30grupd" path="res://sound_effect/bip_fluflu.wav" id="5_p0q0m"]
 [ext_resource type="Texture2D" uid="uid://dm8pypudu34si" path="res://sprite/tex_cursor.png" id="6_724iw"]
 
 [sub_resource type="Animation" id="Animation_8hni3"]
@@ -133,7 +133,7 @@ one_shot = true
 [node name="audio_player" type="AudioStreamPlayer2D" parent="."]
 
 [node name="bip" type="AudioStreamPlayer" parent="audio_player"]
-stream = ExtResource("4_07fun")
+stream = ExtResource("5_p0q0m")
 
 [node name="TexCursor" type="Sprite2D" parent="."]
 visible = false

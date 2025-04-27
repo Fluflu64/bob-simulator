@@ -272,6 +272,7 @@ hframes = 16
 vframes = 8
 
 [node name="sprite_bob_reflect" type="Sprite2D" parent="."]
+visible = false
 z_index = -1
 material = SubResource("ShaderMaterial_7ehji")
 position = Vector2(0, 32)

@@ -3,6 +3,8 @@ extends Node2D
 
 @export var map_name = "gobzob"
 @export var encounter_rate = 100 #%
+@export var battle_theme = preload("res://music/mus_battle_test.ogg")
+@export var battle_color:Color = Color(0.769,0.62,0.291,1)
 @export var encounter = [0]
 @onready var node_spawn_list = $spawn
 var spawn = []

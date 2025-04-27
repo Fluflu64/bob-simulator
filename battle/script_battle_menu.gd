@@ -8,8 +8,10 @@ extends Node2D
 @onready var circle = $shader_circle
 @onready var label_histo = $background/historic_border/historic_label
 @onready var music = $AudioStreamPlayer2D/AudioStreamPlayer
+@onready var battle_area = $TexBattleArena
 @onready var submenu = $background/action_border2
 
+var music_to_play = null
 
 @export var game_root = null
 @export var player = null
@@ -22,6 +24,7 @@ var player_pv = 20
 var max_player_pv = 20
 var player_atk = 2.0
 var player_dfs = 2.0
+var player_dfs_base = player_dfs
 
 #stats ennemi
 @onready var ennemi_battle = $TexBattleArena/CharacterBody2D2
@@ -44,7 +47,7 @@ var battle_lock = false
 
 var label_menu = ["attack","action","item","flee"]
 var action_label = ["↑ ","← ","↓ ","→ ","defense"]
-var attack_label = ["punch"]
+var attack_label = ["punch","stun","STOP"]
 var label_actions_menu = []
 var text_select = "<"
 var index_menu = 0
@@ -88,7 +91,7 @@ func func_menu(index):
 		battle_lock = true
 		histo.append("bob fuit")
 		update_histo()
-		
+		player_battle.animation.play("flee")
 		animation.play("menu_show")
 		await animation.animation_finished
 		if randi_range(0,3)==2:
@@ -96,8 +99,9 @@ func func_menu(index):
 			
 			battle_anime.play("player_flee_win")
 			await battle_anime.animation_finished
-			
-			animation.play("battle end")
+			player_battle.collision.disabled = true
+			player_battle.dash(Vector2(0,1.5))
+			animation.play("battle end_flee")
 			await animation.animation_finished
 			update_player()
 			game_root.end_battle()
@@ -106,14 +110,48 @@ func func_menu(index):
 			
 			battle_anime.play("player_flee_lose")
 			await battle_anime.animation_finished
-			
+			player_battle.dash(Vector2(0,0.2))
 			histo.append("ça à échouer")
+			player_battle.animation.play("flee_lose")
+			await player_battle.animation.animation_finished
 		
 			battle_lock = false
 			tour = 1
 		update_histo()
 
+func hit_ennemy():
+	var attack = 0
+	var direction_attack = (ennemi_battle.position - player_battle.position).normalized()
+	if index_actions_menu == 0 :#punch
+		attack = ceil(player_atk / ennemi_dfs)
+		ennemi_battle.speed /= 1.8
+		histo.append("bob atk " + str(attack))
+	if index_actions_menu == 1:#stun
+		attack = ceil((player_atk/3) / ennemi_dfs)
+		histo.append("bob atk " + str(attack))
+		ennemi_battle.speed = 1
+		histo.append(ennemi_name + " est immobiliser")
+	if index_actions_menu == 2 :#STOP
+		attack = ennemei_pv
+		histo.append("STOOOOP")
+	ennemei_pv -= attack
+	
+	update_histo()
+	
+	ennemi_battle.knockback(direction_attack*2000)
+
+func hit_player():
+	var attack = ceil(ennemi_atk / player_dfs)
+	player_pv -= attack
+	histo.append(str(ennemi_name) + " atk " + str(attack))
+	player_battle.speed /= 1.5
+	update_histo()
+	var direction_attack = (player_battle.position - ennemi_battle.position).normalized()
+	player_battle.knockback(direction_attack*2000)
+
 func _ready() -> void:
+	player_battle.hit_body.connect(hit_ennemy)
+	ennemi_battle.hit_body.connect(hit_player)
 	submenu.hide()
 	update_histo()
 	update_menu()
@@ -183,6 +221,8 @@ func _input(event: InputEvent) -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
+	player_battle.sprite.scale.x = sign(ennemi_battle.position.x - player_battle.position.x)
+	ennemi_battle.sprite.scale.x = sign(player_battle.position.x - ennemi_battle.position.x)
 	stats_label.text = "bob : pv "+str(player_pv)+"/"+ str(max_player_pv) +" \n" + ennemi_name + " : pv " + str(ennemei_pv)+"/"+ str(max_ennemie_pv)
 		
 	if index_menu == 9 :
@@ -190,20 +230,24 @@ func _process(_delta: float) -> void:
 			index_menu = 0
 			submenu.hide()
 			var direction_attack = (ennemi_battle.position - player_battle.position).normalized()
-			player_battle.dash(direction_attack*2)
+			if index_actions_menu == 0 :
+				player_battle.dash(direction_attack*1)
+			if index_actions_menu == 1 :
+				player_battle.dash(direction_attack*1.5)
+			if index_actions_menu == 2 :
+				player_battle.dash(direction_attack*2)
+			player_battle.hitbox.set_process_mode(PROCESS_MODE_INHERIT)
 			battle_anime.play("player_atk")
 			await battle_anime.animation_finished
 			
-			var attack = ceil(player_atk / ennemi_dfs)
-			ennemei_pv -= attack
-			histo.append("bob atk " + str(attack))
-			update_histo()
+			
 			
 			battle_anime.play("ennemi_hit")
 			await battle_anime.animation_finished
 			action_menu_check = false
 			battle_lock = false
 			tour = 1
+			player_battle.hitbox.set_process_mode(PROCESS_MODE_DISABLED)
 	
 	if index_menu == 10 :
 		if Input.is_action_just_pressed("interact") :
@@ -220,9 +264,12 @@ func _process(_delta: float) -> void:
 			if index_actions_menu == 4 :
 				var direction_attack = (player_battle.position - ennemi_battle.position).normalized()
 				player_battle.dash(direction_attack*2)
+			battle_anime.play("player_atk")
+			await battle_anime.animation_finished
 			action_menu_check = false
 			battle_lock = false
 			tour = 1
+			player_battle.hitbox.set_process_mode(PROCESS_MODE_DISABLED)
 	
 	if index_menu == 9 or index_menu == 10 :
 		if Input.is_action_just_pressed("run") :
@@ -243,9 +290,13 @@ func _process(_delta: float) -> void:
 				
 				if player_pv <= 0 :
 					battle_anime.play("player_down")
+					ennemi_battle.animation.play("win")
+					player_battle.animation.play("lose")
 					await battle_anime.animation_finished
 				else :
 					battle_anime.play("player_win")
+					ennemi_battle.animation.play("lose")
+					player_battle.animation.play("win")
 					await battle_anime.animation_finished
 				
 				animation.play("battle end")
@@ -258,19 +309,19 @@ func _process(_delta: float) -> void:
 				
 		elif tour == 0:
 			if Input.is_action_just_pressed("interact") :
+				ennemi_battle.hitbox.set_process_mode(PROCESS_MODE_DISABLED)
 				func_menu(index_menu)
 				
 		elif tour == 1:
+			player_battle.hitbox.set_process_mode(PROCESS_MODE_DISABLED)
 			battle_lock = true
+			ennemi_battle.hitbox.set_process_mode(PROCESS_MODE_INHERIT)
 			var direction_attack = (player_battle.position - ennemi_battle.position).normalized()
-			ennemi_battle.dash(direction_attack)
+			ennemi_battle.dash(direction_attack*.5)
 			battle_anime.play("ennemi_atk")
 			await battle_anime.animation_finished
 			
-			var attack = ceil(ennemi_atk / player_dfs)
-			player_pv -= attack
-			histo.append(str(ennemi_name) + " atk " + str(attack))
-			update_histo()
+			
 			
 			battle_anime.play("player_hit")
 			await battle_anime.animation_finished
@@ -280,3 +331,4 @@ func _process(_delta: float) -> void:
 			
 			battle_lock = false
 			tour = 0
+			ennemi_battle.hitbox.set_process_mode(PROCESS_MODE_DISABLED)

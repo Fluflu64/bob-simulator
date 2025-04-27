@@ -8,7 +8,7 @@ var check = false
 @onready var line3 = $line3
 @onready var rain = $GPUParticles2D
 @onready var sprite = $Sprite2D
-
+@export var intro_bgm = AudioStreamPlayer
 @export var music = AudioStreamPlayer
 @export var musicsad = AudioStreamPlayer
 
@@ -54,3 +54,4 @@ func set_check():
 	check = true
 	music.playing = false
 	musicsad.playing = true
+	intro_bgm.playing = false

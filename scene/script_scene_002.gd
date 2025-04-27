@@ -7,6 +7,7 @@ var camera_ref = null
 @onready var my_cam = $Camera2D
 @onready var animation = $AnimationPlayer
 @onready var forline = $forline
+@export var intro_bgm = AudioStreamPlayer
 
 var lines1 = [\
 "Je récapitule...",
@@ -28,6 +29,7 @@ func _process(_delta: float) -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Player and check == false:
 		check = true
+		intro_bgm.playing = true
 		body.set_process_mode(PROCESS_MODE_DISABLED)
 		body.hide()
 		camera_ref = body.camera
@@ -37,6 +39,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		body.game_root.start_text(lines1,forline)
 		await body.game_root.dialogue_end
 		animation.play("end")
+		intro_bgm.playing = false
 		body.set_process_mode(PROCESS_MODE_DISABLED)
 		await animation.animation_finished
 		body.sprite.frame_coords = Vector2(0,4)
@@ -44,7 +47,9 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		camera_follow = false
 		body.show()
 		body.set_process_mode(PROCESS_MODE_INHERIT)
+		
 		body.story = 1
 
 func set_check():
 	check = true
+	intro_bgm.playing = true

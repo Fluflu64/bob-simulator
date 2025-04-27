@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=4 uid="uid://djeea60kpngwx"]
+[gd_scene load_steps=62 format=4 uid="uid://djeea60kpngwx"]
 
 [ext_resource type="PackedScene" uid="uid://cspbme0evtjet" path="res://levels/scn_level_base.tscn" id="1_qqd4f"]
 [ext_resource type="Script" path="res://levels/script_setup_bobcity_int.gd" id="2_jxnqr"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://bgnuv4rlfbno0" path="res://sprite/tex_fog.png" id="8_h5vfo"]
 [ext_resource type="AudioStream" uid="uid://be1sxgjgalasj" path="res://music/bobaround.wav" id="9_egavx"]
 [ext_resource type="Texture2D" uid="uid://yna4skspqllo" path="res://sprite/tex_spambob.png" id="9_j80k2"]
+[ext_resource type="AudioStream" uid="uid://dpwu65g445edx" path="res://music/darkland.ogg" id="9_prhhk"]
 [ext_resource type="Texture2D" uid="uid://bila1alnkhlq3" path="res://sprite/tex_prisonnier.png" id="10_hy2im"]
 [ext_resource type="PackedScene" uid="uid://cknfg8cqko1vn" path="res://actor/scn_rope.tscn" id="10_kdoqm"]
 [ext_resource type="Texture2D" uid="uid://buseck213vate" path="res://player_related/tex_battle_bob.png" id="11_0j85e"]
@@ -1374,12 +1375,14 @@ volume_db = 10.0
 
 [node name="bgm" type="AudioStreamPlayer" parent="level_audio" index="3"]
 stream = ExtResource("3_pkr50")
-autoplay = true
 
-[node name="bgm2" type="AudioStreamPlayer" parent="level_audio" index="4"]
+[node name="bgmintro" type="AudioStreamPlayer" parent="level_audio" index="4"]
+stream = ExtResource("9_prhhk")
+
+[node name="bgm2" type="AudioStreamPlayer" parent="level_audio" index="5"]
 stream = ExtResource("9_egavx")
 
-[node name="sad" type="AudioStreamPlayer" parent="level_audio" index="5"]
+[node name="sad" type="AudioStreamPlayer" parent="level_audio" index="6"]
 stream = ExtResource("7_xn5lp")
 
 [node name="sortie C" parent="teleporter" index="0" instance=ExtResource("4_tue1u")]
@@ -1439,8 +1442,8 @@ spawn_index = "grande sale 7"
 
 [node name="sortie B14" parent="teleporter" index="11" instance=ExtResource("4_tue1u")]
 position = Vector2(1392, -504)
-next_level = "-1"
-spawn_index = "petit 1"
+next_level = "res://levels/scn_cender.tscn"
+spawn_index = "sortie"
 
 [node name="sortie B7" parent="teleporter" index="12" instance=ExtResource("4_tue1u")]
 position = Vector2(-128, -376)
@@ -1602,8 +1605,9 @@ hframes = 8
 vframes = 4
 frame = 19
 
-[node name="scene_000" type="Node2D" parent="." index="11" node_paths=PackedStringArray("music", "musicsad")]
+[node name="scene_000" type="Node2D" parent="." index="11" node_paths=PackedStringArray("intro_bgm", "music", "musicsad")]
 script = ExtResource("12_acc8v")
+intro_bgm = NodePath("../level_audio/bgmintro")
 music = NodePath("../level_audio/bgm")
 musicsad = NodePath("../level_audio/sad")
 
@@ -1675,8 +1679,9 @@ libraries = {
 "": SubResource("AnimationLibrary_3h26y")
 }
 
-[node name="scene_002" type="Node2D" parent="." index="13"]
+[node name="scene_002" type="Node2D" parent="." index="13" node_paths=PackedStringArray("intro_bgm")]
 script = ExtResource("18_efr6c")
+intro_bgm = NodePath("../level_audio/bgmintro")
 
 [node name="TexPaper" type="Sprite2D" parent="scene_002" index="0"]
 position = Vector2(24, 8)
@@ -1995,7 +2000,7 @@ energy = 3.0
 texture = ExtResource("34_t3kx6")
 
 [node name="PointLight2D30" type="PointLight2D" parent="." index="51"]
-position = Vector2(1368, -512.141)
+position = Vector2(1368, -512)
 rotation = -1.5708
 scale = Vector2(2, 1)
 color = Color(0.737255, 0.764706, 0.6, 1)

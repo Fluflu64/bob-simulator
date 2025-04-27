@@ -7,6 +7,7 @@ extends Node
 @export var scene_002 = Node
 @onready var sprite_gaster = $"../TexGaster"
 
+
 func _ready() -> void:
 	define_level()
 

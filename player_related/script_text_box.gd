@@ -38,6 +38,7 @@ func write():
 
 
 func _letter_write() -> void:
+	bip.pitch_scale = randf_range(.8,1.2)
 	bip.play()
 	
 	letter_index += 1

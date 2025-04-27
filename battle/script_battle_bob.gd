@@ -1,15 +1,27 @@
+class_name Battle_Bob
 extends CharacterBody2D
 
+const base_speed = 4000
 
-var speed = 2000.0
+var speed = base_speed
 const JUMP_VELOCITY = -400.0
 @onready var hitbox = $Area2D
+@onready var collision = $CollisionShape2D
 @onready var timer = $Timer
+@onready var sprite = $TexBob
+@onready var animation = $AnimationPlayer
+@export var debug = "oui"
+
+signal hit_body()
 
 func dash(direction):
-	hitbox.set_process(true)
-	timer.start()
 	velocity = direction * speed
+	speed = (speed*4+base_speed)/5
+
+func knockback(direction):
+	sprite.offset.x = 16
+	sprite.self_modulate = Color(1,0,0,1)
+	velocity = direction
 	
 
 func _physics_process(_delta: float) -> void:
@@ -19,8 +31,15 @@ func _physics_process(_delta: float) -> void:
 
 
 func hit(body: Node2D) -> void:
-	print(hit)
+	if body is Battle_Bob and body != self:
+		hit_body.emit()
 
 
 func _on_timer_timeout() -> void:
-	hitbox.set_process(false)
+	sprite.offset.x *= -0.5
+	sprite.self_modulate = (sprite.self_modulate+ Color(1,1,1,1))/2
+	sprite.offset.x = roundf(sprite.offset.x)
+	if abs(sprite.offset.x) == 1 :
+		sprite.offset.x = 0
+		sprite.self_modulate = Color(1,1,1,1)
+	

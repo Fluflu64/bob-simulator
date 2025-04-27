@@ -8,6 +8,7 @@ var check = false
 @export var music2 = AudioStreamPlayer
 @export var musicsad = AudioStreamPlayer
 
+
 func _ready() -> void:
 	if check:
 		animation.play("check")

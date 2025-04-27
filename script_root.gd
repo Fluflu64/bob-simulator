@@ -30,7 +30,7 @@ signal battle_end
 @onready var actual_level = null
 var actual_level_path = ""
 @onready var map_name_label = $game_view/Label
-
+var battle_music = null
 var config = ConfigFile.new()
 
 var why = 0
@@ -109,6 +109,7 @@ func load_level(path:String,spawn_name:String,transition:int = 0):
 			animation.play("transition_off")
 			await animation.animation_finished
 		player.set_process_mode(0)
+	battle_music = actual_level.battle_theme
 	player.proba_battle = actual_level.encounter_rate
 	actual_level.player = player
 	
@@ -200,7 +201,11 @@ func end_pause():
 
 func start_battle():
 	var battle_instance = battle_scene.instantiate()
+	
 	battle.add_child(battle_instance)
+	battle_instance.music.stream = actual_level.battle_theme
+	battle_instance.battle_area.self_modulate = actual_level.battle_color
+	battle_instance.music.playing = true
 	#battle_instance.tree_exited.connect(end_battle)
 	battle_instance.game_root = self
 	battle_instance.player = player

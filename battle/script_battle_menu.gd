@@ -127,10 +127,11 @@ func hit_ennemy():
 		ennemi_battle.speed /= 1.8
 		histo.append("bob atk " + str(attack))
 	if index_actions_menu == 1:#stun
-		attack = ceil((player_atk/3) / ennemi_dfs)
+		attack = ceil((player_atk/2) / ennemi_dfs)
 		histo.append("bob atk " + str(attack))
+		player_battle.dash(direction_attack*-1)
 		ennemi_battle.speed = 1
-		histo.append(ennemi_name + " est immobiliser")
+		histo.append(ennemi_name + " est immobilisé")
 	if index_actions_menu == 2 :#STOP
 		attack = ennemei_pv
 		histo.append("STOOOOP")
@@ -229,6 +230,7 @@ func _process(_delta: float) -> void:
 		if Input.is_action_just_pressed("interact") :
 			index_menu = 0
 			submenu.hide()
+			player_battle.animation.play("punch")
 			var direction_attack = (ennemi_battle.position - player_battle.position).normalized()
 			if index_actions_menu == 0 :
 				player_battle.dash(direction_attack*1)
@@ -237,16 +239,17 @@ func _process(_delta: float) -> void:
 			if index_actions_menu == 2 :
 				player_battle.dash(direction_attack*2)
 			player_battle.hitbox.set_process_mode(PROCESS_MODE_INHERIT)
-			battle_anime.play("player_atk")
+			battle_anime.play("move")
 			await battle_anime.animation_finished
 			
 			
-			
-			battle_anime.play("ennemi_hit")
+			player_battle.animation.play("idle")
+			battle_anime.play("move")
 			await battle_anime.animation_finished
 			action_menu_check = false
 			battle_lock = false
 			tour = 1
+			
 			player_battle.hitbox.set_process_mode(PROCESS_MODE_DISABLED)
 	
 	if index_menu == 10 :
@@ -264,11 +267,13 @@ func _process(_delta: float) -> void:
 			if index_actions_menu == 4 :
 				var direction_attack = (player_battle.position - ennemi_battle.position).normalized()
 				player_battle.dash(direction_attack*2)
-			battle_anime.play("player_atk")
+			battle_anime.play("move")
 			await battle_anime.animation_finished
 			action_menu_check = false
 			battle_lock = false
 			tour = 1
+			player_battle.animation.play("idle")
+			ennemi_battle.animation.play("idle")
 			player_battle.hitbox.set_process_mode(PROCESS_MODE_DISABLED)
 	
 	if index_menu == 9 or index_menu == 10 :
@@ -313,17 +318,18 @@ func _process(_delta: float) -> void:
 				func_menu(index_menu)
 				
 		elif tour == 1:
+			ennemi_battle.animation.play("punch")
 			player_battle.hitbox.set_process_mode(PROCESS_MODE_DISABLED)
 			battle_lock = true
 			ennemi_battle.hitbox.set_process_mode(PROCESS_MODE_INHERIT)
 			var direction_attack = (player_battle.position - ennemi_battle.position).normalized()
 			ennemi_battle.dash(direction_attack*.5)
-			battle_anime.play("ennemi_atk")
+			battle_anime.play("move")
 			await battle_anime.animation_finished
 			
 			
 			
-			battle_anime.play("player_hit")
+			battle_anime.play("move")
 			await battle_anime.animation_finished
 			
 			animation.play_backwards("menu_show")
@@ -331,4 +337,6 @@ func _process(_delta: float) -> void:
 			
 			battle_lock = false
 			tour = 0
+			player_battle.animation.play("idle")
+			ennemi_battle.animation.play("idle")
 			ennemi_battle.hitbox.set_process_mode(PROCESS_MODE_DISABLED)

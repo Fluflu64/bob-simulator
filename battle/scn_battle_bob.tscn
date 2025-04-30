@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://84d2clfdjgrn"]
+[gd_scene load_steps=14 format=3 uid="uid://84d2clfdjgrn"]
 
 [ext_resource type="Script" path="res://battle/script_battle_bob.gd" id="1_jmpj3"]
 [ext_resource type="Texture2D" uid="uid://buseck213vate" path="res://player_related/tex_battle_bob.png" id="2_qia7x"]
@@ -7,22 +7,6 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fj7gf"]
 radius = 4.0
-
-[sub_resource type="Animation" id="Animation_8qoo6"]
-resource_name = "win"
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TexBob:frame_coords")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [Vector2i(12, 6), Vector2i(13, 6), Vector2i(14, 6), Vector2i(15, 6)]
-}
 
 [sub_resource type="Animation" id="Animation_7l3gw"]
 length = 0.001
@@ -37,22 +21,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [Vector2i(0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_rve3d"]
-resource_name = "lose"
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TexBob:frame_coords")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [Vector2i(12, 7), Vector2i(13, 7), Vector2i(14, 7), Vector2i(15, 7)]
 }
 
 [sub_resource type="Animation" id="Animation_wssge"]
@@ -89,14 +57,86 @@ tracks/0/keys = {
 "values": [Vector2i(14, 4)]
 }
 
+[sub_resource type="Animation" id="Animation_30d68"]
+resource_name = "idle"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TexBob:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_rve3d"]
+resource_name = "lose"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TexBob:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(12, 7), Vector2i(13, 7), Vector2i(14, 7), Vector2i(15, 7)]
+}
+
+[sub_resource type="Animation" id="Animation_tj5uk"]
+resource_name = "punch"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TexBob:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_8qoo6"]
+resource_name = "win"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TexBob:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(12, 6), Vector2i(13, 6), Vector2i(14, 6), Vector2i(15, 6)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oy6f5"]
 _data = {
 "RESET": SubResource("Animation_7l3gw"),
 "flee": SubResource("Animation_wssge"),
 "flee_lose": SubResource("Animation_p3xp2"),
+"idle": SubResource("Animation_30d68"),
 "lose": SubResource("Animation_rve3d"),
+"punch": SubResource("Animation_tj5uk"),
 "win": SubResource("Animation_8qoo6")
 }
+
+[sub_resource type="Curve" id="Curve_nqicb"]
+_data = [Vector2(0.006006, 0.907692), 0.0, 0.0, 0, 0, Vector2(0.261261, 0), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 collision_layer = 65536
@@ -125,10 +165,26 @@ shape = SubResource("CircleShape2D_fj7gf")
 wait_time = 0.05
 autostart = true
 
+[node name="Timer2" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_oy6f5")
 }
 
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 64
+direction = Vector2(1, 1)
+spread = 180.0
+gravity = Vector2(0, 98)
+initial_velocity_max = 100.0
+scale_amount_min = 4.0
+scale_amount_max = 10.0
+scale_amount_curve = SubResource("Curve_nqicb")
+
 [connection signal="body_entered" from="Area2D" to="." method="hit"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="stop_particle"]

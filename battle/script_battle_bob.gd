@@ -8,8 +8,10 @@ const JUMP_VELOCITY = -400.0
 @onready var hitbox = $Area2D
 @onready var collision = $CollisionShape2D
 @onready var timer = $Timer
+@onready var timer2 = $Timer2
 @onready var sprite = $TexBob
 @onready var animation = $AnimationPlayer
+@onready var particle = $CPUParticles2D
 @export var debug = "oui"
 
 signal hit_body()
@@ -19,6 +21,8 @@ func dash(direction):
 	speed = (speed*4+base_speed)/5
 
 func knockback(direction):
+	particle.emitting = true
+	timer2.start()
 	sprite.offset.x = 16
 	sprite.self_modulate = Color(1,0,0,1)
 	velocity = direction
@@ -43,3 +47,7 @@ func _on_timer_timeout() -> void:
 		sprite.offset.x = 0
 		sprite.self_modulate = Color(1,1,1,1)
 	
+
+
+func stop_particle() -> void:
+	particle.emitting = false

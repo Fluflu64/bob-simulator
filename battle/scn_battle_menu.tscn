@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://bpslrq66ysgyk"]
+[gd_scene load_steps=34 format=3 uid="uid://bpslrq66ysgyk"]
 
 [ext_resource type="Script" path="res://battle/script_battle_menu.gd" id="2_4suhd"]
 [ext_resource type="Shader" path="res://battle/shader_battle_menu_001.gdshader" id="3_303d0"]
@@ -151,6 +151,46 @@ tracks/2/keys = {
 "values": [Vector2(0, 0), Vector2(0, 256)]
 }
 
+[sub_resource type="Animation" id="Animation_sx2ve"]
+resource_name = "battle end_flee"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("shader_circle:material:shader_parameter/circle_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 0.0, 0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("background:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TexBattleArena:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
 [sub_resource type="Animation" id="Animation_41hr2"]
 resource_name = "battle start"
 length = 2.0
@@ -233,46 +273,6 @@ tracks/2/keys = {
 "values": [Vector2(-48, -128), Vector2(-128, -128)]
 }
 
-[sub_resource type="Animation" id="Animation_sx2ve"]
-resource_name = "battle end_flee"
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("shader_circle:material:shader_parameter/circle_size")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 0.6, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [1.0, 0.0, 0.0, 1.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("background:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("TexBattleArena:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_e7p6k"]
 _data = {
 "RESET": SubResource("Animation_83884"),
@@ -347,7 +347,7 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id="Animation_1meeg"]
 resource_name = "ennemi_atk"
-length = 0.5
+length = 0.1
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -364,7 +364,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_i75en"]
 resource_name = "ennemi_hit"
-length = 0.5
+length = 0.1
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -381,7 +381,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_wi22h"]
 resource_name = "player_atk"
-length = 0.5
+length = 0.1
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -425,7 +425,7 @@ step = 0.05
 
 [sub_resource type="Animation" id="Animation_axl21"]
 resource_name = "player_hit"
-length = 0.5
+length = 0.1
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -474,11 +474,17 @@ tracks/1/keys = {
 "values": [ExtResource("11_861nj")]
 }
 
+[sub_resource type="Animation" id="Animation_sehjb"]
+resource_name = "move"
+length = 0.1
+step = 0.1
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_f6lb5"]
 _data = {
 "RESET": SubResource("Animation_x82dr"),
 "ennemi_atk": SubResource("Animation_1meeg"),
 "ennemi_hit": SubResource("Animation_i75en"),
+"move": SubResource("Animation_sehjb"),
 "player_atk": SubResource("Animation_wi22h"),
 "player_down": SubResource("Animation_ynsyi"),
 "player_flee_lose": SubResource("Animation_u8332"),
@@ -643,6 +649,7 @@ ligne 5"
 label_settings = ExtResource("6_m6oif")
 
 [node name="shader_circle" type="ColorRect" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_ony88")
 offset_left = -128.0
 offset_top = -128.0

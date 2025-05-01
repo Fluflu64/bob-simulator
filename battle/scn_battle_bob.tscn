@@ -1,7 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://84d2clfdjgrn"]
+[gd_scene load_steps=16 format=3 uid="uid://84d2clfdjgrn"]
 
 [ext_resource type="Script" path="res://battle/script_battle_bob.gd" id="1_jmpj3"]
 [ext_resource type="Texture2D" uid="uid://buseck213vate" path="res://player_related/tex_battle_bob.png" id="2_qia7x"]
+[ext_resource type="Texture2D" uid="uid://mibs4jii822c" path="res://player_related/tex_text_box.png" id="3_fdnpv"]
+[ext_resource type="LabelSettings" uid="uid://bdxtw162r24p7" path="res://base_font.tres" id="4_d6xl1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_njod3"]
 
@@ -184,6 +186,31 @@ initial_velocity_max = 100.0
 scale_amount_min = 4.0
 scale_amount_max = 10.0
 scale_amount_curve = SubResource("Curve_nqicb")
+
+[node name="action_border" type="NinePatchRect" parent="."]
+offset_left = -40.0
+offset_top = -56.0
+offset_right = 40.0
+offset_bottom = -24.0
+texture = ExtResource("3_fdnpv")
+region_rect = Rect2(0, 0, 48, 48)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="action_label" type="Label" parent="action_border"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 72.0
+offset_bottom = 24.0
+text = "nom :
+999/999"
+label_settings = ExtResource("4_d6xl1")
+
+[node name="target" type="Node2D" parent="action_border"]
+position = Vector2(0, 16)
 
 [connection signal="body_entered" from="Area2D" to="." method="hit"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,10 +1,10 @@
-[gd_scene load_steps=34 format=3 uid="uid://bpslrq66ysgyk"]
+[gd_scene load_steps=35 format=3 uid="uid://bpslrq66ysgyk"]
 
 [ext_resource type="Script" path="res://battle/script_battle_menu.gd" id="2_4suhd"]
 [ext_resource type="Shader" path="res://battle/shader_battle_menu_001.gdshader" id="3_303d0"]
 [ext_resource type="Shader" path="res://battle/shade_circle_transition.gdshader" id="5_ggrxs"]
 [ext_resource type="Texture2D" uid="uid://ctla0pk1phugl" path="res://battle/tex_bg_1.png" id="5_ipyf3"]
-[ext_resource type="Texture2D" uid="uid://c03re7nm44hxp" path="res://battle/tex_battle_blob.png" id="5_l2jrf"]
+[ext_resource type="PackedScene" uid="uid://cp6aspljapkpp" path="res://actor/scn_hand.tscn" id="5_u1qww"]
 [ext_resource type="LabelSettings" uid="uid://bdxtw162r24p7" path="res://base_font.tres" id="6_m6oif"]
 [ext_resource type="Texture2D" uid="uid://bdul3irogubp7" path="res://battle/tex_battle_arena.png" id="7_dwlo5"]
 [ext_resource type="PackedScene" uid="uid://84d2clfdjgrn" path="res://battle/scn_battle_bob.tscn" id="8_uoed5"]
@@ -109,6 +109,18 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("background/action_border2:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-128, -72)]
 }
 
 [sub_resource type="Animation" id="Animation_3hdgm"]
@@ -273,13 +285,31 @@ tracks/2/keys = {
 "values": [Vector2(-48, -128), Vector2(-128, -128)]
 }
 
+[sub_resource type="Animation" id="Animation_rf1g4"]
+resource_name = "select_opponent"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("background/action_border2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-128, -72), Vector2(-208, -72)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_e7p6k"]
 _data = {
 "RESET": SubResource("Animation_83884"),
 "battle end": SubResource("Animation_3hdgm"),
 "battle end_flee": SubResource("Animation_sx2ve"),
 "battle start": SubResource("Animation_41hr2"),
-"menu_show": SubResource("Animation_coe3o")
+"menu_show": SubResource("Animation_coe3o"),
+"select_opponent": SubResource("Animation_rf1g4")
 }
 
 [sub_resource type="Animation" id="Animation_x82dr"]
@@ -379,6 +409,11 @@ tracks/0/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_sehjb"]
+resource_name = "move"
+length = 0.1
+step = 0.1
+
 [sub_resource type="Animation" id="Animation_wi22h"]
 resource_name = "player_atk"
 length = 0.1
@@ -474,11 +509,6 @@ tracks/1/keys = {
 "values": [ExtResource("11_861nj")]
 }
 
-[sub_resource type="Animation" id="Animation_sehjb"]
-resource_name = "move"
-length = 0.1
-step = 0.1
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_f6lb5"]
 _data = {
 "RESET": SubResource("Animation_x82dr"),
@@ -525,16 +555,21 @@ position = Vector2(240, 0)
 polygon = PackedVector2Array(-128, 80, -112, 80, -112, 16, -128, 16)
 one_way_collision_margin = 0.0
 
-[node name="CharacterBody2D" parent="TexBattleArena" instance=ExtResource("8_uoed5")]
+[node name="bob" parent="TexBattleArena" instance=ExtResource("8_uoed5")]
 position = Vector2(-72, 48)
-debug = "oui1"
+hostil = false
+nom = "Bob"
 
-[node name="CharacterBody2D2" parent="TexBattleArena" instance=ExtResource("8_uoed5")]
-position = Vector2(72, 48)
-debug = "oui2"
+[node name="bob2" parent="TexBattleArena" instance=ExtResource("8_uoed5")]
+position = Vector2(56, 24)
+nom = "h1"
 
-[node name="TexBob" parent="TexBattleArena/CharacterBody2D2" index="0"]
-texture = ExtResource("5_l2jrf")
+[node name="bob3" parent="TexBattleArena" instance=ExtResource("8_uoed5")]
+position = Vector2(104, 72)
+nom = "h2"
+
+[node name="Node2D" parent="TexBattleArena" instance=ExtResource("5_u1qww")]
+position = Vector2(144, 32)
 
 [node name="background" type="Sprite2D" parent="."]
 
@@ -600,28 +635,6 @@ droite<
 defense<"
 label_settings = ExtResource("6_m6oif")
 
-[node name="health_border" type="NinePatchRect" parent="background"]
-offset_left = -128.0
-offset_top = 96.0
-offset_right = 128.0
-offset_bottom = 128.0
-texture = ExtResource("9_fmql0")
-region_rect = Rect2(0, 0, 48, 48)
-patch_margin_left = 8
-patch_margin_top = 8
-patch_margin_right = 8
-patch_margin_bottom = 8
-
-[node name="health_label" type="Label" parent="background/health_border"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 72.0
-offset_bottom = 40.0
-text = "bob : pv 100/100
-cartacro : pv 100/100"
-label_settings = ExtResource("6_m6oif")
-
 [node name="historic_border" type="NinePatchRect" parent="background"]
 clip_contents = true
 offset_left = -48.0
@@ -680,4 +693,5 @@ stream = ExtResource("12_vkokc")
 [node name="Hurt" type="AudioStreamPlayer" parent="AudioStreamPlayer2D"]
 stream = ExtResource("13_134ph")
 
-[editable path="TexBattleArena/CharacterBody2D2"]
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(48, -72)

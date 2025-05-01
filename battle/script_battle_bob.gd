@@ -12,13 +12,50 @@ const JUMP_VELOCITY = -400.0
 @onready var sprite = $TexBob
 @onready var animation = $AnimationPlayer
 @onready var particle = $CPUParticles2D
-@export var debug = "oui"
+@onready var target = $action_border/target
+
+@onready var menu_stats = $action_border
+@onready var label_stats = $action_border/action_label
+
+#stats
+@export var hostil = true
+
+@export var nom = "???"
+
+@export var pv = 10
+var max_pv = pv
+
+@export var base_atk = 1.0
+var atk = base_atk
+
+@export var base_dfs = 1.0
+var dfs = base_dfs
 
 signal hit_body()
 
+'''
+if index_actions_menu == 0 :#punch
+		attack = ceil(player_atk / ennemi_dfs)
+		ennemi_battle.speed /= 1.8
+		histo.append("bob atk " + str(attack))
+	if index_actions_menu == 1:#stun
+		attack = ceil((player_atk/2) / ennemi_dfs)
+		histo.append("bob atk " + str(attack))
+		player_battle.dash(direction_attack*-1)
+		ennemi_battle.speed = 1
+		histo.append(ennemi_name + " est immobilisé")
+	if index_actions_menu == 2 :#STOP
+		attack = ennemei_pv
+		histo.append("STOOOOP")
+	ennemei_pv -= attack
+'''
 func dash(direction):
 	velocity = direction * speed
 	speed = (speed*4+base_speed)/5
+
+func hit(body: Node2D) -> void:
+	if body is Battle_Bob and body != self:
+		hit_body.emit()
 
 func knockback(direction):
 	particle.emitting = true
@@ -26,18 +63,12 @@ func knockback(direction):
 	sprite.offset.x = 16
 	sprite.self_modulate = Color(1,0,0,1)
 	velocity = direction
-	
 
 func _physics_process(_delta: float) -> void:
 	velocity /= 2
 	position = round(position)
 	move_and_slide()
-
-
-func hit(body: Node2D) -> void:
-	if body is Battle_Bob and body != self:
-		hit_body.emit()
-
+	label_stats.text = str(nom) + " :\n" + str(pv) + "/" + str(max_pv)
 
 func _on_timer_timeout() -> void:
 	sprite.offset.x *= -0.5
@@ -46,8 +77,14 @@ func _on_timer_timeout() -> void:
 	if abs(sprite.offset.x) == 1 :
 		sprite.offset.x = 0
 		sprite.self_modulate = Color(1,1,1,1)
-	
-
 
 func stop_particle() -> void:
 	particle.emitting = false
+
+
+func ia_move(player):
+	punch(player)
+
+func punch(target):
+	var dash_direction = (target.position - position).normalized()
+	dash(dash_direction)

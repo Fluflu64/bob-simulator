@@ -78,7 +78,7 @@ func setup() -> void:
 	animation.play("RESET")
 	index_menu = 0
 	
-	
+	sprite_loading_screen.hide()
 	update_menu()
 	animation.play("instruction")
 	await animation.animation_finished

@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://cse3eekyxb0eu"]
+
+[ext_resource type="PackedScene" uid="uid://bbtjxpdt0x05h" path="res://Bob_simulator/assets/base_bob.blend" id="1_2satg"]
+[ext_resource type="Script" path="res://Bob_simulator/assets/script_base_bob.gd" id="2_a6phn"]
+[ext_resource type="Texture2D" uid="uid://ctb0ppke532b4" path="res://Bob_simulator/assets/tex_bob.png" id="3_mlxjl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uu4v0"]
+albedo_texture = ExtResource("3_mlxjl")
+
+[node name="base_bob" instance=ExtResource("1_2satg")]
+script = ExtResource("2_a6phn")
+
+[node name="Skeleton3D" parent="bob skeleton" index="0"]
+bones/2/rotation = Quaternion(0.000316243, 0, 0, 1)
+bones/3/rotation = Quaternion(0, 0, 0.000316243, 1)
+bones/4/rotation = Quaternion(0, 0, -0.000316243, 1)
+
+[node name="bob mesh" parent="bob skeleton/Skeleton3D" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_uu4v0")

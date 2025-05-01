@@ -28,6 +28,8 @@ var lvl = 1
 var can_run = true
 var infos_mode = false
 
+
+
 #Node
 @onready var sprite = $sprite_bob
 @onready var sprite_preview = $sprite_bob_preview

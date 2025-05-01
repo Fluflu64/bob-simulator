@@ -49,6 +49,7 @@ func open_submenu(submenu):
 	textbox.add_child(submenu_inst)
 
 func _ready():
+	sprite_loading_screen.hide()
 	title.game_root = self
 	load_why()
 	var rng_to_show = str(why)
@@ -213,6 +214,19 @@ func start_battle():
 	battle_instance.max_player_pv = player.pv_max
 	battle_instance.player_atk = player.atk
 	battle_instance.player_dfs = player.def
+	
+	battle_instance.player_battle.nom = "Bob"
+	
+	battle_instance.player_battle.pv = battle_instance.player_pv
+	battle_instance.player_battle.max_pv = battle_instance.max_player_pv
+	
+	battle_instance.player_battle.base_atk = battle_instance.player_atk
+	
+	battle_instance.player_battle.atk = battle_instance.player_battle.base_atk
+	
+	battle_instance.player_battle.base_dfs = battle_instance.player_dfs
+	battle_instance.player_battle.dfs = battle_instance.player_battle.base_dfs
+	
 	game.set_process_mode(PROCESS_MODE_DISABLED)
 	player.sprite.frame_coords = Vector2(6,0)
 

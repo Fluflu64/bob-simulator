@@ -146,6 +146,7 @@ collision_mask = 65536
 script = ExtResource("1_jmpj3")
 
 [node name="TexBob" type="Sprite2D" parent="."]
+y_sort_enabled = true
 position = Vector2(0, -16)
 texture = ExtResource("2_qia7x")
 offset = Vector2(0, 4)
@@ -187,10 +188,13 @@ scale_amount_min = 4.0
 scale_amount_max = 10.0
 scale_amount_curve = SubResource("Curve_nqicb")
 
+[node name="target" type="Node2D" parent="."]
+position = Vector2(-4, -4)
+
 [node name="action_border" type="NinePatchRect" parent="."]
 offset_left = -40.0
-offset_top = -56.0
-offset_right = 40.0
+offset_top = -40.0
+offset_right = 24.0
 offset_bottom = -24.0
 texture = ExtResource("3_fdnpv")
 region_rect = Rect2(0, 0, 48, 48)
@@ -201,17 +205,18 @@ patch_margin_bottom = 8
 
 [node name="action_label" type="Label" parent="action_border"]
 layout_mode = 0
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 72.0
-offset_bottom = 24.0
-text = "nom :
-999/999"
+offset_left = 4.0
+offset_top = 5.0
+offset_right = 68.0
+offset_bottom = 21.0
+text = "999/999"
 label_settings = ExtResource("4_d6xl1")
 
-[node name="target" type="Node2D" parent="action_border"]
-position = Vector2(0, 16)
+[node name="Timer3" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
 
 [connection signal="body_entered" from="Area2D" to="." method="hit"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer2" to="." method="stop_particle"]
+[connection signal="timeout" from="Timer3" to="." method="my_turn_end"]

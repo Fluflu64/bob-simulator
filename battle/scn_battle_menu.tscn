@@ -531,6 +531,7 @@ music_battle = ExtResource("10_ow1mv")
 
 [node name="TexBattleArena" type="Sprite2D" parent="."]
 self_modulate = Color(0.735188, 0.740933, 0.916022, 1)
+y_sort_enabled = true
 texture = ExtResource("7_dwlo5")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="TexBattleArena"]
@@ -561,14 +562,15 @@ hostil = false
 nom = "Bob"
 
 [node name="bob2" parent="TexBattleArena" instance=ExtResource("8_uoed5")]
-position = Vector2(56, 24)
+position = Vector2(24, 56)
 nom = "h1"
 
 [node name="bob3" parent="TexBattleArena" instance=ExtResource("8_uoed5")]
-position = Vector2(104, 72)
+position = Vector2(88, 24)
 nom = "h2"
 
 [node name="Node2D" parent="TexBattleArena" instance=ExtResource("5_u1qww")]
+z_index = 2
 position = Vector2(144, 32)
 
 [node name="background" type="Sprite2D" parent="."]

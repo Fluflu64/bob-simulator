@@ -134,6 +134,8 @@ func _ready() -> void:
 	
 	update_menu()
 	
+func distance_bteween_2(pos1,pos2):
+	return sqrt((pos1.x-pos2.x)**2+(pos1.y-pos2.y)**2)
 
 func is_select(button_index,menu_for_index) :
 	if button_index == menu_for_index :
@@ -175,18 +177,68 @@ func _input(event: InputEvent) -> void:
 		
 	
 	if action_menu_check :
-		if event.is_action_pressed("down") :
-			index_actions_menu += 1
-		if event.is_action_pressed("up") :
-			index_actions_menu -= 1
-		
-		if index_actions_menu < 0 :
-			index_actions_menu = 0
-		if index_actions_menu > len(label_actions_menu)-1 :
-			index_actions_menu = len(label_actions_menu)-1
-		
-		if event.is_action_pressed("left") :
-			pass
+		if index_menu != 11 :
+			if event.is_action_pressed("down") :
+				index_actions_menu += 1
+			if event.is_action_pressed("up") :
+				index_actions_menu -= 1
+			
+			if index_actions_menu < 0 :
+				index_actions_menu = 0
+			if index_actions_menu > len(label_actions_menu)-1 :
+				index_actions_menu = len(label_actions_menu)-1
+			
+			if event.is_action_pressed("left") :
+				pass
+		else :
+			
+			
+			if event.is_action_pressed("down") :
+				var temp = ennemis_battle[index_actions_menu].position
+				var distemp = null
+				for ennemi in range(len(ennemis_battle)) :
+					if ennemis_battle[ennemi].position.y > temp.y :
+						if distemp == null :
+							distemp = distance_bteween_2(temp,ennemis_battle[ennemi].position)
+							index_actions_menu = ennemi
+						elif distance_bteween_2(temp,ennemis_battle[ennemi].position) < distemp :
+							distemp = distance_bteween_2(temp,ennemis_battle[ennemi].position)
+							index_actions_menu = ennemi
+						
+			if event.is_action_pressed("up") :
+				var temp = ennemis_battle[index_actions_menu].position
+				var distemp = null
+				for ennemi in range(len(ennemis_battle)) :
+					if ennemis_battle[ennemi].position.y < temp.y :
+						if distemp == null :
+							distemp = distance_bteween_2(temp,ennemis_battle[ennemi].position)
+							index_actions_menu = ennemi
+						elif distance_bteween_2(temp,ennemis_battle[ennemi].position) < distemp :
+							distemp = distance_bteween_2(temp,ennemis_battle[ennemi].position)
+							index_actions_menu = ennemi
+			
+			if event.is_action_pressed("right") :
+				var temp = ennemis_battle[index_actions_menu].position
+				var distemp = null
+				for ennemi in range(len(ennemis_battle)) :
+					if ennemis_battle[ennemi].position.x > temp.x :
+						if distemp == null :
+							distemp = distance_bteween_2(temp,ennemis_battle[ennemi].position)
+							index_actions_menu = ennemi
+						elif distance_bteween_2(temp,ennemis_battle[ennemi].position) < distemp :
+							distemp = distance_bteween_2(temp,ennemis_battle[ennemi].position)
+							index_actions_menu = ennemi
+			if event.is_action_pressed("left") :
+				var temp = ennemis_battle[index_actions_menu].position
+				var distemp = null
+				for ennemi in range(len(ennemis_battle)) :
+					if ennemis_battle[ennemi].position.x < temp.x :
+						if distemp == null :
+							distemp = distance_bteween_2(temp,ennemis_battle[ennemi].position)
+							index_actions_menu = ennemi
+						elif distance_bteween_2(temp,ennemis_battle[ennemi].position) < distemp :
+							distemp = distance_bteween_2(temp,ennemis_battle[ennemi].position)
+							index_actions_menu = ennemi
 	update_menu()
 	update_actions()
 	update_histo()
@@ -207,7 +259,6 @@ func _process(_delta: float) -> void:
 				if child is Battle_Bob :
 					if child.hostil :
 						ennemis_battle.append(child)
-						child.hit_body.connect(hit_player)
 			var label_ennemi = []
 			for ennemi in ennemis_battle :
 				label_ennemi.append(ennemi.nom)
@@ -231,6 +282,7 @@ func _process(_delta: float) -> void:
 			battle_anime.play("move")
 			await battle_anime.animation_finished
 			player_battle.punch(ennemis_battle[index_actions_menu])
+			await player_battle.turn_end
 			battle_anime.play("move")
 			await battle_anime.animation_finished
 			action_menu_check = false
@@ -319,6 +371,8 @@ func _process(_delta: float) -> void:
 			battle_lock = true
 			for ennemi in ennemis_battle :
 						ennemi.ia_move(player_battle)
+						await ennemi.turn_end
+			
 			animation.play_backwards("menu_show")
 			await animation.animation_finished
 			battle_lock = false

@@ -5,9 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://b1rm2t5aern3f" path="res://title/tex_title_screen_2.png" id="3_chs5d"]
 [ext_resource type="Texture2D" uid="uid://mibs4jii822c" path="res://player_related/tex_text_box.png" id="3_ggqmm"]
 [ext_resource type="LabelSettings" uid="uid://bdxtw162r24p7" path="res://base_font.tres" id="3_ssomm"]
-[ext_resource type="AudioStream" uid="uid://dcykfep8vpb4o" path="res://sound_effect/snd_textbox.wav" id="4_t23m2"]
 [ext_resource type="AudioStream" uid="uid://cnsw4ybybgh1w" path="res://music/mus_title.ogg" id="5_3ayy5"]
 [ext_resource type="Texture2D" uid="uid://nsfn1d1e2ika" path="res://title/tex_bob_title.png" id="6_o284l"]
+[ext_resource type="AudioStream" uid="uid://b0ds5eqpaj61m" path="res://sound_effect/blipSelect.wav" id="6_uglrl"]
 [ext_resource type="Texture2D" uid="uid://dp6p81c247htq" path="res://title/tex_complete_title.png" id="7_cqo15"]
 [ext_resource type="Shader" path="res://title/shader_load.gdshader" id="10_vas1o"]
 [ext_resource type="Texture2D" uid="uid://citavh8kehs5e" path="res://tex_load_ico.png" id="11_puev3"]
@@ -615,7 +615,7 @@ offset_top = 232.0
 offset_right = 248.0
 offset_bottom = 240.0
 text = "bob simulator : Fluflu 64 202X
-DEMO beta 0.11.7
+DEMO beta 0.12.0
 "
 label_settings = ExtResource("3_ssomm")
 
@@ -637,7 +637,7 @@ label_settings = ExtResource("3_ssomm")
 [node name="audio" type="AudioStreamPlayer2D" parent="."]
 
 [node name="bip" type="AudioStreamPlayer" parent="audio"]
-stream = ExtResource("4_t23m2")
+stream = ExtResource("6_uglrl")
 
 [node name="music" type="AudioStreamPlayer" parent="audio"]
 stream = ExtResource("5_3ayy5")

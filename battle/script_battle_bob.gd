@@ -19,6 +19,7 @@ const JUMP_VELOCITY = -400.0
 @onready var menu_stats = $action_border
 @onready var label_stats = $action_border/action_label
 
+@onready var stat_health = $Sprite2D
 #stats
 @export var hostil = true
 
@@ -50,7 +51,7 @@ if index_actions_menu == 0 :#punch
 	if index_actions_menu == 2 :#STOP
 		attack = ennemei_pv
 		histo.append("STOOOOP")
-	ennemei_pv -= attack
+	ennemei_pv -= attackfe
 '''
 func dash(direction):
 	velocity = direction * speed
@@ -71,11 +72,14 @@ func knockback(direction):
 	sprite.self_modulate = Color(1,0,0,1)
 	velocity = direction
 
+
+
 func _physics_process(_delta: float) -> void:
 	velocity /= 2
 	position = round(position)
 	move_and_slide()
 	label_stats.text = str(pv) + "/" + str(max_pv)
+	stat_health.frame = clamp(int((float(pv) * 14.0) / float(max_pv)),0,14)
 
 func _on_timer_timeout() -> void:
 	sprite.offset.x *= -0.5

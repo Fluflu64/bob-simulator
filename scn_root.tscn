@@ -258,7 +258,22 @@ shadow_blur = 10.0
 directional_shadow_mode = 0
 
 [node name="base_bob2" parent="background_canvas/SubViewportContainer/SubViewport/Camera3D" instance=ExtResource("3_cfw6g")]
-transform = Transform3D(-0.707107, 0.183013, -0.683013, 0, 0.965926, 0.258819, 0.707107, 0.183013, -0.683013, -5, -2, -12)
+transform = Transform3D(-0.992941, -0.0324797, -0.114076, -0.0728666, 0.925924, 0.370616, 0.0935882, 0.376312, -0.921754, -1.84116, -3.00906, -8.4395)
+
+[node name="base_bob4" parent="background_canvas/SubViewportContainer/SubViewport/Camera3D" instance=ExtResource("3_cfw6g")]
+transform = Transform3D(-0.949713, -0.177883, 0.25769, -0.0728665, 0.925924, 0.370616, -0.304528, 0.333202, -0.892323, 0.810405, 2.4892, -25.8791)
+
+[node name="base_bob5" parent="background_canvas/SubViewportContainer/SubViewport/Camera3D" instance=ExtResource("3_cfw6g")]
+transform = Transform3D(-0.949713, -0.177883, 0.25769, -0.0728665, 0.925924, 0.370616, -0.304528, 0.333202, -0.892323, -1.10837, 2.4892, -21.3943)
+
+[node name="base_bob6" parent="background_canvas/SubViewportContainer/SubViewport/Camera3D" instance=ExtResource("3_cfw6g")]
+transform = Transform3D(-0.949713, -0.177883, 0.25769, -0.0728665, 0.925924, 0.370616, -0.304528, 0.333202, -0.892323, -2.19279, 2.4892, -18.8596)
+
+[node name="base_bob7" parent="background_canvas/SubViewportContainer/SubViewport/Camera3D" instance=ExtResource("3_cfw6g")]
+transform = Transform3D(-0.949713, -0.177883, 0.25769, -0.0728665, 0.925924, 0.370616, -0.304528, 0.333202, -0.892323, -3.18021, 2.4892, -16.5517)
+
+[node name="base_bob8" parent="background_canvas/SubViewportContainer/SubViewport/Camera3D" instance=ExtResource("3_cfw6g")]
+transform = Transform3D(-0.949713, -0.177883, 0.25769, -0.0728665, 0.925924, 0.370616, -0.304528, 0.333202, -0.892323, -4.15272, 2.4892, -14.2786)
 
 [node name="base_bob3" parent="background_canvas/SubViewportContainer/SubViewport/Camera3D" instance=ExtResource("3_cfw6g")]
 transform = Transform3D(-0.707107, -0.183013, 0.683013, 0, 0.965926, 0.258819, -0.707107, 0.183013, -0.683013, 5, -2, -12)

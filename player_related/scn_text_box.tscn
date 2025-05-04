@@ -1,11 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://bs5w4fneac8j4"]
+[gd_scene load_steps=14 format=3 uid="uid://bs5w4fneac8j4"]
 
 [ext_resource type="Texture2D" uid="uid://mibs4jii822c" path="res://player_related/tex_text_box.png" id="1_x10g5"]
-[ext_resource type="LabelSettings" uid="uid://bdxtw162r24p7" path="res://base_font.tres" id="2_x2klj"]
 [ext_resource type="Script" path="res://player_related/script_text_box.gd" id="2_yg700"]
 [ext_resource type="FontFile" uid="uid://b6nqix3g6iv3i" path="res://pixelfont.ttf" id="4_lpj5a"]
+[ext_resource type="AudioStream" uid="uid://cvayis30grupd" path="res://sound_effect/bip_fluflu.wav" id="5_2ck86"]
+[ext_resource type="AudioStream" uid="uid://bvo45gm45y4o0" path="res://sound_effect/bip_bonjour.wav" id="5_2n6u4"]
 [ext_resource type="AudioStream" uid="uid://cpf0m717pocka" path="res://sound_effect/bip_foxy.wav" id="5_as2tv"]
+[ext_resource type="AudioStream" uid="uid://b6n1fumlpcgch" path="res://sound_effect/bip_base.wav" id="5_t64xr"]
+[ext_resource type="AudioStream" uid="uid://7fikic13fiit" path="res://sound_effect/bip_hue.wav" id="5_vg65r"]
 [ext_resource type="Texture2D" uid="uid://dm8pypudu34si" path="res://sprite/tex_cursor.png" id="6_724iw"]
+[ext_resource type="AudioStream" uid="uid://cnpuba83gnipa" path="res://sound_effect/bip_spambob.wav" id="10_t807u"]
 
 [sub_resource type="Animation" id="Animation_8hni3"]
 length = 0.001
@@ -97,16 +101,6 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="Label" type="Label" parent="NinePatchRect/MarginContainer"]
-visible = false
-layout_mode = 2
-size_flags_vertical = 0
-text = "\"Momentum, a function of mass and velocity, is conserved between portals. In layman's terms, speedy thing goes in, speedy thing comes out.\"
-"
-label_settings = ExtResource("2_x2klj")
-vertical_alignment = 3
-autowrap_mode = 2
-
 [node name="RichTextLabel" type="RichTextLabel" parent="NinePatchRect/MarginContainer"]
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("4_lpj5a")
@@ -132,8 +126,23 @@ one_shot = true
 
 [node name="audio_player" type="AudioStreamPlayer2D" parent="."]
 
-[node name="bip" type="AudioStreamPlayer" parent="audio_player"]
+[node name="bip_base" type="AudioStreamPlayer" parent="audio_player"]
+stream = ExtResource("5_t64xr")
+
+[node name="bip_bonjour" type="AudioStreamPlayer" parent="audio_player"]
+stream = ExtResource("5_2n6u4")
+
+[node name="bip_fluflu" type="AudioStreamPlayer" parent="audio_player"]
+stream = ExtResource("5_2ck86")
+
+[node name="bip_foxy" type="AudioStreamPlayer" parent="audio_player"]
 stream = ExtResource("5_as2tv")
+
+[node name="bip_hue" type="AudioStreamPlayer" parent="audio_player"]
+stream = ExtResource("5_vg65r")
+
+[node name="bip_spambob" type="AudioStreamPlayer" parent="audio_player"]
+stream = ExtResource("10_t807u")
 
 [node name="TexCursor" type="Sprite2D" parent="."]
 visible = false

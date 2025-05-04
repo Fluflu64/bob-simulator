@@ -52,4 +52,4 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 func set_check():
 	check = true
-	intro_bgm.playing = true
+	intro_bgm.playing = false

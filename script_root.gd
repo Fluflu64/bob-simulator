@@ -33,6 +33,8 @@ var actual_level_path = ""
 var battle_music = null
 var config = ConfigFile.new()
 
+var bip_index = 0
+
 var why = 0
 
 func main_menu_pause(pause):
@@ -172,6 +174,7 @@ func start_text(lines,area):
 		text_instance.tree_exited.connect(area.end_talk)
 	text_instance.lines_text_box = lines
 	textbox.add_child(text_instance)
+	text_instance.set_bip(bip_index)
 
 func menu():
 	game.set_process_mode(PROCESS_MODE_DISABLED)

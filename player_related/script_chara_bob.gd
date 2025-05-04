@@ -77,7 +77,7 @@ func _input(event):
 	if event.is_action_pressed("interact"):
 		for area2d in interact.get_overlapping_areas() :
 			if area2d is Interactable :
-				game_root.start_text(area2d.lines,area2d)
+				area2d.interact(game_root)
 
 func _process(_delta):
 	update_camera()

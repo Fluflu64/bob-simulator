@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=4 uid="uid://djeea60kpngwx"]
+[gd_scene load_steps=61 format=4 uid="uid://djeea60kpngwx"]
 
 [ext_resource type="PackedScene" uid="uid://cspbme0evtjet" path="res://levels/scn_level_base.tscn" id="1_qqd4f"]
 [ext_resource type="Script" path="res://levels/script_setup_bobcity_int.gd" id="2_jxnqr"]
@@ -12,10 +12,8 @@
 [ext_resource type="Shader" path="res://levels/shad_fog.gdshader" id="7_sj5cr"]
 [ext_resource type="AudioStream" uid="uid://th8bxxvdjt1c" path="res://music/mus_sad_song.ogg" id="7_xn5lp"]
 [ext_resource type="Texture2D" uid="uid://bgnuv4rlfbno0" path="res://sprite/tex_fog.png" id="8_h5vfo"]
+[ext_resource type="AudioStream" uid="uid://ckw5lae87e2if" path="res://music/mus_dark_city.wav" id="9_cqshb"]
 [ext_resource type="AudioStream" uid="uid://be1sxgjgalasj" path="res://music/bobaround.wav" id="9_egavx"]
-[ext_resource type="Texture2D" uid="uid://yna4skspqllo" path="res://sprite/tex_spambob.png" id="9_j80k2"]
-[ext_resource type="AudioStream" uid="uid://dpwu65g445edx" path="res://music/darkland.ogg" id="9_prhhk"]
-[ext_resource type="Texture2D" uid="uid://bila1alnkhlq3" path="res://sprite/tex_prisonnier.png" id="10_hy2im"]
 [ext_resource type="PackedScene" uid="uid://cknfg8cqko1vn" path="res://actor/scn_rope.tscn" id="10_kdoqm"]
 [ext_resource type="Texture2D" uid="uid://buseck213vate" path="res://player_related/tex_battle_bob.png" id="11_0j85e"]
 [ext_resource type="Script" path="res://scene/script_scene_000.gd" id="12_acc8v"]
@@ -23,6 +21,7 @@
 [ext_resource type="Script" path="res://scene/script_scene_001.gd" id="14_qcqfy"]
 [ext_resource type="Texture2D" uid="uid://b2btq5cmgwhov" path="res://sprite/tex_trombone.png" id="15_ul6ce"]
 [ext_resource type="Texture2D" uid="uid://d27oen1w355q5" path="res://sprite/tex_raine.png" id="16_8f3ls"]
+[ext_resource type="AudioStream" uid="uid://wf82o3ltemy1" path="res://sound_effect/des gens.wav" id="17_yv5mp"]
 [ext_resource type="Script" path="res://scene/script_scene_002.gd" id="18_efr6c"]
 [ext_resource type="Texture2D" uid="uid://48by3vgx8ri" path="res://sprite/tex_flic_n_bob.png" id="19_rk5ds"]
 [ext_resource type="Texture2D" uid="uid://cm0y67224xlny" path="res://player_related/tex_bob.png" id="20_jmunk"]
@@ -1377,7 +1376,7 @@ volume_db = 10.0
 stream = ExtResource("3_pkr50")
 
 [node name="bgmintro" type="AudioStreamPlayer" parent="level_audio" index="4"]
-stream = ExtResource("9_prhhk")
+stream = ExtResource("9_cqshb")
 
 [node name="bgm2" type="AudioStreamPlayer" parent="level_audio" index="5"]
 stream = ExtResource("9_egavx")
@@ -1497,107 +1496,297 @@ lines = Array[String](["C'est trop haut...", "Tu ne peut pas y retourner..."])
 [node name="Node2D" parent="teleporter" index="22" instance=ExtResource("10_kdoqm")]
 position = Vector2(24, 0)
 
+[node name="PointLight2D2" type="PointLight2D" parent="." index="6"]
+position = Vector2(56, 80)
+color = Color(0.737255, 0.764706, 0.6, 1)
+energy = 3.0
+texture = ExtResource("33_3obcw")
+texture_scale = 2.0
+
+[node name="PointLight2D3" type="PointLight2D" parent="." index="7"]
+position = Vector2(88, 72)
+color = Color(0.737255, 0.764706, 0.6, 1)
+energy = 3.0
+texture = ExtResource("33_3obcw")
+texture_scale = 2.0
+
+[node name="PointLight2D4" type="PointLight2D" parent="." index="8"]
+position = Vector2(152, 72)
+color = Color(0.737255, 0.764706, 0.6, 1)
+energy = 3.0
+texture = ExtResource("33_3obcw")
+texture_scale = 2.0
+
+[node name="PointLight2D5" type="PointLight2D" parent="." index="9"]
+position = Vector2(168, 160)
+color = Color(0.737255, 0.764706, 0.6, 1)
+energy = 3.0
+texture = ExtResource("33_3obcw")
+texture_scale = 2.0
+
+[node name="PointLight2D6" type="PointLight2D" parent="." index="10"]
+position = Vector2(200, 144)
+color = Color(0.737255, 0.764706, 0.6, 1)
+energy = 3.0
+texture = ExtResource("33_3obcw")
+texture_scale = 2.0
+
+[node name="PointLight2D7" type="PointLight2D" parent="." index="11"]
+position = Vector2(280, 160)
+color = Color(0.737255, 0.764706, 0.6, 1)
+energy = 3.0
+texture = ExtResource("33_3obcw")
+texture_scale = 2.0
+
+[node name="PointLight2D8" type="PointLight2D" parent="." index="12"]
+position = Vector2(256, 72)
+color = Color(0.737255, 0.764706, 0.6, 1)
+energy = 3.0
+texture = ExtResource("33_3obcw")
+texture_scale = 2.0
+
+[node name="PointLight2D9" type="PointLight2D" parent="." index="13"]
+position = Vector2(184, 72)
+color = Color(0.737255, 0.764706, 0.6, 1)
+energy = 3.0
+texture = ExtResource("33_3obcw")
+texture_scale = 2.0
+
+[node name="PointLight2D10" type="PointLight2D" parent="." index="14"]
+position = Vector2(104, 160)
+color = Color(0.737255, 0.764706, 0.6, 1)
+energy = 3.0
+texture = ExtResource("33_3obcw")
+texture_scale = 2.0
+
+[node name="PointLight2D11" type="PointLight2D" parent="." index="15"]
+position = Vector2(72, 152)
+color = Color(0.737255, 0.764706, 0.6, 1)
+energy = 3.0
+texture = ExtResource("33_3obcw")
+texture_scale = 2.0
+
+[node name="PointLight2D12" type="PointLight2D" parent="." index="16"]
+position = Vector2(8, 160)
+color = Color(0.737255, 0.764706, 0.6, 1)
+energy = 3.0
+texture = ExtResource("33_3obcw")
+texture_scale = 2.0
+
+[node name="PointLight2D13" type="PointLight2D" parent="." index="17"]
+position = Vector2(-40, 200)
+color = Color(0.737255, 0.764706, 0.6, 1)
+energy = 3.0
+texture = ExtResource("33_3obcw")
+texture_scale = 2.0
+
+[node name="PointLight2D20" type="PointLight2D" parent="." index="18"]
+position = Vector2(392, 520)
+color = Color(0.737255, 0.764706, 0.6, 1)
+energy = 3.0
+texture = ExtResource("33_3obcw")
+texture_scale = 2.0
+
+[node name="PointLight2D21" type="PointLight2D" parent="." index="19"]
+position = Vector2(440, 520)
+color = Color(0.737255, 0.764706, 0.6, 1)
+energy = 3.0
+texture = ExtResource("33_3obcw")
+texture_scale = 2.0
+
+[node name="PointLight2D22" type="PointLight2D" parent="." index="20"]
+position = Vector2(488, 520)
+color = Color(0.737255, 0.764706, 0.6, 1)
+energy = 3.0
+texture = ExtResource("33_3obcw")
+texture_scale = 2.0
+
+[node name="PointLight2D23" type="PointLight2D" parent="." index="21"]
+position = Vector2(1304, 328)
+color = Color(0.737255, 0.764706, 0.6, 1)
+energy = 3.0
+texture = ExtResource("33_3obcw")
+texture_scale = 2.0
+
+[node name="PointLight2D24" type="PointLight2D" parent="." index="22"]
+position = Vector2(1288, 184)
+color = Color(0.737255, 0.764706, 0.6, 1)
+energy = 3.0
+texture = ExtResource("33_3obcw")
+texture_scale = 2.0
+
+[node name="PointLight2D25" type="PointLight2D" parent="." index="23"]
+position = Vector2(1368, 184)
+color = Color(0.737255, 0.764706, 0.6, 1)
+energy = 3.0
+texture = ExtResource("33_3obcw")
+texture_scale = 2.0
+
+[node name="PointLight2D26" type="PointLight2D" parent="." index="24"]
+position = Vector2(1464, 184)
+color = Color(0.737255, 0.764706, 0.6, 1)
+energy = 3.0
+texture = ExtResource("33_3obcw")
+texture_scale = 2.0
+
+[node name="PointLight2D14" type="PointLight2D" parent="." index="25"]
+position = Vector2(-136, 200)
+color = Color(0.737255, 0.764706, 0.6, 1)
+energy = 3.0
+texture = ExtResource("33_3obcw")
+texture_scale = 2.0
+
+[node name="PointLight2D15" type="PointLight2D" parent="." index="26"]
+position = Vector2(-40, 280)
+color = Color(0.737255, 0.764706, 0.6, 1)
+energy = 3.0
+texture = ExtResource("33_3obcw")
+texture_scale = 2.0
+
+[node name="PointLight2D16" type="PointLight2D" parent="." index="27"]
+position = Vector2(-136, 280)
+color = Color(0.737255, 0.764706, 0.6, 1)
+energy = 3.0
+texture = ExtResource("33_3obcw")
+texture_scale = 2.0
+
+[node name="PointLight2D17" type="PointLight2D" parent="." index="28"]
+position = Vector2(-40, 392)
+color = Color(0.737255, 0.764706, 0.6, 1)
+energy = 3.0
+texture = ExtResource("33_3obcw")
+texture_scale = 2.0
+
+[node name="PointLight2D27" type="PointLight2D" parent="." index="29"]
+position = Vector2(-88, 472)
+color = Color(0.737255, 0.764706, 0.6, 1)
+energy = 3.0
+texture = ExtResource("34_t3kx6")
+
+[node name="PointLight2D28" type="PointLight2D" parent="." index="30"]
+position = Vector2(792, 312)
+color = Color(0.737255, 0.764706, 0.6, 1)
+energy = 3.0
+texture = ExtResource("34_t3kx6")
+
+[node name="PointLight2D29" type="PointLight2D" parent="." index="31"]
+position = Vector2(-200, -328)
+color = Color(0.737255, 0.764706, 0.6, 1)
+energy = 3.0
+texture = ExtResource("34_t3kx6")
+
+[node name="PointLight2D30" type="PointLight2D" parent="." index="32"]
+position = Vector2(1368, -512)
+rotation = -1.5708
+scale = Vector2(2, 1)
+color = Color(0.737255, 0.764706, 0.6, 1)
+energy = 3.0
+texture = ExtResource("34_t3kx6")
+
+[node name="PointLight2D19" type="PointLight2D" parent="." index="33"]
+position = Vector2(-88, 328)
+color = Color(0.737255, 0.764706, 0.6, 1)
+energy = 3.0
+texture = ExtResource("33_3obcw")
+texture_scale = 2.0
+
+[node name="PointLight2D18" type="PointLight2D" parent="." index="34"]
+position = Vector2(-136, 392)
+color = Color(0.737255, 0.764706, 0.6, 1)
+energy = 3.0
+texture = ExtResource("33_3obcw")
+texture_scale = 2.0
+
 [node name="interact" parent="node_interact" index="0" instance=ExtResource("5_x16qu")]
-position = Vector2(-120, 8)
+position = Vector2(-136, -24)
 lines = Array[String](["à droite étage B"])
 
 [node name="interact2" parent="node_interact" index="1" instance=ExtResource("5_x16qu")]
-position = Vector2(40, 200)
-lines = Array[String](["Je ne veux pas sortir!!", "Ici je suis nourri et logé...", "Et tout ça à [wave]moitié prix[/wave]!!!", "[color=13eefd]**une odeur nauséabonde se dégage...**"])
-sprite_hide = false
-
-[node name="CollisionShape2D" parent="node_interact/interact2" index="0"]
-position = Vector2(0, -16)
-
-[node name="Sprite2D" parent="node_interact/interact2" index="1"]
-position = Vector2(-32, 24)
-texture = ExtResource("9_j80k2")
-
-[node name="AnimationPlayer" parent="node_interact/interact2" index="2"]
-root_node = NodePath("../../interact2")
+position = Vector2(40, 184)
+lines = Array[String](["bip[5]", "txt[11]", "txt[12]", "txt[13]", "bip[0]", "txt[14]"])
 
 [node name="interact10" parent="node_interact" index="2" instance=ExtResource("5_x16qu")]
-position = Vector2(136, 24)
-lines = Array[String](["...", "???!!!!", "Comment t'as fait ??!!!", "dit moi dit moi dit moi dit moi dit moi dit moi dit moi dit moi dit moi dit moi dit moi dit moi dit moi dit moi dit moi dit moi dit moi ", "pfiou...", "j'ai la bouche sèche................", "..."])
-sprite_hide = false
-
-[node name="CollisionShape2D" parent="node_interact/interact10" index="0"]
-position = Vector2(-16, 64)
-
-[node name="Sprite2D" parent="node_interact/interact10" index="1"]
-position = Vector2(-16, -8)
-texture = ExtResource("10_hy2im")
+position = Vector2(120, 88)
+lines = Array[String](["bip[1]", "txt[4]", "txt[5]", "txt[6]", "txt[7]", "txt[8]", "txt[9]", "txt[10]"])
 
 [node name="interact3" parent="node_interact" index="3" instance=ExtResource("5_x16qu")]
 position = Vector2(8, 56)
-lines = Array[String](["une plante"])
+lines = Array[String](["txt[3]"])
 
-[node name="interact4" parent="node_interact" index="4" instance=ExtResource("5_x16qu")]
+[node name="interact16" parent="node_interact" index="4" instance=ExtResource("5_x16qu")]
+position = Vector2(88, 24)
+lines = Array[String](["txt[0]", "txt[1]", "test[]"])
+
+[node name="interact4" parent="node_interact" index="5" instance=ExtResource("5_x16qu")]
 position = Vector2(232, 8)
 lines = Array[String](["une plante"])
 
-[node name="interact5" parent="node_interact" index="5" instance=ExtResource("5_x16qu")]
+[node name="interact5" parent="node_interact" index="6" instance=ExtResource("5_x16qu")]
 position = Vector2(200, 16)
 lines = Array[String](["un lit"])
 
-[node name="interact6" parent="node_interact" index="6" instance=ExtResource("5_x16qu")]
+[node name="interact6" parent="node_interact" index="7" node_paths=PackedStringArray("extra_sound") instance=ExtResource("5_x16qu")]
 position = Vector2(136, 184)
-lines = Array[String](["[color=13eefd]**des bruits sourd**"])
+lines = Array[String](["snd[0]", "txt[15]"])
+extra_sound = [NodePath("loud sound")]
 
-[node name="interact15" parent="node_interact" index="7" instance=ExtResource("5_x16qu")]
+[node name="loud sound" type="AudioStreamPlayer" parent="node_interact/interact6" index="3"]
+stream = ExtResource("17_yv5mp")
+
+[node name="interact15" parent="node_interact" index="8" instance=ExtResource("5_x16qu")]
 position = Vector2(24, 88)
-lines = Array[String](["[color=13eefd]C'est fermée .[/color]"])
+lines = Array[String](["txt[78]"])
 
-[node name="interact8" parent="node_interact" index="8" instance=ExtResource("5_x16qu")]
+[node name="interact8" parent="node_interact" index="9" instance=ExtResource("5_x16qu")]
 position = Vector2(56, 48)
-lines = Array[String](["votre lit"])
+lines = Array[String](["txt[2]"])
 
-[node name="interact9" parent="node_interact" index="9" instance=ExtResource("5_x16qu")]
+[node name="interact9" parent="node_interact" index="10" instance=ExtResource("5_x16qu")]
 position = Vector2(40, 8)
 lines = Array[String](["Le [color=red]repas[/color]", "Je ne suis pas sûre qu'un chien pourrait aimer..."])
 
-[node name="interact7" parent="node_interact" index="10" instance=ExtResource("5_x16qu")]
+[node name="interact7" parent="node_interact" index="11" instance=ExtResource("5_x16qu")]
 position = Vector2(232, 184)
-lines = Array[String](["[color=13eefd]un lit...", "[color=13eefd]une chaise...", "[color=13eefd]en face...", "[color=13eefd]une table...", "[color=13eefd]sur la table...", "[color=13eefd]un repas...", "[color=13eefd]en sommes c'est une prisons", "[color=13eefd]...", "[color=13eefd]attends une seconde...", "[color=13eefd]mais...", "[color=13eefd]ON EST DANS UNE PRISON!!!", "[color=13eefd]no way!!!", "[color=13eefd]truc de ouf !!!"])
+lines = Array[String](["txt[17]", "txt[18]", "txt[19]", "txt[20]", "txt[21]", "txt[22]", "txt[23]", "txt[24]", "txt[25]", "txt[26]", "txt[27]", "txt[28]", "txt[29]"])
 
-[node name="interact11" parent="node_interact" index="11" instance=ExtResource("5_x16qu")]
+[node name="interact11" parent="node_interact" index="12" instance=ExtResource("5_x16qu")]
 position = Vector2(216, 88)
-lines = Array[String](["[color=13eefd]un lit...", "[color=13eefd]une chaise...", "[color=13eefd]en face...", "[color=13eefd]une table...", "[color=13eefd]sur la table...", "[color=13eefd]un repas...", "[color=13eefd]en sommes c'est une prisons"])
+lines = Array[String](["txt[31]"])
 
-[node name="interact12" parent="node_interact" index="12" instance=ExtResource("5_x16qu")]
+[node name="interact12" parent="node_interact" index="13" instance=ExtResource("5_x16qu")]
 position = Vector2(-56, 232)
-lines = Array[String](["Une [color=#d6cd14]mouette[/color]...", "??", "Elle est cassé...c'est bien fait pour elle!!!"])
+lines = Array[String](["txt[75]", "txt[76]"])
 
-[node name="interact14" parent="node_interact" index="13" instance=ExtResource("5_x16qu")]
+[node name="interact14" parent="node_interact" index="14" instance=ExtResource("5_x16qu")]
 position = Vector2(-192, 128)
 scale = Vector2(4, 4)
-lines = Array[String](["[color=13eefd]la partie gauche de la ville semble endommagée[/color]", "[color=13eefd]J'aperçois des gens de l'autre côté[/color]", "[color=13eefd]Je crois qu'il parle d'un jeu avec une map dans la neige...[/color]", "[color=13eefd]Ils contrôlent des astronautes...[/color]", "[color=13eefd]Je les trouve suspicieux...[/color]"])
+lines = Array[String](["txt[69]", "txt[70]", "txt[71]", "txt[72]", "txt[73]"])
 
-[node name="interact13" parent="node_interact" index="14" instance=ExtResource("5_x16qu")]
+[node name="interact13" parent="node_interact" index="15" instance=ExtResource("5_x16qu")]
 position = Vector2(-120, 232)
-lines = Array[String](["Une [color=#d6cd14]mouette[/color]...", "??"])
+lines = Array[String](["txt[75]", "txt[76]"])
 
-[node name="TexBattleBob" type="Sprite2D" parent="." index="7"]
+[node name="TexBattleBob" type="Sprite2D" parent="." index="36"]
 position = Vector2(-256, 136)
 texture = ExtResource("11_0j85e")
 hframes = 8
 vframes = 4
 
-[node name="TexBattleBob3" type="Sprite2D" parent="." index="8"]
+[node name="TexBattleBob3" type="Sprite2D" parent="." index="37"]
 position = Vector2(-248, 112)
 texture = ExtResource("11_0j85e")
 hframes = 8
 vframes = 4
 frame = 26
 
-[node name="TexBattleBob2" type="Sprite2D" parent="." index="9"]
+[node name="TexBattleBob2" type="Sprite2D" parent="." index="38"]
 position = Vector2(-232, 104)
 texture = ExtResource("11_0j85e")
 hframes = 8
 vframes = 4
 frame = 19
 
-[node name="TexBattleBob4" type="Sprite2D" parent="." index="10"]
+[node name="TexBattleBob4" type="Sprite2D" parent="." index="39"]
 position = Vector2(-280, 120)
 texture = ExtResource("11_0j85e")
 flip_h = true
@@ -1605,7 +1794,7 @@ hframes = 8
 vframes = 4
 frame = 19
 
-[node name="scene_000" type="Node2D" parent="." index="11" node_paths=PackedStringArray("intro_bgm", "music", "musicsad")]
+[node name="scene_000" type="Node2D" parent="." index="40" node_paths=PackedStringArray("intro_bgm", "music", "musicsad")]
 script = ExtResource("12_acc8v")
 intro_bgm = NodePath("../level_audio/bgmintro")
 music = NodePath("../level_audio/bgm")
@@ -1651,7 +1840,7 @@ lifetime = 2.0
 fixed_fps = 60
 trail_enabled = true
 
-[node name="scene_001" type="Node2D" parent="." index="12" node_paths=PackedStringArray("music", "music2", "musicsad")]
+[node name="scene_001" type="Node2D" parent="." index="41" node_paths=PackedStringArray("music", "music2", "musicsad")]
 script = ExtResource("14_qcqfy")
 music = NodePath("../level_audio/bgm")
 music2 = NodePath("../level_audio/bgm2")
@@ -1679,7 +1868,7 @@ libraries = {
 "": SubResource("AnimationLibrary_3h26y")
 }
 
-[node name="scene_002" type="Node2D" parent="." index="13" node_paths=PackedStringArray("intro_bgm")]
+[node name="scene_002" type="Node2D" parent="." index="42" node_paths=PackedStringArray("intro_bgm")]
 script = ExtResource("18_efr6c")
 intro_bgm = NodePath("../level_audio/bgmintro")
 
@@ -1776,254 +1965,50 @@ scroll_active = false
 
 [node name="interact" parent="scene_002" index="13" instance=ExtResource("5_x16qu")]
 position = Vector2(24, 8)
-lines = Array[String](["Bonjour...", "Je t'invite à grimpé ce mur et passer par la ventilation et me rejoindre plus loins", "Ton amis Bob qui joue du trombone"])
+lines = Array[String](["bip[3]", "txt[65]", "txt[66]", "txt[67]"])
 
-[node name="interact" parent="." index="14" instance=ExtResource("5_x16qu")]
+[node name="interact" parent="." index="43" instance=ExtResource("5_x16qu")]
 position = Vector2(840, 608)
 lines = Array[String](["Il semble triste..."])
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." index="15"]
+[node name="StaticBody2D" type="StaticBody2D" parent="." index="44"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="0"]
 position = Vector2(840, 604)
 shape = SubResource("RectangleShape2D_2yx4e")
 
-[node name="StaticBody2D2" parent="." index="16" instance=ExtResource("29_qgolp")]
+[node name="StaticBody2D2" parent="." index="45" instance=ExtResource("29_qgolp")]
 position = Vector2(-88, 456)
 
-[node name="StaticBody2D9" parent="." index="17" instance=ExtResource("29_qgolp")]
+[node name="StaticBody2D9" parent="." index="46" instance=ExtResource("29_qgolp")]
 position = Vector2(376, -528)
 
-[node name="StaticBody2D10" parent="." index="18" instance=ExtResource("29_qgolp")]
+[node name="StaticBody2D10" parent="." index="47" instance=ExtResource("29_qgolp")]
 position = Vector2(-744, -424)
 
-[node name="StaticBody2D15" parent="." index="19" instance=ExtResource("29_qgolp")]
+[node name="StaticBody2D15" parent="." index="48" instance=ExtResource("29_qgolp")]
 position = Vector2(-200, -344)
 
-[node name="StaticBody2D13" parent="." index="20" instance=ExtResource("29_qgolp")]
+[node name="StaticBody2D13" parent="." index="49" instance=ExtResource("29_qgolp")]
 position = Vector2(-968, -344)
 
-[node name="StaticBody2D4" parent="." index="21" instance=ExtResource("29_qgolp")]
+[node name="StaticBody2D4" parent="." index="50" instance=ExtResource("29_qgolp")]
 position = Vector2(1336, 216)
 
-[node name="StaticBody2D8" parent="." index="22" instance=ExtResource("29_qgolp")]
+[node name="StaticBody2D8" parent="." index="51" instance=ExtResource("29_qgolp")]
 position = Vector2(1464, 360)
 
-[node name="TexGaster" type="Sprite2D" parent="." index="23"]
+[node name="TexGaster" type="Sprite2D" parent="." index="52"]
 position = Vector2(224, 24)
 texture = ExtResource("30_21bs0")
 
-[node name="setup" parent="." index="24" node_paths=PackedStringArray("level", "scene_000", "scene_001", "scene_002")]
+[node name="setup" parent="." index="53" node_paths=PackedStringArray("level", "scene_000", "scene_001", "scene_002")]
 script = ExtResource("2_jxnqr")
 level = NodePath("..")
 scene_000 = NodePath("../scene_000")
 scene_001 = NodePath("../scene_001")
 scene_002 = NodePath("../scene_002")
 
-[node name="PointLight2D2" type="PointLight2D" parent="." index="25"]
-position = Vector2(56, 72)
-color = Color(0.737255, 0.764706, 0.6, 1)
-energy = 3.0
-texture = ExtResource("33_3obcw")
-texture_scale = 2.0
-
-[node name="PointLight2D3" type="PointLight2D" parent="." index="26"]
-position = Vector2(88, 72)
-color = Color(0.737255, 0.764706, 0.6, 1)
-energy = 3.0
-texture = ExtResource("33_3obcw")
-texture_scale = 2.0
-
-[node name="PointLight2D4" type="PointLight2D" parent="." index="27"]
-position = Vector2(152, 72)
-color = Color(0.737255, 0.764706, 0.6, 1)
-energy = 3.0
-texture = ExtResource("33_3obcw")
-texture_scale = 2.0
-
-[node name="PointLight2D5" type="PointLight2D" parent="." index="28"]
-position = Vector2(168, 160)
-color = Color(0.737255, 0.764706, 0.6, 1)
-energy = 3.0
-texture = ExtResource("33_3obcw")
-texture_scale = 2.0
-
-[node name="PointLight2D6" type="PointLight2D" parent="." index="29"]
-position = Vector2(200, 144)
-color = Color(0.737255, 0.764706, 0.6, 1)
-energy = 3.0
-texture = ExtResource("33_3obcw")
-texture_scale = 2.0
-
-[node name="PointLight2D7" type="PointLight2D" parent="." index="30"]
-position = Vector2(264, 160)
-color = Color(0.737255, 0.764706, 0.6, 1)
-energy = 3.0
-texture = ExtResource("33_3obcw")
-texture_scale = 2.0
-
-[node name="PointLight2D8" type="PointLight2D" parent="." index="31"]
-position = Vector2(248, 72)
-color = Color(0.737255, 0.764706, 0.6, 1)
-energy = 3.0
-texture = ExtResource("33_3obcw")
-texture_scale = 2.0
-
-[node name="PointLight2D9" type="PointLight2D" parent="." index="32"]
-position = Vector2(184, 72)
-color = Color(0.737255, 0.764706, 0.6, 1)
-energy = 3.0
-texture = ExtResource("33_3obcw")
-texture_scale = 2.0
-
-[node name="PointLight2D10" type="PointLight2D" parent="." index="33"]
-position = Vector2(104, 160)
-color = Color(0.737255, 0.764706, 0.6, 1)
-energy = 3.0
-texture = ExtResource("33_3obcw")
-texture_scale = 2.0
-
-[node name="PointLight2D11" type="PointLight2D" parent="." index="34"]
-position = Vector2(72, 160)
-color = Color(0.737255, 0.764706, 0.6, 1)
-energy = 3.0
-texture = ExtResource("33_3obcw")
-texture_scale = 2.0
-
-[node name="PointLight2D12" type="PointLight2D" parent="." index="35"]
-position = Vector2(8, 160)
-color = Color(0.737255, 0.764706, 0.6, 1)
-energy = 3.0
-texture = ExtResource("33_3obcw")
-texture_scale = 2.0
-
-[node name="PointLight2D13" type="PointLight2D" parent="." index="36"]
-position = Vector2(-40, 200)
-color = Color(0.737255, 0.764706, 0.6, 1)
-energy = 3.0
-texture = ExtResource("33_3obcw")
-texture_scale = 2.0
-
-[node name="PointLight2D20" type="PointLight2D" parent="." index="37"]
-position = Vector2(392, 520)
-color = Color(0.737255, 0.764706, 0.6, 1)
-energy = 3.0
-texture = ExtResource("33_3obcw")
-texture_scale = 2.0
-
-[node name="PointLight2D21" type="PointLight2D" parent="." index="38"]
-position = Vector2(440, 520)
-color = Color(0.737255, 0.764706, 0.6, 1)
-energy = 3.0
-texture = ExtResource("33_3obcw")
-texture_scale = 2.0
-
-[node name="PointLight2D22" type="PointLight2D" parent="." index="39"]
-position = Vector2(488, 520)
-color = Color(0.737255, 0.764706, 0.6, 1)
-energy = 3.0
-texture = ExtResource("33_3obcw")
-texture_scale = 2.0
-
-[node name="PointLight2D23" type="PointLight2D" parent="." index="40"]
-position = Vector2(1304, 328)
-color = Color(0.737255, 0.764706, 0.6, 1)
-energy = 3.0
-texture = ExtResource("33_3obcw")
-texture_scale = 2.0
-
-[node name="PointLight2D24" type="PointLight2D" parent="." index="41"]
-position = Vector2(1288, 184)
-color = Color(0.737255, 0.764706, 0.6, 1)
-energy = 3.0
-texture = ExtResource("33_3obcw")
-texture_scale = 2.0
-
-[node name="PointLight2D25" type="PointLight2D" parent="." index="42"]
-position = Vector2(1368, 184)
-color = Color(0.737255, 0.764706, 0.6, 1)
-energy = 3.0
-texture = ExtResource("33_3obcw")
-texture_scale = 2.0
-
-[node name="PointLight2D26" type="PointLight2D" parent="." index="43"]
-position = Vector2(1464, 184)
-color = Color(0.737255, 0.764706, 0.6, 1)
-energy = 3.0
-texture = ExtResource("33_3obcw")
-texture_scale = 2.0
-
-[node name="PointLight2D14" type="PointLight2D" parent="." index="44"]
-position = Vector2(-136, 200)
-color = Color(0.737255, 0.764706, 0.6, 1)
-energy = 3.0
-texture = ExtResource("33_3obcw")
-texture_scale = 2.0
-
-[node name="PointLight2D15" type="PointLight2D" parent="." index="45"]
-position = Vector2(-40, 280)
-color = Color(0.737255, 0.764706, 0.6, 1)
-energy = 3.0
-texture = ExtResource("33_3obcw")
-texture_scale = 2.0
-
-[node name="PointLight2D16" type="PointLight2D" parent="." index="46"]
-position = Vector2(-136, 280)
-color = Color(0.737255, 0.764706, 0.6, 1)
-energy = 3.0
-texture = ExtResource("33_3obcw")
-texture_scale = 2.0
-
-[node name="PointLight2D17" type="PointLight2D" parent="." index="47"]
-position = Vector2(-40, 392)
-color = Color(0.737255, 0.764706, 0.6, 1)
-energy = 3.0
-texture = ExtResource("33_3obcw")
-texture_scale = 2.0
-
-[node name="PointLight2D27" type="PointLight2D" parent="." index="48"]
-position = Vector2(-88, 472)
-color = Color(0.737255, 0.764706, 0.6, 1)
-energy = 3.0
-texture = ExtResource("34_t3kx6")
-
-[node name="PointLight2D28" type="PointLight2D" parent="." index="49"]
-position = Vector2(792, 312)
-color = Color(0.737255, 0.764706, 0.6, 1)
-energy = 3.0
-texture = ExtResource("34_t3kx6")
-
-[node name="PointLight2D29" type="PointLight2D" parent="." index="50"]
-position = Vector2(-200, -328)
-color = Color(0.737255, 0.764706, 0.6, 1)
-energy = 3.0
-texture = ExtResource("34_t3kx6")
-
-[node name="PointLight2D30" type="PointLight2D" parent="." index="51"]
-position = Vector2(1368, -512)
-rotation = -1.5708
-scale = Vector2(2, 1)
-color = Color(0.737255, 0.764706, 0.6, 1)
-energy = 3.0
-texture = ExtResource("34_t3kx6")
-
-[node name="PointLight2D19" type="PointLight2D" parent="." index="52"]
-position = Vector2(-88, 328)
-color = Color(0.737255, 0.764706, 0.6, 1)
-energy = 3.0
-texture = ExtResource("33_3obcw")
-texture_scale = 2.0
-
-[node name="PointLight2D18" type="PointLight2D" parent="." index="53"]
-position = Vector2(-136, 392)
-color = Color(0.737255, 0.764706, 0.6, 1)
-energy = 3.0
-texture = ExtResource("33_3obcw")
-texture_scale = 2.0
-
 [connection signal="body_entered" from="scene_000/Area2D" to="scene_000" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="scene_001/Area2D" to="scene_001" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="scene_002/Area2D" to="scene_002" method="_on_area_2d_body_entered"]
-
-[editable path="node_interact/interact2"]
-[editable path="node_interact/interact10"]

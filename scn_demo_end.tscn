@@ -13,7 +13,7 @@ shape = SubResource("RectangleShape2D_gplbs")
 
 [node name="interact" parent="." instance=ExtResource("2_wyswd")]
 scale = Vector2(3, 3)
-lines = ["Déso la démo que tu as ne te permet pas d'aller plus loins...", "Je suis navré...", "attention je ne suis pas un navir !!!", "...", "bref..."]
+lines = Array[String](["bip[2]", "txt[80]", "txt[81]", "txt[82]", "txt[83]", "txt[84]"])
 sprite_hide = false
 
 [node name="Sprite2D" parent="interact" index="1"]

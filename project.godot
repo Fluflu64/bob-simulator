@@ -16,6 +16,10 @@ config/features=PackedStringArray("4.3", "Mobile")
 boot_splash/show_image=false
 config/icon="res://tex_bob_ico.png"
 
+[autoload]
+
+BobGlobal="*res://localisation/script_global.gd"
+
 [display]
 
 window/size/viewport_width=256

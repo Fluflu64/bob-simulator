@@ -63,6 +63,17 @@ func _ready():
 	setup()
 
 func setup() -> void:
+	label_menu = []
+	for button in range(5) :
+		label_menu.append(BobGlobal.langue[BobGlobal.langindex][33+button])
+	
+	var instruction_text = ""
+	
+	for button in range(18) :
+		instruction_text += BobGlobal.langue[BobGlobal.langindex][39+button] + "\n"
+	
+	instru_text.text = instruction_text
+	
 	bg_color.show()
 	bg_color.modulate = Color(1,1,1,1)
 	instru_text.modulate = Color(1,1,1,0)

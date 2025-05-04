@@ -1,9 +1,10 @@
-[gd_scene load_steps=37 format=3 uid="uid://d3u5mdb0d3110"]
+[gd_scene load_steps=39 format=3 uid="uid://d3u5mdb0d3110"]
 
 [ext_resource type="Texture2D" uid="uid://mibs4jii822c" path="res://player_related/tex_text_box.png" id="1_domdl"]
 [ext_resource type="Script" path="res://title/script_option_menu.gd" id="1_ia65k"]
 [ext_resource type="LabelSettings" uid="uid://bdxtw162r24p7" path="res://base_font.tres" id="2_8p8qi"]
 [ext_resource type="FontFile" uid="uid://b6nqix3g6iv3i" path="res://pixelfont.ttf" id="2_cqyl1"]
+[ext_resource type="Texture2D" uid="uid://dde7jjkv14a2i" path="res://title/tex_bg_option.png" id="2_tkppn"]
 [ext_resource type="Texture2D" uid="uid://q8mfkcin251l" path="res://music/icone/tex_music_underworld.png" id="5_221c8"]
 [ext_resource type="AudioStream" uid="uid://bnmsn5u64bnb3" path="res://music/castle.ogg" id="5_iw3db"]
 [ext_resource type="Texture2D" uid="uid://djye8dft81dkt" path="res://music/icone/tex_music_battle.png" id="6_elfd7"]
@@ -32,6 +33,7 @@
 [ext_resource type="AudioStream" uid="uid://dhbbonkvexhek" path="res://music/overworld.wav" id="30_c7mbx"]
 [ext_resource type="AudioStream" uid="uid://ba22mko7h3oxe" path="res://music/pololompololom pompompololommm.wav" id="31_vdfqy"]
 [ext_resource type="AudioStream" uid="uid://be1sxgjgalasj" path="res://music/bobaround.wav" id="32_8mvgg"]
+[ext_resource type="PackedScene" uid="uid://dohogg1b38b42" path="res://title/scn_bob_option.tscn" id="34_sgu8f"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3uauj"]
 line_spacing = 8.0
@@ -103,6 +105,16 @@ _data = {
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_ia65k")
 
+[node name="Parallax2D" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.9, 0.9)
+scroll_offset = Vector2(0, 128)
+repeat_size = Vector2(128, 0)
+autoscroll = Vector2(-32, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
+position = Vector2(128, 0)
+texture = ExtResource("2_tkppn")
+
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
 z_index = 1
@@ -161,28 +173,6 @@ audio global :<
   100%<
 "
 label_settings = ExtResource("2_8p8qi")
-
-[node name="NinePatchRect3" type="NinePatchRect" parent="."]
-offset_top = 208.0
-offset_right = 256.0
-offset_bottom = 256.0
-texture = ExtResource("1_domdl")
-patch_margin_left = 16
-patch_margin_top = 16
-patch_margin_right = 16
-patch_margin_bottom = 16
-
-[node name="Label2" type="Label" parent="NinePatchRect3"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 248.0
-offset_bottom = 40.0
-text = "difficulter :
-
-facile : pour des joueur voulant profiter de l'histoire"
-label_settings = ExtResource("2_8p8qi")
-autowrap_mode = 3
 
 [node name="NinePatchRect4" type="NinePatchRect" parent="."]
 offset_top = 112.0
@@ -325,3 +315,6 @@ stream = ExtResource("32_8mvgg")
 libraries = {
 "": SubResource("AnimationLibrary_b2jr3")
 }
+
+[node name="Node2D" parent="." instance=ExtResource("34_sgu8f")]
+position = Vector2(40, 240)

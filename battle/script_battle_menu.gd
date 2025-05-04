@@ -72,7 +72,8 @@ func func_menu(index):
 		index_menu = 10
 	
 	if index == 2 :
-		histo.append("tu n'as pas d'objet")
+		player_battle.pv = player_battle.max_pv
+		histo.append("tu es heal")
 		update_histo()
 	
 	if index == 3 :
@@ -370,8 +371,11 @@ func _process(_delta: float) -> void:
 		elif tour == 1:
 			battle_lock = true
 			for ennemi in ennemis_battle :
-						ennemi.ia_move(player_battle)
-						await ennemi.turn_end
+						if ennemi.pv > 0 :
+							ennemi.ia_move(player_battle)
+							await ennemi.turn_end
+						else :
+							ennemi.animation.play("lose")
 			
 			animation.play_backwards("menu_show")
 			await animation.animation_finished

@@ -5,7 +5,7 @@ var index_menu = 0
 var index_submenu = -1
 @onready var submenu = $NinePatchRect2/Label2
 
-@onready var detail_label = $NinePatchRect3/Label2
+
 
 @onready var ost = $soundtest_music
 @onready var ost_ico = $NinePatchRect4
@@ -15,26 +15,25 @@ var in_submenu = false
 
 var game_root = null
 
-var menu_name = ["rapide","jeu","vidéo","audio","soundtest","retour"]
+var menu_name = ["jeu","langue","vidéo","audio","soundtest","retour"]
 
-var rapide_name = ["difficulter : ","audio global : "]
-var game_name = ["3","4"]
+var rapide_name = ["facile","normale","difficile"]
+var game_name = ["français","english"]
 var video_name = ["5","6"]
 var audio_name = ["7","8"]
 var soundtest_name = []
 var back_name = []
 
-var info_name = [\
-["option rapide",["un","deux"]],
-["parametre du jeu",["trois","quatre"]],
-["option vidéo",["cinq","six"]],
-["option audio",["sept","huit"]],
-["permet de tester les musiques",[]],
-["revenir au menu principale",[]]]
+
 
 var submenu_name = [rapide_name,game_name,video_name,audio_name,soundtest_name,back_name]
 
 func _ready() -> void:
+	menu_name = []
+	for button in range(6) :
+		menu_name.append(BobGlobal.langue[BobGlobal.langindex][58+button])
+	
+	
 	for music in ost.get_children() :
 		soundtest_name.append(music.name)
 	update_menu()
@@ -111,12 +110,5 @@ func _input(event: InputEvent) -> void:
 			for ico in ost_ico.get_children() :
 				ico.hide()
 	
-	if in_submenu == false :
-		detail_label.text = info_name[index_menu][0]
-	else :
-		if index_menu != 4 :
-			detail_label.text = info_name[index_menu][1][index_submenu]
-		else :
-			detail_label.text = "les images on été prise en beta 0.10.3"
 	update_menu()
 	

@@ -51,6 +51,7 @@ func open_submenu(submenu):
 	textbox.add_child(submenu_inst)
 
 func _ready():
+	load_param()
 	sprite_loading_screen.hide()
 	title.game_root = self
 	load_why()
@@ -321,4 +322,19 @@ func load_why():
 	else :
 		why = randi_range(1,100)
 		config.set_value("why","why",why)
+		config.save(save_path)
+
+func load_param():
+	var param_load = config.load(save_path)
+	if param_load != null :
+		if config.get_value("option","lang") == OK :
+			BobGlobal.langindex = config.get_value("option","lang")
+			title.setup()
+		else :
+			BobGlobal.langindex = 1
+			config.set_value("option","lang",BobGlobal.langindex)
+			config.save(save_path)
+	else :
+		BobGlobal.langindex = 1
+		config.set_value("option","lang",BobGlobal.langindex)
 		config.save(save_path)

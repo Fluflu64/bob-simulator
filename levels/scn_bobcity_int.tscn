@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=4 uid="uid://djeea60kpngwx"]
+[gd_scene load_steps=62 format=4 uid="uid://djeea60kpngwx"]
 
 [ext_resource type="PackedScene" uid="uid://cspbme0evtjet" path="res://levels/scn_level_base.tscn" id="1_qqd4f"]
 [ext_resource type="Script" path="res://levels/script_setup_bobcity_int.gd" id="2_jxnqr"]
@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://b2btq5cmgwhov" path="res://sprite/tex_trombone.png" id="15_ul6ce"]
 [ext_resource type="Texture2D" uid="uid://d27oen1w355q5" path="res://sprite/tex_raine.png" id="16_8f3ls"]
 [ext_resource type="AudioStream" uid="uid://wf82o3ltemy1" path="res://sound_effect/des gens.wav" id="17_yv5mp"]
+[ext_resource type="AudioStream" uid="uid://c04610inekkdt" path="res://sound_effect/un son qui ne devrais probablement pas etre dans le jeu.wav" id="18_b20r5"]
 [ext_resource type="Script" path="res://scene/script_scene_002.gd" id="18_efr6c"]
 [ext_resource type="Texture2D" uid="uid://48by3vgx8ri" path="res://sprite/tex_flic_n_bob.png" id="19_rk5ds"]
 [ext_resource type="Texture2D" uid="uid://cm0y67224xlny" path="res://player_related/tex_bob.png" id="20_jmunk"]
@@ -481,7 +482,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("ColorRect:color")
+tracks/9/path = NodePath("Camera2D/ColorRect:color")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -493,7 +494,7 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("ColorRect:visible")
+tracks/10/path = NodePath("Camera2D/ColorRect:visible")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -749,7 +750,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("ColorRect:color")
+tracks/9/path = NodePath("Camera2D/ColorRect:color")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -761,7 +762,7 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("ColorRect:visible")
+tracks/10/path = NodePath("Camera2D/ColorRect:visible")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -898,7 +899,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:visible")
+tracks/0/path = NodePath("Camera2D/ColorRect:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -1167,7 +1168,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("ColorRect:color")
+tracks/9/path = NodePath("Camera2D/ColorRect:color")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -1179,7 +1180,7 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("ColorRect:visible")
+tracks/10/path = NodePath("Camera2D/ColorRect:visible")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -1749,9 +1750,13 @@ lines = Array[String](["Le [color=red]repas[/color]", "Je ne suis pas sûre qu'u
 position = Vector2(232, 184)
 lines = Array[String](["txt[17]", "txt[18]", "txt[19]", "txt[20]", "txt[21]", "txt[22]", "txt[23]", "txt[24]", "txt[25]", "txt[26]", "txt[27]", "txt[28]", "txt[29]"])
 
-[node name="interact11" parent="node_interact" index="12" instance=ExtResource("5_x16qu")]
+[node name="interact11" parent="node_interact" index="12" node_paths=PackedStringArray("extra_sound") instance=ExtResource("5_x16qu")]
 position = Vector2(216, 88)
-lines = Array[String](["txt[31]"])
+lines = Array[String](["snd[0]", "txt[31]"])
+extra_sound = [NodePath("gaster")]
+
+[node name="gaster" type="AudioStreamPlayer" parent="node_interact/interact11" index="3"]
+stream = ExtResource("18_b20r5")
 
 [node name="interact12" parent="node_interact" index="13" instance=ExtResource("5_x16qu")]
 position = Vector2(-56, 232)
@@ -1803,7 +1808,7 @@ musicsad = NodePath("../level_audio/sad")
 [node name="Area2D" type="Area2D" parent="scene_000" index="0"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="scene_000/Area2D" index="0"]
-position = Vector2(824, 640)
+position = Vector2(912, 640)
 shape = SubResource("RectangleShape2D_ikkft")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="scene_000" index="1"]
@@ -1822,15 +1827,19 @@ vframes = 8
 position = Vector2(952, 584)
 lines = Array[String](["Je t'avais demandé de ne pas bouger", "Coopère et tout se passera bien"])
 
-[node name="line2" parent="scene_000" index="4" instance=ExtResource("5_x16qu")]
+[node name="line4" parent="scene_000" index="4" instance=ExtResource("5_x16qu")]
+position = Vector2(840, 664)
+lines = Array[String](["Je t'avais demandé de ne pas bouger", "Coopère et tout se passera bien"])
+
+[node name="line2" parent="scene_000" index="5" instance=ExtResource("5_x16qu")]
 position = Vector2(952, 600)
 lines = Array[String](["Bravo...‎"])
 
-[node name="line3" parent="scene_000" index="5" instance=ExtResource("5_x16qu")]
+[node name="line3" parent="scene_000" index="6" instance=ExtResource("5_x16qu")]
 position = Vector2(952, 616)
 lines = Array[String](["J'abandonne...", "Nous, les flics, on sait qu'il y a quelque chose qui ne va pas ici...", "Avec notre statut, il est impossible d'agir sans être traqué.", "J'ai le sentiment que tu vas réussir!!!", "Continue plus loin, un de tes amis t'attend...", "De mon côté... je vais prévenir les autres flics d'éviter de t'attaquer...", "Cependant je n'assure pas que certains ne soient pas dans notre camp...", "Aller... file..."])
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="scene_000" index="6"]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="scene_000" index="7"]
 position = Vector2(792, 592)
 emitting = false
 amount = 1000
@@ -1906,6 +1915,14 @@ text = "Episode 1:
 la blouse à le bloose"
 label_settings = ExtResource("26_p2o08")
 
+[node name="ColorRect" type="ColorRect" parent="scene_002/Camera2D" index="2"]
+z_index = 2
+offset_left = -216.0
+offset_top = -272.0
+offset_right = 280.0
+offset_bottom = 168.0
+color = Color(0, 0, 0, 1)
+
 [node name="TexFlicNBob" type="Sprite2D" parent="scene_002" index="4"]
 position = Vector2(-1120, 96)
 texture = ExtResource("19_rk5ds")
@@ -1944,15 +1961,7 @@ position = Vector2(56, -40)
 position = Vector2(120, -24)
 texture = ExtResource("20_u818g")
 
-[node name="ColorRect" type="ColorRect" parent="scene_002" index="11"]
-z_index = 2
-offset_left = -272.0
-offset_top = -112.0
-offset_right = 176.0
-offset_bottom = 352.0
-color = Color(0, 0, 0, 1)
-
-[node name="RichTextLabel" type="RichTextLabel" parent="scene_002" index="12"]
+[node name="RichTextLabel" type="RichTextLabel" parent="scene_002" index="11"]
 z_index = 2
 offset_left = -1120.0
 offset_top = 32.0
@@ -1963,7 +1972,7 @@ theme_override_colors/default_color = Color(1, 1, 1, 1)
 text = "Fluflu 64 présente"
 scroll_active = false
 
-[node name="interact" parent="scene_002" index="13" instance=ExtResource("5_x16qu")]
+[node name="interact" parent="scene_002" index="12" instance=ExtResource("5_x16qu")]
 position = Vector2(24, 8)
 lines = Array[String](["bip[3]", "txt[65]", "txt[66]", "txt[67]"])
 

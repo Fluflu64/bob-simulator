@@ -17,7 +17,7 @@ var game_root = null
 
 var menu_name = ["jeu","langue","vidéo","audio","soundtest","retour"]
 
-var rapide_name = ["facile","normale","difficile"]
+var rapide_name = [BobGlobal.langue[BobGlobal.langindex][89],BobGlobal.langue[BobGlobal.langindex][90],BobGlobal.langue[BobGlobal.langindex][91]]
 var game_name = ["français","english"]
 var video_name = ["5","6"]
 var audio_name = ["7","8"]
@@ -100,6 +100,9 @@ func _input(event: InputEvent) -> void:
 			game_root.title.setup()
 			game_root.main_menu_pause(false)
 			queue_free()
+		
+		if index_menu == 2 and in_submenu:
+			BobGlobal.langindex = index_submenu
 		
 	if event.is_action_pressed("run"):
 		if in_submenu == true :

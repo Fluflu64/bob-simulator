@@ -1,10 +1,14 @@
 [why]
 
-why=17
+why=66
 
 [player]
 
-position=Vector2(-106.104, 423.991)
+position=Vector2(20.0746, 30.2133)
 map="res://levels/scn_bobcity_int.tscn"
 level=1
 story=1
+
+[option]
+
+lang=0

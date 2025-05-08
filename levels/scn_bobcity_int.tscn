@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=4 uid="uid://djeea60kpngwx"]
+[gd_scene load_steps=55 format=4 uid="uid://djeea60kpngwx"]
 
 [ext_resource type="PackedScene" uid="uid://cspbme0evtjet" path="res://levels/scn_level_base.tscn" id="1_qqd4f"]
 [ext_resource type="Script" path="res://levels/script_setup_bobcity_int.gd" id="2_jxnqr"]
@@ -15,16 +15,13 @@
 [ext_resource type="AudioStream" uid="uid://ckw5lae87e2if" path="res://music/mus_dark_city.wav" id="9_cqshb"]
 [ext_resource type="AudioStream" uid="uid://be1sxgjgalasj" path="res://music/bobaround.wav" id="9_egavx"]
 [ext_resource type="PackedScene" uid="uid://cknfg8cqko1vn" path="res://actor/scn_rope.tscn" id="10_kdoqm"]
-[ext_resource type="Texture2D" uid="uid://buseck213vate" path="res://player_related/tex_battle_bob.png" id="11_0j85e"]
-[ext_resource type="Script" path="res://scene/script_scene_000.gd" id="12_acc8v"]
 [ext_resource type="Texture2D" uid="uid://do6e1bxb7mtp0" path="res://sprite/tex_flic.png" id="13_i358g"]
-[ext_resource type="Script" path="res://scene/script_scene_001.gd" id="14_qcqfy"]
 [ext_resource type="Texture2D" uid="uid://b2btq5cmgwhov" path="res://sprite/tex_trombone.png" id="15_ul6ce"]
 [ext_resource type="Texture2D" uid="uid://d27oen1w355q5" path="res://sprite/tex_raine.png" id="16_8f3ls"]
 [ext_resource type="AudioStream" uid="uid://wf82o3ltemy1" path="res://sound_effect/des gens.wav" id="17_yv5mp"]
 [ext_resource type="AudioStream" uid="uid://c04610inekkdt" path="res://sound_effect/un son qui ne devrais probablement pas etre dans le jeu.wav" id="18_b20r5"]
-[ext_resource type="Script" path="res://scene/script_scene_002.gd" id="18_efr6c"]
 [ext_resource type="Texture2D" uid="uid://48by3vgx8ri" path="res://sprite/tex_flic_n_bob.png" id="19_rk5ds"]
+[ext_resource type="PackedScene" uid="uid://dqop51ufp7bgp" path="res://actor/scn_block.tscn" id="19_vtnw1"]
 [ext_resource type="Texture2D" uid="uid://cm0y67224xlny" path="res://player_related/tex_bob.png" id="20_jmunk"]
 [ext_resource type="Texture2D" uid="uid://c2dveg077h44f" path="res://sprite/tex_vent.png" id="20_u818g"]
 [ext_resource type="Texture2D" uid="uid://shl8y3wl7lh3" path="res://sprite/tex_paper.png" id="20_xc8m1"]
@@ -41,9 +38,6 @@ shader = ExtResource("7_sj5cr")
 shader_parameter/tiling = Vector2(16, 16)
 shader_parameter/offset = Vector2(0, 0.05)
 shader_parameter/moving = true
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ikkft"]
-size = Vector2(80, 64)
 
 [sub_resource type="Animation" id="Animation_fhw68"]
 length = 0.001
@@ -242,9 +236,6 @@ initial_velocity_max = 50.0
 gravity = Vector3(0, 0, 0)
 color_ramp = SubResource("GradientTexture1D_w3apm")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dqqg3"]
-size = Vector2(16, 56)
-
 [sub_resource type="Animation" id="Animation_i745h"]
 length = 0.001
 tracks/0/type = "value"
@@ -366,8 +357,6 @@ _data = {
 "follow bob": SubResource("Animation_ol52x"),
 "heybob": SubResource("Animation_6mwrq")
 }
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_e54ts"]
 
 [sub_resource type="Animation" id="Animation_jq2qx"]
 length = 0.001
@@ -1274,9 +1263,6 @@ _data = {
 default_font = ExtResource("23_cx60b")
 default_font_size = 8
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2yx4e"]
-size = Vector2(16, 24)
-
 [node name="level" instance=ExtResource("1_qqd4f")]
 map_name = "bob city (interne)"
 encounter_rate = 0
@@ -1358,7 +1344,7 @@ tile_map_data = PackedByteArray("AAAGAP//BAAbAAIAAAAHAP//BAAbAAIAAAAIAP//BAAbAAI
 tile_set = ExtResource("2_mrilo")
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="." index="3"]
-tile_map_data = PackedByteArray("AAD0/wgABAALAAkAAAD0/wkABAALAAkAAAD1/wgABAALAAkAAAD1/wkABAALAAkAAAD0/wYABAALAAkAAAD0/wcABAALAAkAAAD1/wYABAALAAkAAAD1/wcABAALAAkAAADy/wYABAALAAkAAADy/wcABAALAAkAAADz/wYABAALAAkAAADz/wcABAALAAkAAADy/wgABAALAAkAAADy/wkABAALAAkAAADz/wgABAALAAkAAADz/wkABAALAAkAAAACAAAABAAIAAgAAAADAAAABAAMAAcAAAAIAAEABAAJAAgAAAAIAAAABAAMAAgAAAAGAP//BAAJAAsAAAAGAAAABAAJAAwAAAAAAAIABAAJAAsAAAAAAAMABAAJAAwAAAD4/w0ABAANAAwAAAD4/w4ABAANAA0AAAD8/w0ABAAOAAwAAAD8/w4ABAAOAA0AAAADAAIABAAMAAoAAAADAAMABAAMAAsAAAAGAAIABAAMAAoAAAAGAAMABAAMAAsAAAAMAAAABAAMAAoAAAAMAAEABAAMAAsAAAAMAA4ABAAMAAoAAAAMAA8ABAAMAAsAAAABAAsABAARAAgAAAACAAwABAAIAAgAAAAMAA0ABAAIAAgAAAANAA0ABAAMAAcAAAAOAP//BAAJAAsAAAAOAAAABAAJAAwAAAADAAsABAAJAAsAAAADAAwABAAJAAwAAAABAAwABAAMAAoAAAABAA0ABAAMAAsAAAAAAAwABAALAAkAAAABAA4ABAALAAkAAAABAA8ABAANAAwAAFAAAA8ABAANAA0AAFAHAAUABAAfAAMAAAANAAUABAAfAAMAAAACAAsABAAfAAMAAAAIAAsABAAfAAMAAAAOAAsABAAfAAMAAAAQAAYABAAKAAcAAAD2/wAABAAKAAcAAADr/wYABAAKAAcAAADs/wYABAAKAAcAAAD2/w4ABAAKAAcAAAD2/w8ABAAKAAcAAAAhAB8ABAAKAAcAAAAhAB4ABAAKAAcAAAAxACYABAAKAAcAAAAXACIABAAKAAcAAAAvABMABAAKAAcAAABMABMABAAKAAcAAABNABMABAAKAAcAAABQABYABAAKAAcAAABQABcABAAKAAcAAADH/+T/BAAJAAYAAADG/+T/BAAJAAYAAADF/+T/BAAJAAYAAADC/+f/BAAJAAYAAADC/+b/BAAJAAYAAADC/+X/BAAJAAYAAADC/+7/BAAJAAYAAADC/+3/BAAJAAYAAADC/+z/BAAJAAYAAABcABQABAAJAAYAAABcABMABAAJAAYAAABcABIABAAJAAYAAABMABAABAAJAAYAAABMAA8ABAAJAAYAAABMAA4ABAAJAAYAAABNAAwABAAJAAYAAABOAAwABAAJAAYAAABPAAwABAAJAAYAAABWAAwABAAJAAYAAABXAAwABAAJAAYAAABYAAwABAAJAAYAAAAwABMABAAJAAYAAAAxABMABAAJAAYAAAAyABMABAAJAAYAAADL/+//BAAJAAYAAADM/+//BAAJAAYAAADN/+//BAAJAAYAAAD//wYAAQALAAUAAAAFAAkAAQALAAUAAAAMAAcAAQALAAUAAAD8/wkAAQALAAUAAAD6/wEAAQALAAUAAADs/wkAAQALAAUAAAD8/xQAAQALAAUAAAD3/xsAAQALAAUAAADw/+n/AQALAAUAAAD2/+b/AQALAAUAAADV/+v/AQALAAUAAADO/+n/AQALAAUAAADH/+f/AQALAAUAAADF/+3/AQALAAUAAAAPAOr/AQALAAUAAAAXAOj/AQALAAUAAAASAOL/AQALAAUAAAAvAOP/AQALAAUAAAA8AOH/AQALAAUAAABSAOL/AQALAAUAAABUAN//AQALAAUAAAAZACgAAQALAAUAAAAfACMAAQALAAUAAAAxACkAAQALAAUAAAAiABkAAQALAAUAAAAvAA8AAQALAAUAAAAxABEAAQAIAAUAAAAiACQAAQAIAAUAAAAXACcAAQAIAAUAAAAcACMAAQAIAAUAAAD6/xkAAQAKAAUAAAD6/xEAAQAJAAUAAAD3/wgAAQAKAAUAAAAHAAgAAQAJAAUAAADs/wcAAQAJAAUAAAAIAAMAAQAIAAUAAAAPAAIAAQAJAAUAAAAOAA4AAQAKAAUAAAD1/+r/AQAIAAUAAADy/+b/AQAIAAUAAADU/+3/AQAJAAUAAADR/+r/AQAIAAUAAADE/+f/AQAJAAUAAADG/+7/AQAJAAUAAAAUAOj/AQAKAAUAAAAWAOP/AQAJAAUAAAASANz/AQAKAAUAAAA0AOT/AQAKAAUAAAA9AOP/AQAKAAUAAAAxAOH/AQAJAAUAAABTAOH/AQAKAAUAAABTAOD/AQAIAAUAAABSAOD/AQAKAAUAAABYABMAAQAKAAUAAABVABEAAQAJAAUAAABOABYAAQAJAAUAAABPAA8AAQAIAAUAAABYABYAAQAIAAUAAAAfAB8AAwAAAAAAAgAvAAwAAwAAAAAAAgAyAAwAAwAAAAAAAgACAP3/AwAAAAAAAgAIAP3/AwAAAAAAAgAOAP3/AwAAAAAAAgAMAAoAAwAAAAAAAgACAA0AAwAAAAAAAgBLABAAAwAAAAAAAgBQAAkAAwAAAAAAAgBZAAkAAwAAAAAAAgDw/+P/AwAAAAAAAgDz/+P/AwAAAAAAAgDC/+L/AwAAAAAAAgDK/+L/AwAAAAAAAgDU/+L/AwAAAAAAAgANAOL/AwAAAAAAAgAaAOL/AwAAAAAAAgARANj/AwAAAAAAAgAWANj/AwAAAAAAAgAtAN3/AwAAAAAAAgA9AN3/AwAAAAAAAgBSANv/AwAAAAAAAgBRABQABAAXAAkAAABRABUABAAXAAoAAABRABYABAAXAAsAAABVAAsABAAXAAkAAABVAAwABAAXAAoAAABVAA0ABAAXAAsAAABQAAsABAAXAAkAAABQAAwABAAXAAoAAABQAA0ABAAXAAsAAABbAAsABAAXAAkAAABbAAwABAAXAAoAAABbAA0ABAAXAAsAAAAeACAABAAXAAkAAAAeACEABAAXAAoAAAAeACIABAAXAAsAAAAbACAABAAXAAkAAAAbACEABAAXAAoAAAAbACIABAAXAAsAAAAYACAABAAXAAkAAAAYACEABAAXAAoAAAAYACIABAAXAAsAAAD3/xEABAAXAAkAAAD3/xIABAAXAAoAAAD3/xMABAAXAAsAAAD9/xEABAAXAAkAAAD9/xIABAAXAAoAAAD9/xMABAAXAAsAAAD6/xQABAAXAAkAAAD6/xUABAAXAAoAAAD6/xYABAAXAAsAAAD3/xgABAAXAAkAAAD3/xkABAAXAAoAAAD3/xoABAAXAAsAAAD9/xgABAAXAAkAAAD9/xkABAAXAAoAAAD9/xoABAAXAAsAAAD9/wwABAAXAAkAAAD9/w0ABAAXAAoAAAD9/w4ABAAXAAsAAAD3/wwABAAXAAkAAAD3/w0ABAAXAAoAAAD3/w4ABAAXAAsAAAADAAQABAAXAAkAAAADAAUABAAXAAoAAAADAAYABAAXAAsAAAAFAAQABAAXAAkAAAAFAAUABAAXAAoAAAAFAAYABAAXAAsAAAAJAAQABAAXAAkAAAAJAAUABAAXAAoAAAAJAAYABAAXAAsAAAALAAQABAAXAAkAAAALAAUABAAXAAoAAAALAAYABAAXAAsAAAAPAAQABAAXAAkAAAAPAAUABAAXAAoAAAAPAAYABAAXAAsAAAAQAAkABAAXAAkAAAAMAAkABAAXAAkAAAAKAAkABAAXAAkAAAAGAAkABAAXAAkAAAAEAAkABAAXAAkAAAAAAAkABAAXAAkAAAA=")
+tile_map_data = PackedByteArray("AAD0/wgABAALAAkAAAD0/wkABAALAAkAAAD1/wgABAALAAkAAAD1/wkABAALAAkAAAD0/wYABAALAAkAAAD0/wcABAALAAkAAAD1/wYABAALAAkAAAD1/wcABAALAAkAAADy/wYABAALAAkAAADy/wcABAALAAkAAADz/wYABAALAAkAAADz/wcABAALAAkAAADy/wgABAALAAkAAADy/wkABAALAAkAAADz/wgABAALAAkAAADz/wkABAALAAkAAAACAAAABAAIAAgAAAADAAAABAAMAAcAAAAIAAEABAAJAAgAAAAIAAAABAAMAAgAAAAGAP//BAAJAAsAAAAGAAAABAAJAAwAAAAAAAIABAAJAAsAAAAAAAMABAAJAAwAAAD4/w0ABAANAAwAAAD4/w4ABAANAA0AAAD8/w0ABAAOAAwAAAD8/w4ABAAOAA0AAAADAAIABAAMAAoAAAADAAMABAAMAAsAAAAGAAIABAAMAAoAAAAGAAMABAAMAAsAAAAMAAAABAAMAAoAAAAMAAEABAAMAAsAAAAMAA4ABAAMAAoAAAAMAA8ABAAMAAsAAAABAAsABAARAAgAAAACAAwABAAIAAgAAAAMAA0ABAAIAAgAAAANAA0ABAAMAAcAAAAOAP//BAAJAAsAAAAOAAAABAAJAAwAAAADAAsABAAJAAsAAAADAAwABAAJAAwAAAABAAwABAAMAAoAAAABAA0ABAAMAAsAAAAAAAwABAALAAkAAAABAA4ABAALAAkAAAABAA8ABAANAAwAAFAAAA8ABAANAA0AAFAHAAUABAAfAAMAAAANAAUABAAfAAMAAAACAAsABAAfAAMAAAAIAAsABAAfAAMAAAAOAAsABAAfAAMAAAAQAAYABAAKAAcAAAD2/wAABAAKAAcAAADr/wYABAAKAAcAAADs/wYABAAKAAcAAAD2/w4ABAAKAAcAAAD2/w8ABAAKAAcAAAAhAB8ABAAKAAcAAAAhAB4ABAAKAAcAAAAxACYABAAKAAcAAAAXACIABAAKAAcAAAAvABMABAAKAAcAAABMABMABAAKAAcAAABNABMABAAKAAcAAABQABYABAAKAAcAAABQABcABAAKAAcAAADH/+T/BAAJAAYAAADG/+T/BAAJAAYAAADF/+T/BAAJAAYAAADC/+f/BAAJAAYAAADC/+b/BAAJAAYAAADC/+X/BAAJAAYAAADC/+7/BAAJAAYAAADC/+3/BAAJAAYAAADC/+z/BAAJAAYAAABcABQABAAJAAYAAABcABMABAAJAAYAAABcABIABAAJAAYAAABMABAABAAJAAYAAABMAA8ABAAJAAYAAABMAA4ABAAJAAYAAABNAAwABAAJAAYAAABOAAwABAAJAAYAAABPAAwABAAJAAYAAABWAAwABAAJAAYAAABXAAwABAAJAAYAAABYAAwABAAJAAYAAAAwABMABAAJAAYAAAAxABMABAAJAAYAAAAyABMABAAJAAYAAADL/+//BAAJAAYAAADM/+//BAAJAAYAAADN/+//BAAJAAYAAAD//wYAAQALAAUAAAAFAAkAAQALAAUAAAAMAAcAAQALAAUAAAD8/wkAAQALAAUAAAD6/wEAAQALAAUAAADs/wkAAQALAAUAAAD8/xQAAQALAAUAAAD3/xsAAQALAAUAAADw/+n/AQALAAUAAAD2/+b/AQALAAUAAADV/+v/AQALAAUAAADO/+n/AQALAAUAAADH/+f/AQALAAUAAADF/+3/AQALAAUAAAAPAOr/AQALAAUAAAAXAOj/AQALAAUAAAASAOL/AQALAAUAAAAvAOP/AQALAAUAAAA8AOH/AQALAAUAAABSAOL/AQALAAUAAABUAN//AQALAAUAAAAZACgAAQALAAUAAAAfACMAAQALAAUAAAAxACkAAQALAAUAAAAiABkAAQALAAUAAAAvAA8AAQALAAUAAAAxABEAAQAIAAUAAAAiACQAAQAIAAUAAAAXACcAAQAIAAUAAAAcACMAAQAIAAUAAAD6/xkAAQAKAAUAAAD6/xEAAQAJAAUAAAD3/wgAAQAKAAUAAAAHAAgAAQAJAAUAAADs/wcAAQAJAAUAAAAIAAMAAQAIAAUAAAAPAAIAAQAJAAUAAAAOAA4AAQAKAAUAAAD1/+r/AQAIAAUAAADy/+b/AQAIAAUAAADU/+3/AQAJAAUAAADR/+r/AQAIAAUAAADE/+f/AQAJAAUAAADG/+7/AQAJAAUAAAAUAOj/AQAKAAUAAAAWAOP/AQAJAAUAAAASANz/AQAKAAUAAAA0AOT/AQAKAAUAAAA9AOP/AQAKAAUAAAAxAOH/AQAJAAUAAABTAOH/AQAKAAUAAABTAOD/AQAIAAUAAABSAOD/AQAKAAUAAABYABMAAQAKAAUAAABVABEAAQAJAAUAAABOABYAAQAJAAUAAABPAA8AAQAIAAUAAABYABYAAQAIAAUAAAAfAB8AAwAAAAAAAgAvAAwAAwAAAAAAAgAyAAwAAwAAAAAAAgACAP3/AwAAAAAAAgAIAP3/AwAAAAAAAgAOAP3/AwAAAAAAAgAMAAoAAwAAAAAAAgACAA0AAwAAAAAAAgBLABAAAwAAAAAAAgBQAAkAAwAAAAAAAgBZAAkAAwAAAAAAAgDw/+P/AwAAAAAAAgDz/+P/AwAAAAAAAgDC/+L/AwAAAAAAAgDK/+L/AwAAAAAAAgDU/+L/AwAAAAAAAgANAOL/AwAAAAAAAgAaAOL/AwAAAAAAAgARANj/AwAAAAAAAgAWANj/AwAAAAAAAgAtAN3/AwAAAAAAAgA9AN3/AwAAAAAAAgBSANv/AwAAAAAAAgBRABQABAAXAAkAAABRABUABAAXAAoAAABRABYABAAXAAsAAABVAAsABAAXAAkAAABVAAwABAAXAAoAAABVAA0ABAAXAAsAAABQAAsABAAXAAkAAABQAAwABAAXAAoAAABQAA0ABAAXAAsAAABbAAsABAAXAAkAAABbAAwABAAXAAoAAABbAA0ABAAXAAsAAAAeACAABAAXAAkAAAAeACEABAAXAAoAAAAeACIABAAXAAsAAAAbACAABAAXAAkAAAAbACEABAAXAAoAAAAbACIABAAXAAsAAAAYACAABAAXAAkAAAAYACEABAAXAAoAAAAYACIABAAXAAsAAAD3/xEABAAXAAkAAAD3/xIABAAXAAoAAAD3/xMABAAXAAsAAAD9/xEABAAXAAkAAAD9/xIABAAXAAoAAAD9/xMABAAXAAsAAAD6/xQABAAXAAkAAAD6/xUABAAXAAoAAAD6/xYABAAXAAsAAAD3/xgABAAXAAkAAAD3/xkABAAXAAoAAAD3/xoABAAXAAsAAAD9/xgABAAXAAkAAAD9/xkABAAXAAoAAAD9/xoABAAXAAsAAAD9/wwABAAXAAkAAAD9/w0ABAAXAAoAAAD9/w4ABAAXAAsAAAD3/wwABAAXAAkAAAD3/w0ABAAXAAoAAAD3/w4ABAAXAAsAAAADAAQABAAXAAkAAAADAAUABAAXAAoAAAADAAYABAAXAAsAAAAFAAQABAAXAAkAAAAFAAUABAAXAAoAAAAFAAYABAAXAAsAAAAJAAQABAAXAAkAAAAJAAUABAAXAAoAAAAJAAYABAAXAAsAAAALAAQABAAXAAkAAAALAAUABAAXAAoAAAALAAYABAAXAAsAAAAPAAQABAAXAAkAAAAPAAUABAAXAAoAAAAPAAYABAAXAAsAAAAQAAkABAAXAAkAAAAMAAkABAAXAAkAAAAKAAkABAAXAAkAAAAGAAkABAAXAAkAAAAEAAkABAAXAAkAAAAAAAkABAAXAAkAAAA0ACYABAAeAAEAAAA0ACUABAAeAAEAAAA=")
 tile_set = ExtResource("2_mrilo")
 
 [node name="Metal1" type="AudioStreamPlayer" parent="level_audio" index="0"]
@@ -1497,186 +1483,188 @@ lines = Array[String](["C'est trop haut...", "Tu ne peut pas y retourner..."])
 [node name="Node2D" parent="teleporter" index="22" instance=ExtResource("10_kdoqm")]
 position = Vector2(24, 0)
 
-[node name="PointLight2D2" type="PointLight2D" parent="." index="6"]
+[node name="light" type="Node2D" parent="." index="6"]
+
+[node name="PointLight2D2" type="PointLight2D" parent="light" index="0"]
 position = Vector2(56, 80)
 color = Color(0.737255, 0.764706, 0.6, 1)
 energy = 3.0
 texture = ExtResource("33_3obcw")
 texture_scale = 2.0
 
-[node name="PointLight2D3" type="PointLight2D" parent="." index="7"]
+[node name="PointLight2D3" type="PointLight2D" parent="light" index="1"]
 position = Vector2(88, 72)
 color = Color(0.737255, 0.764706, 0.6, 1)
 energy = 3.0
 texture = ExtResource("33_3obcw")
 texture_scale = 2.0
 
-[node name="PointLight2D4" type="PointLight2D" parent="." index="8"]
+[node name="PointLight2D4" type="PointLight2D" parent="light" index="2"]
 position = Vector2(152, 72)
 color = Color(0.737255, 0.764706, 0.6, 1)
 energy = 3.0
 texture = ExtResource("33_3obcw")
 texture_scale = 2.0
 
-[node name="PointLight2D5" type="PointLight2D" parent="." index="9"]
+[node name="PointLight2D5" type="PointLight2D" parent="light" index="3"]
 position = Vector2(168, 160)
 color = Color(0.737255, 0.764706, 0.6, 1)
 energy = 3.0
 texture = ExtResource("33_3obcw")
 texture_scale = 2.0
 
-[node name="PointLight2D6" type="PointLight2D" parent="." index="10"]
+[node name="PointLight2D6" type="PointLight2D" parent="light" index="4"]
 position = Vector2(200, 144)
 color = Color(0.737255, 0.764706, 0.6, 1)
 energy = 3.0
 texture = ExtResource("33_3obcw")
 texture_scale = 2.0
 
-[node name="PointLight2D7" type="PointLight2D" parent="." index="11"]
+[node name="PointLight2D7" type="PointLight2D" parent="light" index="5"]
 position = Vector2(280, 160)
 color = Color(0.737255, 0.764706, 0.6, 1)
 energy = 3.0
 texture = ExtResource("33_3obcw")
 texture_scale = 2.0
 
-[node name="PointLight2D8" type="PointLight2D" parent="." index="12"]
+[node name="PointLight2D8" type="PointLight2D" parent="light" index="6"]
 position = Vector2(256, 72)
 color = Color(0.737255, 0.764706, 0.6, 1)
 energy = 3.0
 texture = ExtResource("33_3obcw")
 texture_scale = 2.0
 
-[node name="PointLight2D9" type="PointLight2D" parent="." index="13"]
+[node name="PointLight2D9" type="PointLight2D" parent="light" index="7"]
 position = Vector2(184, 72)
 color = Color(0.737255, 0.764706, 0.6, 1)
 energy = 3.0
 texture = ExtResource("33_3obcw")
 texture_scale = 2.0
 
-[node name="PointLight2D10" type="PointLight2D" parent="." index="14"]
+[node name="PointLight2D10" type="PointLight2D" parent="light" index="8"]
 position = Vector2(104, 160)
 color = Color(0.737255, 0.764706, 0.6, 1)
 energy = 3.0
 texture = ExtResource("33_3obcw")
 texture_scale = 2.0
 
-[node name="PointLight2D11" type="PointLight2D" parent="." index="15"]
+[node name="PointLight2D11" type="PointLight2D" parent="light" index="9"]
 position = Vector2(72, 152)
 color = Color(0.737255, 0.764706, 0.6, 1)
 energy = 3.0
 texture = ExtResource("33_3obcw")
 texture_scale = 2.0
 
-[node name="PointLight2D12" type="PointLight2D" parent="." index="16"]
+[node name="PointLight2D12" type="PointLight2D" parent="light" index="10"]
 position = Vector2(8, 160)
 color = Color(0.737255, 0.764706, 0.6, 1)
 energy = 3.0
 texture = ExtResource("33_3obcw")
 texture_scale = 2.0
 
-[node name="PointLight2D13" type="PointLight2D" parent="." index="17"]
+[node name="PointLight2D13" type="PointLight2D" parent="light" index="11"]
 position = Vector2(-40, 200)
 color = Color(0.737255, 0.764706, 0.6, 1)
 energy = 3.0
 texture = ExtResource("33_3obcw")
 texture_scale = 2.0
 
-[node name="PointLight2D20" type="PointLight2D" parent="." index="18"]
+[node name="PointLight2D20" type="PointLight2D" parent="light" index="12"]
 position = Vector2(392, 520)
 color = Color(0.737255, 0.764706, 0.6, 1)
 energy = 3.0
 texture = ExtResource("33_3obcw")
 texture_scale = 2.0
 
-[node name="PointLight2D21" type="PointLight2D" parent="." index="19"]
+[node name="PointLight2D21" type="PointLight2D" parent="light" index="13"]
 position = Vector2(440, 520)
 color = Color(0.737255, 0.764706, 0.6, 1)
 energy = 3.0
 texture = ExtResource("33_3obcw")
 texture_scale = 2.0
 
-[node name="PointLight2D22" type="PointLight2D" parent="." index="20"]
+[node name="PointLight2D22" type="PointLight2D" parent="light" index="14"]
 position = Vector2(488, 520)
 color = Color(0.737255, 0.764706, 0.6, 1)
 energy = 3.0
 texture = ExtResource("33_3obcw")
 texture_scale = 2.0
 
-[node name="PointLight2D23" type="PointLight2D" parent="." index="21"]
+[node name="PointLight2D23" type="PointLight2D" parent="light" index="15"]
 position = Vector2(1304, 328)
 color = Color(0.737255, 0.764706, 0.6, 1)
 energy = 3.0
 texture = ExtResource("33_3obcw")
 texture_scale = 2.0
 
-[node name="PointLight2D24" type="PointLight2D" parent="." index="22"]
+[node name="PointLight2D24" type="PointLight2D" parent="light" index="16"]
 position = Vector2(1288, 184)
 color = Color(0.737255, 0.764706, 0.6, 1)
 energy = 3.0
 texture = ExtResource("33_3obcw")
 texture_scale = 2.0
 
-[node name="PointLight2D25" type="PointLight2D" parent="." index="23"]
+[node name="PointLight2D25" type="PointLight2D" parent="light" index="17"]
 position = Vector2(1368, 184)
 color = Color(0.737255, 0.764706, 0.6, 1)
 energy = 3.0
 texture = ExtResource("33_3obcw")
 texture_scale = 2.0
 
-[node name="PointLight2D26" type="PointLight2D" parent="." index="24"]
+[node name="PointLight2D26" type="PointLight2D" parent="light" index="18"]
 position = Vector2(1464, 184)
 color = Color(0.737255, 0.764706, 0.6, 1)
 energy = 3.0
 texture = ExtResource("33_3obcw")
 texture_scale = 2.0
 
-[node name="PointLight2D14" type="PointLight2D" parent="." index="25"]
+[node name="PointLight2D14" type="PointLight2D" parent="light" index="19"]
 position = Vector2(-136, 200)
 color = Color(0.737255, 0.764706, 0.6, 1)
 energy = 3.0
 texture = ExtResource("33_3obcw")
 texture_scale = 2.0
 
-[node name="PointLight2D15" type="PointLight2D" parent="." index="26"]
+[node name="PointLight2D15" type="PointLight2D" parent="light" index="20"]
 position = Vector2(-40, 280)
 color = Color(0.737255, 0.764706, 0.6, 1)
 energy = 3.0
 texture = ExtResource("33_3obcw")
 texture_scale = 2.0
 
-[node name="PointLight2D16" type="PointLight2D" parent="." index="27"]
+[node name="PointLight2D16" type="PointLight2D" parent="light" index="21"]
 position = Vector2(-136, 280)
 color = Color(0.737255, 0.764706, 0.6, 1)
 energy = 3.0
 texture = ExtResource("33_3obcw")
 texture_scale = 2.0
 
-[node name="PointLight2D17" type="PointLight2D" parent="." index="28"]
+[node name="PointLight2D17" type="PointLight2D" parent="light" index="22"]
 position = Vector2(-40, 392)
 color = Color(0.737255, 0.764706, 0.6, 1)
 energy = 3.0
 texture = ExtResource("33_3obcw")
 texture_scale = 2.0
 
-[node name="PointLight2D27" type="PointLight2D" parent="." index="29"]
+[node name="PointLight2D27" type="PointLight2D" parent="light" index="23"]
 position = Vector2(-88, 472)
 color = Color(0.737255, 0.764706, 0.6, 1)
 energy = 3.0
 texture = ExtResource("34_t3kx6")
 
-[node name="PointLight2D28" type="PointLight2D" parent="." index="30"]
+[node name="PointLight2D28" type="PointLight2D" parent="light" index="24"]
 position = Vector2(792, 312)
 color = Color(0.737255, 0.764706, 0.6, 1)
 energy = 3.0
 texture = ExtResource("34_t3kx6")
 
-[node name="PointLight2D29" type="PointLight2D" parent="." index="31"]
+[node name="PointLight2D29" type="PointLight2D" parent="light" index="25"]
 position = Vector2(-200, -328)
 color = Color(0.737255, 0.764706, 0.6, 1)
 energy = 3.0
 texture = ExtResource("34_t3kx6")
 
-[node name="PointLight2D30" type="PointLight2D" parent="." index="32"]
+[node name="PointLight2D30" type="PointLight2D" parent="light" index="26"]
 position = Vector2(1368, -512)
 rotation = -1.5708
 scale = Vector2(2, 1)
@@ -1684,14 +1672,14 @@ color = Color(0.737255, 0.764706, 0.6, 1)
 energy = 3.0
 texture = ExtResource("34_t3kx6")
 
-[node name="PointLight2D19" type="PointLight2D" parent="." index="33"]
+[node name="PointLight2D19" type="PointLight2D" parent="light" index="27"]
 position = Vector2(-88, 328)
 color = Color(0.737255, 0.764706, 0.6, 1)
 energy = 3.0
 texture = ExtResource("33_3obcw")
 texture_scale = 2.0
 
-[node name="PointLight2D18" type="PointLight2D" parent="." index="34"]
+[node name="PointLight2D18" type="PointLight2D" parent="light" index="28"]
 position = Vector2(-136, 392)
 color = Color(0.737255, 0.764706, 0.6, 1)
 energy = 3.0
@@ -1742,15 +1730,25 @@ lines = Array[String](["txt[78]"])
 position = Vector2(56, 48)
 lines = Array[String](["txt[2]"])
 
-[node name="interact9" parent="node_interact" index="10" instance=ExtResource("5_x16qu")]
+[node name="interact17" parent="node_interact" index="10" node_paths=PackedStringArray("extra_sound", "sub_cam", "animation_player") instance=ExtResource("5_x16qu")]
+position = Vector2(24, 32)
+when_active = Array[Vector2]([Vector2(0, 0), Vector2(1, 1)])
+setup_lines = Array[String](["anim[check]", "snd_stop[0]", "disable[1]"])
+lines = Array[String](["disable[1]", "bip[4]", "snd[0]", "block[0]", "hide[0]", "subcam[1]", "anim[start]", "txt[93]", "txt[94]", "txt[95]", "txt[96]", "txt[97]", "txt[98]", "txt[99]", "block[0]", "snd_stop[0]", "anim[end]", "block[1]", "subcam[0]", "hide[1]", "story[1]"])
+automatic = true
+extra_sound = [NodePath("../../level_audio/bgmintro")]
+sub_cam = NodePath("../../scene_002/Camera2D")
+animation_player = NodePath("../../scene_002/AnimationPlayer")
+
+[node name="interact9" parent="node_interact" index="11" instance=ExtResource("5_x16qu")]
 position = Vector2(40, 8)
 lines = Array[String](["Le [color=red]repas[/color]", "Je ne suis pas sûre qu'un chien pourrait aimer..."])
 
-[node name="interact7" parent="node_interact" index="11" instance=ExtResource("5_x16qu")]
+[node name="interact7" parent="node_interact" index="12" instance=ExtResource("5_x16qu")]
 position = Vector2(232, 184)
 lines = Array[String](["txt[17]", "txt[18]", "txt[19]", "txt[20]", "txt[21]", "txt[22]", "txt[23]", "txt[24]", "txt[25]", "txt[26]", "txt[27]", "txt[28]", "txt[29]"])
 
-[node name="interact11" parent="node_interact" index="12" node_paths=PackedStringArray("extra_sound") instance=ExtResource("5_x16qu")]
+[node name="interact11" parent="node_interact" index="13" node_paths=PackedStringArray("extra_sound") instance=ExtResource("5_x16qu")]
 position = Vector2(216, 88)
 lines = Array[String](["snd[0]", "txt[31]"])
 extra_sound = [NodePath("gaster")]
@@ -1758,88 +1756,46 @@ extra_sound = [NodePath("gaster")]
 [node name="gaster" type="AudioStreamPlayer" parent="node_interact/interact11" index="3"]
 stream = ExtResource("18_b20r5")
 
-[node name="interact12" parent="node_interact" index="13" instance=ExtResource("5_x16qu")]
+[node name="interact12" parent="node_interact" index="14" instance=ExtResource("5_x16qu")]
 position = Vector2(-56, 232)
 lines = Array[String](["txt[75]", "txt[76]"])
 
-[node name="interact14" parent="node_interact" index="14" instance=ExtResource("5_x16qu")]
+[node name="interact14" parent="node_interact" index="15" instance=ExtResource("5_x16qu")]
 position = Vector2(-192, 128)
 scale = Vector2(4, 4)
 lines = Array[String](["txt[69]", "txt[70]", "txt[71]", "txt[72]", "txt[73]"])
 
-[node name="interact13" parent="node_interact" index="15" instance=ExtResource("5_x16qu")]
+[node name="interact13" parent="node_interact" index="16" instance=ExtResource("5_x16qu")]
 position = Vector2(-120, 232)
 lines = Array[String](["txt[75]", "txt[76]"])
 
-[node name="TexBattleBob" type="Sprite2D" parent="." index="36"]
-position = Vector2(-256, 136)
-texture = ExtResource("11_0j85e")
-hframes = 8
-vframes = 4
+[node name="block" parent="node_interact" index="17" instance=ExtResource("19_vtnw1")]
+position = Vector2(-40, 24)
 
-[node name="TexBattleBob3" type="Sprite2D" parent="." index="37"]
-position = Vector2(-248, 112)
-texture = ExtResource("11_0j85e")
-hframes = 8
-vframes = 4
-frame = 26
+[node name="scene_000" type="Node2D" parent="." index="8"]
 
-[node name="TexBattleBob2" type="Sprite2D" parent="." index="38"]
-position = Vector2(-232, 104)
-texture = ExtResource("11_0j85e")
-hframes = 8
-vframes = 4
-frame = 19
-
-[node name="TexBattleBob4" type="Sprite2D" parent="." index="39"]
-position = Vector2(-280, 120)
-texture = ExtResource("11_0j85e")
-flip_h = true
-hframes = 8
-vframes = 4
-frame = 19
-
-[node name="scene_000" type="Node2D" parent="." index="40" node_paths=PackedStringArray("intro_bgm", "music", "musicsad")]
-script = ExtResource("12_acc8v")
-intro_bgm = NodePath("../level_audio/bgmintro")
-music = NodePath("../level_audio/bgm")
-musicsad = NodePath("../level_audio/sad")
-
-[node name="Area2D" type="Area2D" parent="scene_000" index="0"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="scene_000/Area2D" index="0"]
-position = Vector2(912, 640)
-shape = SubResource("RectangleShape2D_ikkft")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="scene_000" index="1"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="scene_000" index="0"]
 root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_b1hbd")
 }
 
-[node name="Sprite2D" type="Sprite2D" parent="scene_000" index="2"]
+[node name="Sprite2D" type="Sprite2D" parent="scene_000" index="1"]
 position = Vector2(808, 520)
 texture = ExtResource("13_i358g")
 hframes = 16
 vframes = 8
 
-[node name="line1" parent="scene_000" index="3" instance=ExtResource("5_x16qu")]
-position = Vector2(952, 584)
-lines = Array[String](["Je t'avais demandé de ne pas bouger", "Coopère et tout se passera bien"])
-
-[node name="line4" parent="scene_000" index="4" instance=ExtResource("5_x16qu")]
+[node name="line4" parent="scene_000" index="2" node_paths=PackedStringArray("extra_sound", "animation_player") instance=ExtResource("5_x16qu")]
 position = Vector2(840, 664)
-lines = Array[String](["Je t'avais demandé de ne pas bouger", "Coopère et tout se passera bien"])
+when_active = Array[Vector2]([Vector2(0, 0), Vector2(2, 1)])
+setup_lines = Array[String](["anim[check]", "disable[1]"])
+lines = Array[String](["bip[4]", "disable[1]", "block[0]", "anim[flic1]", "txt[101]", "txt[102]", "block[0]", "anim[flic2]", "battle[]", "block[0]", "anim[flic3]", "txt[103]", "snd[0]", "txt[104]", "txt[105]", "txt[106]", "txt[107]", "txt[108]", "txt[109]", "txt[110]", "txt[111]", "block[0]", "anim[flic4]", "story[2]", "block[1]"])
+automatic = true
+extra_sound = [NodePath("../../level_audio/sad")]
+animation_player = NodePath("../AnimationPlayer")
 
-[node name="line2" parent="scene_000" index="5" instance=ExtResource("5_x16qu")]
-position = Vector2(952, 600)
-lines = Array[String](["Bravo...‎"])
-
-[node name="line3" parent="scene_000" index="6" instance=ExtResource("5_x16qu")]
-position = Vector2(952, 616)
-lines = Array[String](["J'abandonne...", "Nous, les flics, on sait qu'il y a quelque chose qui ne va pas ici...", "Avec notre statut, il est impossible d'agir sans être traqué.", "J'ai le sentiment que tu vas réussir!!!", "Continue plus loin, un de tes amis t'attend...", "De mon côté... je vais prévenir les autres flics d'éviter de t'attaquer...", "Cependant je n'assure pas que certains ne soient pas dans notre camp...", "Aller... file..."])
-
-[node name="GPUParticles2D" type="GPUParticles2D" parent="scene_000" index="7"]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="scene_000" index="3"]
 position = Vector2(792, 592)
 emitting = false
 amount = 1000
@@ -1849,37 +1805,30 @@ lifetime = 2.0
 fixed_fps = 60
 trail_enabled = true
 
-[node name="scene_001" type="Node2D" parent="." index="41" node_paths=PackedStringArray("music", "music2", "musicsad")]
-script = ExtResource("14_qcqfy")
-music = NodePath("../level_audio/bgm")
-music2 = NodePath("../level_audio/bgm2")
-musicsad = NodePath("../level_audio/sad")
+[node name="scene_001" type="Node2D" parent="." index="9"]
 
-[node name="Area2D" type="Area2D" parent="scene_001" index="0"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="scene_001/Area2D" index="0"]
-position = Vector2(584, 536)
-shape = SubResource("RectangleShape2D_dqqg3")
-
-[node name="Sprite2D" type="Sprite2D" parent="scene_001" index="1"]
+[node name="Sprite2D" type="Sprite2D" parent="scene_001" index="0"]
 position = Vector2(536, 528)
 texture = ExtResource("15_ul6ce")
 hframes = 16
 vframes = 8
 frame = 38
 
-[node name="line1" parent="scene_001" index="2" instance=ExtResource("5_x16qu")]
-position = Vector2(488, 488)
-lines = Array[String](["Enfin sortie !!!", "J'ai croisé un flic ...", "Si jamais tu le croise il ne devrait pas te poser beaucoup de problème...", "[color=13eefd]Vous décrivez ce qui c'est passé[/color]", "Fort bien ... au moin une majorité de flics ne nous poseront plus de problèmes...", "Retrouve moi dans mon repère à l'est de la ville interne..."])
+[node name="line1" parent="scene_001" index="1" node_paths=PackedStringArray("extra_sound", "animation_player") instance=ExtResource("5_x16qu")]
+position = Vector2(584, 536)
+when_active = Array[Vector2]([Vector2(0, 0), Vector2(3, 1)])
+setup_lines = Array[String](["disable[1]", "anim[check]"])
+lines = Array[String](["disable[1]", "block[0]", "snd_stop[1]", "snd[0]", "anim[heybob]", "bip[3]", "txt[115]", "txt[116]", "txt[117]", "bip[0]", "txt[118]", "bip[3]", "txt[119]", "txt[120]", "block[0]", "anim[follow bob]", "snd_stop[0]", "snd[2]", "story[3]", "block[1]"])
+automatic = true
+extra_sound = [NodePath("../../level_audio/bgm2"), NodePath("../../level_audio/sad"), NodePath("../../level_audio/bgm")]
+animation_player = NodePath("../AnimationPlayer")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="scene_001" index="3"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="scene_001" index="2"]
 libraries = {
 "": SubResource("AnimationLibrary_3h26y")
 }
 
-[node name="scene_002" type="Node2D" parent="." index="42" node_paths=PackedStringArray("intro_bgm")]
-script = ExtResource("18_efr6c")
-intro_bgm = NodePath("../level_audio/bgmintro")
+[node name="scene_002" type="Node2D" parent="." index="10"]
 
 [node name="TexPaper" type="Sprite2D" parent="scene_002" index="0"]
 position = Vector2(24, 8)
@@ -1889,13 +1838,7 @@ texture = ExtResource("20_xc8m1")
 position = Vector2(8, 0)
 texture = ExtResource("20_u818g")
 
-[node name="Area2D" type="Area2D" parent="scene_002" index="2"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="scene_002/Area2D" index="0"]
-position = Vector2(24, 32)
-shape = SubResource("RectangleShape2D_e54ts")
-
-[node name="Camera2D" type="Camera2D" parent="scene_002" index="3"]
+[node name="Camera2D" type="Camera2D" parent="scene_002" index="2"]
 position = Vector2(-88, 184)
 
 [node name="TexCompleteTitle" type="Sprite2D" parent="scene_002/Camera2D" index="0"]
@@ -1918,50 +1861,50 @@ label_settings = ExtResource("26_p2o08")
 [node name="ColorRect" type="ColorRect" parent="scene_002/Camera2D" index="2"]
 z_index = 2
 offset_left = -216.0
-offset_top = -272.0
+offset_top = -280.0
 offset_right = 280.0
 offset_bottom = 168.0
 color = Color(0, 0, 0, 1)
 
-[node name="TexFlicNBob" type="Sprite2D" parent="scene_002" index="4"]
+[node name="TexFlicNBob" type="Sprite2D" parent="scene_002" index="3"]
 position = Vector2(-1120, 96)
 texture = ExtResource("19_rk5ds")
 hframes = 2
 vframes = 2
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="scene_002" index="5"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="scene_002" index="4"]
 libraries = {
 "": SubResource("AnimationLibrary_6vbsx")
 }
 
-[node name="TexFlic" type="Sprite2D" parent="scene_002" index="6"]
+[node name="TexFlic" type="Sprite2D" parent="scene_002" index="5"]
 position = Vector2(-1120, 96)
 texture = ExtResource("13_i358g")
 hframes = 16
 vframes = 8
 
-[node name="TexFlic2" type="Sprite2D" parent="scene_002" index="7"]
+[node name="TexFlic2" type="Sprite2D" parent="scene_002" index="6"]
 position = Vector2(-1120, 96)
 texture = ExtResource("13_i358g")
 hframes = 16
 vframes = 8
 frame = 96
 
-[node name="TexFlic3" type="Sprite2D" parent="scene_002" index="8"]
+[node name="TexFlic3" type="Sprite2D" parent="scene_002" index="7"]
 position = Vector2(-1120, 96)
 texture = ExtResource("20_jmunk")
 hframes = 16
 vframes = 8
 frame = 97
 
-[node name="forline" parent="scene_002" index="9" instance=ExtResource("5_x16qu")]
+[node name="forline" parent="scene_002" index="8" instance=ExtResource("5_x16qu")]
 position = Vector2(56, -40)
 
-[node name="TexVent2" type="Sprite2D" parent="scene_002" index="10"]
+[node name="TexVent2" type="Sprite2D" parent="scene_002" index="9"]
 position = Vector2(120, -24)
 texture = ExtResource("20_u818g")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="scene_002" index="11"]
+[node name="RichTextLabel" type="RichTextLabel" parent="scene_002" index="10"]
 z_index = 2
 offset_left = -1120.0
 offset_top = 32.0
@@ -1972,52 +1915,39 @@ theme_override_colors/default_color = Color(1, 1, 1, 1)
 text = "Fluflu 64 présente"
 scroll_active = false
 
-[node name="interact" parent="scene_002" index="12" instance=ExtResource("5_x16qu")]
+[node name="interact" parent="scene_002" index="11" instance=ExtResource("5_x16qu")]
 position = Vector2(24, 8)
 lines = Array[String](["bip[3]", "txt[65]", "txt[66]", "txt[67]"])
 
-[node name="interact" parent="." index="43" instance=ExtResource("5_x16qu")]
+[node name="interact" parent="." index="11" instance=ExtResource("5_x16qu")]
 position = Vector2(840, 608)
-lines = Array[String](["Il semble triste..."])
+lines = Array[String](["txt[113]"])
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." index="44"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="0"]
-position = Vector2(840, 604)
-shape = SubResource("RectangleShape2D_2yx4e")
-
-[node name="StaticBody2D2" parent="." index="45" instance=ExtResource("29_qgolp")]
+[node name="StaticBody2D2" parent="." index="12" instance=ExtResource("29_qgolp")]
 position = Vector2(-88, 456)
 
-[node name="StaticBody2D9" parent="." index="46" instance=ExtResource("29_qgolp")]
+[node name="StaticBody2D9" parent="." index="13" instance=ExtResource("29_qgolp")]
 position = Vector2(376, -528)
 
-[node name="StaticBody2D10" parent="." index="47" instance=ExtResource("29_qgolp")]
+[node name="StaticBody2D10" parent="." index="14" instance=ExtResource("29_qgolp")]
 position = Vector2(-744, -424)
 
-[node name="StaticBody2D15" parent="." index="48" instance=ExtResource("29_qgolp")]
+[node name="StaticBody2D15" parent="." index="15" instance=ExtResource("29_qgolp")]
 position = Vector2(-200, -344)
 
-[node name="StaticBody2D13" parent="." index="49" instance=ExtResource("29_qgolp")]
+[node name="StaticBody2D13" parent="." index="16" instance=ExtResource("29_qgolp")]
 position = Vector2(-968, -344)
 
-[node name="StaticBody2D4" parent="." index="50" instance=ExtResource("29_qgolp")]
+[node name="StaticBody2D4" parent="." index="17" instance=ExtResource("29_qgolp")]
 position = Vector2(1336, 216)
 
-[node name="StaticBody2D8" parent="." index="51" instance=ExtResource("29_qgolp")]
+[node name="StaticBody2D8" parent="." index="18" instance=ExtResource("29_qgolp")]
 position = Vector2(1464, 360)
 
-[node name="TexGaster" type="Sprite2D" parent="." index="52"]
+[node name="TexGaster" type="Sprite2D" parent="." index="19"]
 position = Vector2(224, 24)
 texture = ExtResource("30_21bs0")
 
-[node name="setup" parent="." index="53" node_paths=PackedStringArray("level", "scene_000", "scene_001", "scene_002")]
+[node name="setup" parent="." index="20" node_paths=PackedStringArray("level")]
 script = ExtResource("2_jxnqr")
 level = NodePath("..")
-scene_000 = NodePath("../scene_000")
-scene_001 = NodePath("../scene_001")
-scene_002 = NodePath("../scene_002")
-
-[connection signal="body_entered" from="scene_000/Area2D" to="scene_000" method="_on_area_2d_body_entered"]
-[connection signal="body_entered" from="scene_001/Area2D" to="scene_001" method="_on_area_2d_body_entered"]
-[connection signal="body_entered" from="scene_002/Area2D" to="scene_002" method="_on_area_2d_body_entered"]

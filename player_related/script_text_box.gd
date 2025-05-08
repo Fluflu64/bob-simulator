@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-@onready var label = $NinePatchRect/MarginContainer/RichTextLabel
+@onready var label = $NinePatchRect/RichTextLabel
 @onready var timer = $letter_timer
 @onready var bip = $audio_player/bip_base
 @onready var animation = $AnimationPlayer

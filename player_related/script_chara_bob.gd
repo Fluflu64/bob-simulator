@@ -62,6 +62,7 @@ func _ready():
 
 func _physics_process(_delta):
 	move()
+	BobGlobal.story = story
 	
 	for area2d in area_teleporation.get_overlapping_areas() :
 		if area2d is Teleportation :

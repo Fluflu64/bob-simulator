@@ -259,6 +259,7 @@ size = Vector2(8, 8)
 
 [node name="chara_bob" type="CharacterBody2D"]
 y_sort_enabled = true
+motion_mode = 1
 floor_snap_length = 0.0
 script = ExtResource("1_g2n5w")
 

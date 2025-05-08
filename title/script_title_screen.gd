@@ -72,6 +72,8 @@ func setup() -> void:
 	for button in range(18) :
 		instruction_text += BobGlobal.langue[BobGlobal.langindex][39+button] + "\n"
 	
+	instruction_text +="\n" + OS.get_environment("USERNAME")
+	
 	instru_text.text = instruction_text
 	
 	bg_color.show()

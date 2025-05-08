@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bs5w4fneac8j4"]
+[gd_scene load_steps=15 format=3 uid="uid://bs5w4fneac8j4"]
 
 [ext_resource type="Texture2D" uid="uid://mibs4jii822c" path="res://player_related/tex_text_box.png" id="1_x10g5"]
 [ext_resource type="Script" path="res://player_related/script_text_box.gd" id="2_yg700"]
@@ -10,6 +10,10 @@
 [ext_resource type="AudioStream" uid="uid://7fikic13fiit" path="res://sound_effect/bip_hue.wav" id="5_vg65r"]
 [ext_resource type="Texture2D" uid="uid://dm8pypudu34si" path="res://sprite/tex_cursor.png" id="6_724iw"]
 [ext_resource type="AudioStream" uid="uid://cnpuba83gnipa" path="res://sound_effect/bip_spambob.wav" id="10_t807u"]
+
+[sub_resource type="Theme" id="Theme_tix8v"]
+default_font = ExtResource("4_lpj5a")
+default_font_size = 8
 
 [sub_resource type="Animation" id="Animation_8hni3"]
 length = 0.001
@@ -88,6 +92,21 @@ patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 
+[node name="RichTextLabel" type="RichTextLabel" parent="NinePatchRect"]
+layout_mode = 2
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 248.0
+offset_bottom = 48.0
+theme = SubResource("Theme_tix8v")
+bbcode_enabled = true
+text = "\"[color=red]Momentum[/color], a function of [wave]mass[/wave] and velocity, is conserved between portals. In layman's terms, speedy thing goes in, speedy thing comes out.\""
+fit_content = true
+scroll_active = false
+scroll_following = true
+autowrap_mode = 2
+visible_characters_behavior = 1
+
 [node name="MarginContainer" type="MarginContainer" parent="NinePatchRect"]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 1
@@ -100,25 +119,6 @@ theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
-
-[node name="RichTextLabel" type="RichTextLabel" parent="NinePatchRect/MarginContainer"]
-layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("4_lpj5a")
-theme_override_fonts/mono_font = ExtResource("4_lpj5a")
-theme_override_fonts/italics_font = ExtResource("4_lpj5a")
-theme_override_fonts/bold_italics_font = ExtResource("4_lpj5a")
-theme_override_fonts/bold_font = ExtResource("4_lpj5a")
-theme_override_font_sizes/bold_italics_font_size = 8
-theme_override_font_sizes/italics_font_size = 8
-theme_override_font_sizes/mono_font_size = 8
-theme_override_font_sizes/normal_font_size = 8
-theme_override_font_sizes/bold_font_size = 8
-bbcode_enabled = true
-text = "\"[color=red]Momentum[/color], a function of mass and velocity, is conserved between portals. In layman's terms, speedy thing goes in, speedy thing comes out.\""
-scroll_active = false
-scroll_following = true
-autowrap_mode = 2
-visible_characters_behavior = 1
 
 [node name="letter_timer" type="Timer" parent="."]
 wait_time = 0.03
@@ -134,6 +134,7 @@ stream = ExtResource("5_2n6u4")
 
 [node name="bip_fluflu" type="AudioStreamPlayer" parent="audio_player"]
 stream = ExtResource("5_2ck86")
+volume_db = 24.0
 
 [node name="bip_foxy" type="AudioStreamPlayer" parent="audio_player"]
 stream = ExtResource("5_as2tv")

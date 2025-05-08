@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://dqop51ufp7bgp"]
+
+[ext_resource type="PackedScene" uid="uid://dpep2xkq2a4gr" path="res://player_related/scn_interact.tscn" id="1_6ve5k"]
+[ext_resource type="Script" path="res://actor/script_push_block.gd" id="1_183ks"]
+[ext_resource type="Texture2D" uid="uid://c6qlt7md3x33q" path="res://sprite/tex_weirdcat.png" id="2_s4lsd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t2o6v"]
+size = Vector2(16, 16)
+
+[node name="RigidBody2D" type="RigidBody2D"]
+gravity_scale = 0.0
+lock_rotation = true
+script = ExtResource("1_183ks")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_t2o6v")
+
+[node name="interact" parent="." node_paths=PackedStringArray("pnj") instance=ExtResource("1_6ve5k")]
+lines = Array[String](["func[0]"])
+pnj = NodePath("..")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_s4lsd")
+hframes = 2
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+texture = ExtResource("2_s4lsd")
+hframes = 2

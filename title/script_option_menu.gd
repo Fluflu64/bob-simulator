@@ -28,15 +28,18 @@ var back_name = []
 
 var submenu_name = [rapide_name,game_name,video_name,audio_name,soundtest_name,back_name]
 
-func _ready() -> void:
+func reload_menu():
 	menu_name = []
 	for button in range(6) :
 		menu_name.append(BobGlobal.langue[BobGlobal.langindex][58+button])
 	
-	
+	soundtest_name = []
 	for music in ost.get_children() :
 		soundtest_name.append(music.name)
 	update_menu()
+
+func _ready() -> void:
+	reload_menu()
 
 func update_menu():
 	var text = ""
@@ -83,7 +86,10 @@ func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("interact"):
 		if in_submenu == false and len(submenu_name[index_menu]) != 0:
 			in_submenu = true
-			index_submenu = 0
+			if index_menu == 1 :
+				index_submenu = BobGlobal.langindex
+			else :
+				index_submenu = 0
 			
 		if index_menu == 4 and in_submenu:
 			for music in ost.get_children() :
@@ -101,8 +107,10 @@ func _input(event: InputEvent) -> void:
 			game_root.main_menu_pause(false)
 			queue_free()
 		
-		if index_menu == 2 and in_submenu:
+		if index_menu == 1 and in_submenu:
 			BobGlobal.langindex = index_submenu
+			reload_menu()
+			game_root.save_param()
 		
 	if event.is_action_pressed("run"):
 		if in_submenu == true :

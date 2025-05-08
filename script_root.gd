@@ -54,6 +54,7 @@ func _ready():
 	load_param()
 	sprite_loading_screen.hide()
 	title.game_root = self
+	BobGlobal.game_root = self
 	load_why()
 	var rng_to_show = str(why)
 	if why < 100 :
@@ -313,7 +314,7 @@ func load_why():
 	
 	var why_load = config.load(save_path)
 	if why_load != null :
-		if config.get_value("why","why") :
+		if config.get_value("why","why") != OK :
 			why = config.get_value("why","why")
 		else :
 			why = randi_range(1,100)
@@ -324,17 +325,19 @@ func load_why():
 		config.set_value("why","why",why)
 		config.save(save_path)
 
+
 func load_param():
-	var param_load = config.load(save_path)
-	if param_load != null :
-		if config.get_value("option","lang") == OK :
-			BobGlobal.langindex = config.get_value("option","lang")
-			title.setup()
-		else :
-			BobGlobal.langindex = 1
-			config.set_value("option","lang",BobGlobal.langindex)
-			config.save(save_path)
-	else :
-		BobGlobal.langindex = 1
+	var _param_load = config.load(save_path)
+	if config.get_value("option","lang") == OK :
+		BobGlobal.langindex = config.get_value("option","lang")
+	title.setup()
+	
+	if BobGlobal.langindex != config.get_value("option","lang") :
 		config.set_value("option","lang",BobGlobal.langindex)
 		config.save(save_path)
+
+
+func save_param():
+	var _param_load = config.load(save_path)
+	config.set_value("option","lang",BobGlobal.langindex)
+	config.save(save_path)

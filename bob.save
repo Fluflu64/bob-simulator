@@ -4,7 +4,7 @@ why=51
 
 [player]
 
-position=Vector2(-79.6759, 29.9273)
+position=Vector2(-640, -345)
 map="res://levels/scn_bobcity_int.tscn"
 level=1
 story=3

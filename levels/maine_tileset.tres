@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=17 format=3 uid="uid://buirtyrql2dqy"]
+[gd_resource type="TileSet" load_steps=18 format=3 uid="uid://buirtyrql2dqy"]
 
 [ext_resource type="Texture2D" uid="uid://c3gy7y0teqgb4" path="res://levels/tile_city.png" id="1_vdwct"]
 [ext_resource type="Texture2D" uid="uid://cva2t6gu144y2" path="res://levels/tex_exterior_bobcity.png" id="2_fifvk"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://yqqjkwk46ym2" path="res://actor/scn_water_light.tscn" id="6_5cde7"]
 [ext_resource type="Texture2D" uid="uid://d2akdtk2dycr3" path="res://levels/tex_beta_tiles.png" id="6_xts4l"]
 [ext_resource type="Texture2D" uid="uid://dfy0wvaaw3h18" path="res://levels/tex_beta_tiles2.png" id="7_2omhf"]
+[ext_resource type="PackedScene" uid="uid://dqop51ufp7bgp" path="res://actor/scn_block.tscn" id="7_o1wqe"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qwqhn"]
 texture = ExtResource("1_vdwct")
@@ -240,6 +241,7 @@ texture = ExtResource("3_b606s")
 scenes/1/scene = ExtResource("4_l4eac")
 scenes/2/scene = ExtResource("5_1udke")
 scenes/3/scene = ExtResource("6_5cde7")
+scenes/4/scene = ExtResource("7_o1wqe")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t3dbs"]
 texture = ExtResource("5_ys050")

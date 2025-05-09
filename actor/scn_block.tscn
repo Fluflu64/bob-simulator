@@ -1,15 +1,65 @@
-[gd_scene load_steps=5 format=3 uid="uid://dqop51ufp7bgp"]
+[gd_scene load_steps=11 format=3 uid="uid://dqop51ufp7bgp"]
 
 [ext_resource type="PackedScene" uid="uid://dpep2xkq2a4gr" path="res://player_related/scn_interact.tscn" id="1_6ve5k"]
 [ext_resource type="Script" path="res://actor/script_push_block.gd" id="1_183ks"]
-[ext_resource type="Texture2D" uid="uid://c6qlt7md3x33q" path="res://sprite/tex_weirdcat.png" id="2_s4lsd"]
+[ext_resource type="Texture2D" uid="uid://drmdmcddbtcpq" path="res://sprite/tex_dust.png" id="3_m2jx4"]
+[ext_resource type="Texture2D" uid="uid://b4o8ntakb2ycd" path="res://sprite/tex_crate.png" id="3_n4d7j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t2o6v"]
 size = Vector2(16, 16)
 
-[node name="RigidBody2D" type="RigidBody2D"]
-gravity_scale = 0.0
-lock_rotation = true
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qexut"]
+particle_flag_disable_z = true
+angle_min = -720.0
+angle_max = 720.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 25.08
+linear_accel_max = 59.1
+tangential_accel_min = -100.0
+tangential_accel_max = 100.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bxuxl"]
+size = Vector2(16, 16)
+
+[sub_resource type="Animation" id="Animation_7ts2i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_67mmo"]
+resource_name = "start_push"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(0, 0), Vector2(-4, 0), Vector2(2, 0), Vector2(-1, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lokxp"]
+_data = {
+"RESET": SubResource("Animation_7ts2i"),
+"start_push": SubResource("Animation_67mmo")
+}
+
+[node name="StaticBody2D" type="StaticBody2D"]
 script = ExtResource("1_183ks")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -19,10 +69,44 @@ shape = SubResource("RectangleShape2D_t2o6v")
 lines = Array[String](["func[0]"])
 pnj = NodePath("..")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_s4lsd")
-hframes = 2
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_qexut")
+texture = ExtResource("3_m2jx4")
+lifetime = 0.3
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-texture = ExtResource("2_s4lsd")
-hframes = 2
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_n4d7j")
+
+[node name="left" type="Area2D" parent="."]
+position = Vector2(-16, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="left"]
+shape = SubResource("RectangleShape2D_bxuxl")
+
+[node name="right" type="Area2D" parent="."]
+position = Vector2(16, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="right"]
+shape = SubResource("RectangleShape2D_bxuxl")
+
+[node name="up" type="Area2D" parent="."]
+position = Vector2(0, -16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="up"]
+shape = SubResource("RectangleShape2D_bxuxl")
+
+[node name="down" type="Area2D" parent="."]
+position = Vector2(0, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="down"]
+shape = SubResource("RectangleShape2D_bxuxl")
+
+[node name="ray" type="RayCast2D" parent="."]
+target_position = Vector2(0, 16)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_lokxp")
+}

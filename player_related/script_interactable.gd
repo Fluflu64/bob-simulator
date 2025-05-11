@@ -40,7 +40,7 @@ func _ready():
 
 func _process(_delta):
 	if use_sub_cam :
-		player_cam.global_position = sub_cam.position + Vector2(-8,0)
+		player_cam.global_position = Vector2(roundi(sub_cam.global_position.x -8),roundi(sub_cam.global_position.y -8))
 
 func end_talk():
 	animation.play("stop")

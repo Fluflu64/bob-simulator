@@ -7,6 +7,7 @@ extends StaticBody2D
 @onready var raycast = $ray
 @onready var animation = $AnimationPlayer
 @onready var dust = $GPUParticles2D
+@onready var audio = $AudioStreamPlayer2D/AudioStreamPlayer
 
 func push(_game_root):
 	var new_pos = position
@@ -35,6 +36,7 @@ func push(_game_root):
 	
 	if not raycast.is_colliding() :
 		dust.emitting = true
+		audio.playing = true
 		var tween = create_tween()
 		tween.tween_property(self,"position",new_pos,0.5)
 		await tween.finished

@@ -22,6 +22,7 @@ battle_theme = ExtResource("2_dy04o")
 battle_color = Color(0.733333, 0.741176, 0.917647, 1)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." index="0"]
+follow_viewport_enabled = true
 
 [node name="mount" type="Parallax2D" parent="ParallaxBackground" index="0"]
 scroll_scale = Vector2(1.3, 1.3)

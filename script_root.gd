@@ -26,6 +26,7 @@ signal battle_end
 @export var text_box: PackedScene
 @export var menu_scene: PackedScene
 @export var menu_infos_scene: PackedScene
+@export var choice_menu : PackedScene
 @onready var player = null
 @onready var actual_level = null
 var actual_level_path = ""
@@ -178,6 +179,12 @@ func start_text(lines,area):
 	textbox.add_child(text_instance)
 	text_instance.set_bip(bip_index)
 
+func start_choice(lines,area): #choice_menu
+	player.set_process_mode(PROCESS_MODE_DISABLED)
+	var text_instance = choice_menu.instantiate()
+	text_instance.lines_text_box = lines
+	textbox.add_child(text_instance)
+
 func menu():
 	game.set_process_mode(PROCESS_MODE_DISABLED)
 	var menu_instance = menu_scene.instantiate()
@@ -201,6 +208,9 @@ func menu_infos():
 func end_text():
 	player.set_process_mode(PROCESS_MODE_INHERIT)
 	dialogue_end.emit()
+
+func end_choice(choice_box):
+	print(choice_box)
 
 func end_pause():
 	game.set_process_mode(PROCESS_MODE_INHERIT)
@@ -242,10 +252,6 @@ func start_shop(spawn_name:String):
 	animation.play("transition_on")
 	await animation.animation_finished
 	
-	
-	
-	
-	
 	var shop_instance = shop_scene.instantiate()
 	battle.add_child(shop_instance)
 	var spawn_position = actual_level.get_spawn_by_id(spawn_name)
@@ -256,6 +262,19 @@ func start_shop(spawn_name:String):
 	shop_instance.max_player_pv = player.pv_max
 	shop_instance.player_atk = player.atk
 	shop_instance.player_dfs = player.def
+	
+	animation.play("transition_off")
+	await animation.animation_finished
+	
+	game.set_process_mode(PROCESS_MODE_DISABLED)
+
+func start_mini_game():
+	map_name_label.position = Vector2(0,-8)
+	animation.play("transition_on")
+	await animation.animation_finished
+	var preload_game = preload("res://Bob_simulator/mini_game/cantine/scn_cantine.tscn")
+	var shop_instance = preload_game.instantiate()
+	battle.add_child(shop_instance)
 	
 	animation.play("transition_off")
 	await animation.animation_finished

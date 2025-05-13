@@ -1807,7 +1807,7 @@ tile_map_data = PackedByteArray("AAAGAP//BAAbAAIAAAAHAP//BAAbAAIAAAAIAP//BAAbAAI
 tile_set = ExtResource("2_mrilo")
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="." index="2"]
-tile_map_data = PackedByteArray("AAD0/wgABAALAAkAAAD0/wkABAALAAkAAAD1/wgABAALAAkAAAD1/wkABAALAAkAAAD0/wYABAALAAkAAAD0/wcABAALAAkAAAD1/wYABAALAAkAAAD1/wcABAALAAkAAADy/wYABAALAAkAAADy/wcABAALAAkAAADz/wYABAALAAkAAADz/wcABAALAAkAAADy/wgABAALAAkAAADy/wkABAALAAkAAADz/wgABAALAAkAAADz/wkABAALAAkAAAACAAAABAAIAAgAAAADAAAABAAMAAcAAAAIAAEABAAJAAgAAAAIAAAABAAMAAgAAAAGAP//BAAJAAsAAAAGAAAABAAJAAwAAAAAAAIABAAJAAsAAAAAAAMABAAJAAwAAAD4/w0ABAANAAwAAAD4/w4ABAANAA0AAAD8/w0ABAAOAAwAAAD8/w4ABAAOAA0AAAADAAIABAAMAAoAAAADAAMABAAMAAsAAAAGAAIABAAMAAoAAAAGAAMABAAMAAsAAAAMAAAABAAMAAoAAAAMAAEABAAMAAsAAAAMAA4ABAAMAAoAAAAMAA8ABAAMAAsAAAABAAsABAARAAgAAAACAAwABAAIAAgAAAAMAA0ABAAIAAgAAAANAA0ABAAMAAcAAAAOAP//BAAJAAsAAAAOAAAABAAJAAwAAAADAAsABAAJAAsAAAADAAwABAAJAAwAAAABAAwABAAMAAoAAAABAA0ABAAMAAsAAAAAAAwABAALAAkAAAABAA4ABAALAAkAAAABAA8ABAANAAwAAFAAAA8ABAANAA0AAFAHAAUABAAfAAMAAAANAAUABAAfAAMAAAACAAsABAAfAAMAAAAIAAsABAAfAAMAAAAOAAsABAAfAAMAAAAQAAYABAAKAAcAAAD2/wAABAAKAAcAAADr/wYABAAKAAcAAADs/wYABAAKAAcAAAD2/w4ABAAKAAcAAAD2/w8ABAAKAAcAAAAhAB8ABAAKAAcAAAAhAB4ABAAKAAcAAAAxACYABAAKAAcAAAAXACIABAAKAAcAAAAvABMABAAKAAcAAABMABMABAAKAAcAAABQABYABAAKAAcAAABQABcABAAKAAcAAAAwABMABAAJAAYAAAAxABMABAAJAAYAAAAyABMABAAJAAYAAAD//wYAAQALAAUAAAAFAAkAAQALAAUAAAAMAAcAAQALAAUA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")
+tile_map_data = PackedByteArray("AAD0/wgABAALAAkAAAD0/wkABAALAAkAAAD1/wgABAALAAkAAAD1/wkABAALAAkAAAD0/wYABAALAAkAAAD0/wcABAALAAkAAAD1/wYABAALAAkAAAD1/wcABAALAAkAAADy/wYABAALAAkAAADy/wcABAALAAkAAADz/wYABAALAAkAAADz/wcABAALAAkAAADy/wgABAALAAkAAADy/wkABAALAAkAAADz/wgABAALAAkAAADz/wkABAALAAkAAAACAAAABAAIAAgAAAADAAAABAAMAAcAAAAIAAEABAAJAAgAAAAIAAAABAAMAAgAAAAGAP//BAAJAAsAAAAGAAAABAAJAAwAAAAAAAIABAAJAAsAAAAAAAMABAAJAAwAAAD4/w0ABAANAAwAAAD4/w4ABAANAA0AAAD8/w0ABAAOAAwAAAD8/w4ABAAOAA0AAAADAAIABAAMAAoAAAADAAMABAAMAAsAAAAGAAIABAAMAAoAAAAGAAMABAAMAAsAAAAMAAAABAAMAAoAAAAMAAEABAAMAAsAAAAMAA4ABAAMAAoAAAAMAA8ABAAMAAsAAAABAAsABAARAAgAAAACAAwABAAIAAgAAAAMAA0ABAAIAAgAAAANAA0ABAAMAAcAAAAOAP//BAAJAAsAAAAOAAAABAAJAAwAAAADAAsABAAJAAsAAAADAAwABAAJAAwAAAABAAwABAAMAAoAAAABAA0ABAAMAAsAAAAAAAwABAALAAkAAAABAA4ABAALAAkAAAABAA8ABAANAAwAAFAAAA8ABAANAA0AAFAHAAUABAAfAAMAAAANAAUABAAfAAMAAAACAAsABAAfAAMAAAAIAAsABAAfAAMAAAAOAAsABAAfAAMAAAAQAAYABAAKAAcAAAD2/wAABAAKAAcAAADr/wYABAAKAAcAAADs/wYABAAKAAcAAAD2/w4ABAAKAAcAAAD2/w8ABAAKAAcAAAAhAB8ABAAKAAcAAAAhAB4ABAAKAAcAAAAxACYABAAKAAcAAAAXACIABAAKAAcAAAAvABMABAAKAAcAAABMABMABAAKAAcAAABQABYABAAKAAcAAABQABcABAAKAAcAAAAwABMABAAJAAYAAAAxABMABAAJAAYAAAAyABMABAAJAAYAAAD//wYAAQALAAUAAAAFAAkAAQALAAUAAAAMAAcAAQALAAUAAAD8/wkAAQALAAUAAAD6/wEAAQALAAUAAADs/wkAAQALAAUAAAD8/xQAAQALAAUAAAD3/xsAAQALAAUAAADw/+n/AQALAAUAAAD2/+b/AQALAAUAAAAPAOr/AQALAAUAAAAXAOj/AQALAAUAAAASAOL/AQALAAUAAAAvAOP/AQALAAUAAAA8AOH/AQALAAUAAABSAOL/AQALAAUAAABUAN//AQALAAUAAAAZACgAAQALAAUAAAAfACMAAQALAAUAAAAxACkAAQALAAUAAAAiABkAAQALAAUAAAAvAA8AAQALAAUAAAAxABEAAQAIAAUAAAAiACQAAQAIAAUAAAAXACcAAQAIAAUAAAAcACMAAQAIAAUAAAD6/xkAAQAKAAUAAAD6/xEAAQAJAAUAAAD3/wgAAQAKAAUAAAAHAAgAAQAJAAUAAADs/wcAAQAJAAUAAAAIAAMAAQAIAAUAAAAPAAIAAQAJAAUAAAAOAA4AAQAKAAUAAAD1/+r/AQAIAAUAAADy/+b/AQAIAAUAAAAUAOj/AQAKAAUAAAAWAOP/AQAJAAUAAAASANz/AQAKAAUAAAA0AOT/AQAKAAUAAAA9AOP/AQAKAAUAAAAxAOH/AQAJAAUAAABTAOH/AQAKAAUAAABTAOD/AQAIAAUAAABSAOD/AQAKAAUAAABOABYAAQAJAAUAAABPAA8AAQAIAAUAAAAfAB8AAwAAAAAAAgAvAAwAAwAAAAAAAgAyAAwAAwAAAAAAAgACAP3/AwAAAAAAAgAIAP3/AwAAAAAAAgAOAP3/AwAAAAAAAgAMAAoAAwAAAAAAAgACAA0AAwAAAAAAAgBLABAAAwAAAAAAAgBQAAkAAwAAAAAAAgBZAAkAAwAAAAAAAgDw/+P/AwAAAAAAAgDz/+P/AwAAAAAAAgANAOL/AwAAAAAAAgAaAOL/AwAAAAAAAgARANj/AwAAAAAAAgAWANj/AwAAAAAAAgAtAN3/AwAAAAAAAgA9AN3/AwAAAAAAAgBSANv/AwAAAAAAAgBRABQABAAXAAkAAABRABUABAAXAAoAAABRABYABAAXAAsAAABQAAsABAAXAAkAAABQAAwABAAXAAoAAABQAA0ABAAXAAsAAABbAAsABAAXAAkAAABbAAwABAAXAAoAAABbAA0ABAAXAAsAAAAeACAABAAXAAkAAAAeACEABAAXAAoAAAAeACIABAAXAAsAAAAbACAABAAXAAkAAAAbACEABAAXAAoAAAAbACIABAAXAAsAAAAYACAABAAXAAkAAAAYACEABAAXAAoAAAAYACIABAAXAAsAAAD3/xEABAAXAAkAAAD3/xIABAAXAAoAAAD3/xMABAAXAAsAAAD9/xEABAAXAAkAAAD9/xIABAAXAAoAAAD9/xMABAAXAAsAAAD6/xQABAAXAAkAAAD6/xUABAAXAAoAAAD6/xYABAAXAAsAAAD3/xgABAAXAAkAAAD3/xkABAAXAAoAAAD3/xoABAAXAAsAAAD9/xgABAAXAAkAAAD9/xkABAAXAAoAAAD9/xoABAAXAAsAAAD9/wwABAAXAAkAAAD9/w0ABAAXAAoAAAD9/w4ABAAXAAsAAAD3/wwABAAXAAkAAAD3/w0ABAAXAAoAAAD3/w4ABAAXAAsAAAADAAQABAAXAAkAAAADAAUABAAXAAoAAAADAAYABAAXAAsAAAAFAAQABAAXAAkAAAAFAAUABAAXAAoAAAAFAAYABAAXAAsAAAAJAAQABAAXAAkAAAAJAAUABAAXAAoAAAAJAAYABAAXAAsAAAALAAQABAAXAAkAAAALAAUABAAXAAoAAAALAAYABAAXAAsAAAAPAAQABAAXAAkAAAAPAAUABAAXAAoAAAAPAAYABAAXAAsAAAAQAAkABAAXAAkAAAAMAAkABAAXAAkAAAAKAAkABAAXAAkAAAAGAAkABAAXAAkAAAAEAAkABAAXAAkAAAAAAAkABAAXAAkAAAA0ACYABAAeAAEAAAA0ACUABAAeAAEAAABOABIAAwAAAAAABABUABYAAwAAAAAABABUABcAAwAAAAAABADV/+v/AwAAAAAABADV/+r/AwAAAAAABADV/+n/AwAAAAAABAABAAUABAAeAAEAAABYABcABAAcAA8AAABXABcABAAcAA8AAABWABAABAAcAA8AAABVABAABAAcAA8AAABUABAABAAcAA8AAABTABUABAAJAAYAAABTAPn/BAAeABEAAABTAPr/BAAcABIAAABTAPv/BAAcABMAAABUAPn/BAAfABEAAABUAPr/BAAdABIAAABUAPv/BAAdABMAAABaAPn/BAAeABEAAABaAPr/BAAcABAAAABaAPv/BAAcABEAAABbAPn/BAAfABEAAABbAPr/BAAdABAAAABbAPv/BAAdABEAAABNAA4ABAAeAAQAAABCAP3/BAAfAAYAAABCAP7/BAAfAAcAAABAAP3/BAAfAAYAAABAAP7/BAATAA8AAABBAP3/BAAfAAYAAABBAP7/BAAUAA8AAABDAP3/BAAfAAYAAABDAP7/BAAVAA8AAAA/APr/BAAfAAYAAAA/APv/BAATAA8AAAA+APr/BAAfAAYAAAA+APv/BAAUAA8AAAA9APr/BAAfAAYAAAA9APv/BAATAA8AAAA8APr/BAAfAAYAAAA8APv/BAAVAA8AAADU/+X/BAAJAAYAAADU/+b/AwAAAAAABADP/+3/BAAJAAYAAADQ/+3/BAAJAAYAAADR/+z/BAAJAAYAAADR/+j/BAAJAAYAAADQ/+f/BAAJAAYAAADP/+f/BAAJAAYAAADT/+z/BAAJAAYAAFDS/+f/BAAJAAYAAFDS/+r/BAAJAAYAADDN/+n/BAALAAkAAADP/+z/BAALAAkAAADO/+n/BAAKAAYAAADQ/+z/BAAKAAYAAADN/+v/BAAKAAYAAADQ/+j/BAAKAAYAAADR/+7/BAAKAAYAAADR/+X/BAAKAAYAAAD5/x0ABAAJAAYAAAD6/x0ABAAJAAYAAAD7/x0ABAAJAAYAAAD0/+v/BAAJAAYAAADz/+v/BAAJAAYAAADy/+v/BAAJAAYAAAA=")
 tile_set = ExtResource("2_mrilo")
 
 [node name="TileMapLayer3" type="TileMapLayer" parent="." index="3"]
@@ -2269,7 +2269,7 @@ lines = Array[String](["à droite étage B"])
 position = Vector2(-632, -424)
 when_active = Array[Vector2]([Vector2(0, 0), Vector2(4, 1)])
 setup_lines = Array[String](["anim[check]", "disable[1]"])
-lines = Array[String](["block[0]", "subcam[1]", "anim[remove thing]", "block[1]", "subcam[0]", "disable[1]", "story[4]"])
+lines = Array[String](["txt[152]", "choice[[147,148]]", "txt[153]", "if[0]", "txt[159]", "block[0]", "subcam[1]", "anim[remove thing]", "block[1]", "subcam[0]", "disable[1]", "story[4]", "end_if[]", "if[1]", "txt[154]", "end_if[]"])
 sub_cam = NodePath("Camera2D")
 animation_player = NodePath("AnimationPlayer2")
 
@@ -2299,7 +2299,7 @@ texture = ExtResource("34_t3kx6")
 [node name="interact24" parent="node_interact/interact23" index="7" instance=ExtResource("5_x16qu")]
 position = Vector2(-168, 80)
 scale = Vector2(2, 3)
-lines = Array[String](["txt[145]"])
+lines = Array[String](["txt[145]", "choice[[147,148]]", "txt[150]", "if[0]", "txt[157]", "end_if[]", "if[1]", "txt[156]", "end_if[]"])
 
 [node name="interact2" parent="node_interact" index="2" node_paths=PackedStringArray("animation_player") instance=ExtResource("5_x16qu")]
 position = Vector2(40, 184)
@@ -2421,7 +2421,31 @@ hframes = 8
 vframes = 4
 frame = 8
 
-[node name="interact21" parent="node_interact" index="7" node_paths=PackedStringArray("animation_player") instance=ExtResource("5_x16qu")]
+[node name="interact24" parent="node_interact" index="7" node_paths=PackedStringArray("animation_player") instance=ExtResource("5_x16qu")]
+position = Vector2(1032, -24)
+lines = Array[String](["txt[161]", "choice[[164,165,166,167,168,169,170]]", "txt[162]", "game[]"])
+animation_player = NodePath("AnimationPlayer2")
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="node_interact/interact24" index="3"]
+libraries = {
+"": SubResource("AnimationLibrary_runnl")
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="node_interact/interact24" index="4"]
+clip_contents = true
+offset_left = -40.0
+offset_top = 8.0
+offset_right = -24.0
+offset_bottom = 40.0
+
+[node name="Sprite2D2" type="Sprite2D" parent="node_interact/interact24/MarginContainer" index="0"]
+position = Vector2(24, 16)
+texture = ExtResource("19_kyxjr")
+hframes = 8
+vframes = 4
+frame = 8
+
+[node name="interact21" parent="node_interact" index="8" node_paths=PackedStringArray("animation_player") instance=ExtResource("5_x16qu")]
 position = Vector2(1016, -72)
 lines = Array[String](["txt[141]"])
 animation_player = NodePath("AnimationPlayer2")
@@ -2445,7 +2469,7 @@ hframes = 8
 vframes = 4
 frame = 8
 
-[node name="interact10" parent="node_interact" index="8" node_paths=PackedStringArray("animation_player") instance=ExtResource("5_x16qu")]
+[node name="interact10" parent="node_interact" index="9" node_paths=PackedStringArray("animation_player") instance=ExtResource("5_x16qu")]
 position = Vector2(120, 88)
 lines = Array[String](["block[0]", "anim[see player]", "bip[1]", "txt[4]", "txt[5]", "block[0]", "anim[go to the player]", "txt[6]", "txt[7]", "block[0]", "anim[pfiou]", "txt[8]", "block[0]", "anim[bouche]", "txt[9]", "txt[10]", "block[0]", "anim[base]", "block[1]"])
 animation_player = NodePath("AnimationPlayer2")
@@ -2462,23 +2486,23 @@ libraries = {
 "": SubResource("AnimationLibrary_h8s5k")
 }
 
-[node name="interact3" parent="node_interact" index="9" instance=ExtResource("5_x16qu")]
+[node name="interact3" parent="node_interact" index="10" instance=ExtResource("5_x16qu")]
 position = Vector2(8, 56)
 lines = Array[String](["txt[3]"])
 
-[node name="interact16" parent="node_interact" index="10" instance=ExtResource("5_x16qu")]
+[node name="interact16" parent="node_interact" index="11" instance=ExtResource("5_x16qu")]
 position = Vector2(88, 24)
 lines = Array[String](["txt[0]", "txt[1]", "test[]"])
 
-[node name="interact4" parent="node_interact" index="11" instance=ExtResource("5_x16qu")]
+[node name="interact4" parent="node_interact" index="12" instance=ExtResource("5_x16qu")]
 position = Vector2(232, 8)
 lines = Array[String](["une plante"])
 
-[node name="interact5" parent="node_interact" index="12" instance=ExtResource("5_x16qu")]
+[node name="interact5" parent="node_interact" index="13" instance=ExtResource("5_x16qu")]
 position = Vector2(200, 16)
 lines = Array[String](["un lit"])
 
-[node name="interact6" parent="node_interact" index="13" node_paths=PackedStringArray("extra_sound") instance=ExtResource("5_x16qu")]
+[node name="interact6" parent="node_interact" index="14" node_paths=PackedStringArray("extra_sound") instance=ExtResource("5_x16qu")]
 position = Vector2(136, 184)
 lines = Array[String](["snd[0]", "txt[15]"])
 extra_sound = [NodePath("loud sound")]
@@ -2486,15 +2510,15 @@ extra_sound = [NodePath("loud sound")]
 [node name="loud sound" type="AudioStreamPlayer" parent="node_interact/interact6" index="3"]
 stream = ExtResource("17_yv5mp")
 
-[node name="interact15" parent="node_interact" index="14" instance=ExtResource("5_x16qu")]
+[node name="interact15" parent="node_interact" index="15" instance=ExtResource("5_x16qu")]
 position = Vector2(24, 88)
 lines = Array[String](["txt[78]"])
 
-[node name="interact8" parent="node_interact" index="15" instance=ExtResource("5_x16qu")]
+[node name="interact8" parent="node_interact" index="16" instance=ExtResource("5_x16qu")]
 position = Vector2(56, 48)
 lines = Array[String](["txt[2]"])
 
-[node name="interact17" parent="node_interact" index="16" node_paths=PackedStringArray("extra_sound", "sub_cam", "animation_player") instance=ExtResource("5_x16qu")]
+[node name="interact17" parent="node_interact" index="17" node_paths=PackedStringArray("extra_sound", "sub_cam", "animation_player") instance=ExtResource("5_x16qu")]
 position = Vector2(24, 32)
 when_active = Array[Vector2]([Vector2(0, 0), Vector2(1, 1)])
 setup_lines = Array[String](["anim[check]", "snd_stop[0]", "disable[1]"])
@@ -2504,31 +2528,31 @@ extra_sound = [NodePath("../../level_audio/bgmintro")]
 sub_cam = NodePath("../../scene_002/Camera2D")
 animation_player = NodePath("../../scene_002/AnimationPlayer")
 
-[node name="interact9" parent="node_interact" index="17" instance=ExtResource("5_x16qu")]
+[node name="interact9" parent="node_interact" index="18" instance=ExtResource("5_x16qu")]
 position = Vector2(40, 8)
 lines = Array[String](["Le [color=red]repas[/color]", "Je ne suis pas sûre qu'un chien pourrait aimer..."])
 
-[node name="interact7" parent="node_interact" index="18" instance=ExtResource("5_x16qu")]
+[node name="interact7" parent="node_interact" index="19" instance=ExtResource("5_x16qu")]
 position = Vector2(232, 184)
 lines = Array[String](["txt[17]", "txt[18]", "txt[19]", "txt[20]", "txt[21]", "txt[22]", "txt[23]", "txt[24]", "txt[25]", "txt[26]", "txt[27]", "txt[28]", "txt[29]"])
 
-[node name="interact11" parent="node_interact" index="19" instance=ExtResource("5_x16qu")]
+[node name="interact11" parent="node_interact" index="20" instance=ExtResource("5_x16qu")]
 position = Vector2(216, 88)
 lines = Array[String](["txt[31]"])
 
 [node name="gaster" type="AudioStreamPlayer" parent="node_interact/interact11" index="3"]
 stream = ExtResource("18_b20r5")
 
-[node name="interact12" parent="node_interact" index="20" instance=ExtResource("5_x16qu")]
+[node name="interact12" parent="node_interact" index="21" instance=ExtResource("5_x16qu")]
 position = Vector2(-56, 232)
 lines = Array[String](["txt[75]", "txt[76]"])
 
-[node name="interact14" parent="node_interact" index="21" instance=ExtResource("5_x16qu")]
+[node name="interact14" parent="node_interact" index="22" instance=ExtResource("5_x16qu")]
 position = Vector2(-192, 128)
 scale = Vector2(4, 4)
 lines = Array[String](["txt[69]", "txt[70]", "txt[71]", "txt[72]", "txt[73]"])
 
-[node name="interact13" parent="node_interact" index="22" instance=ExtResource("5_x16qu")]
+[node name="interact13" parent="node_interact" index="23" instance=ExtResource("5_x16qu")]
 position = Vector2(-120, 232)
 lines = Array[String](["txt[75]", "txt[76]"])
 

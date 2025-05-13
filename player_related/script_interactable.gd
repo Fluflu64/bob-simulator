@@ -13,7 +13,7 @@ var instru_check = false
 @export var automatic = false
 
 @export var interact_disable = false
-
+var if_value = 0
 @export var extra_sound:Array[AudioStreamPlayer]
 @export var sub_cam:Camera2D
 @export var pnj:Node
@@ -39,6 +39,7 @@ func _ready():
 		sprite.hide()
 
 func _process(_delta):
+	if_value = BobGlobal.choice
 	if use_sub_cam :
 		player_cam.global_position = Vector2(roundi(sub_cam.global_position.x -8),roundi(sub_cam.global_position.y -8))
 
@@ -53,6 +54,18 @@ func is_text(game_root,index,codes):
 	
 	var index_line = int(index_line_str)
 	game_root.start_text([BobGlobal.langue[BobGlobal.langindex][index_line]],self)
+
+func is_choice(game_root,index,codes):
+	var code = codes[index]
+	var index_line_str = ""
+	for i in range(len("choice["),len(code)-1) :
+		index_line_str += code[i]
+	
+	var index_line = BobGlobal.to_array(index_line_str)
+	var choices = [] 
+	for choice in index_line :
+		choices.append(int(choice))
+	game_root.start_choice(choices,self)
 
 func is_func(game_root,index,codes):
 	var code = codes[index]
@@ -77,6 +90,9 @@ func is_test(game_root):
 
 func is_battle(game_root):
 	game_root.start_text(["battle"],self)
+
+func is_game(game_root):
+	game_root.start_mini_game()
 
 func is_snd(_game_root,index,codes):
 	var code = codes[index]
@@ -161,63 +177,95 @@ func is_story(game_root,index,codes):
 	var index_line = int(index_line_str)
 	game_root.player.story = index_line
 
+func is_if(game_root,index,codes):
+	var code = codes[index]
+	var index_line_str = ""
+	for i in range(len("if["),len(code)-1) :
+		index_line_str += code[i]
+	var index_line = int(index_line_str)
+	return index_line
+
 func execute_lines(game_root,codes) :
+	var if_is_active = false
+	
 	for line in range(len(codes)) :
-		if codes[line].contains("txt[") and codes[line].contains("]") :
-			is_text(game_root,line,codes)
-			instru_check = true
-			await game_root.dialogue_end
-		
-		if codes[line].contains("func[") and codes[line].contains("]") :
-			is_func(game_root,line,codes)
-			instru_check = true
+		if if_is_active :
+			if codes[line] == ("end_if[]") :
+				if_is_active = false
+		else :
+			if codes[line].contains("txt[") and codes[line].contains("]") :
+				is_text(game_root,line,codes)
+				instru_check = true
+				await game_root.dialogue_end
 			
-		elif codes[line].contains("test[") and codes[line].contains("]") :
-			is_test(game_root)
-			instru_check = true
-			await game_root.dialogue_end
+			elif codes[line].contains("choice[") and codes[line].contains("]") :
+				is_choice(game_root,line,codes)
+				instru_check = true
+			
+			elif codes[line].contains("game[") and codes[line].contains("]") :
+				is_game(game_root)
+				instru_check = true
+			
+			elif codes[line].contains("func[") and codes[line].contains("]") :
+				is_func(game_root,line,codes)
+				instru_check = true
+				
+			elif codes[line].contains("test[") and codes[line].contains("]") :
+				is_test(game_root)
+				instru_check = true
+				await game_root.dialogue_end
+			
+			elif codes[line].contains("battle[") and codes[line].contains("]") :
+				is_battle(game_root)
+				instru_check = true
+				await game_root.dialogue_end
+			
+			elif codes[line].contains("anim[") and codes[line].contains("]") :
+				is_anim(game_root,line,codes)
+				instru_check = true
+				await animation_player.animation_finished
+			
+			elif codes[line].contains("bip[") and codes[line].contains("]") :
+				is_bip(game_root,line,codes)
+				instru_check = true
+			
+			elif codes[line].contains("snd[") and codes[line].contains("]") :
+				is_snd(game_root,line,codes)
+				instru_check = true
+			
+			elif codes[line].contains("block[") and codes[line].contains("]") :
+				is_block(game_root,line,codes)
+				instru_check = true
+			
+			elif codes[line].contains("snd_stop[") and codes[line].contains("]") :
+				is_snd_stop(game_root,line,codes)
+				instru_check = true
+			
+			elif codes[line].contains("hide[") and codes[line].contains("]") :
+				is_hide(game_root,line,codes)
+				instru_check = true
+			
+			elif codes[line].contains("disable[") and codes[line].contains("]") :
+				is_disable(game_root,line,codes)
+				instru_check = true
+			
+			elif codes[line].contains("subcam[") and codes[line].contains("]") :
+				is_subcam(game_root,line,codes)
+				instru_check = true
+			
+			elif codes[line].contains("story[") and codes[line].contains("]") :
+				is_story(game_root,line,codes)
+				instru_check = true
+			
+			elif codes[line].contains("if[") and codes[line].contains("]") :
+				instru_check = true
+				if if_value != is_if(game_root,line,codes) :
+					if_is_active = true
+				
+				
 		
-		elif codes[line].contains("battle[") and codes[line].contains("]") :
-			is_battle(game_root)
-			instru_check = true
-			await game_root.dialogue_end
 		
-		elif codes[line].contains("anim[") and codes[line].contains("]") :
-			is_anim(game_root,line,codes)
-			instru_check = true
-			await animation_player.animation_finished
-		
-		elif codes[line].contains("bip[") and codes[line].contains("]") :
-			is_bip(game_root,line,codes)
-			instru_check = true
-		
-		elif codes[line].contains("snd[") and codes[line].contains("]") :
-			is_snd(game_root,line,codes)
-			instru_check = true
-		
-		elif codes[line].contains("block[") and codes[line].contains("]") :
-			is_block(game_root,line,codes)
-			instru_check = true
-		
-		elif codes[line].contains("snd_stop[") and codes[line].contains("]") :
-			is_snd_stop(game_root,line,codes)
-			instru_check = true
-		
-		elif codes[line].contains("hide[") and codes[line].contains("]") :
-			is_hide(game_root,line,codes)
-			instru_check = true
-		
-		elif codes[line].contains("disable[") and codes[line].contains("]") :
-			is_disable(game_root,line,codes)
-			instru_check = true
-		
-		elif codes[line].contains("subcam[") and codes[line].contains("]") :
-			is_subcam(game_root,line,codes)
-			instru_check = true
-		
-		elif codes[line].contains("story[") and codes[line].contains("]") :
-			is_story(game_root,line,codes)
-			instru_check = true
+
 
 func interact(game_root):
 	game_root.bip_index = 0

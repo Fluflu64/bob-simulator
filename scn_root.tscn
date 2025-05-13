@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://d2ll0d0bfu26b"]
+[gd_scene load_steps=24 format=3 uid="uid://d2ll0d0bfu26b"]
 
 [ext_resource type="PackedScene" uid="uid://buaexi66xho3d" path="res://player_related/scn_chara_bob.tscn" id="1_5cqsu"]
 [ext_resource type="Script" path="res://script_gamve_veiw.gd" id="1_q61lg"]
@@ -14,6 +14,7 @@
 [ext_resource type="Shader" path="res://shader_pixel.gdshader" id="8_1fy66"]
 [ext_resource type="PackedScene" uid="uid://bs5w4fneac8j4" path="res://player_related/scn_text_box.tscn" id="9_nfc0l"]
 [ext_resource type="PackedScene" uid="uid://bjjuvlj80sqpx" path="res://player_related/scn_pause_infos.tscn" id="10_b5o7b"]
+[ext_resource type="PackedScene" uid="uid://wn8k7vpu81rt" path="res://player_related/scn_choice.tscn" id="12_vs436"]
 [ext_resource type="Texture2D" uid="uid://citavh8kehs5e" path="res://tex_load_ico.png" id="13_nwqnl"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_q8dtc"]
@@ -288,6 +289,7 @@ shop_scene = ExtResource("7_apsxi")
 text_box = ExtResource("9_nfc0l")
 menu_scene = ExtResource("6_s86r4")
 menu_infos_scene = ExtResource("10_b5o7b")
+choice_menu = ExtResource("12_vs436")
 
 [node name="game_view" type="TextureRect" parent="background_canvas/gameview_canvas/gameview/root"]
 anchors_preset = 15

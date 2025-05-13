@@ -11,6 +11,7 @@ var langue = [loaded_french_trad,loaded_english_trad]
 var langindex = 1
 var story = 0
 var game_root = null
+var choice = 0
 
 func generate_trad_liste():
 	for i in range(1000) :
@@ -23,3 +24,14 @@ func _ready() -> void:
 	else :
 		langindex = 1
 	generate_trad_liste()
+
+func to_array(string):
+	var liste = [""]
+	var index = 0
+	for i in range(len("["),len(string)-1) :
+		if string[i] == "," :
+			liste.append("")
+			index += 1
+		else :
+			liste[index] += string[i]
+	return liste

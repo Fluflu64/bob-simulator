@@ -1,10 +1,26 @@
-[gd_scene load_steps=10 format=3 uid="uid://dlteswiq0h60q"]
+[gd_scene load_steps=11 format=3 uid="uid://div0yvvlpuelm"]
 
+[ext_resource type="PackedScene" uid="uid://bihe0tscs85is" path="res://Bob_simulator/mini_game/scn_game_base.tscn" id="1_1hyed"]
 [ext_resource type="Script" path="res://Bob_simulator/mini_game/cantine/script_cantine.gd" id="1_spmvy"]
 [ext_resource type="Texture2D" uid="uid://me0amdgsrorl" path="res://Bob_simulator/mini_game/cantine/tex_monsieur.png" id="2_sihqv"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qtg8u"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_towmc"]
 size = Vector2(32, 64)
+
+[sub_resource type="Animation" id="Animation_rjxei"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_fn8ua"]
 resource_name = "idle"
@@ -24,8 +40,11 @@ tracks/0/keys = {
 "values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(0, 0), Vector2i(2, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_rjxei"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_5b7ht"]
+resource_name = "lose"
+length = 1.6
+loop_mode = 1
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -33,10 +52,10 @@ tracks/0/path = NodePath("Sprite2D:frame_coords")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.2, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [Vector2i(0, 0)]
+"values": [Vector2i(3, 1), Vector2i(4, 1), Vector2i(3, 1), Vector2i(5, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_ofu3e"]
@@ -75,24 +94,6 @@ tracks/0/keys = {
 "values": [Vector2i(0, 1), Vector2i(1, 1), Vector2i(0, 1), Vector2i(2, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_5b7ht"]
-resource_name = "lose"
-length = 1.6
-loop_mode = 1
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame_coords")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.8, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [Vector2i(3, 1), Vector2i(4, 1), Vector2i(3, 1), Vector2i(5, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0lcaj"]
 _data = {
 "RESET": SubResource("Animation_rjxei"),
@@ -102,21 +103,29 @@ _data = {
 "win": SubResource("Animation_tmwve")
 }
 
-[node name="Node2D" type="Node2D"]
+[node name="game_base" instance=ExtResource("1_1hyed")]
+
+[node name="cantine" type="Node2D" parent="." index="1"]
 script = ExtResource("1_spmvy")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="ColorRect2" type="ColorRect" parent="cantine" index="0"]
+offset_right = 256.0
+offset_bottom = 256.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Area2D2" type="Area2D" parent="cantine" index="1"]
 position = Vector2(32, 224)
 
-[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+[node name="Sprite2D" type="Sprite2D" parent="cantine/Area2D2" index="0"]
 texture = ExtResource("2_sihqv")
 hframes = 8
 vframes = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_qtg8u")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cantine/Area2D2" index="1"]
+shape = SubResource("RectangleShape2D_towmc")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Area2D"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="cantine/Area2D2" index="2"]
 libraries = {
 "": SubResource("AnimationLibrary_0lcaj")
 }

@@ -1,0 +1,322 @@
+[gd_scene load_steps=21 format=3 uid="uid://7uxvigdkulh5"]
+
+[ext_resource type="PackedScene" uid="uid://bihe0tscs85is" path="res://Bob_simulator/mini_game/scn_game_base.tscn" id="1_6ywn2"]
+[ext_resource type="Texture2D" uid="uid://b0fwe3r427lec" path="res://Bob_simulator/mini_game/mega_singe/tex_bg_menu.png" id="2_h5sef"]
+[ext_resource type="Script" path="res://Bob_simulator/mini_game/mega_singe/script_singe.gd" id="2_ssjdt"]
+[ext_resource type="Texture2D" uid="uid://dmpcugtqm8pjx" path="res://Bob_simulator/mini_game/mega_singe/tex_bg_singe.png" id="3_dgkgo"]
+[ext_resource type="Texture2D" uid="uid://id8y1eu4s4yt" path="res://Bob_simulator/mini_game/mega_singe/tex_singe.png" id="4_eaoyi"]
+[ext_resource type="LabelSettings" uid="uid://bdxtw162r24p7" path="res://base_font.tres" id="4_sus0n"]
+[ext_resource type="Texture2D" uid="uid://bj2dhhwv7jr5w" path="res://Bob_simulator/mini_game/mega_singe/tex_info_box.png" id="5_10cmk"]
+[ext_resource type="AudioStream" uid="uid://cft6muxyynd5b" path="res://music/singe.ogg" id="8_6bs0v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wqns4"]
+size = Vector2(32, 64)
+
+[sub_resource type="Animation" id="Animation_o5cmn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_hdj05"]
+resource_name = "idle"
+length = 0.001
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_pw636"]
+resource_name = "run"
+length = 0.2
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2i(1, 0), Vector2i(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3aq0i"]
+_data = {
+"RESET": SubResource("Animation_o5cmn"),
+"idle": SubResource("Animation_hdj05"),
+"run": SubResource("Animation_pw636")
+}
+
+[sub_resource type="Animation" id="Animation_i617w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:player_gravity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [210]
+}
+
+[sub_resource type="Animation" id="Animation_pqyt3"]
+resource_name = "gravity_change"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:player_gravity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [210, 130, 210]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ytdy4"]
+_data = {
+"RESET": SubResource("Animation_i617w"),
+"gravity_change": SubResource("Animation_pqyt3")
+}
+
+[sub_resource type="Animation" id="Animation_tbny5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bg_menu:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("bg_menu/Label:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("bg_menu:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioListener2D/AudioStreamPlayer:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_1rqyf"]
+resource_name = "game_start"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bg_menu:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioListener2D/AudioStreamPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_e1qp7"]
+resource_name = "start"
+length = 0.8
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bg_menu:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("bg_menu/Label:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("bg_menu/Label2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l3kpx"]
+_data = {
+"RESET": SubResource("Animation_tbny5"),
+"game_start": SubResource("Animation_1rqyf"),
+"start": SubResource("Animation_e1qp7")
+}
+
+[node name="game_base" instance=ExtResource("1_6ywn2")]
+
+[node name="game" type="Node2D" parent="." index="1"]
+script = ExtResource("2_ssjdt")
+
+[node name="TexBgSinge" type="Sprite2D" parent="game" index="0"]
+position = Vector2(128, 128)
+texture = ExtResource("3_dgkgo")
+
+[node name="Area2D2" type="Area2D" parent="game" index="1"]
+position = Vector2(24, 130)
+
+[node name="Sprite2D" type="Sprite2D" parent="game/Area2D2" index="0"]
+texture = ExtResource("4_eaoyi")
+hframes = 4
+vframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="game/Area2D2" index="1"]
+shape = SubResource("RectangleShape2D_wqns4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="game/Area2D2" index="2"]
+libraries = {
+"": SubResource("AnimationLibrary_3aq0i")
+}
+
+[node name="jump" type="AnimationPlayer" parent="game/Area2D2" index="3"]
+libraries = {
+"": SubResource("AnimationLibrary_ytdy4")
+}
+
+[node name="NinePatchRect" type="NinePatchRect" parent="game" index="2"]
+offset_right = 104.0
+offset_bottom = 40.0
+texture = ExtResource("5_10cmk")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="Label" type="Label" parent="game/NinePatchRect" index="0"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 88.0
+offset_bottom = 32.0
+text = "score : 030
+life  : 030
+boss  : 100"
+label_settings = ExtResource("4_sus0n")
+
+[node name="bg_menu" type="Sprite2D" parent="game" index="3"]
+position = Vector2(128, 128)
+texture = ExtResource("2_h5sef")
+hframes = 2
+
+[node name="anime_menu" type="AnimationPlayer" parent="game/bg_menu" index="0"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_l3kpx")
+}
+
+[node name="Label" type="Label" parent="game/bg_menu" index="1"]
+offset_left = -128.0
+offset_right = 128.0
+offset_bottom = 23.0
+text = "Risque epileptique"
+label_settings = ExtResource("4_sus0n")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="game/bg_menu" index="2"]
+visible = false
+offset_left = -128.0
+offset_right = 128.0
+offset_bottom = 23.0
+text = "press 0 to start"
+label_settings = ExtResource("4_sus0n")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AudioListener2D" type="AudioListener2D" parent="game" index="4"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="game/AudioListener2D" index="0"]
+stream = ExtResource("8_6bs0v")
+volume_db = 10.0
+autoplay = true

@@ -91,8 +91,13 @@ func is_test(game_root):
 func is_battle(game_root):
 	game_root.start_text(["battle"],self)
 
-func is_game(game_root):
-	game_root.start_mini_game()
+func is_game(game_root,index,codes):
+	var code = codes[index]
+	var index_line_str = ""
+	for i in range(len("game["),len(code)-1) :
+		index_line_str += code[i]
+	
+	game_root.start_mini_game(index_line_str)
 
 func is_snd(_game_root,index,codes):
 	var code = codes[index]
@@ -177,7 +182,7 @@ func is_story(game_root,index,codes):
 	var index_line = int(index_line_str)
 	game_root.player.story = index_line
 
-func is_if(game_root,index,codes):
+func is_if(_game_root,index,codes):
 	var code = codes[index]
 	var index_line_str = ""
 	for i in range(len("if["),len(code)-1) :
@@ -203,7 +208,7 @@ func execute_lines(game_root,codes) :
 				instru_check = true
 			
 			elif codes[line].contains("game[") and codes[line].contains("]") :
-				is_game(game_root)
+				is_game(game_root,line,codes)
 				instru_check = true
 			
 			elif codes[line].contains("func[") and codes[line].contains("]") :

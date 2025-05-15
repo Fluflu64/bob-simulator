@@ -179,7 +179,7 @@ func start_text(lines,area):
 	textbox.add_child(text_instance)
 	text_instance.set_bip(bip_index)
 
-func start_choice(lines,area): #choice_menu
+func start_choice(lines,_area): #choice_menu
 	player.set_process_mode(PROCESS_MODE_DISABLED)
 	var text_instance = choice_menu.instantiate()
 	text_instance.lines_text_box = lines
@@ -268,14 +268,14 @@ func start_shop(spawn_name:String):
 	
 	game.set_process_mode(PROCESS_MODE_DISABLED)
 
-func start_mini_game():
+func start_mini_game(path):
 	map_name_label.position = Vector2(0,-8)
 	animation.play("transition_on")
 	await animation.animation_finished
-	var preload_game = preload("res://Bob_simulator/mini_game/cantine/scn_cantine.tscn")
+	var preload_game = load(path)
 	var shop_instance = preload_game.instantiate()
 	battle.add_child(shop_instance)
-	
+	shop_instance.game_root = self
 	animation.play("transition_off")
 	await animation.animation_finished
 	

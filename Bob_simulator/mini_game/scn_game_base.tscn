@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bihe0tscs85is"]
+
+[ext_resource type="Script" path="res://Bob_simulator/mini_game/script_game_base.gd" id="1_bbq3a"]
+[ext_resource type="Texture2D" uid="uid://di5e4i3cxnedu" path="res://Bob_simulator/mini_game/tex_bg_mini_game_default.png" id="2_ykutw"]
+
+[node name="game_base" type="Node2D"]
+script = ExtResource("1_bbq3a")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(128, 128)
+texture = ExtResource("2_ykutw")

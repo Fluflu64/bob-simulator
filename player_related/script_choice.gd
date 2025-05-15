@@ -3,6 +3,7 @@ extends CanvasLayer
 var lines_text_box = []
 @onready var text = $RichTextLabel
 @onready var hand = $Node2D
+
 var index = 0
 
 func _ready() -> void:
@@ -21,4 +22,3 @@ func _input(event: InputEvent) -> void:
 	index = clampi(index,0,len(lines_text_box)-1)
 	hand.position = Vector2(240,8 + index*16)
 	BobGlobal.choice = index
-	print(str(index))

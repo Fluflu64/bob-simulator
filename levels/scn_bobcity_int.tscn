@@ -2423,7 +2423,7 @@ frame = 8
 
 [node name="interact24" parent="node_interact" index="7" node_paths=PackedStringArray("animation_player") instance=ExtResource("5_x16qu")]
 position = Vector2(1032, -24)
-lines = Array[String](["txt[161]", "choice[[164,165,166,167,168,169,170]]", "txt[162]", "game[]"])
+lines = Array[String](["txt[161]", "choice[[164,165,166,167,168,169,170]]", "txt[162]", "if[0]", "game[res://Bob_simulator/mini_game/mega_singe/scn_singe.tscn]", "end_if[]", "if[1]", "game[]", "end_if[]", "if[2]", "game[]", "end_if[]", "if[3]", "game[]", "end_if[]", "if[4]", "game[]", "end_if[]", "if[5]", "game[res://Bob_simulator/mini_game/cantine/scn_cantine.tscn]", "end_if[]"])
 animation_player = NodePath("AnimationPlayer2")
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="node_interact/interact24" index="3"]

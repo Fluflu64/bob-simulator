@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://7uxvigdkulh5"]
+[gd_scene load_steps=28 format=3 uid="uid://7uxvigdkulh5"]
 
 [ext_resource type="PackedScene" uid="uid://bihe0tscs85is" path="res://Bob_simulator/mini_game/scn_game_base.tscn" id="1_6ywn2"]
 [ext_resource type="Texture2D" uid="uid://b0fwe3r427lec" path="res://Bob_simulator/mini_game/mega_singe/tex_bg_menu.png" id="2_h5sef"]
@@ -8,6 +8,7 @@
 [ext_resource type="LabelSettings" uid="uid://bdxtw162r24p7" path="res://base_font.tres" id="4_sus0n"]
 [ext_resource type="Texture2D" uid="uid://bj2dhhwv7jr5w" path="res://Bob_simulator/mini_game/mega_singe/tex_info_box.png" id="5_10cmk"]
 [ext_resource type="Texture2D" uid="uid://dsvw5kca7ex7g" path="res://Bob_simulator/mini_game/mega_singe/tex_bsd.png" id="7_lbepg"]
+[ext_resource type="Texture2D" uid="uid://dkynd70hxha20" path="res://Bob_simulator/mini_game/mega_singe/tex_fpchimer.png" id="8_2gq0h"]
 [ext_resource type="AudioStream" uid="uid://cft6muxyynd5b" path="res://music/singe.ogg" id="8_6bs0v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wqns4"]
@@ -109,6 +110,46 @@ _data = {
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2w1bp"]
 size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5lher"]
+size = Vector2(24, 24)
+
+[sub_resource type="Animation" id="Animation_qmqrf"]
+resource_name = "move"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:lerp_pos")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_h7kcq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:lerp_pos")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3yeca"]
+_data = {
+"RESET": SubResource("Animation_h7kcq"),
+"move": SubResource("Animation_qmqrf")
+}
 
 [sub_resource type="Animation" id="Animation_tbny5"]
 length = 0.001
@@ -297,7 +338,21 @@ texture = ExtResource("7_lbepg")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="game/Area2D" index="1"]
 shape = SubResource("RectangleShape2D_2w1bp")
 
-[node name="bg_menu" type="Sprite2D" parent="game" index="4"]
+[node name="Area2D3" type="Area2D" parent="game" index="4"]
+
+[node name="Sprite2D" type="Sprite2D" parent="game/Area2D3" index="0"]
+texture = ExtResource("8_2gq0h")
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="game/Area2D3" index="1"]
+shape = SubResource("RectangleShape2D_5lher")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="game/Area2D3" index="2"]
+libraries = {
+"": SubResource("AnimationLibrary_3yeca")
+}
+
+[node name="bg_menu" type="Sprite2D" parent="game" index="5"]
 position = Vector2(128, 128)
 texture = ExtResource("2_h5sef")
 hframes = 2
@@ -327,7 +382,7 @@ label_settings = ExtResource("4_sus0n")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AudioListener2D" type="AudioListener2D" parent="game" index="5"]
+[node name="AudioListener2D" type="AudioListener2D" parent="game" index="6"]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="game/AudioListener2D" index="0"]
 stream = ExtResource("8_6bs0v")
@@ -335,3 +390,4 @@ volume_db = 10.0
 autoplay = true
 
 [connection signal="area_entered" from="game/Area2D" to="game" method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="game/Area2D3" to="game" method="_on_area_2d_3_area_entered"]

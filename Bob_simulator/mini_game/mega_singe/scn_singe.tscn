@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://7uxvigdkulh5"]
+[gd_scene load_steps=23 format=3 uid="uid://7uxvigdkulh5"]
 
 [ext_resource type="PackedScene" uid="uid://bihe0tscs85is" path="res://Bob_simulator/mini_game/scn_game_base.tscn" id="1_6ywn2"]
 [ext_resource type="Texture2D" uid="uid://b0fwe3r427lec" path="res://Bob_simulator/mini_game/mega_singe/tex_bg_menu.png" id="2_h5sef"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://id8y1eu4s4yt" path="res://Bob_simulator/mini_game/mega_singe/tex_singe.png" id="4_eaoyi"]
 [ext_resource type="LabelSettings" uid="uid://bdxtw162r24p7" path="res://base_font.tres" id="4_sus0n"]
 [ext_resource type="Texture2D" uid="uid://bj2dhhwv7jr5w" path="res://Bob_simulator/mini_game/mega_singe/tex_info_box.png" id="5_10cmk"]
+[ext_resource type="Texture2D" uid="uid://dsvw5kca7ex7g" path="res://Bob_simulator/mini_game/mega_singe/tex_bsd.png" id="7_lbepg"]
 [ext_resource type="AudioStream" uid="uid://cft6muxyynd5b" path="res://music/singe.ogg" id="8_6bs0v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wqns4"]
@@ -105,6 +106,9 @@ _data = {
 "RESET": SubResource("Animation_i617w"),
 "gravity_change": SubResource("Animation_pqyt3")
 }
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2w1bp"]
+size = Vector2(16, 16)
 
 [sub_resource type="Animation" id="Animation_tbny5"]
 length = 0.001
@@ -243,7 +247,27 @@ script = ExtResource("2_ssjdt")
 position = Vector2(128, 128)
 texture = ExtResource("3_dgkgo")
 
-[node name="Area2D2" type="Area2D" parent="game" index="1"]
+[node name="NinePatchRect" type="NinePatchRect" parent="game" index="1"]
+offset_right = 104.0
+offset_bottom = 40.0
+texture = ExtResource("5_10cmk")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="Label" type="Label" parent="game/NinePatchRect" index="0"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 88.0
+offset_bottom = 32.0
+text = "score : 030
+life  : 030
+boss  : 100"
+label_settings = ExtResource("4_sus0n")
+
+[node name="Area2D2" type="Area2D" parent="game" index="2"]
 position = Vector2(24, 130)
 
 [node name="Sprite2D" type="Sprite2D" parent="game/Area2D2" index="0"]
@@ -264,27 +288,16 @@ libraries = {
 "": SubResource("AnimationLibrary_ytdy4")
 }
 
-[node name="NinePatchRect" type="NinePatchRect" parent="game" index="2"]
-offset_right = 104.0
-offset_bottom = 40.0
-texture = ExtResource("5_10cmk")
-patch_margin_left = 16
-patch_margin_top = 16
-patch_margin_right = 16
-patch_margin_bottom = 16
+[node name="Area2D" type="Area2D" parent="game" index="3"]
+position = Vector2(248, 193)
 
-[node name="Label" type="Label" parent="game/NinePatchRect" index="0"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 88.0
-offset_bottom = 32.0
-text = "score : 030
-life  : 030
-boss  : 100"
-label_settings = ExtResource("4_sus0n")
+[node name="Sprite2D" type="Sprite2D" parent="game/Area2D" index="0"]
+texture = ExtResource("7_lbepg")
 
-[node name="bg_menu" type="Sprite2D" parent="game" index="3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="game/Area2D" index="1"]
+shape = SubResource("RectangleShape2D_2w1bp")
+
+[node name="bg_menu" type="Sprite2D" parent="game" index="4"]
 position = Vector2(128, 128)
 texture = ExtResource("2_h5sef")
 hframes = 2
@@ -314,9 +327,11 @@ label_settings = ExtResource("4_sus0n")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AudioListener2D" type="AudioListener2D" parent="game" index="4"]
+[node name="AudioListener2D" type="AudioListener2D" parent="game" index="5"]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="game/AudioListener2D" index="0"]
 stream = ExtResource("8_6bs0v")
 volume_db = 10.0
 autoplay = true
+
+[connection signal="area_entered" from="game/Area2D" to="game" method="_on_area_2d_area_entered"]

@@ -9,10 +9,18 @@ var game_is_start = false
 @onready var player_animation_jump = $Area2D2/jump
 @onready var player_sprite = $Area2D2/Sprite2D
 
+@onready var bulet = preload("res://Bob_simulator/mini_game/mega_singe/scn_mega_bullet_du_flingue_du_mega_singe_de_lamortkiuetou.tscn")
+
+@onready var bsd = $Area2D
+
 var player_speed = 2
-#@onready var player = $Area2D2
+
+func spawn_bsd():
+	bsd.position = Vector2(randi_range(8,248),randi_range(193,193))
+
 func _ready() -> void:
 	start_bg_anime.play("start")
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -32,6 +40,11 @@ func _process(_delta: float) -> void:
 			player_animation.play("idle")
 		player.position.x = clamp(player.position.x,0,256)
 		player.position.y = player_gravity
+		
+		if Input.is_action_just_pressed("up"):
+			var instance_bulet = bulet.instantiate()
+			instance_bulet.position = player.position
+			$".".add_child(instance_bulet)
 	
 	if not game_is_start :
 		if Input.is_action_just_pressed("interact"):
@@ -39,3 +52,9 @@ func _process(_delta: float) -> void:
 			game_is_start = true
 	if Input.is_action_just_pressed("run"):
 		mini_game_core.quit_mini_game()
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area == player or area is Mega_bulets:
+		spawn_bsd()
+		

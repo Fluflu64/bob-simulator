@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://dd0nk6sfqncra"]
+
+[ext_resource type="PackedScene" uid="uid://cbkkitsgipt6a" path="res://Bob_simulator/mini_game/mini_yes/yes_level_1.blend" id="1_4w678"]
+[ext_resource type="Script" path="res://Bob_simulator/mini_game/mini_yes/script_level.gd" id="2_4dfur"]
+
+[node name="yes_level_1" instance=ExtResource("1_4w678")]
+script = ExtResource("2_4dfur")
+
+[node name="Plan" parent="." index="0"]
+layers = 524288
+
+[node name="Cube" parent="." index="1"]
+layers = 524288
+
+[node name="Caméra" parent="." index="2"]
+transform = Transform3D(-4.37114e-08, -3.42285e-08, -1, 0, 1, -3.42285e-08, 1, -1.49618e-15, -4.37114e-08, -196.518, 2.0857, 0)
+
+[node name="Plan_001" parent="." index="3"]
+layers = 524288
+
+[node name="Cube_001" parent="." index="4"]
+layers = 524288

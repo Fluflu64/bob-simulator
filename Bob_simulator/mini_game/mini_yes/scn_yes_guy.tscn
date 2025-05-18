@@ -1,11 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://dp10yxwn7tipu"]
+[gd_scene load_steps=5 format=3 uid="uid://dp10yxwn7tipu"]
 
 [ext_resource type="PackedScene" uid="uid://b6x2wjkmr5jkk" path="res://Bob_simulator/mini_game/mini_yes/yes_guy.blend" id="1_4kdsw"]
-[ext_resource type="Material" uid="uid://dvhyojxq1yj8c" path="res://Bob_simulator/mini_game/mini_yes/mat_yes_guy.tres" id="2_aqqoa"]
+[ext_resource type="Shader" path="res://Bob_simulator/mini_game/script_bad_3d.gdshader" id="2_u3ekl"]
+[ext_resource type="Texture2D" uid="uid://c8m511vpg0vwq" path="res://Bob_simulator/mini_game/mini_yes/normal.png" id="3_u7d0l"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8vnf1"]
+render_priority = 0
+shader = ExtResource("2_u3ekl")
+shader_parameter/affine_mapping = true
+shader_parameter/alpha_scissor = 0.0
+shader_parameter/jitter = 0.8
+shader_parameter/resolution = Vector2i(256, 256)
+shader_parameter/albedo = ExtResource("3_u7d0l")
 
 [node name="yes_guy" instance=ExtResource("1_4kdsw")]
 
 [node name="sm_yes_guy" parent="." index="0"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -1.68084, 0)
 layers = 131072
-surface_material_override/0 = ExtResource("2_aqqoa")
+surface_material_override/0 = SubResource("ShaderMaterial_8vnf1")

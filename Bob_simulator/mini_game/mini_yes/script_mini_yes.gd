@@ -15,6 +15,8 @@ var alpha_player = 0.5
 
 func _ready() -> void:
 	level_1.play("CaméraAction")
+	await level_1.animation_player.animation_finished
+	$"..".quit_mini_game()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	camera.transform = level_1.camera.transform

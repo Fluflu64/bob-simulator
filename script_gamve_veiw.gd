@@ -4,6 +4,8 @@ extends CanvasLayer
 
 var display_mode = DisplayServer.window_get_mode()
 
+var game_size = 1
+
 func _process(_delta: float) -> void:
 	var viewscale = get_viewport().size.y/256
 	game_viewport.scale = Vector2(viewscale,viewscale)

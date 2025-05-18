@@ -615,8 +615,14 @@ offset_top = 232.0
 offset_right = 248.0
 offset_bottom = 240.0
 text = "bob simulator : Fluflu 64 202X
-DEMO beta 0.12.2
 "
+label_settings = ExtResource("3_ssomm")
+
+[node name="Label5" type="Label" parent="."]
+offset_left = 8.0
+offset_top = 240.0
+offset_right = 248.0
+offset_bottom = 248.0
 label_settings = ExtResource("3_ssomm")
 
 [node name="Label4" type="Label" parent="."]
@@ -750,3 +756,5 @@ position = Vector2(232, 232)
 texture = ExtResource("11_puev3")
 hframes = 3
 frame = 2
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]

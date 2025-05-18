@@ -1,22 +1,447 @@
-[gd_scene load_steps=3 format=3 uid="uid://dd0nk6sfqncra"]
+[gd_scene load_steps=11 format=3 uid="uid://dd0nk6sfqncra"]
 
 [ext_resource type="PackedScene" uid="uid://cbkkitsgipt6a" path="res://Bob_simulator/mini_game/mini_yes/yes_level_1.blend" id="1_4w678"]
 [ext_resource type="Script" path="res://Bob_simulator/mini_game/mini_yes/script_level.gd" id="2_4dfur"]
+[ext_resource type="Shader" path="res://Bob_simulator/mini_game/script_bad_3d.gdshader" id="3_foils"]
+[ext_resource type="Texture2D" uid="uid://xirg0wa8j1oa" path="res://Bob_simulator/mini_game/mini_yes/tex_map_color.png" id="3_w1ihv"]
+[ext_resource type="Texture2D" uid="uid://b51k0k54woxsb" path="res://Bob_simulator/mini_game/mini_yes/tex_cloud.png" id="5_82w7g"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aeahg"]
+render_priority = 0
+shader = ExtResource("3_foils")
+shader_parameter/affine_mapping = true
+shader_parameter/alpha_scissor = 0.5
+shader_parameter/jitter = 0.87
+shader_parameter/resolution = Vector2i(256, 256)
+shader_parameter/albedo = ExtResource("3_w1ihv")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fdkb2"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_p823y"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n0rx0"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("5_82w7g")
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xk4ob"]
+shading_mode = 0
+disable_fog = true
+albedo_color = Color(1, 1, 0.384314, 1)
+billboard_mode = 1
 
 [node name="yes_level_1" instance=ExtResource("1_4w678")]
 script = ExtResource("2_4dfur")
 
-[node name="Plan" parent="." index="0"]
+[node name="Cube" parent="." index="0"]
 layers = 524288
 
-[node name="Cube" parent="." index="1"]
+[node name="Caméra" parent="." index="1"]
+transform = Transform3D(-0.000652593, 1.8027e-06, -1, 0.00261482, 0.999997, 9.62755e-08, 0.999996, -0.00261482, -0.000652595, -196.134, 2.06209, 0.0900889)
+
+[node name="Cube_001" parent="." index="2"]
 layers = 524288
 
-[node name="Caméra" parent="." index="2"]
-transform = Transform3D(-4.37114e-08, -3.42285e-08, -1, 0, 1, -3.42285e-08, 1, -1.49618e-15, -4.37114e-08, -196.518, 2.0857, 0)
-
-[node name="Plan_001" parent="." index="3"]
+[node name="Plan_002" parent="." index="3"]
 layers = 524288
+surface_material_override/0 = SubResource("ShaderMaterial_aeahg")
 
-[node name="Cube_001" parent="." index="4"]
+[node name="Plan" parent="." index="4"]
 layers = 524288
+surface_material_override/0 = SubResource("StandardMaterial3D_fdkb2")
+
+[node name="Node3D" type="Node3D" parent="." index="6"]
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="Node3D" index="0"]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 151.784, -12.5252)
+layers = 524288
+mesh = SubResource("QuadMesh_p823y")
+material = SubResource("StandardMaterial3D_n0rx0")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="Node3D" index="1"]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 165.798, 151.784, -193.171)
+layers = 524288
+mesh = SubResource("QuadMesh_p823y")
+material = SubResource("StandardMaterial3D_n0rx0")
+
+[node name="CSGMesh3D3" type="CSGMesh3D" parent="Node3D" index="2"]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, -423.157, 151.784, 56.7636)
+layers = 524288
+mesh = SubResource("QuadMesh_p823y")
+material = SubResource("StandardMaterial3D_n0rx0")
+
+[node name="CSGMesh3D4" type="CSGMesh3D" parent="Node3D" index="3"]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, -257.358, 151.784, -123.882)
+layers = 524288
+mesh = SubResource("QuadMesh_p823y")
+material = SubResource("StandardMaterial3D_n0rx0")
+
+[node name="CSGMesh3D5" type="CSGMesh3D" parent="Node3D" index="4"]
+transform = Transform3D(-3.54402, 0, 99.9372, 0, 100, 0, -99.9372, 0, -3.54402, 654.885, 151.784, -112.164)
+layers = 524288
+mesh = SubResource("QuadMesh_p823y")
+material = SubResource("StandardMaterial3D_n0rx0")
+
+[node name="CSGMesh3D6" type="CSGMesh3D" parent="Node3D" index="5"]
+transform = Transform3D(-3.54402, 0, 99.9372, 0, 100, 0, -99.9372, 0, -3.54402, 468.477, 151.784, -271.456)
+layers = 524288
+mesh = SubResource("QuadMesh_p823y")
+material = SubResource("StandardMaterial3D_n0rx0")
+
+[node name="CSGMesh3D7" type="CSGMesh3D" parent="Node3D" index="6"]
+transform = Transform3D(-3.54402, 0, 99.9372, 0, 100, 0, -99.9372, 0, -3.54402, 739.128, 151.784, 308.271)
+layers = 524288
+mesh = SubResource("QuadMesh_p823y")
+material = SubResource("StandardMaterial3D_n0rx0")
+
+[node name="CSGMesh3D8" type="CSGMesh3D" parent="Node3D" index="7"]
+transform = Transform3D(-3.54402, 0, 99.9372, 0, 100, 0, -99.9372, 0, -3.54402, 552.719, 151.784, 148.979)
+layers = 524288
+mesh = SubResource("QuadMesh_p823y")
+material = SubResource("StandardMaterial3D_n0rx0")
+
+[node name="CSGMesh3D9" type="CSGMesh3D" parent="Node3D" index="8"]
+transform = Transform3D(8.74861, 0, -99.6166, 0, 100, 0, 99.6166, 0, 8.74861, -28.1597, 151.784, -238.195)
+layers = 524288
+mesh = SubResource("QuadMesh_p823y")
+material = SubResource("StandardMaterial3D_n0rx0")
+
+[node name="CSGMesh3D10" type="CSGMesh3D" parent="Node3D" index="9"]
+transform = Transform3D(8.74861, 0, -99.6166, 0, 100, 0, 99.6166, 0, 8.74861, 166.299, 151.784, -88.8366)
+layers = 524288
+mesh = SubResource("QuadMesh_p823y")
+material = SubResource("StandardMaterial3D_n0rx0")
+
+[node name="CSGMesh3D11" type="CSGMesh3D" parent="Node3D" index="10"]
+transform = Transform3D(8.74861, 0, -99.6166, 0, 100, 0, 99.6166, 0, 8.74861, -134.203, 151.784, -653.667)
+layers = 524288
+mesh = SubResource("QuadMesh_p823y")
+material = SubResource("StandardMaterial3D_n0rx0")
+
+[node name="CSGMesh3D12" type="CSGMesh3D" parent="Node3D" index="11"]
+transform = Transform3D(8.74861, 0, -99.6166, 0, 100, 0, 99.6166, 0, 8.74861, 60.255, 151.784, -504.309)
+layers = 524288
+mesh = SubResource("QuadMesh_p823y")
+material = SubResource("StandardMaterial3D_n0rx0")
+
+[node name="CSGMesh3D13" type="CSGMesh3D" parent="Node3D" index="12"]
+transform = Transform3D(99.244, 0, 12.2735, 0, 100, 0, -12.2735, 0, 99.244, 128.391, 151.784, 405.462)
+layers = 524288
+mesh = SubResource("QuadMesh_p823y")
+material = SubResource("StandardMaterial3D_n0rx0")
+
+[node name="CSGMesh3D14" type="CSGMesh3D" parent="Node3D" index="13"]
+transform = Transform3D(99.244, 0, 12.2735, 0, 100, 0, -12.2735, 0, 99.244, 270.764, 151.784, 205.833)
+layers = 524288
+mesh = SubResource("QuadMesh_p823y")
+material = SubResource("StandardMaterial3D_n0rx0")
+
+[node name="CSGMesh3D15" type="CSGMesh3D" parent="Node3D" index="14"]
+transform = Transform3D(99.244, 0, 12.2735, 0, 100, 0, -12.2735, 0, 99.244, -283.062, 151.784, 526.164)
+layers = 524288
+mesh = SubResource("QuadMesh_p823y")
+material = SubResource("StandardMaterial3D_n0rx0")
+
+[node name="CSGMesh3D16" type="CSGMesh3D" parent="Node3D" index="15"]
+transform = Transform3D(99.244, 0, 12.2735, 0, 100, 0, -12.2735, 0, 99.244, -140.689, 151.784, 326.534)
+layers = 524288
+mesh = SubResource("QuadMesh_p823y")
+material = SubResource("StandardMaterial3D_n0rx0")
+
+[node name="CSGMesh3D17" type="CSGMesh3D" parent="Node3D" index="16"]
+transform = Transform3D(-2.22685, 0, -99.9752, 0, 100, 0, 99.9752, 0, -2.22685, 239.025, 151.784, -142.439)
+layers = 524288
+mesh = SubResource("QuadMesh_p823y")
+material = SubResource("StandardMaterial3D_n0rx0")
+
+[node name="CSGMesh3D18" type="CSGMesh3D" parent="Node3D" index="17"]
+transform = Transform3D(-2.22685, 0, -99.9752, 0, 100, 0, 99.9752, 0, -2.22685, 415.934, 151.784, 27.3406)
+layers = 524288
+mesh = SubResource("QuadMesh_p823y")
+material = SubResource("StandardMaterial3D_n0rx0")
+
+[node name="CSGMesh3D19" type="CSGMesh3D" parent="Node3D" index="18"]
+transform = Transform3D(-2.22685, 0, -99.9752, 0, 100, 0, 99.9752, 0, -2.22685, 179.176, 151.784, -567.034)
+layers = 524288
+mesh = SubResource("QuadMesh_p823y")
+material = SubResource("StandardMaterial3D_n0rx0")
+
+[node name="CSGMesh3D20" type="CSGMesh3D" parent="Node3D" index="19"]
+transform = Transform3D(-2.22685, 0, -99.9752, 0, 100, 0, 99.9752, 0, -2.22685, 356.085, 151.784, -397.254)
+layers = 524288
+mesh = SubResource("QuadMesh_p823y")
+material = SubResource("StandardMaterial3D_n0rx0")
+
+[node name="CSGMesh3D21" type="CSGMesh3D" parent="Node3D" index="20"]
+transform = Transform3D(99.9913, 0, 1.31769, 0, 100, 0, -1.31769, 0, 99.9913, 324.056, 151.784, 514.503)
+layers = 524288
+mesh = SubResource("QuadMesh_p823y")
+material = SubResource("StandardMaterial3D_n0rx0")
+
+[node name="CSGMesh3D22" type="CSGMesh3D" parent="Node3D" index="21"]
+transform = Transform3D(99.9913, 0, 1.31769, 0, 100, 0, -1.31769, 0, 99.9913, 487.459, 151.784, 331.688)
+layers = 524288
+mesh = SubResource("QuadMesh_p823y")
+material = SubResource("StandardMaterial3D_n0rx0")
+
+[node name="CSGMesh3D23" type="CSGMesh3D" parent="Node3D" index="22"]
+transform = Transform3D(99.9913, 0, 1.31769, 0, 100, 0, -1.31769, 0, 99.9913, -98.1509, 151.784, 589.362)
+layers = 524288
+mesh = SubResource("QuadMesh_p823y")
+material = SubResource("StandardMaterial3D_n0rx0")
+
+[node name="CSGMesh3D24" type="CSGMesh3D" parent="Node3D" index="23"]
+transform = Transform3D(99.9913, 0, 1.31769, 0, 100, 0, -1.31769, 0, 99.9913, 65.2526, 151.784, 406.547)
+layers = 524288
+mesh = SubResource("QuadMesh_p823y")
+material = SubResource("StandardMaterial3D_n0rx0")
+
+[node name="CSGMesh3D25" type="CSGMesh3D" parent="Node3D" index="24"]
+transform = Transform3D(-99.7867, 0, -6.52812, 0, 100, 0, 6.52812, 0, -99.7867, 465.266, 151.784, -165.567)
+layers = 524288
+mesh = SubResource("QuadMesh_p823y")
+material = SubResource("StandardMaterial3D_n0rx0")
+
+[node name="CSGMesh3D26" type="CSGMesh3D" parent="Node3D" index="25"]
+transform = Transform3D(-99.7867, 0, -6.52812, 0, 100, 0, 6.52812, 0, -99.7867, 311.614, 151.784, 25.5174)
+layers = 524288
+mesh = SubResource("QuadMesh_p823y")
+material = SubResource("StandardMaterial3D_n0rx0")
+
+[node name="CSGMesh3D27" type="CSGMesh3D" parent="Node3D" index="26"]
+transform = Transform3D(-99.7867, 0, -6.52812, 0, 100, 0, 6.52812, 0, -99.7867, 882.996, 151.784, -262.332)
+layers = 524288
+mesh = SubResource("QuadMesh_p823y")
+material = SubResource("StandardMaterial3D_n0rx0")
+
+[node name="CSGMesh3D28" type="CSGMesh3D" parent="Node3D" index="27"]
+transform = Transform3D(-99.7867, 0, -6.52812, 0, 100, 0, 6.52812, 0, -99.7867, 729.345, 151.784, -71.2478)
+layers = 524288
+mesh = SubResource("QuadMesh_p823y")
+material = SubResource("StandardMaterial3D_n0rx0")
+
+[node name="CSGMesh3D29" type="CSGMesh3D" parent="Node3D" index="28"]
+transform = Transform3D(10.0605, 0, -99.4927, 0, 100, 0, 99.4927, 0, 10.0605, -181.718, 151.784, -23.3883)
+layers = 524288
+mesh = SubResource("QuadMesh_p823y")
+material = SubResource("StandardMaterial3D_n0rx0")
+
+[node name="CSGMesh3D30" type="CSGMesh3D" parent="Node3D" index="29"]
+transform = Transform3D(10.0605, 0, -99.4927, 0, 100, 0, 99.4927, 0, 10.0605, 14.6913, 151.784, 123.395)
+layers = 524288
+mesh = SubResource("QuadMesh_p823y")
+material = SubResource("StandardMaterial3D_n0rx0")
+
+[node name="CSGMesh3D31" type="CSGMesh3D" parent="Node3D" index="30"]
+transform = Transform3D(10.0605, 0, -99.4927, 0, 100, 0, 99.4927, 0, 10.0605, -293.227, 151.784, -437.427)
+layers = 524288
+mesh = SubResource("QuadMesh_p823y")
+material = SubResource("StandardMaterial3D_n0rx0")
+
+[node name="CSGMesh3D32" type="CSGMesh3D" parent="Node3D" index="31"]
+transform = Transform3D(10.0605, 0, -99.4927, 0, 100, 0, 99.4927, 0, 10.0605, -96.8176, 151.784, -290.644)
+layers = 524288
+mesh = SubResource("QuadMesh_p823y")
+material = SubResource("StandardMaterial3D_n0rx0")
+
+[node name="CSGMesh3D33" type="CSGMesh3D" parent="Node3D" index="32"]
+transform = Transform3D(49.9032, 0, -86.6583, 0, 100, 0, 86.6583, 0, 49.9032, 201.895, 151.784, -138.307)
+layers = 524288
+mesh = SubResource("QuadMesh_p823y")
+material = SubResource("StandardMaterial3D_n0rx0")
+
+[node name="CSGMesh3D34" type="CSGMesh3D" parent="Node3D" index="33"]
+transform = Transform3D(49.9032, 0, -86.6583, 0, 100, 0, 86.6583, 0, 49.9032, 441.179, 151.784, -84.7773)
+layers = 524288
+mesh = SubResource("QuadMesh_p823y")
+material = SubResource("StandardMaterial3D_n0rx0")
+
+[node name="CSGMesh3D35" type="CSGMesh3D" parent="Node3D" index="34"]
+transform = Transform3D(49.9032, 0, -86.6583, 0, 100, 0, 86.6583, 0, 49.9032, -69.318, 151.784, -470.43)
+layers = 524288
+mesh = SubResource("QuadMesh_p823y")
+material = SubResource("StandardMaterial3D_n0rx0")
+
+[node name="CSGMesh3D36" type="CSGMesh3D" parent="Node3D" index="35"]
+transform = Transform3D(49.9032, 0, -86.6583, 0, 100, 0, 86.6583, 0, 49.9032, 169.965, 151.784, -416.9)
+layers = 524288
+mesh = SubResource("QuadMesh_p823y")
+material = SubResource("StandardMaterial3D_n0rx0")
+
+[node name="CSGMesh3D37" type="CSGMesh3D" parent="Node3D" index="36"]
+transform = Transform3D(84.8353, 0, 52.9431, 0, 100, 0, -52.9431, 0, 84.8353, 615.05, 151.784, 379.483)
+layers = 524288
+mesh = SubResource("QuadMesh_p823y")
+material = SubResource("StandardMaterial3D_n0rx0")
+
+[node name="CSGMesh3D38" type="CSGMesh3D" parent="Node3D" index="37"]
+transform = Transform3D(84.8353, 0, 52.9431, 0, 100, 0, -52.9431, 0, 84.8353, 660.066, 151.784, 138.452)
+layers = 524288
+mesh = SubResource("QuadMesh_p823y")
+material = SubResource("StandardMaterial3D_n0rx0")
+
+[node name="CSGMesh3D39" type="CSGMesh3D" parent="Node3D" index="38"]
+transform = Transform3D(84.8353, 0, 52.9431, 0, 100, 0, -52.9431, 0, 84.8353, 292.747, 151.784, 662.296)
+layers = 524288
+mesh = SubResource("QuadMesh_p823y")
+material = SubResource("StandardMaterial3D_n0rx0")
+
+[node name="CSGMesh3D40" type="CSGMesh3D" parent="Node3D" index="39"]
+transform = Transform3D(84.8353, 0, 52.9431, 0, 100, 0, -52.9431, 0, 84.8353, 337.763, 151.784, 421.266)
+layers = 524288
+mesh = SubResource("QuadMesh_p823y")
+material = SubResource("StandardMaterial3D_n0rx0")
+
+[node name="CSGMesh3D41" type="CSGMesh3D" parent="Node3D" index="40"]
+transform = Transform3D(-81.9602, 0, -57.2933, 0, 100, 0, 57.2933, 0, -81.9602, 383.404, 151.784, -275.326)
+layers = 524288
+mesh = SubResource("QuadMesh_p823y")
+material = SubResource("StandardMaterial3D_n0rx0")
+
+[node name="CSGMesh3D42" type="CSGMesh3D" parent="Node3D" index="41"]
+transform = Transform3D(-81.9602, 0, -57.2933, 0, 100, 0, 57.2933, 0, -81.9602, 351.014, 151.784, -32.2775)
+layers = 524288
+mesh = SubResource("QuadMesh_p823y")
+material = SubResource("StandardMaterial3D_n0rx0")
+
+[node name="CSGMesh3D43" type="CSGMesh3D" parent="Node3D" index="42"]
+transform = Transform3D(-81.9602, 0, -57.2933, 0, 100, 0, 57.2933, 0, -81.9602, 690.527, 151.784, -574.556)
+layers = 524288
+mesh = SubResource("QuadMesh_p823y")
+material = SubResource("StandardMaterial3D_n0rx0")
+
+[node name="CSGMesh3D44" type="CSGMesh3D" parent="Node3D" index="43"]
+transform = Transform3D(-81.9602, 0, -57.2933, 0, 100, 0, 57.2933, 0, -81.9602, 658.136, 151.784, -331.507)
+layers = 524288
+mesh = SubResource("QuadMesh_p823y")
+material = SubResource("StandardMaterial3D_n0rx0")
+
+[node name="CSGMesh3D45" type="CSGMesh3D" parent="Node3D" index="44"]
+transform = Transform3D(60.162, 0, -79.8783, 0, 100, 0, 79.8783, 0, 60.162, -96.2547, 151.784, 181.543)
+layers = 524288
+mesh = SubResource("QuadMesh_p823y")
+material = SubResource("StandardMaterial3D_n0rx0")
+
+[node name="CSGMesh3D46" type="CSGMesh3D" parent="Node3D" index="45"]
+transform = Transform3D(60.162, 0, -79.8783, 0, 100, 0, 79.8783, 0, 60.162, 147.79, 151.784, 205.3)
+layers = 524288
+mesh = SubResource("QuadMesh_p823y")
+material = SubResource("StandardMaterial3D_n0rx0")
+
+[node name="CSGMesh3D47" type="CSGMesh3D" parent="Node3D" index="46"]
+transform = Transform3D(60.162, 0, -79.8783, 0, 100, 0, 79.8783, 0, 60.162, -406.181, 151.784, -114.781)
+layers = 524288
+mesh = SubResource("QuadMesh_p823y")
+material = SubResource("StandardMaterial3D_n0rx0")
+
+[node name="CSGMesh3D48" type="CSGMesh3D" parent="Node3D" index="47"]
+transform = Transform3D(60.162, 0, -79.8783, 0, 100, 0, 79.8783, 0, 60.162, -162.137, 151.784, -91.0246)
+layers = 524288
+mesh = SubResource("QuadMesh_p823y")
+material = SubResource("StandardMaterial3D_n0rx0")
+
+[node name="CSGMesh3D49" type="CSGMesh3D" parent="Node3D" index="48"]
+transform = Transform3D(-87.7481, 0, -47.9611, 0, 100, 0, 47.9611, 0, -87.7481, 433.758, 151.784, 3.99654)
+layers = 524288
+mesh = SubResource("QuadMesh_p823y")
+material = SubResource("StandardMaterial3D_n0rx0")
+
+[node name="CSGMesh3D50" type="CSGMesh3D" parent="Node3D" index="49"]
+transform = Transform3D(-87.7481, 0, -47.9611, 0, 100, 0, 47.9611, 0, -87.7481, 374.913, 151.784, 242.028)
+layers = 524288
+mesh = SubResource("QuadMesh_p823y")
+material = SubResource("StandardMaterial3D_n0rx0")
+
+[node name="CSGMesh3D51" type="CSGMesh3D" parent="Node3D" index="50"]
+transform = Transform3D(-87.7481, 0, -47.9611, 0, 100, 0, 47.9611, 0, -87.7481, 771.838, 151.784, -259.754)
+layers = 524288
+mesh = SubResource("QuadMesh_p823y")
+material = SubResource("StandardMaterial3D_n0rx0")
+
+[node name="CSGMesh3D52" type="CSGMesh3D" parent="Node3D" index="51"]
+transform = Transform3D(-87.7481, 0, -47.9611, 0, 100, 0, 47.9611, 0, -87.7481, 712.993, 151.784, -21.7217)
+layers = 524288
+mesh = SubResource("QuadMesh_p823y")
+material = SubResource("StandardMaterial3D_n0rx0")
+
+[node name="CSGMesh3D53" type="CSGMesh3D" parent="Node3D" index="52"]
+transform = Transform3D(51.0408, 0, -85.9932, 0, 100, 0, 85.9932, 0, 51.0408, -93.104, 151.784, 405.518)
+layers = 524288
+mesh = SubResource("QuadMesh_p823y")
+material = SubResource("StandardMaterial3D_n0rx0")
+
+[node name="CSGMesh3D54" type="CSGMesh3D" parent="Node3D" index="53"]
+transform = Transform3D(51.0408, 0, -85.9932, 0, 100, 0, 85.9932, 0, 51.0408, 146.864, 151.784, 455.89)
+layers = 524288
+mesh = SubResource("QuadMesh_p823y")
+material = SubResource("StandardMaterial3D_n0rx0")
+
+[node name="CSGMesh3D55" type="CSGMesh3D" parent="Node3D" index="54"]
+transform = Transform3D(51.0408, 0, -85.9932, 0, 100, 0, 85.9932, 0, 51.0408, -368.67, 151.784, 76.9978)
+layers = 524288
+mesh = SubResource("QuadMesh_p823y")
+material = SubResource("StandardMaterial3D_n0rx0")
+
+[node name="CSGMesh3D56" type="CSGMesh3D" parent="Node3D" index="55"]
+transform = Transform3D(51.0408, 0, -85.9932, 0, 100, 0, 85.9932, 0, 51.0408, -128.702, 151.784, 127.37)
+layers = 524288
+mesh = SubResource("QuadMesh_p823y")
+material = SubResource("StandardMaterial3D_n0rx0")
+
+[node name="CSGMesh3D57" type="CSGMesh3D" parent="Node3D" index="56"]
+transform = Transform3D(-55.4539, 0, 83.2158, 0, 100, 0, -83.2158, 0, -55.4539, 566.701, 151.784, 188.512)
+layers = 524288
+mesh = SubResource("QuadMesh_p823y")
+material = SubResource("StandardMaterial3D_n0rx0")
+
+[node name="CSGMesh3D58" type="CSGMesh3D" parent="Node3D" index="57"]
+transform = Transform3D(-55.4539, 0, 83.2158, 0, 100, 0, -83.2158, 0, -55.4539, 324.434, 151.784, 150.717)
+layers = 524288
+mesh = SubResource("QuadMesh_p823y")
+material = SubResource("StandardMaterial3D_n0rx0")
+
+[node name="CSGMesh3D59" type="CSGMesh3D" parent="Node3D" index="58"]
+transform = Transform3D(-55.4539, 0, 83.2158, 0, 100, 0, -83.2158, 0, -55.4539, 859.017, 151.784, 502.221)
+layers = 524288
+mesh = SubResource("QuadMesh_p823y")
+material = SubResource("StandardMaterial3D_n0rx0")
+
+[node name="CSGMesh3D60" type="CSGMesh3D" parent="Node3D" index="59"]
+transform = Transform3D(-55.4539, 0, 83.2158, 0, 100, 0, -83.2158, 0, -55.4539, 616.75, 151.784, 464.426)
+layers = 524288
+mesh = SubResource("QuadMesh_p823y")
+material = SubResource("StandardMaterial3D_n0rx0")
+
+[node name="CSGMesh3D61" type="CSGMesh3D" parent="Node3D" index="60"]
+transform = Transform3D(-81.1982, 0, -58.3683, 0, 100, 0, 58.3683, 0, -81.1982, 120.626, 151.784, -301.202)
+layers = 524288
+mesh = SubResource("QuadMesh_p823y")
+material = SubResource("StandardMaterial3D_n0rx0")
+
+[node name="CSGMesh3D62" type="CSGMesh3D" parent="Node3D" index="61"]
+transform = Transform3D(-81.1982, 0, -58.3683, 0, 100, 0, 58.3683, 0, -81.1982, 91.4406, 151.784, -57.7475)
+layers = 524288
+mesh = SubResource("QuadMesh_p823y")
+material = SubResource("StandardMaterial3D_n0rx0")
+
+[node name="CSGMesh3D63" type="CSGMesh3D" parent="Node3D" index="62"]
+transform = Transform3D(-81.1982, 0, -58.3683, 0, 100, 0, 58.3683, 0, -81.1982, 423.778, 151.784, -604.453)
+layers = 524288
+mesh = SubResource("QuadMesh_p823y")
+material = SubResource("StandardMaterial3D_n0rx0")
+
+[node name="CSGMesh3D64" type="CSGMesh3D" parent="Node3D" index="63"]
+transform = Transform3D(-81.1982, 0, -58.3683, 0, 100, 0, 58.3683, 0, -81.1982, 394.593, 151.784, -360.998)
+layers = 524288
+mesh = SubResource("QuadMesh_p823y")
+material = SubResource("StandardMaterial3D_n0rx0")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="." index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2821.58, 1536.7, 0)
+layers = 524288
+radius = 428.255
+radial_segments = 5
+material = SubResource("StandardMaterial3D_xk4ob")

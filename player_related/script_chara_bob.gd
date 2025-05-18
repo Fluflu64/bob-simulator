@@ -106,6 +106,7 @@ func move():
 			if pv > 0 :
 				if speed == walk_speed :
 					animation.play("walk")
+					
 				else :
 					animation.play("run")
 			else :

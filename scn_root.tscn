@@ -279,6 +279,7 @@ pivot_offset = Vector2(0.5, 0.5)
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(256, 256)
+size_2d_override = Vector2i(256, 256)
 render_target_update_mode = 4
 
 [node name="root" type="Node" parent="background_canvas/gameview_canvas/gameview"]
@@ -325,6 +326,7 @@ hframes = 3
 [node name="viewport" type="SubViewportContainer" parent="background_canvas/gameview_canvas/gameview/root"]
 offset_right = 256.0
 offset_bottom = 256.0
+stretch = true
 
 [node name="main_menu" parent="background_canvas/gameview_canvas/gameview/root/viewport" instance=ExtResource("5_r5bqn")]
 

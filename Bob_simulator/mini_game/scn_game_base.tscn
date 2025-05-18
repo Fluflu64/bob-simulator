@@ -1,7 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://bihe0tscs85is"]
+[gd_scene load_steps=5 format=3 uid="uid://bihe0tscs85is"]
 
 [ext_resource type="Script" path="res://Bob_simulator/mini_game/script_game_base.gd" id="1_bbq3a"]
 [ext_resource type="Texture2D" uid="uid://di5e4i3cxnedu" path="res://Bob_simulator/mini_game/tex_bg_mini_game_default.png" id="2_ykutw"]
+[ext_resource type="Shader" path="res://Bob_simulator/mini_game/shader_arcade.gdshader" id="3_go8s6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_htlwf"]
+shader = ExtResource("3_go8s6")
+shader_parameter/resolution = Vector2(256, 256)
+shader_parameter/scan_line_amount = 0.0
+shader_parameter/warp_amount = 0.4
+shader_parameter/noise_amount = 0.14
+shader_parameter/interference_amount = 1.0
+shader_parameter/grille_amount = 0.204
+shader_parameter/grille_size = 1.0
+shader_parameter/vignette_amount = 1.32
+shader_parameter/vignette_intensity = 0.0
+shader_parameter/aberation_amount = 0.127
+shader_parameter/roll_line_amount = 0.13
+shader_parameter/roll_speed = 5.551
+shader_parameter/scan_line_strength = -7.178
+shader_parameter/pixel_strength = -4.0
 
 [node name="game_base" type="Node2D"]
 script = ExtResource("1_bbq3a")
@@ -9,3 +27,14 @@ script = ExtResource("1_bbq3a")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(128, 128)
 texture = ExtResource("2_ykutw")
+
+[node name="shader layout" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="shader layout"]
+z_index = 16
+material = SubResource("ShaderMaterial_htlwf")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

@@ -8,7 +8,9 @@ extends CanvasLayer
 @onready var instruction = $ColorRect
 @onready var sprite_loading_screen = $Sprite2D
 
+var url = "https://api.github.com/repos/Fluflu64/bob-simulator/commits/d800329ca6574e805d74415a6de27b943d69789e"
 
+@onready var http = $HTTPRequest
 @onready var title = $TexCompleteTitle
 @onready var label = $Label3
 @onready var bg = $background
@@ -60,7 +62,16 @@ func update_menu():
 	menu.text = text
 
 func _ready():
+	http.request_completed.connect(is_complet)
+	
+	http.request(url)
 	setup()
+
+func is_complet(_result,_response_code,_headers,body):
+	var json = JSON.parse_string(body.get_string_from_utf8())
+	json = json["commit"]
+	print(json)
+	$Label5.text = json["message"] + "\n" + json["committer"]["date"]
 
 func setup() -> void:
 	label_menu = []

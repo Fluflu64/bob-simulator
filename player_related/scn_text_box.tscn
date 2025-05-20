@@ -1,6 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://bs5w4fneac8j4"]
+[gd_scene load_steps=16 format=3 uid="uid://bs5w4fneac8j4"]
 
-[ext_resource type="Texture2D" uid="uid://mibs4jii822c" path="res://player_related/tex_text_box.png" id="1_x10g5"]
+[ext_resource type="Texture2D" uid="uid://cwydfyye4uw5u" path="res://player_related/tex_base_box.png" id="2_tjweb"]
 [ext_resource type="Script" path="res://player_related/script_text_box.gd" id="2_yg700"]
 [ext_resource type="FontFile" uid="uid://b6nqix3g6iv3i" path="res://pixelfont.ttf" id="4_lpj5a"]
 [ext_resource type="AudioStream" uid="uid://cvayis30grupd" path="res://sound_effect/bip_fluflu.wav" id="5_2ck86"]
@@ -41,6 +41,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("NinePatchRect:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 208)]
+}
 
 [sub_resource type="Animation" id="Animation_pfne6"]
 resource_name = "cursor"
@@ -71,10 +83,28 @@ tracks/1/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_ahhet"]
+resource_name = "pop"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NinePatchRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 320), Vector2(0, 208)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t1k1i"]
 _data = {
 "RESET": SubResource("Animation_8hni3"),
-"cursor": SubResource("Animation_pfne6")
+"cursor": SubResource("Animation_pfne6"),
+"pop": SubResource("Animation_ahhet")
 }
 
 [node name="CanvasLayer" type="CanvasLayer"]
@@ -82,10 +112,10 @@ follow_viewport_enabled = true
 script = ExtResource("2_yg700")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
-offset_top = 200.0
+offset_top = 208.0
 offset_right = 256.0
 offset_bottom = 256.0
-texture = ExtResource("1_x10g5")
+texture = ExtResource("2_tjweb")
 region_rect = Rect2(0, 0, 48, 48)
 patch_margin_left = 16
 patch_margin_top = 8
@@ -95,9 +125,9 @@ patch_margin_bottom = 8
 [node name="RichTextLabel" type="RichTextLabel" parent="NinePatchRect"]
 layout_mode = 2
 offset_left = 8.0
-offset_top = 8.0
+offset_top = 4.0
 offset_right = 248.0
-offset_bottom = 48.0
+offset_bottom = 44.0
 theme = SubResource("Theme_tix8v")
 bbcode_enabled = true
 text = "\"[color=red]Momentum[/color], a function of [wave]mass[/wave] and velocity, is conserved between portals. In layman's terms, speedy thing goes in, speedy thing comes out.\""
@@ -106,19 +136,6 @@ scroll_active = false
 scroll_following = true
 autowrap_mode = 2
 visible_characters_behavior = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect"]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
 
 [node name="letter_timer" type="Timer" parent="."]
 wait_time = 0.03

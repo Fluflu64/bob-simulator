@@ -41,7 +41,7 @@ func _ready():
 func _process(_delta):
 	if_value = BobGlobal.choice
 	if use_sub_cam :
-		player_cam.global_position = Vector2(roundi(sub_cam.global_position.x -8),roundi(sub_cam.global_position.y -8))
+		player_cam.global_position = Vector2(roundi(sub_cam.global_position.x ),roundi(sub_cam.global_position.y))
 
 func end_talk():
 	animation.play("stop")
@@ -89,7 +89,8 @@ func is_test(game_root):
 	game_root.start_text(["test"],self)
 
 func is_battle(game_root):
-	game_root.start_text(["battle"],self)
+	game_root.start_battle()
+	#game_root.start_text(["battle"],self)
 
 func is_game(game_root,index,codes):
 	var code = codes[index]
@@ -266,11 +267,6 @@ func execute_lines(game_root,codes) :
 				instru_check = true
 				if if_value != is_if(game_root,line,codes) :
 					if_is_active = true
-				
-				
-		
-		
-
 
 func interact(game_root):
 	game_root.bip_index = 0
@@ -278,7 +274,6 @@ func interact(game_root):
 		execute_lines(game_root,lines)
 		if not instru_check :
 			game_root.start_text(["c'est pas encore fait"],self)
-
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player :

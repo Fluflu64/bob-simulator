@@ -72,10 +72,10 @@ func _input(event: InputEvent) -> void:
 		animation.play("close")
 		await animation.animation_finished
 		queue_free()
-	if event.is_action_pressed("down") :
+	if Input.is_action_just_pressed("down") :
 		index_menu += 1
 		bip.play()
-	if event.is_action_pressed("up") :
+	if Input.is_action_just_pressed("up") :
 		index_menu -= 1
 		bip.play()
 	if index_menu < 0 :

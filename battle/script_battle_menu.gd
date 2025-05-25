@@ -37,7 +37,7 @@ var histo = [\
 ]
 
 var tour = 0
-var battle_lock = false
+var battle_lock = true
 
 var label_menu = ["attack","action","item","flee"]
 var action_label = ["↑ ","← ","↓ ","→ ","defense"]
@@ -133,7 +133,10 @@ func _ready() -> void:
 	animation.play("battle start")
 	index_menu = 0
 	
+	
 	update_menu()
+	await animation.animation_finished
+	battle_lock = false
 	
 func distance_bteween_2(pos1,pos2):
 	return sqrt((pos1.x-pos2.x)**2+(pos1.y-pos2.y)**2)

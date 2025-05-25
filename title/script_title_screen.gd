@@ -8,9 +8,7 @@ extends CanvasLayer
 @onready var instruction = $ColorRect
 @onready var sprite_loading_screen = $Sprite2D
 
-var url = "https://api.github.com/repos/Fluflu64/bob-simulator/commits/latest"
 
-@onready var http = $HTTPRequest
 @onready var title = $TexCompleteTitle
 @onready var label = $Label3
 @onready var bg = $background
@@ -62,16 +60,9 @@ func update_menu():
 	menu.text = text
 
 func _ready():
-	http.request_completed.connect(is_complet)
-	
-	http.request(url)
 	setup()
 
-func is_complet(_result,_response_code,_headers,body):
-	var json = JSON.parse_string(body.get_string_from_utf8())
-	json = json
-	print(json)
-	$Label5.text = str(json)
+
 
 func setup() -> void:
 	label_menu = []
@@ -116,12 +107,12 @@ func is_select(button_index,str_selec) :
 	else :
 		return ""
 
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	if instru_read and not menu_lock:
-		if event.is_action_pressed("down") :
+		if Input.is_action_just_pressed("down") :
 			index_menu += 1
 			bip.play()
-		if event.is_action_pressed("up") :
+		if Input.is_action_just_pressed("up") :
 			index_menu -= 1
 			bip.play()
 		if index_menu < 0 :

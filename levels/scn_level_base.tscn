@@ -5,6 +5,8 @@
 [node name="level" type="Node2D"]
 script = ExtResource("1_i2fyg")
 
+[node name="camera zone" type="Node2D" parent="."]
+
 [node name="spawn" type="Node2D" parent="."]
 
 [node name="spawn_base" type="Node2D" parent="spawn"]

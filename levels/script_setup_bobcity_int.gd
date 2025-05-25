@@ -9,11 +9,13 @@ extends Node
 
 func set_music():
 	var story = level.player.story
+	if story <= 1 :
+		$"../scene_000/AnimationPlayer".play("flic5")
 	for music_to_play in story_music :
 		if music_to_play.x <= story :
 			for music in playlist :
 				music.playing = false
-			if music_to_play.x > 0 :
+			if music_to_play.y >= 0 :
 				playlist[music_to_play.y].playing = true
 
 func _ready() -> void:

@@ -5,7 +5,7 @@ var index_menu = 0
 var index_submenu = -1
 @onready var submenu = $NinePatchRect2/Label2
 
-
+var menu_block = true
 
 @onready var ost = $soundtest_music
 @onready var ost_ico = $NinePatchRect4
@@ -40,6 +40,9 @@ func reload_menu():
 
 func _ready() -> void:
 	reload_menu()
+	animation.play("open")
+	await animation.animation_finished
+	menu_block = false
 
 func update_menu():
 	var text = ""
@@ -64,62 +67,63 @@ func is_select_sub(button_index,str_selec) :
 		return ""
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("down"):
-		if in_submenu == false :
-			index_menu += 1
-			if index_menu > len(menu_name)-1 :
-				index_menu = len(menu_name)-1
-		else :
-			index_submenu += 1
-			if index_submenu > len(submenu_name[index_menu])-1 :
-				index_submenu = len(submenu_name[index_menu])-1
-	if event.is_action_pressed("up"):
-		if in_submenu == false :
-			index_menu -= 1
-			if index_menu < 0 :
-				index_menu = 0
-		else :
-			index_submenu -= 1
-			if index_submenu < 0 :
-				index_submenu = 0
-	
-	if Input.is_action_just_pressed("interact"):
-		if in_submenu == false and len(submenu_name[index_menu]) != 0:
-			in_submenu = true
-			if index_menu == 1 :
-				index_submenu = BobGlobal.langindex
+	if not menu_block :
+		if Input.is_action_just_pressed("down"):
+			if in_submenu == false :
+				index_menu += 1
+				if index_menu > len(menu_name)-1 :
+					index_menu = len(menu_name)-1
 			else :
-				index_submenu = 0
+				index_submenu += 1
+				if index_submenu > len(submenu_name[index_menu])-1 :
+					index_submenu = len(submenu_name[index_menu])-1
+		if Input.is_action_just_pressed("up"):
+			if in_submenu == false :
+				index_menu -= 1
+				if index_menu < 0 :
+					index_menu = 0
+			else :
+				index_submenu -= 1
+				if index_submenu < 0 :
+					index_submenu = 0
+		
+		if Input.is_action_just_pressed("interact"):
+			if in_submenu == false and len(submenu_name[index_menu]) != 0:
+				in_submenu = true
+				if index_menu == 1 :
+					index_submenu = BobGlobal.langindex
+				else :
+					index_submenu = 0
+				
+			if index_menu == 4 and in_submenu:
+				for music in ost.get_children() :
+					music.playing = false
+				for ico in ost_ico.get_children() :
+					ico.hide()
+				ost.get_child(index_submenu).playing = true
+				ost_ico.get_child(index_submenu).show()
+				
 			
-		if index_menu == 4 and in_submenu:
-			for music in ost.get_children() :
-				music.playing = false
-			for ico in ost_ico.get_children() :
-				ico.hide()
-			ost.get_child(index_submenu).playing = true
-			ost_ico.get_child(index_submenu).show()
+			if index_menu == 5 and not in_submenu:
+				animation.play("close")
+				await animation.animation_finished
+				game_root.title.setup()
+				game_root.main_menu_pause(false)
+				queue_free()
 			
+			if index_menu == 1 and in_submenu:
+				BobGlobal.langindex = index_submenu
+				reload_menu()
+				game_root.save_param()
+			
+		if event.is_action_pressed("run"):
+			if in_submenu == true :
+				in_submenu = false
+				index_submenu = -1
+				for music in ost.get_children() :
+					music.playing = false
+				for ico in ost_ico.get_children() :
+					ico.hide()
 		
-		if index_menu == 5 and not in_submenu:
-			animation.play("close")
-			await animation.animation_finished
-			game_root.title.setup()
-			game_root.main_menu_pause(false)
-			queue_free()
+		update_menu()
 		
-		if index_menu == 1 and in_submenu:
-			BobGlobal.langindex = index_submenu
-			reload_menu()
-			game_root.save_param()
-		
-	if event.is_action_pressed("run"):
-		if in_submenu == true :
-			in_submenu = false
-			index_submenu = -1
-			for music in ost.get_children() :
-				music.playing = false
-			for ico in ost_ico.get_children() :
-				ico.hide()
-	
-	update_menu()
-	

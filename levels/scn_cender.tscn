@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://ds7bj3tyyjjh7"]
+[gd_scene load_steps=17 format=4 uid="uid://ds7bj3tyyjjh7"]
 
 [ext_resource type="PackedScene" uid="uid://cspbme0evtjet" path="res://levels/scn_level_base.tscn" id="1_klrrs"]
 [ext_resource type="TileSet" uid="uid://buirtyrql2dqy" path="res://levels/maine_tileset.tres" id="2_5hucu"]
@@ -14,10 +14,12 @@
 [ext_resource type="PackedScene" uid="uid://cknfg8cqko1vn" path="res://actor/scn_rope.tscn" id="6_2rn4a"]
 [ext_resource type="Texture2D" uid="uid://ch6vo8h7bncxn" path="res://sprite/tex_tile_light.png" id="7_yp206"]
 [ext_resource type="Texture2D" uid="uid://t8bl44wghjp4" path="res://sprite/castle_ext.png" id="9_8ee0o"]
+[ext_resource type="PackedScene" uid="uid://b8k5ckc3jf36a" path="res://actor/scn_camera_limit.tscn" id="9_yphkc"]
 [ext_resource type="Texture2D" uid="uid://djq8saba371jq" path="res://levels/background/tex_bg_godray.png" id="14_88e3g"]
 
 [node name="level" instance=ExtResource("1_klrrs")]
-encounter_rate = 10
+map_name = "plaine de cendre"
+encounter_rate = 0
 battle_theme = ExtResource("2_dy04o")
 battle_color = Color(0.733333, 0.741176, 0.917647, 1)
 
@@ -25,7 +27,7 @@ battle_color = Color(0.733333, 0.741176, 0.917647, 1)
 follow_viewport_enabled = true
 
 [node name="mount" type="Parallax2D" parent="ParallaxBackground" index="0"]
-scroll_scale = Vector2(1.3, 1.3)
+scroll_scale = Vector2(0.2, 0.2)
 scroll_offset = Vector2(0, 64)
 repeat_size = Vector2(256, 0)
 repeat_times = 4
@@ -34,7 +36,7 @@ repeat_times = 4
 texture = ExtResource("2_brjau")
 
 [node name="gas1" type="Parallax2D" parent="ParallaxBackground" index="1"]
-scroll_scale = Vector2(1.4, 1.4)
+scroll_scale = Vector2(0.3, 0.3)
 scroll_offset = Vector2(0, 64)
 repeat_size = Vector2(256, 0)
 autoscroll = Vector2(-8, 0)
@@ -44,7 +46,7 @@ repeat_times = 4
 texture = ExtResource("3_d83ew")
 
 [node name="worker" type="Parallax2D" parent="ParallaxBackground" index="2"]
-scroll_scale = Vector2(1.5, 1.5)
+scroll_scale = Vector2(0.4, 0.4)
 scroll_offset = Vector2(0, 64)
 repeat_size = Vector2(256, 0)
 repeat_times = 4
@@ -53,7 +55,7 @@ repeat_times = 4
 texture = ExtResource("3_c3ror")
 
 [node name="gas2" type="Parallax2D" parent="ParallaxBackground" index="3"]
-scroll_scale = Vector2(1.6, 1.6)
+scroll_scale = Vector2(0.5, 0.5)
 scroll_offset = Vector2(0, 64)
 repeat_size = Vector2(256, 0)
 autoscroll = Vector2(8, 0)
@@ -73,6 +75,10 @@ texture = ExtResource("9_8ee0o")
 [node name="TileMapLayer2" type="TileMapLayer" parent="." index="3"]
 tile_map_data = PackedByteArray("AAD5/xkABAAXAAkAAAD5/xoABAAXAAoAAAD6/xoABAAfAA0AAAD8/x0ABAAbAA0AAAD8/x4ABAAbAA4AAAD9/xoABAAbAAsAAAD9/xsABAAbAAwAAAAGABEABAAbAAsAAAAGABIABAAbAAwAAAAHAA8ABAAfAAwAAAAIAA4ABAAbAA0AAAAIAA8ABAAbAA4AAAALAA4ABAAfAAwAAAAMAA0ABAAfAA0AAAAMAA4ABAAdAAwAAAANAA0ABAAbAAsAAAANAA4ABAAbAAwAAAATABIABAAbAA0AAAATABMABAAbAA4AAAAUABIABAAcAA0AAAAhABEABAAcAA8AAAAiABEABAAcAA8AAAD3/xsABAAXAAkAAAD3/xwABAAXAAoAAAD3/x0ABAAXAAsAAAD5/xsABAAXAAsAAAD6/xkABAAfAAwAAAD7/xoAAQAHAAIAAAD9/x0ABAAcAA0AAAD9/x4ABAAcAA4AAAD+/xoABAAcAAsAAAD+/xsABAAcAAwAAAACABoABAAfAAwAAAACABsABAAfAA0AAAAFAA4ABAAfAAwAAAAFAA8ABAAfAA0AAAAGAAwABAAfAAwAAAAGAA0ABAAfAA0AAAAGABMABAAdAAwAAAAHABAABAAfAA0AAAAHABEABAAcAAsAAAAHABIABAAcAAwAAAAHABcABAAfAAwAAAAHABgABAAfAA0AAAAJAA4ABAAcAA0AAAAJAA8ABAAcAA4AAAAKABUABAAfAAwAAAAKABYABAAfAA0AAAAKABwABAAfAAwAAAAKAB0ABAAfAA0AAAALAA8ABAAfAA0AAAAMAAwABAAfAAwAAAAOAA0ABAAcAAsAAAAOAA4ABAAcAAwAAAARAA0ABAAfAAwAAAARAA4ABAAfAA0AAAAUABMABAAcAA4AAAAVABEABAAfAAwAAAAVABIABAAfAA0AAAAXAA4ABAAfAAwAAAAXAA8ABAAfAA0AAAAYAAgABAAeAAwAAAAYAAkABAAeAAwAAAAYAAoABAAeAAwAAAAYAAsABAAeAAwAAAAbAAsABAAeAAwAAAAbAAwABAAeAAwAAAAjABEABAAcAA8AAAASAAkABAAbAAsAAAASAAoABAAbAAwAAAATAAkABAAcAAsAAAATAAoABAAcAAwAAAATAAcABAAfAAwAAAATAAgABAAfAA0AAAAQAAgABAAfAAwAAAAQAAkABAAfAA0AAAAFAAgABAAfAAwAAAAFAAkABAAfAA0AAAAAAAYABAAfAAwAAAAAAAcABAAfAA0AAAD8/wgABAAfAAwAAAD8/wkABAAfAA0AAAAJAAgABAAbAA0AAAAJAAkABAAbAA4AAAAKAAgABAAcAA0AAAAKAAkABAAcAA4AAAD7/wUABAAbAA0AAAD7/wYABAAbAA4AAAD8/wUABAAcAA0AAAD8/wYABAAcAA4AAAD4/wkABAAbAA0AAAD4/woABAAbAA4AAAD5/wkABAAcAA0AAAD5/woABAAcAA4AAAAKAAUABAAbAA0AAAAKAAYABAAbAA4AAAALAAUABAAcAA0AAAALAAYABAAcAA4AAAAAAAgABAAbAAsAAAAAAAkABAAbAAwAAAABAAgABAAcAAsAAAABAAkABAAcAAwAAAAEAAUABAAbAAsAAAAEAAYABAAbAAwAAAAFAAUABAAcAAsAAAAFAAYABAAcAAwAAAD9/wUABAAfAAwAAAD9/wYABAAfAA0AAAD+/wkABAAfAAwAAAD+/woABAAfAA0AAAD9/wcABAAbAAsAAAD9/wgABAAbAAwAAAD+/wcABAAcAAsAAAD+/wgABAAcAAwAAAAdAAkABAAbAAsAAAAdAAoABAAbAAwAAAAeAAkABAAcAAsAAAAeAAoABAAcAAwAAAAmAAwABAAbAAsAAAAmAA0ABAAbAAwAAAAnAAwABAAcAAsAAAAnAA0ABAAcAAwAAAAZAAsABAAfAAwAAAAZAAwABAAfAA0AAAAdAAsABAAfAAwAAAAdAAwABAAfAA0AAAAoAAgABAAfAAwAAAAoAAkABAAfAA0AAAAiAA8AAQAHAAIAAAA=")
 tile_set = ExtResource("2_5hucu")
+
+[node name="camera limit" parent="camera zone" index="0" instance=ExtResource("9_yphkc")]
+position = Vector2(320, 264)
+scale = Vector2(60, 38)
 
 [node name="sortie" type="Node2D" parent="spawn" index="1"]
 position = Vector2(-112, 456)

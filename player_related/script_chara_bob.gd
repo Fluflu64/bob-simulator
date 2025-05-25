@@ -39,6 +39,8 @@ var infos_mode = false
 @onready var interact = $area_interact
 @onready var area_teleporation = $area_teleportation
 
+var direction = Vector2.ZERO
+
 @onready var follower = preload("res://player_related/scn_follower.tscn")
 
 @export var game_root = null
@@ -49,8 +51,6 @@ var follower_liste = []
 
 
 func _ready():
-	sprite.show()
-	sprite_preview.hide()
 	for i in range(max_record):
 		player_pos_array.append(position)
 	for p in range(0):
@@ -80,12 +80,12 @@ func _input(event):
 			if area2d is Interactable :
 				area2d.interact(game_root)
 
-func _process(_delta):
-	update_camera()
+
 	
 
-func update_camera():
-	camera.global_position = round(position)
+func _update_camera():
+	pass
+	#camera.global_position = round(position)
 
 func move():
 	#movement basique marcher courir
@@ -97,58 +97,31 @@ func move():
 	else :
 		speed = bad_speed
 	
-	var direction = Input.get_vector("left","right","up","down")
+	direction = Input.get_vector("left","right","up","down")
+	direction.x = round(direction.x)
+	direction.y = round(direction.y)
+	#direction += Vector2(sign(round(Input.get_joy_axis(0,JOY_AXIS_LEFT_X)*3)/3),sign(round(Input.get_joy_axis(0,JOY_AXIS_LEFT_Y)*3)/3))
 	velocity = direction*speed
 	
-	#animation de deplacement basique
-	if not is_climb :
-		if velocity != Vector2.ZERO :
-			if pv > 0 :
-				if speed == walk_speed :
-					animation.play("walk")
-					
-				else :
-					animation.play("run")
-			else :
-				animation.play("bad_walk")
-		else :
-			animation.play("idle")
+	
 	
 	if velocity != Vector2.ZERO :
 		interact.position = sign(velocity)*8
 	
-	#calcule direction
-	if Vector2(sign(direction.x),sign(direction.y)) == Vector2(0,1) :
-		frame_direction = 0
-	if Vector2(sign(direction.x),sign(direction.y)) == Vector2(1,1) :
-		frame_direction = 1
-	if Vector2(sign(direction.x),sign(direction.y)) == Vector2(1,0) :
-		frame_direction = 2
-	if Vector2(sign(direction.x),sign(direction.y)) == Vector2(1,-1) :
-		frame_direction = 3
-	if Vector2(sign(direction.x),sign(direction.y)) == Vector2(0,-1) :
-		frame_direction = 4
-	if Vector2(sign(direction.x),sign(direction.y)) == Vector2(-1,-1) :
-		frame_direction = 5
-	if Vector2(sign(direction.x),sign(direction.y)) == Vector2(-1,0) :
-		frame_direction = 6
-	if Vector2(sign(direction.x),sign(direction.y)) == Vector2(-1,1) :
-		frame_direction = 7
 	
-	#actualise la direction
-	if not is_climb :
-		sprite.frame_coords = Vector2(sprite_preview.frame_coords.x,frame_direction)
-	else :
-		sprite.frame_coords = sprite_preview.frame_coords
-	sprite.offset = sprite_preview.offset
-	reflect.frame_coords = sprite.frame_coords
 	#applique les movements
 	if is_climb :
 		velocity =Vector2.ZERO
+		var mov_dir = Input.get_axis("down","up")
+		position.y+= mov_dir*-1
+		if mov_dir == 0:
+			animation.play("idle rope")
+		else : 
+			animation.play("climb rope")
 	if not is_climb :
 		move_and_slide()
 	
-	update_camera()
+	
 	if velocity != Vector2.ZERO :
 		player_pos_array.pop_at(0)
 		

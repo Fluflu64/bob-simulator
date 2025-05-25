@@ -109,12 +109,13 @@ func load_level(path:String,spawn_name:String,transition:int = 0):
 		var spawn_position = actual_level.get_spawn_by_id(spawn_name)
 		
 		player.position = spawn_position + Vector2(0,-1)
-		player.update_camera()
+		#player.update_camera()
 		map_name_label.text = actual_level.map_name
+		player.set_process_mode(0)
 		if transition == 0 or transition == 1:
 			animation.play("transition_off")
 			await animation.animation_finished
-		player.set_process_mode(0)
+		
 	battle_music = actual_level.battle_theme
 	player.proba_battle = actual_level.encounter_rate
 	actual_level.player = player
@@ -163,10 +164,6 @@ func end_game():
 	
 	for elem in battle.get_children():
 		elem.queue_free()
-	
-	
-	
-	
 
 func start_text(lines,area):
 	player.set_process_mode(PROCESS_MODE_DISABLED)
@@ -197,7 +194,7 @@ func menu():
 	menu_instance.player_lvl = player.lvl
 	textbox.add_child(menu_instance)
 	menu_instance.update_stats()
-	
+
 func menu_infos():
 	game.set_process_mode(PROCESS_MODE_DISABLED)
 	var menu_instance = menu_infos_scene.instantiate()
@@ -244,8 +241,6 @@ func start_battle():
 	
 	game.set_process_mode(PROCESS_MODE_DISABLED)
 	player.sprite.frame_coords = Vector2(6,0)
-
-
 
 func start_shop(spawn_name:String):
 	map_name_label.position = Vector2(0,-8)
@@ -316,16 +311,15 @@ func load_game():
 		title.hide()
 		actual_level_path = config.get_value("player","map")
 		player.position = config.get_value("player","position")
-		player.update_camera()
 		player.lvl = config.get_value("player","level")
 		player.story = config.get_value("player","story")
 		load_level(actual_level_path,"-1",3)
+		player.set_process_mode(0)
 		animation.play("transition_off")
 		await animation.animation_finished
 		player.frame_direction = 0
 		player.animation.play("idle")
 		player.sprite.frame_coords = Vector2(0,0)
-		player.set_process_mode(0)
 		map_name_label.text = "partie chargé"
 		animation.play("welcome")
 
@@ -344,7 +338,6 @@ func load_why():
 		config.set_value("why","why",why)
 		config.save(save_path)
 
-
 func load_param():
 	var _param_load = config.load(save_path)
 	if config.get_value("option","lang") == OK :
@@ -354,7 +347,6 @@ func load_param():
 	if BobGlobal.langindex != config.get_value("option","lang") :
 		config.set_value("option","lang",BobGlobal.langindex)
 		config.save(save_path)
-
 
 func save_param():
 	var _param_load = config.load(save_path)

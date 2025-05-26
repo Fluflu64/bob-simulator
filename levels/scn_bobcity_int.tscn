@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=4 uid="uid://djeea60kpngwx"]
+[gd_scene load_steps=87 format=4 uid="uid://djeea60kpngwx"]
 
 [ext_resource type="PackedScene" uid="uid://cspbme0evtjet" path="res://levels/scn_level_base.tscn" id="1_qqd4f"]
 [ext_resource type="Script" path="res://levels/script_setup_bobcity_int.gd" id="2_jxnqr"]
@@ -1298,7 +1298,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 6, 9.5, 11, 13.8),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(-88, 184), Vector2(-88, 184), Vector2(-88, 80), Vector2(32, 80), Vector2(32, 80)]
+"values": [Vector2(-88, 184), Vector2(-88, 184), Vector2(-88, 80), Vector2(24, 80), Vector2(24, 80)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -1874,7 +1874,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("VideoStreamPlayer:visible")
+tracks/1/path = NodePath("AnimationPlayer2/Control/VideoStreamPlayer:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -1886,7 +1886,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("VideoStreamPlayer:paused")
+tracks/2/path = NodePath("AnimationPlayer2/Control/VideoStreamPlayer:paused")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -1915,19 +1915,19 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("VideoStreamPlayer:visible")
+tracks/1/path = NodePath("AnimationPlayer2/Control/VideoStreamPlayer:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 5),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [true, false]
+"values": [true]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("VideoStreamPlayer:paused")
+tracks/2/path = NodePath("AnimationPlayer2/Control/VideoStreamPlayer:paused")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -1937,10 +1937,52 @@ tracks/2/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_miwul"]
+resource_name = "reposition_tele"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(-16, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer2/Control/VideoStreamPlayer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimationPlayer2/Control/VideoStreamPlayer:paused")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w3skt"]
 _data = {
 "RESET": SubResource("Animation_flr4q"),
-"cinematic": SubResource("Animation_i4kjh")
+"cinematic": SubResource("Animation_i4kjh"),
+"reposition_tele": SubResource("Animation_miwul")
 }
 
 [sub_resource type="Animation" id="Animation_u6gep"]
@@ -2919,7 +2961,7 @@ la blouse à le bloose"
 label_settings = ExtResource("26_p2o08")
 
 [node name="ColorRect" type="ColorRect" parent="scene_002/Camera2D" index="2"]
-z_index = 2
+z_index = 3
 offset_left = -216.0
 offset_top = -280.0
 offset_right = 280.0
@@ -2965,7 +3007,7 @@ position = Vector2(120, -24)
 texture = ExtResource("20_u818g")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="scene_002" index="10"]
-z_index = 2
+z_index = 6
 offset_left = -1120.0
 offset_top = 32.0
 offset_right = -928.0
@@ -3029,7 +3071,7 @@ texture = ExtResource("34_t3kx6")
 [node name="interact24" parent="node_interact/interact23" index="6" node_paths=PackedStringArray("extra_sound", "animation_player") instance=ExtResource("5_x16qu")]
 position = Vector2(-168, 80)
 scale = Vector2(2, 3)
-lines = Array[String](["txt[145]", "choice[[147,148]]", "txt[150]", "if[0]", "block[0]", "snd_stop[0]", "anim[cinematic]", "block[1]", "snd[1]", "end_if[]", "if[1]", "txt[156]", "end_if[]"])
+lines = Array[String](["txt[145]", "choice[[147,148]]", "txt[150]", "if[0]", "block[0]", "snd_stop[0]", "anim[cinematic]", "block[1]", "anim[reposition_tele]", "snd[0]", "end_if[]", "if[1]", "txt[156]", "end_if[]"])
 extra_sound = [NodePath("../../../level_audio/bgm"), NodePath("../../../level_audio/bgm3")]
 animation_player = NodePath("AnimationPlayer2")
 
@@ -3038,23 +3080,35 @@ libraries = {
 "": SubResource("AnimationLibrary_w3skt")
 }
 
-[node name="Area2D" parent="node_interact/interact23/interact24" index="4" instance=ExtResource("4_tue1u")]
-position = Vector2(-16, 0)
-next_level = "-1"
-spawn_index = "petit 3"
+[node name="Control" type="Control" parent="node_interact/interact23/interact24/AnimationPlayer2" index="0"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -848.0
+offset_top = -480.0
+offset_right = -592.0
+offset_bottom = -224.0
 
-[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="node_interact/interact23/interact24" index="5"]
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="node_interact/interact23/interact24/AnimationPlayer2/Control" index="0"]
 visible = false
 z_index = 5
-offset_left = -24.0
-offset_top = -45.0
-offset_right = 1089.0
-offset_bottom = 1088.0
-scale = Vector2(0.115, 0.075)
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 0
 stream = ExtResource("33_bimgp")
 autoplay = true
 paused = true
+expand = true
+buffering_msec = 1000
+
+[node name="Area2D" parent="node_interact/interact23/interact24" index="4" instance=ExtResource("4_tue1u")]
+position = Vector2(-16, 0)
+next_level = "-1"
+spawn_index = "petit 3"
 
 [node name="interact2" parent="node_interact" index="2" node_paths=PackedStringArray("animation_player") instance=ExtResource("5_x16qu")]
 position = Vector2(40, 184)

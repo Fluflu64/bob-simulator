@@ -171,7 +171,6 @@ func is_subcam(game_root,index,codes):
 	var index_line = int(index_line_str)
 	if index_line == 0 :
 		use_sub_cam = false
-		player_cam.position = Vector2.ZERO
 	if index_line == 1 :
 		use_sub_cam = true
 

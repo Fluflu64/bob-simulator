@@ -1,11 +1,10 @@
-[gd_scene load_steps=24 format=3 uid="uid://d2ll0d0bfu26b"]
+[gd_scene load_steps=23 format=3 uid="uid://d2ll0d0bfu26b"]
 
 [ext_resource type="PackedScene" uid="uid://buaexi66xho3d" path="res://player_related/scn_chara_bob.tscn" id="1_5cqsu"]
 [ext_resource type="Script" path="res://script_gamve_veiw.gd" id="1_q61lg"]
 [ext_resource type="Script" path="res://script_root.gd" id="1_qn4hg"]
 [ext_resource type="PackedScene" uid="uid://bot88khm6rv7m" path="res://levels/scn_room_0001.tscn" id="2_pea1k"]
 [ext_resource type="Texture2D" uid="uid://kvlwufxutxhe" path="res://bob_le_fondécran.png" id="2_xt283"]
-[ext_resource type="PackedScene" uid="uid://cse3eekyxb0eu" path="res://actor/scn_base_bob.tscn" id="3_cfw6g"]
 [ext_resource type="PackedScene" uid="uid://bpslrq66ysgyk" path="res://battle/scn_battle_menu.tscn" id="4_vw2ms"]
 [ext_resource type="PackedScene" uid="uid://bny4xe33nufrg" path="res://title/scn_main_menu.tscn" id="5_r5bqn"]
 [ext_resource type="PackedScene" uid="uid://ckweq2i3b5lg8" path="res://player_related/scn_pause.tscn" id="6_s86r4"]
@@ -233,34 +232,6 @@ offset_bottom = 720.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_xt283")
-
-[node name="SubViewportContainer" type="SubViewportContainer" parent="background_canvas"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-stretch = true
-stretch_shrink = 2
-
-[node name="SubViewport" type="SubViewport" parent="background_canvas/SubViewportContainer"]
-transparent_bg = true
-handle_input_locally = false
-size = Vector2i(1280, 720)
-render_target_update_mode = 4
-
-[node name="Camera3D" type="Camera3D" parent="background_canvas/SubViewportContainer/SubViewport"]
-cull_mask = 131071
-fov = 40.0
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="background_canvas/SubViewportContainer/SubViewport/Camera3D"]
-shadow_enabled = true
-shadow_blur = 10.0
-directional_shadow_mode = 0
-
-[node name="base_bob3" parent="background_canvas/SubViewportContainer/SubViewport/Camera3D" instance=ExtResource("3_cfw6g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.1997, -2, -12)
 
 [node name="gameview_canvas" type="SubViewportContainer" parent="background_canvas"]
 layout_mode = 1

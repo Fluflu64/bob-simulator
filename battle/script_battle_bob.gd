@@ -1,25 +1,18 @@
 class_name Battle_Bob
-extends CharacterBody2D
+extends Node2D
 
-const base_speed = 4000.0
 
-var speed = base_speed
-const JUMP_VELOCITY = -400.0
-@onready var hitbox = $Area2D
-@onready var collision = $CollisionShape2D
 @onready var timer = $Timer
 @onready var timer2 = $Timer2
-@onready var sprite = $TexBob
+@onready var sprite = $action_border/TexBob
 @onready var animation = $AnimationPlayer
-@onready var particle = $CPUParticles2D
 @onready var target = $target
 
 @onready var timer_turn = $Timer3
 
 @onready var menu_stats = $action_border
-@onready var label_stats = $action_border/action_label
 
-@onready var stat_health = $Sprite2D
+@onready var stat_health = $action_border/Sprite2D
 #stats
 @export var hostil = true
 
@@ -34,8 +27,10 @@ var atk = base_atk
 @export var base_dfs = 1.0
 var dfs = base_dfs
 
-signal hit_body()
+signal hit_body
 signal turn_end
+
+
 
 '''
 if index_actions_menu == 0 :#punch
@@ -53,32 +48,12 @@ if index_actions_menu == 0 :#punch
 		histo.append("STOOOOP")
 	ennemei_pv -= attackfe
 '''
-func dash(direction):
-	velocity = direction * speed
-	speed = (speed*4+base_speed)/5
 
-func hit(body: Node2D) -> void:
-	if body is Battle_Bob and body != self:
-		if not (hostil and body.hostil) :
-			var direction = (position -body.position).normalized()*1000
-			body.knockback(direction)
-			body.pv -= 1
-			hit_body.emit()
 
-func knockback(direction):
-	particle.emitting = true
-	timer2.start()
-	sprite.offset.x = 16
-	sprite.self_modulate = Color(1,0,0,1)
-	velocity = direction
 
 
 
 func _physics_process(_delta: float) -> void:
-	velocity /= 2
-	position = round(position)
-	move_and_slide()
-	label_stats.text = str(pv) + "/" + str(max_pv)
 	stat_health.frame = clamp(int((float(pv) * 14.0) / float(max_pv)),0,14)
 
 func _on_timer_timeout() -> void:
@@ -89,41 +64,34 @@ func _on_timer_timeout() -> void:
 		sprite.offset.x = 0
 		sprite.self_modulate = Color(1,1,1,1)
 
-func stop_particle() -> void:
-	particle.emitting = false
+func degat(hit_target,hit_value):
+	hit_target.pv -= hit_value
+	if hit_target.pv <= 0 :
+		hit_target.animation.play("lose")
+
 
 func turn_start():
 	timer_turn.start()
-	hitbox.set_process_mode(PROCESS_MODE_INHERIT)
 
 func ia_move(player):
 	if pv > 0 :
 		turn_start()
 		var random_move = randi_range(0,1)
 		if random_move == 0:
-			backward(player)
-		if random_move == 1:
 			punch(player)
+		if random_move == 1:
+			pass
 	else :
 		turn_end.emit()
 
-func backward(ennemi_target):
-	if pv > 0 :
-		turn_start()
-		var dash_direction = (position - ennemi_target.position).normalized()
-		dash(dash_direction)
-	else :
-		turn_end.emit()
+
 
 func punch(ennemi_target):
-	if pv > 0 :
-		turn_start()
-		var dash_direction = (ennemi_target.position - position).normalized()
-		dash(dash_direction)
-	else :
-		turn_end.emit()
+	animation.play("punch")
+	degat(ennemi_target,1)
+	print("atk")
+	turn_end.emit()
 
 
 func my_turn_end() -> void:
-	hitbox.set_process_mode(PROCESS_MODE_DISABLED)
 	turn_end.emit()

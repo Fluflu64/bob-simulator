@@ -219,7 +219,7 @@ func start_battle():
 	battle_instance.music.stream = actual_level.battle_theme
 	battle_instance.battle_area.self_modulate = actual_level.battle_color
 	battle_instance.music.playing = true
-	#battle_instance.tree_exited.connect(end_battle)
+	battle_instance.tree_exited.connect(end_battle)
 	battle_instance.game_root = self
 	battle_instance.player = player
 	battle_instance.player_pv = player.pv

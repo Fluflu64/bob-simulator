@@ -223,7 +223,7 @@ func execute_lines(game_root,codes) :
 			elif codes[line].contains("battle[") and codes[line].contains("]") :
 				is_battle(game_root)
 				instru_check = true
-				await game_root.dialogue_end
+				await game_root.battle_end
 			
 			elif codes[line].contains("anim[") and codes[line].contains("]") :
 				is_anim(game_root,line,codes)

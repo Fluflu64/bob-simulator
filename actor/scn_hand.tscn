@@ -46,9 +46,9 @@ _data = {
 script = ExtResource("1_6gxdl")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-7, 0)
+position = Vector2(0, -8)
+rotation = -1.5708
 texture = ExtResource("1_igkmt")
-flip_h = true
 hframes = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

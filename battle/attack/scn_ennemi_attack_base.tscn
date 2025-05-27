@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqwh1eeuvmfht"]
+
+[ext_resource type="Texture2D" uid="uid://mibs4jii822c" path="res://player_related/tex_text_box.png" id="1_25shu"]
+
+[node name="ennemi_attack_base" type="Node2D"]
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+offset_left = -64.0
+offset_top = -72.0
+offset_right = 64.0
+offset_bottom = 56.0
+texture = ExtResource("1_25shu")
+region_rect = Rect2(0, 0, 48, 48)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8

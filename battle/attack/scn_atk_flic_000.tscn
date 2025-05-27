@@ -1,0 +1,230 @@
+[gd_scene load_steps=14 format=3 uid="uid://j2ww0v4elkmc"]
+
+[ext_resource type="PackedScene" uid="uid://dqwh1eeuvmfht" path="res://battle/attack/scn_ennemi_attack_base.tscn" id="1_8qmd2"]
+[ext_resource type="Texture2D" uid="uid://cubpnuvmwnk3y" path="res://battle/attack/assets/tex_flic_arm.png" id="2_bivv7"]
+[ext_resource type="Script" path="res://battle/attack/script_atk_flic_000.gd" id="2_cipnk"]
+[ext_resource type="Texture2D" uid="uid://c0vcn32fufvpk" path="res://battle/attack/assets/tex_bob_flic_avoid.png" id="4_mpk4v"]
+[ext_resource type="Texture2D" uid="uid://dy2vujta3ty8p" path="res://battle/attack/assets/tex_flic_arm_swing.png" id="5_kgpij"]
+[ext_resource type="Texture2D" uid="uid://dbilcierpl3kl" path="res://battle/attack/assets/tex_hit.png" id="5_tq5jq"]
+
+[sub_resource type="Animation" id="Animation_27dce"]
+resource_name = "attack"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NinePatchRect/TexFlicArm:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.5, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.872665, 0.959931, -1.5708, -1.39626, -1.5708]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("NinePatchRect/TexFlicArm:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_bivv7"), ExtResource("5_kgpij"), ExtResource("2_bivv7")]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"start_dodge"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_25cya"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NinePatchRect/TexFlicArm:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("NinePatchRect/TexFlicArm:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_bivv7")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yla64"]
+_data = {
+"RESET": SubResource("Animation_25cya"),
+"attack": SubResource("Animation_27dce")
+}
+
+[sub_resource type="Animation" id="Animation_46i2s"]
+resource_name = "dodge"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NinePatchRect/TexBobFlicAvoid:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(32, 96), Vector2(-12, 96)]
+}
+
+[sub_resource type="Animation" id="Animation_x64uq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NinePatchRect/TexBobFlicAvoid:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(32, 96)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("NinePatchRect/TexBobFlicAvoid:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("NinePatchRect/TexHit:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="Animation" id="Animation_u1tev"]
+resource_name = "kill"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NinePatchRect/TexBobFlicAvoid:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(32, 96), Vector2(8, 48), Vector2(-8, 40), Vector2(-48, 56), Vector2(-64, 200)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("NinePatchRect/TexBobFlicAvoid:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.479966, -7.82431]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("NinePatchRect/TexHit:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(40, 80)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("NinePatchRect/TexHit:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_linm6"]
+_data = {
+"RESET": SubResource("Animation_x64uq"),
+"dodge": SubResource("Animation_46i2s"),
+"kill": SubResource("Animation_u1tev")
+}
+
+[node name="ennemi_attack_base" instance=ExtResource("1_8qmd2")]
+script = ExtResource("2_cipnk")
+
+[node name="TexFlicArm" type="Sprite2D" parent="NinePatchRect" index="0"]
+position = Vector2(128, 64)
+texture = ExtResource("2_bivv7")
+offset = Vector2(-35, -40)
+
+[node name="TexBobFlicAvoid" type="Sprite2D" parent="NinePatchRect" index="1"]
+position = Vector2(32, 96)
+texture = ExtResource("4_mpk4v")
+
+[node name="TexHit" type="Sprite2D" parent="NinePatchRect" index="2"]
+position = Vector2(40, 80)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("5_tq5jq")
+
+[node name="flic_anim" type="AnimationPlayer" parent="." index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_yla64")
+}
+
+[node name="bob_anim" type="AnimationPlayer" parent="." index="2"]
+libraries = {
+"": SubResource("AnimationLibrary_linm6")
+}
+
+[node name="dodge_timer" type="Timer" parent="." index="3"]
+wait_time = 0.1
+
+[connection signal="timeout" from="dodge_timer" to="." method="_on_dodge_timer_timeout"]

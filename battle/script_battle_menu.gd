@@ -11,6 +11,8 @@ extends Node2D
 @onready var submenu = $background/action_border2
 @onready var hand = $TexBattleArena/Node2D
 
+@onready var turn_time = $turn_timer
+
 var music_to_play = null
 
 @export var game_root = null
@@ -39,14 +41,20 @@ var histo = [\
 var tour = 0
 var battle_lock = true
 
-var label_menu = ["attack","action","item","flee"]
-var action_label = ["↑ ","← ","↓ ","→ ","defense"]
-var attack_label = ["punch","stun","STOP"]
+var label_menu = [172,202,232,289]
+
+var attack_label = [174,175,176]
+var action_label = [204,205,206,207,208]
+
 var label_actions_menu = []
 var text_select = "<"
 var index_menu = 0
 var index_actions_menu = 0
 var action_menu_check = false
+
+var list_attack = [\
+preload("res://battle/attack/scn_ennemi_attack_base.tscn"),
+preload("res://battle/attack/scn_atk_flic_000.tscn")]
 
 func func_menu(index):
 	if index == 0 :
@@ -88,8 +96,6 @@ func func_menu(index):
 			
 			battle_anime.play("player_flee_win")
 			await battle_anime.animation_finished
-			player_battle.collision.disabled = true
-			player_battle.dash(Vector2(0,1.5))
 			animation.play("battle end_flee")
 			await animation.animation_finished
 			game_root.end_battle()
@@ -98,7 +104,6 @@ func func_menu(index):
 			
 			battle_anime.play("player_flee_lose")
 			await battle_anime.animation_finished
-			player_battle.dash(Vector2(0,0.2))
 			histo.append("ça à échouer")
 			player_battle.animation.play("flee_lose")
 			await player_battle.animation.animation_finished
@@ -116,14 +121,9 @@ func hit_player():
 	update_histo()
 
 func _ready() -> void:
-	ennemis_battle = []
-	for child in battle_area.get_children() :
-		if child is Battle_Bob :
-			if child.hostil :
-				ennemis_battle.append(child)
-				child.hit_body.connect(hit_player)
+	update_ennemi(true)
 	
-	player_battle.hit_body.connect(hit_ennemy)
+	#player_battle.hit_body.connect(hit_ennemy)
 	
 	submenu.hide()
 	update_histo()
@@ -147,6 +147,15 @@ func is_select(button_index,menu_for_index) :
 	else :
 		return ""
 
+func update_ennemi(do_check:bool = false):
+	ennemis_battle = []
+	for child in battle_area.get_children() :
+		if child is Battle_Bob :
+			if child.hostil and child.pv > 0:
+				ennemis_battle.append(child)
+				if do_check:
+					child.hit_body.connect(hit_player)
+
 func update_histo():
 	var text = ""
 	for i in range(len(histo)-5,len(histo)) :
@@ -156,13 +165,16 @@ func update_histo():
 func update_menu():
 	var text = ""
 	for i in range(len(label_menu)) :
-		text += label_menu[i] + is_select(i,index_menu) + "\n"
+		text += BobGlobal.langue[BobGlobal.langindex][label_menu[i]] + is_select(i,index_menu) + "\n"
 	battle_menu.text = text
 
 func update_actions():
 	var text = ""
 	for i in range(len(label_actions_menu)) :
-		text += label_actions_menu[i] + is_select(i,index_actions_menu) + "\n"
+		if label_actions_menu[i] is int :
+			text += BobGlobal.langue[BobGlobal.langindex][label_actions_menu[i]] + is_select(i,index_actions_menu) + "\n"
+		else :
+			text += label_actions_menu[i] + is_select(i,index_actions_menu) + "\n"
 	action_menu.text = text
 
 func _input(event: InputEvent) -> void:
@@ -246,11 +258,11 @@ func _input(event: InputEvent) -> void:
 	update_menu()
 	update_actions()
 	update_histo()
+	update_ennemi()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	if index_menu == 11 :
-		hand.global_position = lerp(hand.global_position,ennemis_battle[index_actions_menu].target.global_position,.8)
+		hand.global_position = round(lerp(hand.global_position,ennemis_battle[index_actions_menu].target.global_position,.8))
 	
 	for ennemi in ennemis_battle :
 		ennemi.sprite.scale.x = sign(player_battle.position.x - ennemi.position.x)
@@ -276,9 +288,7 @@ func _process(_delta: float) -> void:
 			hand.show()
 			update_actions()
 			
-			
-			
-	
+
 	if index_menu == 11 :
 		if Input.is_action_just_pressed("interact") :
 			index_menu = 0
@@ -286,14 +296,17 @@ func _process(_delta: float) -> void:
 			battle_anime.play("move")
 			await battle_anime.animation_finished
 			player_battle.punch(ennemis_battle[index_actions_menu])
-			await player_battle.turn_end
+			turn_time.start()
+			await turn_time.timeout
+			print("ok4")
 			battle_anime.play("move")
+			print("ok5")
 			await battle_anime.animation_finished
+			print("ok6")
 			action_menu_check = false
 			battle_lock = false
 			tour = 1
 			hand.hide()
-			player_battle.hitbox.set_process_mode(PROCESS_MODE_DISABLED)
 
 	
 	if index_menu == 10 :
@@ -367,18 +380,19 @@ func _process(_delta: float) -> void:
 				
 		elif tour == 0:
 			if Input.is_action_just_pressed("interact") :
-				for ennemi in ennemis_battle :
-						ennemi.hitbox.set_process_mode(PROCESS_MODE_DISABLED)
 				func_menu(index_menu)
 				
 		elif tour == 1:
 			battle_lock = true
+			print("non")
 			for ennemi in ennemis_battle :
 						if ennemi.pv > 0 :
 							ennemi.ia_move(player_battle)
-							await ennemi.turn_end
-						else :
-							ennemi.animation.play("lose")
+							turn_time.start()
+							var instance_attack = list_attack[1].instantiate()
+							add_child(instance_attack)
+							
+							await instance_attack.tree_exited
 			
 			animation.play_backwards("menu_show")
 			await animation.animation_finished

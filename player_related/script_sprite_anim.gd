@@ -21,14 +21,14 @@ func _process(_delta: float) -> void:
 
 	if not core_player.is_climb :
 		if velocity_delta != Vector2.ZERO :
-			if core_player.pv > 0 :
+			if core_player.is_pushing :
+				animation.play("push_walk")
+			else :
 				if core_player.speed == core_player.walk_speed :
 					animation.play("walk")
-					
+
 				else :
 					animation.play("run")
-			else :
-				animation.play("bad_walk")
 		else :
 
 			animation.play("idle")

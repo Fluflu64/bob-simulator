@@ -5,9 +5,9 @@
 [node name="ennemi_attack_base" type="Node2D"]
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
-offset_left = -64.0
+offset_left = -96.0
 offset_top = -72.0
-offset_right = 64.0
+offset_right = 32.0
 offset_bottom = 56.0
 texture = ExtResource("1_25shu")
 region_rect = Rect2(0, 0, 48, 48)

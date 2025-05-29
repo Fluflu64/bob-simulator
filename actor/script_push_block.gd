@@ -1,5 +1,6 @@
 extends StaticBody2D
 
+
 @onready var col_left = $left
 @onready var col_right = $right
 @onready var col_up = $up

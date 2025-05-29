@@ -532,17 +532,17 @@ self_modulate = Color(0.735188, 0.740933, 0.916022, 1)
 y_sort_enabled = true
 
 [node name="bob" parent="TexBattleArena" instance=ExtResource("8_uoed5")]
-position = Vector2(-48, 112)
+position = Vector2(80, -56)
 hostil = false
 nom = "Bob"
 
 [node name="bob2" parent="TexBattleArena" instance=ExtResource("8_uoed5")]
-position = Vector2(48, 112)
+position = Vector2(80, -24)
 nom = "h1"
 
 [node name="Node2D" parent="TexBattleArena" instance=ExtResource("5_u1qww")]
 z_index = 2
-position = Vector2(144, 32)
+position = Vector2(152, -32)
 
 [node name="background" type="Sprite2D" parent="."]
 
@@ -554,8 +554,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -128.0
 offset_top = -128.0
-offset_right = -128.0
-offset_bottom = -128.0
+offset_right = 127.0
+offset_bottom = 127.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_ipyf3")

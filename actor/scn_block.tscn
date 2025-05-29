@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://dqop51ufp7bgp"]
+[gd_scene load_steps=14 format=3 uid="uid://dqop51ufp7bgp"]
 
 [ext_resource type="PackedScene" uid="uid://dpep2xkq2a4gr" path="res://player_related/scn_interact.tscn" id="1_6ve5k"]
 [ext_resource type="Script" path="res://actor/script_push_block.gd" id="1_183ks"]
 [ext_resource type="Texture2D" uid="uid://drmdmcddbtcpq" path="res://sprite/tex_dust.png" id="3_m2jx4"]
 [ext_resource type="Texture2D" uid="uid://b4o8ntakb2ycd" path="res://sprite/tex_crate.png" id="3_n4d7j"]
 [ext_resource type="AudioStream" uid="uid://bw06x5qc36om1" path="res://sound_effect/push.wav" id="5_ovhmu"]
+[ext_resource type="Script" path="res://actor/check_push_block.gd" id="6_q7npj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t2o6v"]
 size = Vector2(16, 16)
@@ -59,6 +60,9 @@ _data = {
 "RESET": SubResource("Animation_7ts2i"),
 "start_push": SubResource("Animation_67mmo")
 }
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0sipi"]
+size = Vector2(16, 16)
 
 [node name="StaticBody2D" type="StaticBody2D"]
 script = ExtResource("1_183ks")
@@ -118,3 +122,11 @@ stream = ExtResource("5_ovhmu")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="AudioStreamPlayer2D"]
 stream = ExtResource("5_ovhmu")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("6_q7npj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_0sipi")

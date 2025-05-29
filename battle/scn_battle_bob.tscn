@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://84d2clfdjgrn"]
+[gd_scene load_steps=15 format=3 uid="uid://84d2clfdjgrn"]
 
 [ext_resource type="Script" path="res://battle/script_battle_bob.gd" id="1_jmpj3"]
 [ext_resource type="Texture2D" uid="uid://buseck213vate" path="res://player_related/tex_battle_bob.png" id="2_qia7x"]
@@ -40,7 +40,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_p3xp2"]
 resource_name = "flee_lose"
-length = 0.2
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -49,10 +48,10 @@ tracks/0/path = NodePath("action_border/TexBob:frame_coords")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.15),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.05, 0.15, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [Vector2i(12, 7), Vector2i(13, 7), Vector2i(14, 4)]
+"values": [Vector2i(12, 7), Vector2i(13, 7), Vector2i(14, 4), Vector2i(13, 6), Vector2i(14, 6), Vector2i(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_30d68"]
@@ -121,6 +120,22 @@ tracks/0/keys = {
 "values": [Vector2i(12, 6), Vector2i(13, 6), Vector2i(14, 6), Vector2i(15, 6)]
 }
 
+[sub_resource type="Animation" id="Animation_m2vqi"]
+resource_name = "miss"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("action_border/TexBob:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1), Vector2i(3, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oy6f5"]
 _data = {
 "RESET": SubResource("Animation_7l3gw"),
@@ -128,6 +143,7 @@ _data = {
 "flee_lose": SubResource("Animation_p3xp2"),
 "idle": SubResource("Animation_30d68"),
 "lose": SubResource("Animation_rve3d"),
+"miss": SubResource("Animation_m2vqi"),
 "punch": SubResource("Animation_tj5uk"),
 "win": SubResource("Animation_8qoo6")
 }
@@ -149,12 +165,12 @@ libraries = {
 }
 
 [node name="target" type="Node2D" parent="."]
-position = Vector2(0, -64)
+position = Vector2(-56, 0)
 
 [node name="action_border" type="NinePatchRect" parent="."]
-offset_left = -40.0
-offset_top = -56.0
-offset_right = 40.0
+offset_left = -48.0
+offset_top = -16.0
+offset_right = 48.0
 offset_bottom = 16.0
 texture = ExtResource("3_fdnpv")
 region_rect = Rect2(0, 0, 48, 48)
@@ -165,14 +181,14 @@ patch_margin_bottom = 8
 
 [node name="TexBob" type="Sprite2D" parent="action_border"]
 y_sort_enabled = true
-position = Vector2(40, 48)
+position = Vector2(16, 8)
 texture = ExtResource("2_qia7x")
 offset = Vector2(0, 4)
 hframes = 16
 vframes = 8
 
 [node name="Sprite2D" type="Sprite2D" parent="action_border"]
-position = Vector2(40, 24)
+position = Vector2(56, 24)
 texture = ExtResource("5_bmauo")
 hframes = 15
 vframes = 4
@@ -180,9 +196,9 @@ frame = 18
 
 [node name="Label" type="Label" parent="action_border"]
 layout_mode = 0
-offset_left = 8.0
+offset_left = 24.0
 offset_top = 8.0
-offset_right = 72.0
+offset_right = 88.0
 offset_bottom = 16.0
 text = "12345689"
 label_settings = ExtResource("4_d6xl1")

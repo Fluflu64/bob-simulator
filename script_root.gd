@@ -286,11 +286,13 @@ func save_game():
 	config.set_value("player","map",actual_level_path)
 	config.set_value("player","level",player.lvl)
 	config.set_value("player","story",player.story)
+	config.set_value("player","annex",BobGlobal.annex)
 	config.save(save_path)
 	map_name_label.text = "partie sauvegarder"
 	animation.play("welcome")
 
 func load_game():
+	
 	var save_load = config.load(save_path)
 	title.menu_lock = true
 	if save_load == OK :
@@ -313,10 +315,15 @@ func load_game():
 		player.position = config.get_value("player","position")
 		player.lvl = config.get_value("player","level")
 		player.story = config.get_value("player","story")
+		var temp_annex = config.get_value("player","annex")
+		
+		for a in range(len(temp_annex)) :
+			BobGlobal.annex[a] = temp_annex[a] 
 		load_level(actual_level_path,"-1",3)
-		player.set_process_mode(0)
+		
 		animation.play("transition_off")
 		await animation.animation_finished
+		player.set_process_mode(0)
 		player.frame_direction = 0
 		player.animation.play("idle")
 		player.sprite.frame_coords = Vector2(0,0)

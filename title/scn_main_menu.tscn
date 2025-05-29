@@ -623,7 +623,7 @@ offset_left = 8.0
 offset_top = 240.0
 offset_right = 248.0
 offset_bottom = 248.0
-text = "beta 0.13.2"
+text = "beta 0.13.4"
 label_settings = ExtResource("3_ssomm")
 
 [node name="Label4" type="Label" parent="."]

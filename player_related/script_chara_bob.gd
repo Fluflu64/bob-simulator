@@ -28,7 +28,7 @@ var lvl = 1
 var can_run = true
 var infos_mode = false
 
-
+var is_pushing = false
 
 #Node
 @onready var sprite = $sprite_bob
@@ -67,6 +67,12 @@ func _physics_process(_delta):
 	for area2d in area_teleporation.get_overlapping_areas() :
 		if area2d is Teleportation :
 			game_root.load_level(area2d.next_level,area2d.spawn_index)
+	is_pushing = false
+	for area2d in interact.get_overlapping_areas() :
+		if area2d is Push :
+			if area2d.is_moving :
+				is_pushing = true
+			
 
 func _input(event):
 	if event.is_action_pressed("menu"):

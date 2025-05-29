@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=4 uid="uid://djeea60kpngwx"]
+[gd_scene load_steps=97 format=4 uid="uid://djeea60kpngwx"]
 
 [ext_resource type="PackedScene" uid="uid://cspbme0evtjet" path="res://levels/scn_level_base.tscn" id="1_qqd4f"]
 [ext_resource type="Script" path="res://levels/script_setup_bobcity_int.gd" id="2_jxnqr"]
@@ -38,6 +38,7 @@
 [ext_resource type="Texture2D" uid="uid://g5bjsnfcjbds" path="res://sprite/tex_light.png" id="33_3obcw"]
 [ext_resource type="VideoStream" path="res://vidéo/v3.ogv" id="33_bimgp"]
 [ext_resource type="Texture2D" uid="uid://ch6vo8h7bncxn" path="res://sprite/tex_tile_light.png" id="34_t3kx6"]
+[ext_resource type="Texture2D" uid="uid://dyqi5oinepbki" path="res://sprite/tex_bob_astuce.png" id="36_cegkq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o4ov7"]
 shader = ExtResource("7_sj5cr")
@@ -2137,6 +2138,468 @@ _data = {
 "yoo boy": SubResource("Animation_e03go")
 }
 
+[sub_resource type="Animation" id="Animation_156mo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TexFlic:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TexFlic2:frame_coords")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 7)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TexFlic3:frame_coords")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 6)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TexFlic4:frame_coords")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 5)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TexFlic5:frame_coords")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 4)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TexFlic5:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-8, 16)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("TexFlic:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-8, -32)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("TexFlic2:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(16, -24)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("TexFlic4:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(16, 8)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("TexFlic3:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(32, -8)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("TexFlic:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("TexFlic5:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("TexFlic4:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("TexFlic3:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("TexFlic2:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_o0lbp"]
+resource_name = "win"
+length = 4.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TexFlic:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.2, 3.4, 3.6, 3.8, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(0, 0), Vector2i(1, 0), Vector2i(0, 0), Vector2i(2, 0), Vector2i(0, 0), Vector2i(1, 0), Vector2i(0, 0), Vector2i(2, 0), Vector2i(0, 0), Vector2i(1, 0), Vector2i(0, 0), Vector2i(2, 0), Vector2i(0, 0), Vector2i(1, 0), Vector2i(0, 0), Vector2i(2, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TexFlic2:frame_coords")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.2, 3.4, 3.6, 3.8, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(0, 0), Vector2i(1, 0), Vector2i(0, 0), Vector2i(2, 0), Vector2i(0, 0), Vector2i(1, 0), Vector2i(0, 0), Vector2i(2, 0), Vector2i(0, 0), Vector2i(1, 0), Vector2i(0, 0), Vector2i(2, 0), Vector2i(0, 0), Vector2i(1, 0), Vector2i(0, 0), Vector2i(2, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TexFlic3:frame_coords")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.2, 3.4, 3.6, 3.8, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 6), Vector2i(0, 6), Vector2i(1, 6), Vector2i(0, 6), Vector2i(2, 6), Vector2i(0, 6), Vector2i(1, 6), Vector2i(0, 6), Vector2i(2, 6), Vector2i(0, 6), Vector2i(1, 6), Vector2i(0, 6), Vector2i(2, 6), Vector2i(0, 6), Vector2i(1, 6), Vector2i(0, 6), Vector2i(2, 6)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TexFlic4:frame_coords")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.2, 3.4, 3.6, 3.8, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(1, 4), Vector2i(0, 4), Vector2i(1, 4), Vector2i(0, 4), Vector2i(2, 4), Vector2i(0, 4), Vector2i(1, 4), Vector2i(0, 4), Vector2i(2, 4), Vector2i(0, 4), Vector2i(1, 4), Vector2i(0, 4), Vector2i(2, 4), Vector2i(0, 4), Vector2i(1, 4), Vector2i(0, 4), Vector2i(2, 4)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TexFlic5:frame_coords")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.2, 3.4, 3.6, 3.8, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 4), Vector2i(0, 4), Vector2i(1, 4), Vector2i(0, 4), Vector2i(2, 4), Vector2i(0, 4), Vector2i(1, 4), Vector2i(0, 4), Vector2i(2, 4), Vector2i(0, 4), Vector2i(1, 4), Vector2i(0, 4), Vector2i(2, 4), Vector2i(0, 4), Vector2i(1, 4), Vector2i(0, 4), Vector2i(2, 4)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TexFlic5:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-8, 16), Vector2(-8, 8), Vector2(-8, 8), Vector2(208, 8)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("TexFlic:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-8, -32), Vector2(-8, -24), Vector2(-8, -24), Vector2(208, -24)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("TexFlic2:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(16, -24), Vector2(8, -24), Vector2(8, -24), Vector2(224, -24)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("TexFlic4:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(16, 8), Vector2(8, 8), Vector2(8, 8), Vector2(224, 8)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("TexFlic3:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(32, -8), Vector2(16, -8), Vector2(16, -8), Vector2(232, -8)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("TexFlic:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("TexFlic5:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("TexFlic4:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("TexFlic3:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("TexFlic2:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1sbc5"]
+_data = {
+"RESET": SubResource("Animation_156mo"),
+"win": SubResource("Animation_o0lbp")
+}
+
+[sub_resource type="Animation" id="Animation_8qnyw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TexBobAstuce:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_j3kl6"]
+resource_name = "base"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TexBobAstuce:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_ufswi"]
+resource_name = "look"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TexBobAstuce:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+
+[sub_resource type="Animation" id="Animation_cift2"]
+resource_name = "oh"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TexBobAstuce:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+
+[sub_resource type="Animation" id="Animation_f7l8a"]
+resource_name = "point"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TexBobAstuce:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7x5ds"]
+_data = {
+"RESET": SubResource("Animation_8qnyw"),
+"base": SubResource("Animation_j3kl6"),
+"look": SubResource("Animation_ufswi"),
+"oh": SubResource("Animation_cift2"),
+"point": SubResource("Animation_f7l8a")
+}
+
 [sub_resource type="Animation" id="Animation_acwgc"]
 length = 0.001
 tracks/0/type = "value"
@@ -3134,31 +3597,96 @@ hframes = 8
 vframes = 4
 frame = 8
 
-[node name="interact18" parent="node_interact" index="3" node_paths=PackedStringArray("animation_player") instance=ExtResource("5_x16qu")]
+[node name="interact18" parent="node_interact" index="3" instance=ExtResource("5_x16qu")]
 position = Vector2(968, -72)
 lines = Array[String](["txt[135]"])
+
+[node name="interact28" parent="node_interact" index="4" node_paths=PackedStringArray("animation_player") instance=ExtResource("5_x16qu")]
+position = Vector2(208, -376)
+when_active = Array[Vector2]([Vector2(3, 0)])
+is_annex = true
+setup_lines = Array[String](["disable[1]"])
+lines = Array[String](["disable[1]", "battle[]", "block[0]", "anim[win]", "block[1]", "annex[[3,true]]"])
+automatic = true
 animation_player = NodePath("AnimationPlayer2")
 
-[node name="AnimationPlayer2" type="AnimationPlayer" parent="node_interact/interact18" index="3"]
+[node name="TexFlic" type="Sprite2D" parent="node_interact/interact28" index="3"]
+position = Vector2(-8, -32)
+texture = ExtResource("13_i358g")
+hframes = 16
+vframes = 8
+
+[node name="TexFlic2" type="Sprite2D" parent="node_interact/interact28" index="4"]
+position = Vector2(16, -24)
+texture = ExtResource("13_i358g")
+hframes = 16
+vframes = 8
+frame = 112
+
+[node name="TexFlic3" type="Sprite2D" parent="node_interact/interact28" index="5"]
+position = Vector2(32, -8)
+texture = ExtResource("13_i358g")
+hframes = 16
+vframes = 8
+frame = 96
+
+[node name="TexFlic4" type="Sprite2D" parent="node_interact/interact28" index="6"]
+position = Vector2(16, 8)
+texture = ExtResource("13_i358g")
+hframes = 16
+vframes = 8
+frame = 80
+
+[node name="TexFlic5" type="Sprite2D" parent="node_interact/interact28" index="7"]
+position = Vector2(-8, 16)
+texture = ExtResource("13_i358g")
+hframes = 16
+vframes = 8
+frame = 64
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="node_interact/interact28" index="8"]
 libraries = {
-"": SubResource("AnimationLibrary_runnl")
+"": SubResource("AnimationLibrary_1sbc5")
 }
 
-[node name="MarginContainer" type="MarginContainer" parent="node_interact/interact18" index="4"]
-clip_contents = true
-offset_left = -40.0
-offset_top = 8.0
-offset_right = -24.0
-offset_bottom = 40.0
+[node name="interact27" parent="node_interact" index="5" node_paths=PackedStringArray("animation_player") instance=ExtResource("5_x16qu")]
+position = Vector2(1232, 344)
+when_active = Array[Vector2]([Vector2(0, 0)])
+is_annex = true
+setup_lines = Array[String](["disable[1]"])
+lines = Array[String](["disable[1]", "txt[291]", "anim[point]", "txt[292]", "anim[look]", "annex[[0,true]]"])
+automatic = true
+animation_player = NodePath("anim_bob_astuce")
 
-[node name="Sprite2D2" type="Sprite2D" parent="node_interact/interact18/MarginContainer" index="0"]
-position = Vector2(24, 16)
-texture = ExtResource("19_kyxjr")
-hframes = 8
-vframes = 4
-frame = 8
+[node name="TexBobAstuce" type="Sprite2D" parent="node_interact/interact27" index="3"]
+position = Vector2(-8, -48)
+texture = ExtResource("36_cegkq")
+hframes = 4
 
-[node name="interact19" parent="node_interact" index="4" node_paths=PackedStringArray("animation_player") instance=ExtResource("5_x16qu")]
+[node name="interact" parent="node_interact/interact27" index="4" node_paths=PackedStringArray("animation_player") instance=ExtResource("5_x16qu")]
+position = Vector2(24, -32)
+when_active = Array[Vector2]([Vector2(1, 0)])
+is_annex = true
+setup_lines = Array[String](["disable[1]"])
+lines = Array[String](["disable[1]", "anim[point]", "txt[293]", "anim[look]", "txt[294]", "anim[base]", "annex[[1,true]]"])
+automatic = true
+animation_player = NodePath("../anim_bob_astuce")
+
+[node name="interact2" parent="node_interact/interact27" index="5" node_paths=PackedStringArray("animation_player") instance=ExtResource("5_x16qu")]
+position = Vector2(24, -48)
+when_active = Array[Vector2]([Vector2(2, 0)])
+is_annex = true
+setup_lines = Array[String](["disable[1]"])
+lines = Array[String](["disable[1]", "anim[oh]", "txt[295]", "txt[296]", "txt[297]", "anim[base]", "annex[[2,true]]"])
+automatic = true
+animation_player = NodePath("../anim_bob_astuce")
+
+[node name="anim_bob_astuce" type="AnimationPlayer" parent="node_interact/interact27" index="6"]
+libraries = {
+"": SubResource("AnimationLibrary_7x5ds")
+}
+
+[node name="interact19" parent="node_interact" index="6" node_paths=PackedStringArray("animation_player") instance=ExtResource("5_x16qu")]
 position = Vector2(984, -72)
 lines = Array[String](["txt[137]"])
 animation_player = NodePath("AnimationPlayer2")
@@ -3182,7 +3710,7 @@ hframes = 8
 vframes = 4
 frame = 8
 
-[node name="interact20" parent="node_interact" index="5" node_paths=PackedStringArray("animation_player") instance=ExtResource("5_x16qu")]
+[node name="interact20" parent="node_interact" index="7" node_paths=PackedStringArray("animation_player") instance=ExtResource("5_x16qu")]
 position = Vector2(1000, -72)
 lines = Array[String](["txt[139]"])
 animation_player = NodePath("AnimationPlayer2")
@@ -3206,7 +3734,7 @@ hframes = 8
 vframes = 4
 frame = 8
 
-[node name="interact22" parent="node_interact" index="6" node_paths=PackedStringArray("animation_player") instance=ExtResource("5_x16qu")]
+[node name="interact22" parent="node_interact" index="8" node_paths=PackedStringArray("animation_player") instance=ExtResource("5_x16qu")]
 position = Vector2(1032, -24)
 lines = Array[String](["txt[143]"])
 animation_player = NodePath("AnimationPlayer2")
@@ -3230,7 +3758,7 @@ hframes = 8
 vframes = 4
 frame = 8
 
-[node name="interact24" parent="node_interact" index="7" node_paths=PackedStringArray("animation_player") instance=ExtResource("5_x16qu")]
+[node name="interact24" parent="node_interact" index="9" node_paths=PackedStringArray("animation_player") instance=ExtResource("5_x16qu")]
 position = Vector2(1064, -24)
 scale = Vector2(3, 1)
 lines = Array[String](["txt[161]", "choice[[164,165,166,167,168,169,170]]", "txt[162]", "if[0]", "block[0]", "game[res://Bob_simulator/mini_game/mega_singe/scn_singe.tscn]", "end_if[]", "if[1]", "block[0]", "game[]", "end_if[]", "if[2]", "block[0]", "game[res://Bob_simulator/mini_game/mini_yes/scn_mini_yes.tscn]", "end_if[]", "if[3]", "block[0]", "game[]", "end_if[]", "if[4]", "block[0]", "game[]", "end_if[]", "if[5]", "game[res://Bob_simulator/mini_game/cantine/scn_cantine.tscn]", "end_if[]"])
@@ -3255,7 +3783,7 @@ hframes = 8
 vframes = 4
 frame = 8
 
-[node name="interact21" parent="node_interact" index="8" node_paths=PackedStringArray("animation_player") instance=ExtResource("5_x16qu")]
+[node name="interact21" parent="node_interact" index="10" node_paths=PackedStringArray("animation_player") instance=ExtResource("5_x16qu")]
 position = Vector2(1016, -72)
 lines = Array[String](["txt[141]"])
 animation_player = NodePath("AnimationPlayer2")
@@ -3279,7 +3807,7 @@ hframes = 8
 vframes = 4
 frame = 8
 
-[node name="interact10" parent="node_interact" index="9" node_paths=PackedStringArray("animation_player") instance=ExtResource("5_x16qu")]
+[node name="interact10" parent="node_interact" index="11" node_paths=PackedStringArray("animation_player") instance=ExtResource("5_x16qu")]
 position = Vector2(120, 88)
 lines = Array[String](["block[0]", "anim[see player]", "bip[1]", "txt[4]", "txt[5]", "block[0]", "anim[go to the player]", "txt[6]", "txt[7]", "block[0]", "anim[pfiou]", "txt[8]", "block[0]", "anim[bouche]", "txt[9]", "txt[10]", "block[0]", "anim[base]", "block[1]"])
 animation_player = NodePath("AnimationPlayer2")
@@ -3296,23 +3824,23 @@ libraries = {
 "": SubResource("AnimationLibrary_h8s5k")
 }
 
-[node name="interact3" parent="node_interact" index="10" instance=ExtResource("5_x16qu")]
+[node name="interact3" parent="node_interact" index="12" instance=ExtResource("5_x16qu")]
 position = Vector2(8, 56)
 lines = Array[String](["txt[3]"])
 
-[node name="interact16" parent="node_interact" index="11" instance=ExtResource("5_x16qu")]
+[node name="interact16" parent="node_interact" index="13" instance=ExtResource("5_x16qu")]
 position = Vector2(88, 24)
 lines = Array[String](["txt[0]", "txt[1]", "test[]"])
 
-[node name="interact4" parent="node_interact" index="12" instance=ExtResource("5_x16qu")]
+[node name="interact4" parent="node_interact" index="14" instance=ExtResource("5_x16qu")]
 position = Vector2(232, 8)
 lines = Array[String](["une plante"])
 
-[node name="interact5" parent="node_interact" index="13" instance=ExtResource("5_x16qu")]
+[node name="interact5" parent="node_interact" index="15" instance=ExtResource("5_x16qu")]
 position = Vector2(200, 16)
 lines = Array[String](["un lit"])
 
-[node name="interact6" parent="node_interact" index="14" node_paths=PackedStringArray("extra_sound") instance=ExtResource("5_x16qu")]
+[node name="interact6" parent="node_interact" index="16" node_paths=PackedStringArray("extra_sound") instance=ExtResource("5_x16qu")]
 position = Vector2(136, 184)
 lines = Array[String](["snd[0]", "txt[15]"])
 extra_sound = [NodePath("loud sound")]
@@ -3320,15 +3848,15 @@ extra_sound = [NodePath("loud sound")]
 [node name="loud sound" type="AudioStreamPlayer" parent="node_interact/interact6" index="3"]
 stream = ExtResource("17_yv5mp")
 
-[node name="interact15" parent="node_interact" index="15" instance=ExtResource("5_x16qu")]
+[node name="interact15" parent="node_interact" index="17" instance=ExtResource("5_x16qu")]
 position = Vector2(24, 88)
 lines = Array[String](["txt[78]"])
 
-[node name="interact8" parent="node_interact" index="16" instance=ExtResource("5_x16qu")]
+[node name="interact8" parent="node_interact" index="18" instance=ExtResource("5_x16qu")]
 position = Vector2(56, 48)
 lines = Array[String](["txt[2]"])
 
-[node name="interact17" parent="node_interact" index="17" node_paths=PackedStringArray("extra_sound", "sub_cam", "animation_player") instance=ExtResource("5_x16qu")]
+[node name="interact17" parent="node_interact" index="19" node_paths=PackedStringArray("extra_sound", "sub_cam", "animation_player") instance=ExtResource("5_x16qu")]
 position = Vector2(24, 32)
 when_active = Array[Vector2]([Vector2(0, 0), Vector2(1, 1)])
 setup_lines = Array[String](["anim[check]", "snd_stop[0]", "disable[1]"])
@@ -3338,42 +3866,42 @@ extra_sound = [NodePath("../../level_audio/bgmintro")]
 sub_cam = NodePath("../../scene_002/Camera2D")
 animation_player = NodePath("../../scene_002/AnimationPlayer")
 
-[node name="interact9" parent="node_interact" index="18" instance=ExtResource("5_x16qu")]
+[node name="interact9" parent="node_interact" index="20" instance=ExtResource("5_x16qu")]
 position = Vector2(40, 8)
 lines = Array[String](["Le [color=red]repas[/color]", "Je ne suis pas sûre qu'un chien pourrait aimer..."])
 
-[node name="interact7" parent="node_interact" index="19" instance=ExtResource("5_x16qu")]
+[node name="interact7" parent="node_interact" index="21" instance=ExtResource("5_x16qu")]
 position = Vector2(232, 184)
 lines = Array[String](["txt[17]", "txt[18]", "txt[19]", "txt[20]", "txt[21]", "txt[22]", "txt[23]", "txt[24]", "txt[25]", "txt[26]", "txt[27]", "txt[28]", "txt[29]"])
 
-[node name="interact11" parent="node_interact" index="20" instance=ExtResource("5_x16qu")]
+[node name="interact11" parent="node_interact" index="22" instance=ExtResource("5_x16qu")]
 position = Vector2(216, 88)
 lines = Array[String](["txt[31]"])
 
 [node name="gaster" type="AudioStreamPlayer" parent="node_interact/interact11" index="3"]
 stream = ExtResource("18_b20r5")
 
-[node name="interact12" parent="node_interact" index="21" instance=ExtResource("5_x16qu")]
+[node name="interact12" parent="node_interact" index="23" instance=ExtResource("5_x16qu")]
 position = Vector2(-56, 232)
 lines = Array[String](["txt[75]", "txt[76]"])
 
-[node name="interact14" parent="node_interact" index="22" instance=ExtResource("5_x16qu")]
+[node name="interact14" parent="node_interact" index="24" instance=ExtResource("5_x16qu")]
 position = Vector2(-192, 128)
 scale = Vector2(4, 4)
 lines = Array[String](["txt[69]", "txt[70]", "txt[71]", "txt[72]", "txt[73]"])
 
-[node name="interact13" parent="node_interact" index="23" instance=ExtResource("5_x16qu")]
+[node name="interact13" parent="node_interact" index="25" instance=ExtResource("5_x16qu")]
 position = Vector2(-120, 232)
 lines = Array[String](["txt[75]", "txt[76]"])
 
-[node name="Node2D" parent="node_interact" index="24" instance=ExtResource("10_kdoqm")]
+[node name="Node2D" parent="node_interact" index="26" instance=ExtResource("10_kdoqm")]
 position = Vector2(-488, -848)
 scale = Vector2(1, 16.1)
 
-[node name="Node2D2" parent="node_interact" index="25" instance=ExtResource("10_kdoqm")]
+[node name="Node2D2" parent="node_interact" index="27" instance=ExtResource("10_kdoqm")]
 position = Vector2(-648, -312)
 
-[node name="interact25" parent="node_interact" index="26" instance=ExtResource("5_x16qu")]
+[node name="interact25" parent="node_interact" index="28" instance=ExtResource("5_x16qu")]
 position = Vector2(-472, -736)
 lines = Array[String](["oui"])
 
@@ -3383,7 +3911,7 @@ texture = ExtResource("15_ul6ce")
 hframes = 16
 vframes = 8
 
-[node name="interact26" parent="node_interact" index="27" instance=ExtResource("5_x16qu")]
+[node name="interact26" parent="node_interact" index="29" instance=ExtResource("5_x16qu")]
 position = Vector2(-536, -704)
 lines = Array[String](["oui"])
 

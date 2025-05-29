@@ -13,12 +13,18 @@ var story = 0
 var game_root = null
 var choice = 0
 
+var annex = []
+var number_of_annex = 3
+
 func generate_trad_liste():
 	for i in range(1000) :
 		loaded_french_trad.append(french_trad.get_line())
 		loaded_english_trad.append(english_trad.get_line())
 
 func _ready() -> void:
+	for i in range(number_of_annex+1):
+		annex.append(false)
+	
 	if lan_str_to_int[OS.get_locale()] == OK :
 		langindex = lan_str_to_int[OS.get_locale()]
 	else :

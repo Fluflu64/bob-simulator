@@ -2,6 +2,7 @@ class_name Interactable
 extends Area2D
 
 @export var when_active:Array[Vector2]
+@export var is_annex = false
 var finaly_is_was_active = true
 @export var setup_lines:Array[String]
 @export var lines:Array[String] = ["oui","oui"]
@@ -22,12 +23,16 @@ var player_cam = null
 @export var animation_player:AnimationPlayer
 
 func _ready():
-	for trigger in when_active :
-		if trigger.x <= BobGlobal.game_root.player.story :
-			if trigger.y == 0 :
-				finaly_is_was_active = false
-			else :
-				finaly_is_was_active = true
+	if not is_annex :
+		for trigger in when_active :
+			if trigger.x <= BobGlobal.game_root.player.story :
+				if trigger.y == 0 :
+					finaly_is_was_active = false
+				else :
+					finaly_is_was_active = true
+	else :
+		for trigger in when_active :
+			finaly_is_was_active = BobGlobal.annex[trigger.x]
 	
 	if finaly_is_was_active :
 		if len(setup_lines) > 0 :
@@ -182,6 +187,22 @@ func is_story(game_root,index,codes):
 	var index_line = int(index_line_str)
 	game_root.player.story = index_line
 
+func is_annex_block(_game_root,index,codes):
+	var code = codes[index]
+	var index_line_str = ""
+	for i in range(len("annex["),len(code)-1) :
+		index_line_str += code[i]
+	
+	var index_line = BobGlobal.to_array(index_line_str)
+	var choices = [] 
+	choices.append(int(index_line[0]))
+	if index_line[1] == "true" :
+		choices.append(true)
+	if index_line[1] == "false" :
+		choices.append(false)
+	
+	BobGlobal.annex[choices[0]] = choices[1]
+
 func is_if(_game_root,index,codes):
 	var code = codes[index]
 	var index_line_str = ""
@@ -260,6 +281,10 @@ func execute_lines(game_root,codes) :
 			
 			elif codes[line].contains("story[") and codes[line].contains("]") :
 				is_story(game_root,line,codes)
+				instru_check = true
+			
+			elif codes[line].contains("annex[") and codes[line].contains("]") :
+				is_annex_block(game_root,line,codes)
 				instru_check = true
 			
 			elif codes[line].contains("if[") and codes[line].contains("]") :

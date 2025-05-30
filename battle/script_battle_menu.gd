@@ -28,7 +28,9 @@ var player_atk = 1
 var player_dfs = 1
 
 var list_attack_player = [\
-preload("res://battle/scn_bob_punch.tscn")]
+preload("res://battle/scn_bob_punch.tscn"),
+preload("res://battle/attack/scn_test_atk_bob.tscn"),
+preload("res://battle/attack/scn_test_atk_bob.tscn")]
 
 #stats ennemi
 @onready var ennemis_battle = []
@@ -46,9 +48,10 @@ var tour = 0
 var battle_lock = true
 
 var label_menu = [172,202,232,289]
-
-var attack_label = [174,175,176]
-var action_label = [204,205,206,207,208]
+var sub_index = 0
+var attack_label = [0,1,0]
+var attack_select = 0
+var action_label = [0,1,2,3,4]
 
 var label_actions_menu = []
 var text_select = "<"
@@ -71,6 +74,7 @@ func func_menu(index):
 		await animation.animation_finished
 		submenu.show()
 		index_menu = 9
+		update_actions()
 
 	if index == 1 :
 		battle_lock = true
@@ -82,11 +86,15 @@ func func_menu(index):
 		await animation.animation_finished
 		submenu.show()
 		index_menu = 10
+		sub_index = 1
+		update_actions()
 	
 	if index == 2 :
 		player_battle.pv = player_battle.max_pv
 		histo.append("tu es heal")
 		update_histo()
+		sub_index = 2
+		update_actions()
 	
 	if index == 3 :
 		battle_lock = true
@@ -157,7 +165,6 @@ func update_ennemi():
 		if child is Battle_Bob :
 			if child.hostil and child.pv > 0:
 				ennemis_battle.append(child)
-				
 
 func update_histo():
 	var text = ""
@@ -173,9 +180,17 @@ func update_menu():
 
 func update_actions():
 	var text = ""
+	var decalage = 0
+	if index_menu == 9 :
+		decalage = 174
+	if index_menu == 10 :
+		decalage = 204
+	
+	if index_menu == 110 :
+		decalage = 234
 	for i in range(len(label_actions_menu)) :
 		if label_actions_menu[i] is int :
-			text += BobGlobal.langue[BobGlobal.langindex][label_actions_menu[i]] + is_select(i,index_actions_menu) + "\n"
+			text += BobGlobal.langue[BobGlobal.langindex][label_actions_menu[i]+decalage] + is_select(i,index_actions_menu) + "\n"
 		else :
 			text += label_actions_menu[i] + is_select(i,index_actions_menu) + "\n"
 	action_menu.text = text
@@ -269,6 +284,8 @@ func _process(_delta: float) -> void:
 	
 	
 	if index_menu == 9 :
+		sub_index = 0
+		attack_select = index_actions_menu
 		if Input.is_action_just_pressed("interact") :
 			ennemis_battle = []
 			for child in battle_area.get_children() :
@@ -283,6 +300,7 @@ func _process(_delta: float) -> void:
 			await animation.animation_finished
 			submenu.position = Vector2(-128,-72)
 			index_menu = 11
+			
 			index_actions_menu = 0
 			submenu.hide()
 			hand.show()
@@ -296,7 +314,8 @@ func _process(_delta: float) -> void:
 			battle_anime.play("move")
 			await battle_anime.animation_finished
 			turn_time.start()
-			var instance_attack = list_attack_player[0].instantiate()
+			
+			var instance_attack = list_attack_player[attack_label[attack_select]].instantiate()
 			add_child(instance_attack)
 			instance_attack.battle_menu = self
 			await instance_attack.tree_exited
@@ -310,6 +329,7 @@ func _process(_delta: float) -> void:
 
 	
 	if index_menu == 10 :
+		sub_index = 1
 		if Input.is_action_just_pressed("interact") :
 			index_menu = 1
 			submenu.hide()

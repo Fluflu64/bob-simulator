@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://Bob_simulator/mini_game/mega_singe/script_singe.gd" id="2_ssjdt"]
 [ext_resource type="Texture2D" uid="uid://dmpcugtqm8pjx" path="res://Bob_simulator/mini_game/mega_singe/tex_bg_singe.png" id="3_dgkgo"]
 [ext_resource type="Texture2D" uid="uid://id8y1eu4s4yt" path="res://Bob_simulator/mini_game/mega_singe/tex_singe.png" id="4_eaoyi"]
-[ext_resource type="LabelSettings" uid="uid://bdxtw162r24p7" path="res://base_font.tres" id="4_sus0n"]
+[ext_resource type="LabelSettings" uid="uid://bdxtw162r24p7" path="res://user_interface/base_font.tres" id="4_sus0n"]
 [ext_resource type="Texture2D" uid="uid://bj2dhhwv7jr5w" path="res://Bob_simulator/mini_game/mega_singe/tex_info_box.png" id="5_10cmk"]
 [ext_resource type="Texture2D" uid="uid://dsvw5kca7ex7g" path="res://Bob_simulator/mini_game/mega_singe/tex_bsd.png" id="7_lbepg"]
 [ext_resource type="Texture2D" uid="uid://dkynd70hxha20" path="res://Bob_simulator/mini_game/mega_singe/tex_fpchimer.png" id="8_2gq0h"]

@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://buseck213vate" path="res://player_related/tex_battle_bob.png" id="7_f0fl3"]
 [ext_resource type="AudioStream" uid="uid://dbfcxmp730cyw" path="res://music/mus_shop.ogg" id="8_qejme"]
 [ext_resource type="Texture2D" uid="uid://mibs4jii822c" path="res://player_related/tex_text_box.png" id="8_wymnh"]
-[ext_resource type="LabelSettings" uid="uid://bdxtw162r24p7" path="res://base_font.tres" id="9_rnu6e"]
+[ext_resource type="LabelSettings" uid="uid://bdxtw162r24p7" path="res://user_interface/base_font.tres" id="9_rnu6e"]
 [ext_resource type="Shader" path="res://battle/shade_circle_transition.gdshader" id="10_h2h4t"]
 [ext_resource type="AudioStream" uid="uid://bumvvm8fd01v6" path="res://sound_effect/hit.wav" id="12_y5h8p"]
 [ext_resource type="AudioStream" uid="uid://qtdy3rir27ih" path="res://sound_effect/hurt.wav" id="13_m0glh"]

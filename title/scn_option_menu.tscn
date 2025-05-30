@@ -1,38 +1,10 @@
-[gd_scene load_steps=40 format=3 uid="uid://d3u5mdb0d3110"]
+[gd_scene load_steps=12 format=3 uid="uid://d3u5mdb0d3110"]
 
 [ext_resource type="Texture2D" uid="uid://mibs4jii822c" path="res://player_related/tex_text_box.png" id="1_domdl"]
 [ext_resource type="Script" path="res://title/script_option_menu.gd" id="1_ia65k"]
-[ext_resource type="LabelSettings" uid="uid://bdxtw162r24p7" path="res://base_font.tres" id="2_8p8qi"]
-[ext_resource type="FontFile" uid="uid://b6nqix3g6iv3i" path="res://pixelfont.ttf" id="2_cqyl1"]
+[ext_resource type="LabelSettings" uid="uid://bdxtw162r24p7" path="res://user_interface/base_font.tres" id="2_8p8qi"]
+[ext_resource type="FontFile" uid="uid://b6nqix3g6iv3i" path="res://user_interface/pixelfont.ttf" id="2_cqyl1"]
 [ext_resource type="Texture2D" uid="uid://dde7jjkv14a2i" path="res://title/tex_bg_option.png" id="2_tkppn"]
-[ext_resource type="Texture2D" uid="uid://q8mfkcin251l" path="res://music/icone/tex_music_underworld.png" id="5_221c8"]
-[ext_resource type="AudioStream" uid="uid://bnmsn5u64bnb3" path="res://music/castle.ogg" id="5_iw3db"]
-[ext_resource type="Texture2D" uid="uid://djye8dft81dkt" path="res://music/icone/tex_music_battle.png" id="6_elfd7"]
-[ext_resource type="AudioStream" uid="uid://der68e0ivc1st" path="res://music/mus_house.ogg" id="6_wxai3"]
-[ext_resource type="AudioStream" uid="uid://b40vkk5xfr4ni" path="res://music/mus_battle_test.ogg" id="7_1bxhh"]
-[ext_resource type="Texture2D" uid="uid://0ngl0rswt6m6" path="res://music/icone/tex_music_castle.png" id="7_2d06i"]
-[ext_resource type="Texture2D" uid="uid://cem5xq5rsvxtu" path="res://music/icone/tex_music_city.png" id="8_h840s"]
-[ext_resource type="AudioStream" uid="uid://bxpxnkx687gim" path="res://music/mus_castle.ogg" id="8_ionq7"]
-[ext_resource type="Texture2D" uid="uid://m3hm30tji2uj" path="res://music/icone/tex_music_house.png" id="9_2qtp1"]
-[ext_resource type="AudioStream" uid="uid://dyf14mn1p7p05" path="res://music/mus_city.ogg" id="9_80npn"]
-[ext_resource type="AudioStream" uid="uid://th8bxxvdjt1c" path="res://music/mus_sad_song.ogg" id="10_7nklj"]
-[ext_resource type="Texture2D" uid="uid://vxdgeg5rnibn" path="res://music/icone/tex_music_sad.png" id="10_ci3cf"]
-[ext_resource type="AudioStream" uid="uid://dbfcxmp730cyw" path="res://music/mus_shop.ogg" id="11_osa6g"]
-[ext_resource type="Texture2D" uid="uid://4ga303x05epx" path="res://music/icone/tex_music_shop.png" id="11_qsl83"]
-[ext_resource type="Texture2D" uid="uid://ba1mrftiy1uvp" path="res://music/icone/tex_music_title.png" id="12_fsmbq"]
-[ext_resource type="AudioStream" uid="uid://cnsw4ybybgh1w" path="res://music/mus_title.ogg" id="12_vef4p"]
-[ext_resource type="AudioStream" uid="uid://b7jvyjmvsljmw" path="res://music/mus_version final.wav" id="13_r1svm"]
-[ext_resource type="Texture2D" uid="uid://dw5fpxwas10es" path="res://tex_bob_ico.png" id="13_ses5l"]
-[ext_resource type="Texture2D" uid="uid://uhuvwxkb231h" path="res://music/icone/tex_battle_2.png" id="14_663my"]
-[ext_resource type="Texture2D" uid="uid://dqltkxdorodr8" path="res://music/icone/tex_dark_city.png" id="14_wvjky"]
-[ext_resource type="Texture2D" uid="uid://c70uuqw7t3p1p" path="res://music/icone/tex_fly.png" id="15_goi1m"]
-[ext_resource type="Texture2D" uid="uid://bqvbabkbgm81a" path="res://music/icone/tex_music_overworld.png" id="17_bbyci"]
-[ext_resource type="AudioStream" uid="uid://co4xqo40u0dax" path="res://music/battle_theme.ogg" id="23_4l62r"]
-[ext_resource type="AudioStream" uid="uid://dt1hw2ea6tml1" path="res://music/fly or cry.ogg" id="24_lu1cm"]
-[ext_resource type="AudioStream" uid="uid://ckw5lae87e2if" path="res://music/mus_dark_city.wav" id="25_g8ap3"]
-[ext_resource type="AudioStream" uid="uid://dhbbonkvexhek" path="res://music/overworld.wav" id="30_c7mbx"]
-[ext_resource type="AudioStream" uid="uid://ba22mko7h3oxe" path="res://music/pololompololom pompompololommm.wav" id="31_vdfqy"]
-[ext_resource type="AudioStream" uid="uid://be1sxgjgalasj" path="res://music/bobaround.wav" id="32_8mvgg"]
 [ext_resource type="PackedScene" uid="uid://dohogg1b38b42" path="res://title/scn_bob_option.tscn" id="34_sgu8f"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3uauj"]
@@ -152,7 +124,7 @@ offset_right = 256.0
 offset_bottom = 256.0
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
-offset_right = 96.0
+offset_right = 160.0
 offset_bottom = 112.0
 texture = ExtResource("1_domdl")
 patch_margin_left = 16
@@ -175,9 +147,9 @@ retour<"
 label_settings = SubResource("LabelSettings_3uauj")
 
 [node name="NinePatchRect2" type="NinePatchRect" parent="."]
-offset_left = 96.0
+offset_top = 112.0
 offset_right = 256.0
-offset_bottom = 208.0
+offset_bottom = 216.0
 texture = ExtResource("1_domdl")
 patch_margin_left = 16
 patch_margin_top = 16
@@ -205,9 +177,10 @@ audio global :<
 label_settings = ExtResource("2_8p8qi")
 
 [node name="NinePatchRect4" type="NinePatchRect" parent="."]
-offset_top = 112.0
-offset_right = 96.0
-offset_bottom = 208.0
+offset_left = 160.0
+offset_top = 16.0
+offset_right = 256.0
+offset_bottom = 112.0
 texture = ExtResource("1_domdl")
 patch_margin_left = 16
 patch_margin_top = 16
@@ -215,131 +188,11 @@ patch_margin_right = 16
 patch_margin_bottom = 16
 
 [node name="reset" type="Sprite2D" parent="NinePatchRect4"]
-visible = false
 position = Vector2(48, 48)
-
-[node name="castle" type="Sprite2D" parent="NinePatchRect4"]
-visible = false
-position = Vector2(48, 48)
-texture = ExtResource("5_221c8")
-
-[node name="battle" type="Sprite2D" parent="NinePatchRect4"]
-visible = false
-position = Vector2(48, 48)
-texture = ExtResource("6_elfd7")
-
-[node name="castle2" type="Sprite2D" parent="NinePatchRect4"]
-visible = false
-position = Vector2(48, 48)
-texture = ExtResource("7_2d06i")
-
-[node name="city" type="Sprite2D" parent="NinePatchRect4"]
-visible = false
-position = Vector2(48, 48)
-texture = ExtResource("8_h840s")
-
-[node name="house" type="Sprite2D" parent="NinePatchRect4"]
-visible = false
-position = Vector2(48, 48)
-texture = ExtResource("9_2qtp1")
-
-[node name="sad" type="Sprite2D" parent="NinePatchRect4"]
-visible = false
-position = Vector2(48, 48)
-texture = ExtResource("10_ci3cf")
-
-[node name="shop" type="Sprite2D" parent="NinePatchRect4"]
-visible = false
-position = Vector2(48, 48)
-texture = ExtResource("11_qsl83")
-
-[node name="title" type="Sprite2D" parent="NinePatchRect4"]
-visible = false
-position = Vector2(48, 48)
-texture = ExtResource("12_fsmbq")
-
-[node name="win" type="Sprite2D" parent="NinePatchRect4"]
-visible = false
-position = Vector2(48, 48)
-texture = ExtResource("13_ses5l")
-
-[node name="battle_2" type="Sprite2D" parent="NinePatchRect4"]
-visible = false
-position = Vector2(48, 48)
-texture = ExtResource("14_663my")
-
-[node name="fly" type="Sprite2D" parent="NinePatchRect4"]
-visible = false
-position = Vector2(48, 48)
-texture = ExtResource("15_goi1m")
-
-[node name="dark" type="Sprite2D" parent="NinePatchRect4"]
-visible = false
-position = Vector2(48, 48)
-texture = ExtResource("14_wvjky")
-
-[node name="over" type="Sprite2D" parent="NinePatchRect4"]
-visible = false
-position = Vector2(48, 48)
-texture = ExtResource("17_bbyci")
-
-[node name="pom" type="Sprite2D" parent="NinePatchRect4"]
-visible = false
-position = Vector2(48, 48)
-texture = ExtResource("14_wvjky")
-
-[node name="bobaround" type="Sprite2D" parent="NinePatchRect4"]
-position = Vector2(48, 48)
-texture = ExtResource("17_bbyci")
 
 [node name="soundtest_music" type="AudioStreamPlayer2D" parent="."]
 
 [node name="reset" type="AudioStreamPlayer" parent="soundtest_music"]
-
-[node name="castle" type="AudioStreamPlayer" parent="soundtest_music"]
-stream = ExtResource("5_iw3db")
-
-[node name="mus_battle_test" type="AudioStreamPlayer" parent="soundtest_music"]
-stream = ExtResource("7_1bxhh")
-
-[node name="mus_castle" type="AudioStreamPlayer" parent="soundtest_music"]
-stream = ExtResource("8_ionq7")
-
-[node name="mus_city" type="AudioStreamPlayer" parent="soundtest_music"]
-stream = ExtResource("9_80npn")
-
-[node name="mus_house" type="AudioStreamPlayer" parent="soundtest_music"]
-stream = ExtResource("6_wxai3")
-
-[node name="mus_sad_song" type="AudioStreamPlayer" parent="soundtest_music"]
-stream = ExtResource("10_7nklj")
-
-[node name="mus_shop" type="AudioStreamPlayer" parent="soundtest_music"]
-stream = ExtResource("11_osa6g")
-
-[node name="mus_title" type="AudioStreamPlayer" parent="soundtest_music"]
-stream = ExtResource("12_vef4p")
-
-[node name="mus_version final" type="AudioStreamPlayer" parent="soundtest_music"]
-stream = ExtResource("13_r1svm")
-
-[node name="battle_theme" type="AudioStreamPlayer" parent="soundtest_music"]
-stream = ExtResource("23_4l62r")
-
-[node name="fly or cry" type="AudioStreamPlayer" parent="soundtest_music"]
-stream = ExtResource("24_lu1cm")
-
-[node name="mus_dark_city" type="AudioStreamPlayer" parent="soundtest_music"]
-stream = ExtResource("25_g8ap3")
-
-[node name="overworld" type="AudioStreamPlayer" parent="soundtest_music"]
-stream = ExtResource("30_c7mbx")
-
-[node name="pololompololom pompompololommm" type="AudioStreamPlayer" parent="soundtest_music"]
-stream = ExtResource("31_vdfqy")
-
-[node name="bobaround" type="AudioStreamPlayer" parent="soundtest_music"]
-stream = ExtResource("32_8mvgg")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

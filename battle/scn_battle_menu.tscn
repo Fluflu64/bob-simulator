@@ -5,7 +5,7 @@
 [ext_resource type="Shader" path="res://battle/shade_circle_transition.gdshader" id="5_ggrxs"]
 [ext_resource type="Texture2D" uid="uid://ctla0pk1phugl" path="res://battle/tex_bg_1.png" id="5_ipyf3"]
 [ext_resource type="PackedScene" uid="uid://cp6aspljapkpp" path="res://actor/scn_hand.tscn" id="5_u1qww"]
-[ext_resource type="LabelSettings" uid="uid://bdxtw162r24p7" path="res://base_font.tres" id="6_m6oif"]
+[ext_resource type="LabelSettings" uid="uid://bdxtw162r24p7" path="res://user_interface/base_font.tres" id="6_m6oif"]
 [ext_resource type="PackedScene" uid="uid://84d2clfdjgrn" path="res://battle/scn_battle_bob.tscn" id="8_uoed5"]
 [ext_resource type="Texture2D" uid="uid://mibs4jii822c" path="res://player_related/tex_text_box.png" id="9_fmql0"]
 [ext_resource type="AudioStream" uid="uid://b40vkk5xfr4ni" path="res://music/mus_battle_test.ogg" id="10_ow1mv"]

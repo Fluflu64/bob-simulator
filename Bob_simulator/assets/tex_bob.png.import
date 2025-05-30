@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://ctb0ppke532b4"
 path.s3tc="res://.godot/imported/tex_bob.png-8f55b73c4bd9f6b70b9f5c9eb4f7da2f.s3tc.ctex"
+path.etc2="res://.godot/imported/tex_bob.png-8f55b73c4bd9f6b70b9f5c9eb4f7da2f.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Bob_simulator/assets/tex_bob.png"
-dest_files=["res://.godot/imported/tex_bob.png-8f55b73c4bd9f6b70b9f5c9eb4f7da2f.s3tc.ctex"]
+dest_files=["res://.godot/imported/tex_bob.png-8f55b73c4bd9f6b70b9f5c9eb4f7da2f.s3tc.ctex", "res://.godot/imported/tex_bob.png-8f55b73c4bd9f6b70b9f5c9eb4f7da2f.etc2.ctex"]
 
 [params]
 

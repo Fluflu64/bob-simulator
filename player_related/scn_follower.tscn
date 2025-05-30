@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bi6xc4umhfhvf"]
 
-[ext_resource type="Script" path="res://script_follwer.gd" id="1_ifvyx"]
+[ext_resource type="Script" path="res://actor/script_follwer.gd" id="1_ifvyx"]
 [ext_resource type="Texture2D" uid="uid://cm0y67224xlny" path="res://player_related/tex_bob.png" id="2_i1tuy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2kvbl"]

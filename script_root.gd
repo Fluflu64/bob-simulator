@@ -1,13 +1,13 @@
 extends Node
 
 var save_name = "bob.save"
-var save_path = "res://" + save_name
+var save_path = "res://bob.save"
 
-var alter_loading_og = preload("res://tex_load_ico_alter000.png")
-var alter_loading = preload("res://tex_load_ico_alter001.png")
-var alter_loading_pet = preload("res://tex_load_ico_alter002.png")
-var alter_loading_b3313 = preload("res://tex_load_ico_alter003.png")
-var alter_loading_chara = preload("res://tex_load_ico_alter004.png")
+var alter_loading_og = preload("res://user_interface/tex_load_ico_alter000.png")
+var alter_loading = preload("res://user_interface/tex_load_ico_alter001.png")
+var alter_loading_pet = preload("res://user_interface/tex_load_ico_alter002.png")
+var alter_loading_b3313 = preload("res://user_interface/tex_load_ico_alter003.png")
+var alter_loading_chara = preload("res://user_interface/tex_load_ico_alter004.png")
 @onready var sprite_loading_screen = $game_view/ColorRect/Sprite2D
 
 @onready var game = $viewport/game_sub_viewport/game
@@ -55,6 +55,7 @@ func _ready():
 	load_param()
 	sprite_loading_screen.hide()
 	title.game_root = self
+	title.has_save_file = check_save()
 	BobGlobal.game_root = self
 	load_why()
 	var rng_to_show = str(why)
@@ -333,8 +334,9 @@ func load_game():
 func load_why():
 	
 	var why_load = config.load(save_path)
+
 	if why_load != null :
-		if config.get_value("why","why") != OK :
+		if config.get_value("why","why") != null:
 			why = config.get_value("why","why")
 		else :
 			why = randi_range(1,100)
@@ -359,3 +361,7 @@ func save_param():
 	var _param_load = config.load(save_path)
 	config.set_value("option","lang",BobGlobal.langindex)
 	config.save(save_path)
+
+func check_save():
+	config.load(save_path)
+	return config.get_value("player","position") != null

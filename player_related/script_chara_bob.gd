@@ -16,7 +16,7 @@ var frame_direction = 0
 
 #variable combat
 var proba_battle_max = 100
-var proba_battle = 100
+var proba_battle = 0
 var proba_scale_down = 0.95
 
 var pv_max = 20

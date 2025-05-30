@@ -1,20 +1,35 @@
-[gd_scene load_steps=23 format=3 uid="uid://d2ll0d0bfu26b"]
+[gd_scene load_steps=38 format=3 uid="uid://d2ll0d0bfu26b"]
 
 [ext_resource type="PackedScene" uid="uid://buaexi66xho3d" path="res://player_related/scn_chara_bob.tscn" id="1_5cqsu"]
-[ext_resource type="Script" path="res://script_gamve_veiw.gd" id="1_q61lg"]
+[ext_resource type="Script" path="res://script_game_veiw.gd" id="1_q61lg"]
 [ext_resource type="Script" path="res://script_root.gd" id="1_qn4hg"]
 [ext_resource type="PackedScene" uid="uid://bot88khm6rv7m" path="res://levels/scn_room_0001.tscn" id="2_pea1k"]
-[ext_resource type="Texture2D" uid="uid://kvlwufxutxhe" path="res://bob_le_fondécran.png" id="2_xt283"]
+[ext_resource type="Texture2D" uid="uid://kvlwufxutxhe" path="res://user_interface/bob_le_fondécran.png" id="2_xt283"]
 [ext_resource type="PackedScene" uid="uid://bpslrq66ysgyk" path="res://battle/scn_battle_menu.tscn" id="4_vw2ms"]
 [ext_resource type="PackedScene" uid="uid://bny4xe33nufrg" path="res://title/scn_main_menu.tscn" id="5_r5bqn"]
 [ext_resource type="PackedScene" uid="uid://ckweq2i3b5lg8" path="res://player_related/scn_pause.tscn" id="6_s86r4"]
 [ext_resource type="PackedScene" uid="uid://bmlic16qbhvv0" path="res://actor/scn_shop_menu.tscn" id="7_apsxi"]
-[ext_resource type="LabelSettings" uid="uid://bdxtw162r24p7" path="res://base_font.tres" id="7_thepe"]
-[ext_resource type="Shader" path="res://shader_pixel.gdshader" id="8_1fy66"]
+[ext_resource type="LabelSettings" uid="uid://bdxtw162r24p7" path="res://user_interface/base_font.tres" id="7_thepe"]
+[ext_resource type="Shader" path="res://shader/shader_pixel.gdshader" id="8_1fy66"]
 [ext_resource type="PackedScene" uid="uid://bs5w4fneac8j4" path="res://player_related/scn_text_box.tscn" id="9_nfc0l"]
 [ext_resource type="PackedScene" uid="uid://bjjuvlj80sqpx" path="res://player_related/scn_pause_infos.tscn" id="10_b5o7b"]
 [ext_resource type="PackedScene" uid="uid://wn8k7vpu81rt" path="res://player_related/scn_choice.tscn" id="12_vs436"]
-[ext_resource type="Texture2D" uid="uid://citavh8kehs5e" path="res://tex_load_ico.png" id="13_nwqnl"]
+[ext_resource type="Texture2D" uid="uid://citavh8kehs5e" path="res://user_interface/tex_load_ico.png" id="13_nwqnl"]
+[ext_resource type="Texture2D" uid="uid://btynuhdbpg4es" path="res://Bob_simulator/mobile/tex_button_menu.png" id="16_4ncqq"]
+[ext_resource type="Script" path="res://Bob_simulator/mobile/script_mobile_input.gd" id="16_wxlxu"]
+[ext_resource type="Texture2D" uid="uid://bjgo36nlxe0hv" path="res://Bob_simulator/mobile/tex_button_menu_pressed.png" id="17_7byu0"]
+[ext_resource type="Texture2D" uid="uid://du46kwkntgpxw" path="res://Bob_simulator/mobile/tex_button_run.png" id="18_bvay0"]
+[ext_resource type="Texture2D" uid="uid://cr2qyho0552ll" path="res://Bob_simulator/mobile/tex_button_interact.png" id="18_oihx5"]
+[ext_resource type="Texture2D" uid="uid://cea17loa0n3j7" path="res://Bob_simulator/mobile/tex_button_run_pressed.png" id="19_bn1mv"]
+[ext_resource type="Texture2D" uid="uid://b1dvyg7tixxuw" path="res://Bob_simulator/mobile/tex_button_interact_pressed.png" id="19_l5ekg"]
+[ext_resource type="Texture2D" uid="uid://c0mdgssepkfv" path="res://Bob_simulator/mobile/tex_button_right.png" id="22_2wsxg"]
+[ext_resource type="Texture2D" uid="uid://bm2velpf5htcf" path="res://Bob_simulator/mobile/tex_button_right_pressed.png" id="23_kt8ib"]
+[ext_resource type="Texture2D" uid="uid://4e4rul6wjoaf" path="res://Bob_simulator/mobile/tex_button_up.png" id="24_74v0d"]
+[ext_resource type="Texture2D" uid="uid://civvmxfnpeq4s" path="res://Bob_simulator/mobile/tex_button_up_pressed.png" id="25_yokgu"]
+[ext_resource type="Texture2D" uid="uid://knff02suw3d7" path="res://Bob_simulator/mobile/tex_button_down.png" id="26_5v7cp"]
+[ext_resource type="Texture2D" uid="uid://bb2ccivvbilvo" path="res://Bob_simulator/mobile/tex_button_down_pressed.png" id="27_h40dx"]
+[ext_resource type="Texture2D" uid="uid://dk74pkf1kxqhq" path="res://Bob_simulator/mobile/tex_button_left.png" id="28_uliyk"]
+[ext_resource type="Texture2D" uid="uid://5el7e1y7c0hl" path="res://Bob_simulator/mobile/tex_button_left_pressed.png" id="29_6c316"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_q8dtc"]
 viewport_path = NodePath("background_canvas/gameview_canvas/gameview/root/viewport/game_sub_viewport")
@@ -321,3 +336,66 @@ render_target_update_mode = 4
 libraries = {
 "": SubResource("AnimationLibrary_vmys2")
 }
+
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource("16_wxlxu")
+
+[node name="ColorRect" type="ColorRect" parent="Node2D"]
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = 24.0
+color = Color(1, 1, 1, 0)
+
+[node name="menu" type="TouchScreenButton" parent="Node2D"]
+position = Vector2(26.6, -20.2)
+scale = Vector2(0.2, 0.2)
+texture_normal = ExtResource("16_4ncqq")
+texture_pressed = ExtResource("17_7byu0")
+action = "menu"
+
+[node name="interact" type="TouchScreenButton" parent="Node2D"]
+position = Vector2(32, -1.90735e-06)
+scale = Vector2(0.2, 0.2)
+texture_normal = ExtResource("18_oihx5")
+texture_pressed = ExtResource("19_l5ekg")
+action = "interact"
+
+[node name="run" type="TouchScreenButton" parent="Node2D"]
+position = Vector2(48, -9.53674e-07)
+scale = Vector2(0.2, 0.2)
+texture_normal = ExtResource("18_bvay0")
+texture_pressed = ExtResource("19_bn1mv")
+action = "run"
+
+[node name="right" type="TouchScreenButton" parent="Node2D"]
+position = Vector2(-39, 0)
+scale = Vector2(0.2, 0.2)
+texture_normal = ExtResource("22_2wsxg")
+texture_pressed = ExtResource("23_kt8ib")
+passby_press = true
+action = "right"
+
+[node name="up" type="TouchScreenButton" parent="Node2D"]
+position = Vector2(-46, -8)
+scale = Vector2(0.2, 0.2)
+texture_normal = ExtResource("24_74v0d")
+texture_pressed = ExtResource("25_yokgu")
+passby_press = true
+action = "up"
+
+[node name="down" type="TouchScreenButton" parent="Node2D"]
+position = Vector2(-46, 8)
+scale = Vector2(0.2, 0.2)
+texture_normal = ExtResource("26_5v7cp")
+texture_pressed = ExtResource("27_h40dx")
+passby_press = true
+action = "down"
+
+[node name="left" type="TouchScreenButton" parent="Node2D"]
+position = Vector2(-53, 8.9407e-07)
+scale = Vector2(0.2, 0.2)
+texture_normal = ExtResource("28_uliyk")
+texture_pressed = ExtResource("29_6c316")
+passby_press = true
+action = "left"

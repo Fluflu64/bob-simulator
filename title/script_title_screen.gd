@@ -28,6 +28,7 @@ var label_menu = ["new game","load game","option","infos","quit"]
 var linestart = [\
 "bonjour"]
 
+var has_save_file = false
 
 func func_menu(index):
 	if index == 0 :
@@ -65,6 +66,8 @@ func _ready():
 
 
 func setup() -> void:
+	if game_root != null :
+		has_save_file = game_root.check_save()
 	label_menu = []
 	for button in range(5) :
 		label_menu.append(BobGlobal.langue[BobGlobal.langindex][33+button])
@@ -98,6 +101,8 @@ func setup() -> void:
 	animation.play("instruction")
 	await animation.animation_finished
 	instru_read = true
+	if game_root.why == 1 :
+		music.stream = load("res://music/mus_title_og.ogg")
 	animation.play("title")
 	#text_play + is_select(0) + "\n" + text_option + is_select(1) + "\n" + text_quit + is_select(2)
 
@@ -111,10 +116,15 @@ func _input(_event: InputEvent) -> void:
 	if instru_read and not menu_lock:
 		if Input.is_action_just_pressed("down") :
 			index_menu += 1
+			if not has_save_file and index_menu == 1:
+				index_menu += 1
 			bip.play()
 		if Input.is_action_just_pressed("up") :
 			index_menu -= 1
+			if not has_save_file and index_menu == 1:
+				index_menu -= 1
 			bip.play()
+		
 		if index_menu < 0 :
 			index_menu = 0
 		if index_menu > len(label_menu)-1 :

@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://ccxalolvpll48"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(464, 656)
+scale = Vector2(2, 2)

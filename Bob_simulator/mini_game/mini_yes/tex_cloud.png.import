@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://b51k0k54woxsb"
 path.s3tc="res://.godot/imported/tex_cloud.png-34a99af8ba8ebccc48ebe95e691fd994.s3tc.ctex"
+path.etc2="res://.godot/imported/tex_cloud.png-34a99af8ba8ebccc48ebe95e691fd994.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Bob_simulator/mini_game/mini_yes/tex_cloud.png"
-dest_files=["res://.godot/imported/tex_cloud.png-34a99af8ba8ebccc48ebe95e691fd994.s3tc.ctex"]
+dest_files=["res://.godot/imported/tex_cloud.png-34a99af8ba8ebccc48ebe95e691fd994.s3tc.ctex", "res://.godot/imported/tex_cloud.png-34a99af8ba8ebccc48ebe95e691fd994.etc2.ctex"]
 
 [params]
 

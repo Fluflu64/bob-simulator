@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=4 uid="uid://qmru8k01kgch"]
+
+[ext_resource type="PackedScene" uid="uid://cspbme0evtjet" path="res://levels/scn_level_base.tscn" id="1_s8hyb"]
+[ext_resource type="PackedScene" uid="uid://b8k5ckc3jf36a" path="res://actor/scn_camera_limit.tscn" id="2_6pptr"]
+[ext_resource type="FontFile" uid="uid://b6nqix3g6iv3i" path="res://user_interface/pixelfont.ttf" id="2_ex555"]
+[ext_resource type="TileSet" uid="uid://buirtyrql2dqy" path="res://levels/maine_tileset.tres" id="3_fm2sm"]
+
+[sub_resource type="Theme" id="Theme_1paug"]
+default_font = ExtResource("2_ex555")
+default_font_size = 8
+
+[node name="level" instance=ExtResource("1_s8hyb")]
+map_name = "end"
+encounter_rate = 0
+
+[node name="ColorRect" type="ColorRect" parent="." index="0"]
+offset_right = 256.0
+offset_bottom = 256.0
+color = Color(0, 0, 0, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect" index="0"]
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 256.0
+theme = SubResource("Theme_1paug")
+bbcode_enabled = true
+text = "
+	BOB SIMULATOR"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." index="1"]
+tile_map_data = PackedByteArray("AAAAAP//BAAZAAEAAAABAP//BAAZAAEAAAACAP//BAAZAAEAAAADAP//BAAZAAEAAAAEAP//BAAZAAEAAAAFAP//BAAZAAEAAAAGAP//BAAZAAEAAAAHAP//BAAZAAEAAAAIAP//BAAZAAEAAAAJAP//BAAZAAEAAAAKAP//BAAZAAEAAAALAP//BAAZAAEAAAAMAP//BAAZAAEAAAANAP//BAAZAAEAAAAOAP//BAAZAAEAAAAPAP//BAAZAAEAAAAQAAAABAAZAAEAAAAQAAEABAAZAAEAAAAQAAIABAAZAAEAAAAQAAMABAAZAAEAAAAQAAQABAAZAAEAAAAQAAUABAAZAAEAAAAQAAYABAAZAAEAAAAQAAcABAAZAAEAAAAQAAgABAAZAAEAAAAQAAkABAAZAAEAAAAQAAoABAAZAAEAAAAQAAsABAAZAAEAAAAQAAwABAAZAAEAAAAQAA0ABAAZAAEAAAAQAA4ABAAZAAEAAAAQAA8ABAAZAAEAAAAAABAABAAZAAEAAAABABAABAAZAAEAAAACABAABAAZAAEAAAADABAABAAZAAEAAAAEABAABAAZAAEAAAAFABAABAAZAAEAAAAGABAABAAZAAEAAAAHABAABAAZAAEAAAAIABAABAAZAAEAAAAJABAABAAZAAEAAAAKABAABAAZAAEAAAALABAABAAZAAEAAAAMABAABAAZAAEAAAANABAABAAZAAEAAAAOABAABAAZAAEAAAAPABAABAAZAAEAAAD//wAABAAZAAEAAAD//wEABAAZAAEAAAD//wIABAAZAAEAAAD//wMABAAZAAEAAAD//wQABAAZAAEAAAD//wUABAAZAAEAAAD//wYABAAZAAEAAAD//wcABAAZAAEAAAD//wgABAAZAAEAAAD//wkABAAZAAEAAAD//woABAAZAAEAAAD//wsABAAZAAEAAAD//wwABAAZAAEAAAD//w0ABAAZAAEAAAD//w4ABAAZAAEAAAD//w8ABAAZAAEAAAA=")
+tile_set = ExtResource("3_fm2sm")
+
+[node name="camera zone" parent="." index="2"]
+visible = false
+
+[node name="camera limit" parent="camera zone" index="0" instance=ExtResource("2_6pptr")]
+position = Vector2(128, 128)
+scale = Vector2(16, 16)
+
+[node name="credit" type="Node2D" parent="spawn" index="1"]
+position = Vector2(128, 128)

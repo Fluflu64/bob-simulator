@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://bi3bv2lwheflg"]
+
+[ext_resource type="PackedScene" uid="uid://dqwh1eeuvmfht" path="res://battle/attack/scn_ennemi_attack_base.tscn" id="1_5a6gq"]
+[ext_resource type="Script" path="res://battle/attack/script_test_atk_bob.gd" id="2_r345f"]
+[ext_resource type="PackedScene" uid="uid://buaexi66xho3d" path="res://player_related/scn_chara_bob.tscn" id="2_s7678"]
+
+[node name="ennemi_attack_base" instance=ExtResource("1_5a6gq")]
+script = ExtResource("2_r345f")
+
+[node name="chara_bob" parent="." index="1" instance=ExtResource("2_s7678")]
+position = Vector2(-32, -16)

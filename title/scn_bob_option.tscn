@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dohogg1b38b42"]
 
-[ext_resource type="Script" path="res://script_bob_option.gd" id="1_awutj"]
+[ext_resource type="Script" path="res://title/script_bob_option.gd" id="1_awutj"]
 [ext_resource type="Texture2D" uid="uid://cm0y67224xlny" path="res://player_related/tex_bob.png" id="2_cxo7a"]
 
 [sub_resource type="Animation" id="Animation_kgebh"]

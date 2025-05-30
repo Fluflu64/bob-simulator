@@ -24,6 +24,40 @@ var audio_name = ["7","8"]
 var soundtest_name = []
 var back_name = []
 
+@onready var music_ico = $NinePatchRect4/reset
+@onready var music_stream = $soundtest_music/reset
+var music_dico = {\
+"Reset" : [null,null],
+"Ambush" : [preload("res://music/icone/tex_battle_2.png"),preload("res://music/battle_theme.ogg")],
+"Bob is a dark city" : [preload("res://music/icone/tex_dark_city.png"),preload("res://music/mus_dark_city.wav")],
+"Fly or cry" : [preload("res://music/icone/tex_fly.png"),preload("res://music/fly or cry.ogg")],
+"Its me the radouteu" : [preload("res://music/icone/tex_music_battle.png"),preload("res://music/battle_test2.ogg")],
+"A nightmare dream" : [preload("res://music/icone/tex_music_castle.png"),preload("res://music/mus_castle.ogg")],
+"city" : [preload("res://music/icone/tex_music_city.png"),preload("res://music/mus_city.ogg")],
+"house" : [preload("res://music/icone/tex_music_house.png"),preload("res://music/mus_house.ogg")],
+"overworld" : [preload("res://music/icone/tex_music_overworld.png"),preload("res://music/overworld.wav")],
+"Why the worlc so rude" : [preload("res://music/icone/tex_music_sad.png"),preload("res://music/mus_sad_song.ogg")],
+"Its free if you paid 100 gold" : [preload("res://music/icone/tex_music_shop.png"),preload("res://music/mus_shop.ogg")],
+"Welcome to Bobland story" : [preload("res://music/icone/tex_music_title.png"),preload("res://music/mus_title.ogg")],
+"Wasted bob" : [preload("res://music/icone/tex_music_underworld.png"),preload("res://music/castle.ogg")],
+"bob around" : [preload("res://music/icone/tex_bobaround.png"),preload("res://music/bobaround.wav")],
+"Wlcm to Boblnd stry" : [preload("res://music/icone/tex_music_title_og.png"),preload("res://music/mus_title_og.ogg")],
+"Bob win(string)" : [preload("res://music/icone/tex_music_version_0.png"),preload("res://music/version 0.wav")],
+"Bob win(wind)" : [preload("res://music/icone/tex_music_version_1.png"),preload("res://music/version 1.wav")],
+"Bob win(string + wind)" : [preload("res://music/icone/tex_music_version_01.png"),preload("res://music/version 0+1.wav")],
+"Bob win" : [preload("res://music/icone/tex_music_version_final.png"),preload("res://music/mus_version final.wav")],
+"cave" : [preload("res://music/icone/tex_music_cave.png"),preload("res://music/pololompololom pompompololommm.wav")],
+"mega_singe_de_lamortkiuetou" : [preload("res://music/icone/tex_music_singe.png"),preload("res://music/singe.ogg")],
+"YES : story mode" : [preload("res://music/icone/tex_music_yes.png"),preload("res://Bob_simulator/mini_game/mini_yes/musique_des_gens_qui_crie.wav")],
+"Lever Guy" : [preload("res://music/icone/tex_music_lever_guy.png"),preload("res://music/underground.wav")],
+"get a key (LG)" : [preload("res://music/icone/tex_music_lg_key.png"),preload("res://music/key.wav")],
+"get a map (LG)" : [preload("res://music/icone/tex_music_lg_map.png"),preload("res://music/got map.wav")],
+"dungeon (LG)" : [preload("res://music/icone/tex_music_lg_dungeon.png"),preload("res://music/dungeon.wav")],
+"End origine" : [preload("res://music/icone/tex_music_end_origine.png"),preload("res://music/black hole.wav")],
+"Parachneloba" : [preload("res://music/icone/tex_music_lever_guy_para.png"),preload("res://music/parachneloba.wav")],
+"Ending (LG)" : [preload("res://music/icone/tex_music_lg_end.png"),preload("res://music/ending.wav")]
+}
+
 
 
 var submenu_name = [rapide_name,game_name,video_name,audio_name,soundtest_name,back_name]
@@ -34,8 +68,10 @@ func reload_menu():
 		menu_name.append(BobGlobal.langue[BobGlobal.langindex][58+button])
 	
 	soundtest_name = []
-	for music in ost.get_children() :
-		soundtest_name.append(music.name)
+	for music in music_dico :
+		soundtest_name.append(music)
+	
+	submenu_name = [rapide_name,game_name,video_name,audio_name,soundtest_name,back_name]
 	update_menu()
 
 func _ready() -> void:
@@ -50,7 +86,11 @@ func update_menu():
 		text += menu_name[i] + is_select(i,"<") + "\n"
 	menu.text = text
 	text = menu_name[index_menu] + " :\n \n"
-	for i in range(len(submenu_name[index_menu])) :
+	var start = int(index_submenu/8.0) *8
+	var len_menu = 8 +start
+	if len_menu >  len(submenu_name[index_menu]) :
+		len_menu =  len(submenu_name[index_menu])
+	for i in range(start,len_menu) :
 		text += submenu_name[index_menu][i] + is_select_sub(i,"<") + "\n"
 	submenu.text = text
 
@@ -96,12 +136,17 @@ func _input(event: InputEvent) -> void:
 					index_submenu = 0
 				
 			if index_menu == 4 and in_submenu:
-				for music in ost.get_children() :
-					music.playing = false
-				for ico in ost_ico.get_children() :
-					ico.hide()
-				ost.get_child(index_submenu).playing = true
-				ost_ico.get_child(index_submenu).show()
+
+				music_ico.show()
+				music_ico.texture = music_dico[soundtest_name[index_submenu]][0]
+				music_stream.stream = music_dico[soundtest_name[index_submenu]][1]
+				music_stream.playing = true
+				#for music in ost.get_children() :
+				#	music.playing = false
+				#for ico in ost_ico.get_children() :
+				#	ico.hide()
+				#ost.get_child(index_submenu).playing = true
+				#ost_ico.get_child(index_submenu).show()
 				
 			
 			if index_menu == 5 and not in_submenu:
@@ -126,4 +171,3 @@ func _input(event: InputEvent) -> void:
 					ico.hide()
 		
 		update_menu()
-		

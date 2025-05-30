@@ -4,13 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://cu5fngx2osjkb" path="res://title/tex_title_screen.png" id="2_y55ih"]
 [ext_resource type="Texture2D" uid="uid://b1rm2t5aern3f" path="res://title/tex_title_screen_2.png" id="3_chs5d"]
 [ext_resource type="Texture2D" uid="uid://mibs4jii822c" path="res://player_related/tex_text_box.png" id="3_ggqmm"]
-[ext_resource type="LabelSettings" uid="uid://bdxtw162r24p7" path="res://base_font.tres" id="3_ssomm"]
+[ext_resource type="LabelSettings" uid="uid://bdxtw162r24p7" path="res://user_interface/base_font.tres" id="3_ssomm"]
 [ext_resource type="AudioStream" uid="uid://cnsw4ybybgh1w" path="res://music/mus_title.ogg" id="5_3ayy5"]
 [ext_resource type="Texture2D" uid="uid://nsfn1d1e2ika" path="res://title/tex_bob_title.png" id="6_o284l"]
 [ext_resource type="AudioStream" uid="uid://b0ds5eqpaj61m" path="res://sound_effect/blipSelect.wav" id="6_uglrl"]
 [ext_resource type="Texture2D" uid="uid://dp6p81c247htq" path="res://title/tex_complete_title.png" id="7_cqo15"]
 [ext_resource type="Shader" path="res://title/shader_load.gdshader" id="10_vas1o"]
-[ext_resource type="Texture2D" uid="uid://citavh8kehs5e" path="res://tex_load_ico.png" id="11_puev3"]
+[ext_resource type="Texture2D" uid="uid://citavh8kehs5e" path="res://user_interface/tex_load_ico.png" id="11_puev3"]
 
 [sub_resource type="Animation" id="Animation_l4s67"]
 length = 0.001
@@ -623,7 +623,7 @@ offset_left = 8.0
 offset_top = 240.0
 offset_right = 248.0
 offset_bottom = 248.0
-text = "beta 0.13.4"
+text = "beta 0.13.6"
 label_settings = ExtResource("3_ssomm")
 
 [node name="Label4" type="Label" parent="."]

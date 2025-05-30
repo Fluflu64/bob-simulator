@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://battle/script_battle_bob.gd" id="1_jmpj3"]
 [ext_resource type="Texture2D" uid="uid://buseck213vate" path="res://player_related/tex_battle_bob.png" id="2_qia7x"]
 [ext_resource type="Texture2D" uid="uid://mibs4jii822c" path="res://player_related/tex_text_box.png" id="3_fdnpv"]
-[ext_resource type="LabelSettings" uid="uid://bdxtw162r24p7" path="res://base_font.tres" id="4_d6xl1"]
+[ext_resource type="LabelSettings" uid="uid://bdxtw162r24p7" path="res://user_interface/base_font.tres" id="4_d6xl1"]
 [ext_resource type="Texture2D" uid="uid://da86etuen6uo4" path="res://battle/tex_battle_healthbar.png" id="5_bmauo"]
 
 [sub_resource type="Animation" id="Animation_7l3gw"]

@@ -1,15 +1,15 @@
+[option]
+
+lang=0
+
 [why]
 
-why=51
+why=77
 
 [player]
 
-position=Vector2(197, -377)
+position=Vector2(1348.5, -505)
 map="res://levels/scn_bobcity_int.tscn"
 level=1
 story=3
 annex=[true, true, true, true]
-
-[option]
-
-lang=0

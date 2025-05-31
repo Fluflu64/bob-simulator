@@ -134,7 +134,7 @@ func hit_player():
 
 func _ready() -> void:
 	update_ennemi()
-	
+	$background/Label.text = BobGlobal.langue[BobGlobal.langindex][326]
 	#player_battle.hit_body.connect(hit_ennemy)
 	
 	submenu.hide()

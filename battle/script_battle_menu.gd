@@ -49,9 +49,9 @@ var battle_lock = true
 
 var label_menu = [172,202,232,289]
 var sub_index = 0
-var attack_label = [0,1,0]
+var attack_label = [0]
 var attack_select = 0
-var action_label = [0,1,2,3,4]
+var action_label = []
 
 var label_actions_menu = []
 var text_select = "<"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=104 format=4 uid="uid://djeea60kpngwx"]
+[gd_scene load_steps=105 format=4 uid="uid://djeea60kpngwx"]
 
 [ext_resource type="PackedScene" uid="uid://cspbme0evtjet" path="res://levels/scn_level_base.tscn" id="1_qqd4f"]
 [ext_resource type="Script" path="res://levels/script_setup_bobcity_int.gd" id="2_jxnqr"]
@@ -38,6 +38,7 @@
 [ext_resource type="Texture2D" uid="uid://g5bjsnfcjbds" path="res://sprite/tex_light.png" id="33_3obcw"]
 [ext_resource type="VideoStream" path="res://vidéo/v3.ogv" id="33_bimgp"]
 [ext_resource type="Texture2D" uid="uid://ch6vo8h7bncxn" path="res://sprite/tex_tile_light.png" id="34_t3kx6"]
+[ext_resource type="Texture2D" uid="uid://blnxalnd2j0ec" path="res://sprite/tex_lever.png" id="35_7okn4"]
 [ext_resource type="Texture2D" uid="uid://dyqi5oinepbki" path="res://sprite/tex_bob_astuce.png" id="36_cegkq"]
 [ext_resource type="PackedScene" uid="uid://d1qpgn2vl2o80" path="res://actor/scn_demo_end.tscn" id="40_jf23p"]
 
@@ -1793,6 +1794,30 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(-168, 80)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D3/PointLight2D:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D3:frame_coords")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_nagds"]
 resource_name = "check"
@@ -1822,10 +1847,34 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(-136, 80)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D3:frame_coords")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D3/PointLight2D:color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 1, 0, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_rdx7s"]
 resource_name = "remove thing"
-length = 10.0
+length = 8.0
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -1834,7 +1883,7 @@ tracks/0/path = NodePath("TexDestroyer:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(2, 2.05, 2.1, 2.15, 2.2, 2.25, 2.5, 8),
+"times": PackedFloat32Array(0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.7, 8),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(-144, 40), Vector2(-152, 40), Vector2(-140, 40), Vector2(-146, 40), Vector2(-143, 40), Vector2(-144, 40), Vector2(-144, 40), Vector2(-144, -176)]
@@ -1846,10 +1895,34 @@ tracks/1/path = NodePath("interact24:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 10),
+"times": PackedFloat32Array(0, 8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(-168, 80), Vector2(-136, 80)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D3/PointLight2D:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 1), Color(0, 1, 0, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D3:frame_coords")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_l4dy8"]
@@ -3544,8 +3617,8 @@ spawn_index = "sortie"
 
 [node name="sortie B22" parent="teleporter" index="18" instance=ExtResource("4_tue1u")]
 position = Vector2(1392, -504)
-next_level = "res://levels/scn_credit_demo.tscn"
-spawn_index = "credit"
+next_level = "res://levels/scn_cender.tscn"
+spawn_index = "sortie"
 
 [node name="sortie B7" parent="teleporter" index="19" instance=ExtResource("4_tue1u")]
 position = Vector2(-128, -376)
@@ -3855,6 +3928,18 @@ buffering_msec = 1000
 position = Vector2(-16, 0)
 next_level = "-1"
 spawn_index = "petit 3"
+
+[node name="Sprite2D3" type="Sprite2D" parent="node_interact/interact23" index="7"]
+z_index = 2
+position = Vector2(-13, 0)
+texture = ExtResource("35_7okn4")
+hframes = 2
+
+[node name="PointLight2D" type="PointLight2D" parent="node_interact/interact23/Sprite2D3" index="0"]
+color = Color(1, 0, 0, 1)
+energy = 2.0
+texture = ExtResource("33_3obcw")
+texture_scale = 2.0
 
 [node name="interact2" parent="node_interact" index="2" node_paths=PackedStringArray("animation_player") instance=ExtResource("5_x16qu")]
 position = Vector2(40, 184)

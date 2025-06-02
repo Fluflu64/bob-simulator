@@ -41,7 +41,7 @@ func func_menu(index):
 	if index == 2 :
 		game_root.open_submenu(optionmenu)
 		game_root.main_menu_pause(true)
-		print("oui")
+		BobGlobal.print("oui")
 	if index == 3 :
 		music.playing = false
 		bip.playing = false

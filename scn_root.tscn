@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://d2ll0d0bfu26b"]
+[gd_scene load_steps=39 format=3 uid="uid://d2ll0d0bfu26b"]
 
 [ext_resource type="PackedScene" uid="uid://buaexi66xho3d" path="res://player_related/scn_chara_bob.tscn" id="1_5cqsu"]
 [ext_resource type="Script" path="res://script_game_veiw.gd" id="1_q61lg"]
@@ -30,6 +30,7 @@
 [ext_resource type="Texture2D" uid="uid://bb2ccivvbilvo" path="res://Bob_simulator/mobile/tex_button_down_pressed.png" id="27_h40dx"]
 [ext_resource type="Texture2D" uid="uid://dk74pkf1kxqhq" path="res://Bob_simulator/mobile/tex_button_left.png" id="28_uliyk"]
 [ext_resource type="Texture2D" uid="uid://5el7e1y7c0hl" path="res://Bob_simulator/mobile/tex_button_left_pressed.png" id="29_6c316"]
+[ext_resource type="PackedScene" uid="uid://dlvd8gotojtlk" path="res://debug/scn_debug.tscn" id="31_qh3ll"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_q8dtc"]
 viewport_path = NodePath("background_canvas/gameview_canvas/gameview/root/viewport/game_sub_viewport")
@@ -399,3 +400,5 @@ texture_normal = ExtResource("28_uliyk")
 texture_pressed = ExtResource("29_6c316")
 passby_press = true
 action = "left"
+
+[node name="Node2D2" parent="." instance=ExtResource("31_qh3ll")]

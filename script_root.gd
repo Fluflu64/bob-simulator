@@ -125,6 +125,7 @@ func load_level(path:String,spawn_name:String,transition:int = 0):
 		animation.play("welcome")
 
 func start_game():
+	BobGlobal.generate_annex()
 	title.animation.play("intro")
 	title.menu_lock = true
 	await title.animation.animation_finished
@@ -282,7 +283,7 @@ func end_battle():
 	battle_end.emit()
 
 func save_game():
-	print("save test")
+	BobGlobal.print("save test")
 	config.set_value("player","position",player.position)
 	config.set_value("player","map",actual_level_path)
 	config.set_value("player","level",player.lvl)

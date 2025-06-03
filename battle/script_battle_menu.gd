@@ -49,7 +49,7 @@ var battle_lock = true
 
 var label_menu = [172,202,232,289]
 var sub_index = 0
-var attack_label = [0]
+var attack_label = [0,1]
 var attack_select = 0
 var action_label = []
 
@@ -392,10 +392,18 @@ func _process(_delta: float) -> void:
 					player_battle.animation.play("win")
 					await battle_anime.animation_finished
 				
-				animation.play("battle end")
-				await animation.animation_finished
+				player.pv = player_battle.pv
+				player.atk = player_battle.base_atk
+				player.def = player_battle.base_dfs
+				player.pv_max = player_battle.max_pv
 				
-				game_root.end_battle()
+				
+				if player.pv > 0 :
+					animation.play("battle end")
+					await animation.animation_finished
+					
+
+				
 				queue_free()
 				
 		elif tour == 0:

@@ -36,7 +36,7 @@ Charger
 Option
 Infos
 Quitter
-
+Menu
 --Instruction--
 
 -W-
@@ -327,3 +327,5 @@ Sortie Est ->
 lors d'une attaque il faut appuier sur votre touche d'interaction pour gagner le micro jeu
 
 Tu ne peut pas passer maintenant...
+
+volume global

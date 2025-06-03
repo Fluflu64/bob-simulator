@@ -8,8 +8,9 @@ why=77
 
 [player]
 
-position=Vector2(1340.26, -506.225)
+position=Vector2(194.592, 122.076)
 map="res://levels/scn_bobcity_int.tscn"
 level=1
-story=5
-annex=[true, true, true, true]
+story=3
+pv=16.0
+annex=[true, true, true, true, false, false, false, false]

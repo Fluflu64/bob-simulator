@@ -263,7 +263,6 @@ grow_vertical = 2
 pivot_offset = Vector2(0.5, 0.5)
 
 [node name="gameview" type="SubViewport" parent="background_canvas/gameview_canvas"]
-transparent_bg = true
 handle_input_locally = false
 size = Vector2i(256, 256)
 size_2d_override = Vector2i(256, 256)

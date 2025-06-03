@@ -19,13 +19,13 @@ extends Node2D
 @export var nom = "???"
 
 @export var pv = 10
-var max_pv = pv
+@onready var max_pv = pv
 
 @export var base_atk = 1.0
-var atk = base_atk
+@onready var atk = base_atk
 
 @export var base_dfs = 1.0
-var dfs = base_dfs
+@onready var dfs = base_dfs
 
 
 signal turn_end
@@ -88,7 +88,7 @@ func player_move(ennemi,atk_result):
 
 func punch(ennemi_target):
 	animation.play("punch")
-	degat(ennemi_target,1)
+	degat(ennemi_target,atk)
 	turn_end.emit()
 
 

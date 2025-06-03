@@ -89,7 +89,8 @@ func load_level(path:String,spawn_name:String,transition:int = 0):
 	map_name_label.position = Vector2(0,-8)
 	
 	if transition == 0 or transition == 2 :
-		player.set_process_mode(PROCESS_MODE_DISABLED)
+		if transition != 3 :
+			player.set_process_mode(PROCESS_MODE_DISABLED)
 		animation.play("transition_on")
 		await animation.animation_finished
 	
@@ -112,7 +113,8 @@ func load_level(path:String,spawn_name:String,transition:int = 0):
 		player.position = spawn_position + Vector2(0,-1)
 		#player.update_camera()
 		map_name_label.text = actual_level.map_name
-		player.set_process_mode(0)
+		if transition != 3 :
+			player.set_process_mode(0)
 		if transition == 0 or transition == 1:
 			animation.play("transition_off")
 			await animation.animation_finished
@@ -121,8 +123,7 @@ func load_level(path:String,spawn_name:String,transition:int = 0):
 	player.proba_battle = actual_level.encounter_rate
 	actual_level.player = player
 	
-	if show_msg :
-		animation.play("welcome")
+	
 
 func start_game():
 	BobGlobal.generate_annex()
@@ -209,7 +210,7 @@ func end_text():
 	dialogue_end.emit()
 
 func end_choice(choice_box):
-	print(choice_box)
+	BobGlobal.print(choice_box)
 
 func end_pause():
 	game.set_process_mode(PROCESS_MODE_INHERIT)
@@ -279,7 +280,14 @@ func start_mini_game(path):
 	game.set_process_mode(PROCESS_MODE_DISABLED)
 
 func end_battle():
+	var load_game_over = load("res://user_interface/scn_game_over.tscn")
+	var inst_game_over = load_game_over.instantiate()
 	game.set_process_mode(PROCESS_MODE_INHERIT)
+	if player.pv <= 0 :
+		BobGlobal.print("you are dead")
+		#end_game()
+		battle.add_child(inst_game_over)
+		return
 	battle_end.emit()
 
 func save_game():
@@ -287,6 +295,7 @@ func save_game():
 	config.set_value("player","position",player.position)
 	config.set_value("player","map",actual_level_path)
 	config.set_value("player","level",player.lvl)
+	config.set_value("player","pv",player.pv)
 	config.set_value("player","story",player.story)
 	config.set_value("player","annex",BobGlobal.annex)
 	config.save(save_path)
@@ -294,15 +303,27 @@ func save_game():
 	animation.play("welcome")
 
 func load_game():
+	title.set_process_mode(PROCESS_MODE_INHERIT)
+	#title.setup()
+	#title.show()
+	for elem in game.get_children():
+		elem.queue_free()
+	for elem in textbox.get_children():
+		elem.queue_free()
+	
+	for elem in battle.get_children():
+		elem.queue_free()
+	
+	
 	
 	var save_load = config.load(save_path)
 	title.menu_lock = true
 	if save_load == OK :
-		if player == null :
-			var player_instance = player_scene.instantiate()
-			player_instance.game_root = self
-			player = player_instance
-			game.add_child(player_instance)
+		
+		var player_instance = player_scene.instantiate()
+		player_instance.game_root = self
+		player = player_instance
+		game.add_child(player_instance)
 		player.set_process_mode(PROCESS_MODE_DISABLED)
 		if title.visible :
 			title.animation.play("load")
@@ -313,19 +334,23 @@ func load_game():
 		title.setup()
 		title.set_process_mode(PROCESS_MODE_DISABLED)
 		title.hide()
+		player.set_process_mode(0)
 		actual_level_path = config.get_value("player","map")
 		player.position = config.get_value("player","position")
 		player.lvl = config.get_value("player","level")
+		player.pv = config.get_value("player","pv")
 		player.story = config.get_value("player","story")
 		var temp_annex = config.get_value("player","annex")
 		
 		for a in range(len(temp_annex)) :
 			BobGlobal.annex[a] = temp_annex[a] 
+		player.set_process_mode(PROCESS_MODE_DISABLED)
 		load_level(actual_level_path,"-1",3)
 		
 		animation.play("transition_off")
-		await animation.animation_finished
 		player.set_process_mode(0)
+		await animation.animation_finished
+		
 		player.frame_direction = 0
 		player.animation.play("idle")
 		player.sprite.frame_coords = Vector2(0,0)

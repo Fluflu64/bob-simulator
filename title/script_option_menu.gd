@@ -11,6 +11,9 @@ var menu_block = true
 @onready var ost_ico = $NinePatchRect4
 @onready var animation = $AnimationPlayer
 
+var volumes = [100,75,50,25,0]
+var volume_index = 0
+
 var in_submenu = false
 
 var game_root = null
@@ -20,7 +23,7 @@ var menu_name = ["jeu","langue","vidéo","audio","soundtest","retour"]
 var rapide_name = [BobGlobal.langue[BobGlobal.langindex][89],BobGlobal.langue[BobGlobal.langindex][90],BobGlobal.langue[BobGlobal.langindex][91]]
 var game_name = ["français","english"]
 var video_name = ["5","6"]
-var audio_name = ["7","8"]
+var audio_name = [BobGlobal.langue[BobGlobal.langindex][330] + ": "+ str(volumes[volume_index]) + "%"]
 var soundtest_name = []
 var back_name = []
 
@@ -135,6 +138,10 @@ func _input(event: InputEvent) -> void:
 				else :
 					index_submenu = 0
 				
+			if index_menu == 3 and index_submenu:
+				var audio_name = [BobGlobal.langue[BobGlobal.langindex][330] + ": "+ str(volumes[volume_index]) + "%"]
+				submenu_name = [rapide_name,game_name,video_name,audio_name,soundtest_name,back_name]
+			
 			if index_menu == 4 and in_submenu:
 
 				music_ico.show()

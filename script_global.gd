@@ -13,6 +13,8 @@ var story = 0
 var game_root = null
 var choice = 0
 
+var controler = null
+
 var debug_menu = null
 
 var annex = []
@@ -52,10 +54,10 @@ func print(msg):
 		debug_menu.add(msg)
 
 func _input(event: InputEvent) -> void:
-	check_controler(event)
+	controler = check_controler(event)
 	if event.is_action("speed"):
 		var input_scale = event.get_action_strength("speed")
-		input_scale *= 99
+		input_scale *= 4
 		input_scale += 1
 		Engine.time_scale = input_scale
 	
@@ -64,10 +66,8 @@ func _input(event: InputEvent) -> void:
 
 func check_controler(event):
 	if(event is InputEventKey):
-		self.print("Keyboard")
 		return "Keyboard"
-	elif(event is InputEventJoypadButton) or (event is InputEventJoypadAxis):
-		self.print("GamePad")
+	elif(event is InputEventJoypadButton):
 		return "GamePad"
 	elif(event is InputEventScreenTouch):
 		self.print("Touch")
